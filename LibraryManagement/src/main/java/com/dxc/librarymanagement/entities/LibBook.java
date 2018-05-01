@@ -10,9 +10,9 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="Book")
+@Table(name="LibBook")
 //@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
-public class Book implements Serializable {
+public class LibBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -35,9 +35,9 @@ public class Book implements Serializable {
 
 	// bi-directional many-to-one association to Isbn
 	@OneToMany(mappedBy = "book")
-	private List<Isbn> isbns;
+	private List<LibIsbn> isbns;
 
-	public Book() {
+	public LibBook() {
 	}
 
 	public int getIdBook() {
@@ -80,22 +80,22 @@ public class Book implements Serializable {
 		this.titleOfBook = titleOfBook;
 	}
 
-	public List<Isbn> getIsbns() {
+	public List<LibIsbn> getIsbns() {
 		return this.isbns;
 	}
 
-	public void setIsbns(List<Isbn> isbns) {
+	public void setIsbns(List<LibIsbn> isbns) {
 		this.isbns = isbns;
 	}
 
-	public Isbn addIsbn(Isbn isbn) {
+	public LibIsbn addIsbn(LibIsbn isbn) {
 		getIsbns().add(isbn);
 		isbn.setBook(this);
 
 		return isbn;
 	}
 
-	public Isbn removeIsbn(Isbn isbn) {
+	public LibIsbn removeIsbn(LibIsbn isbn) {
 		getIsbns().remove(isbn);
 		isbn.setBook(null);
 

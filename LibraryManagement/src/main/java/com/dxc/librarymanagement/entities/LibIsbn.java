@@ -9,9 +9,9 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name = "ISBN")
+@Table(name = "LibISBN")
 //@NamedQuery(name = "Isbn.findAll", query = "SELECT i FROM Isbn i")
-public class Isbn implements Serializable {
+public class LibIsbn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,14 +29,14 @@ public class Isbn implements Serializable {
 
 	// bi-directional many-to-one association to BorrowBook
 	@OneToMany(mappedBy = "isbnBean")
-	private List<BorrowBook> borrowBooks;
+	private List<LibBorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Book
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdBook")
-	private Book book;
+	private LibBook book;
 
-	public Isbn() {
+	public LibIsbn() {
 	}
 
 	public String getIsbn() {
@@ -71,33 +71,33 @@ public class Isbn implements Serializable {
 		this.totalBook = totalBook;
 	}
 
-	public List<BorrowBook> getBorrowBooks() {
+	public List<LibBorrowBook> getBorrowBooks() {
 		return this.borrowBooks;
 	}
 
-	public void setBorrowBooks(List<BorrowBook> borrowBooks) {
+	public void setBorrowBooks(List<LibBorrowBook> borrowBooks) {
 		this.borrowBooks = borrowBooks;
 	}
 
-	public BorrowBook addBorrowBook(BorrowBook borrowBook) {
+	public LibBorrowBook addBorrowBook(LibBorrowBook borrowBook) {
 		getBorrowBooks().add(borrowBook);
 		borrowBook.setIsbnBean(this);
 
 		return borrowBook;
 	}
 
-	public BorrowBook removeBorrowBook(BorrowBook borrowBook) {
+	public LibBorrowBook removeBorrowBook(LibBorrowBook borrowBook) {
 		getBorrowBooks().remove(borrowBook);
 		borrowBook.setIsbnBean(null);
 
 		return borrowBook;
 	}
 
-	public Book getBook() {
+	public LibBook getBook() {
 		return this.book;
 	}
 
-	public void setBook(Book book) {
+	public void setBook(LibBook book) {
 		this.book = book;
 	}
 

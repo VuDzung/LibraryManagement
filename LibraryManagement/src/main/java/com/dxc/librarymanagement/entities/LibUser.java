@@ -9,9 +9,9 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="User")
+@Table(name="\"LibUser\"")
 //@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-public class User implements Serializable {
+public class LibUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -36,14 +36,14 @@ public class User implements Serializable {
 
 	// bi-directional many-to-one association to BorrowBook
 	@OneToMany(mappedBy = "user")
-	private List<BorrowBook> borrowBooks;
+	private List<LibBorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Role
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdRole", nullable = false)
-	private Role role;
+	private LibRole role;
 
-	public User() {
+	public LibUser() {
 	}
 
 	public int getIdUser() {
@@ -94,33 +94,33 @@ public class User implements Serializable {
 		this.userName = userName;
 	}
 
-	public List<BorrowBook> getBorrowBooks() {
+	public List<LibBorrowBook> getBorrowBooks() {
 		return this.borrowBooks;
 	}
 
-	public void setBorrowBooks(List<BorrowBook> borrowBooks) {
+	public void setBorrowBooks(List<LibBorrowBook> borrowBooks) {
 		this.borrowBooks = borrowBooks;
 	}
 
-	public BorrowBook addBorrowBook(BorrowBook borrowBook) {
+	public LibBorrowBook addBorrowBook(LibBorrowBook borrowBook) {
 		getBorrowBooks().add(borrowBook);
 		borrowBook.setUser(this);
 
 		return borrowBook;
 	}
 
-	public BorrowBook removeBorrowBook(BorrowBook borrowBook) {
+	public LibBorrowBook removeBorrowBook(LibBorrowBook borrowBook) {
 		getBorrowBooks().remove(borrowBook);
 		borrowBook.setUser(null);
 
 		return borrowBook;
 	}
 
-	public Role getRole() {
+	public LibRole getRole() {
 		return this.role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(LibRole role) {
 		this.role = role;
 	}
 

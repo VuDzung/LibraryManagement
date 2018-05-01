@@ -10,9 +10,9 @@ import java.util.List;
  * 
  */
 @Entity
-@Table(name="Role")
+@Table(name="LibRole")
 //@NamedQuery(name="Role.findAll", query="SELECT r FROM Role r")
-public class Role implements Serializable {
+public class LibRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -25,9 +25,9 @@ public class Role implements Serializable {
 
 	//bi-directional many-to-one association to User
 	@OneToMany(mappedBy="role")
-	private List<User> users;
+	private List<LibUser> users;
 
-	public Role() {
+	public LibRole() {
 	}
 
 	public int getIdRole() {
@@ -46,22 +46,22 @@ public class Role implements Serializable {
 		this.nameRole = nameRole;
 	}
 
-	public List<User> getUsers() {
+	public List<LibUser> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(List<User> users) {
+	public void setUsers(List<LibUser> users) {
 		this.users = users;
 	}
 
-	public User addUser(User user) {
+	public LibUser addUser(LibUser user) {
 		getUsers().add(user);
 		user.setRole(this);
 
 		return user;
 	}
 
-	public User removeUser(User user) {
+	public LibUser removeUser(LibUser user) {
 		getUsers().remove(user);
 		user.setRole(null);
 

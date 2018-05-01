@@ -9,9 +9,9 @@ import java.util.Date;
  * 
  */
 @Entity
-@Table(name="BorrowBook")
+@Table(name="LibBorrowBook")
 //@NamedQuery(name = "BorrowBook.findAll", query = "SELECT b FROM BorrowBook b")
-public class BorrowBook implements Serializable {
+public class LibBorrowBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,14 +30,14 @@ public class BorrowBook implements Serializable {
 	// bi-directional many-to-one association to Isbn
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ISBN")
-	private Isbn isbnBean;
+	private LibIsbn isbnBean;
 
 	// bi-directional many-to-one association to User
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdUser")
-	private User user;
+	private LibUser user;
 
-	public BorrowBook() {
+	public LibBorrowBook() {
 	}
 
 	public int getIdBorrow() {
@@ -64,19 +64,19 @@ public class BorrowBook implements Serializable {
 		this.dateReturn = dateReturn;
 	}
 
-	public Isbn getIsbnBean() {
+	public LibIsbn getIsbnBean() {
 		return this.isbnBean;
 	}
 
-	public void setIsbnBean(Isbn isbnBean) {
+	public void setIsbnBean(LibIsbn isbnBean) {
 		this.isbnBean = isbnBean;
 	}
 
-	public User getUser() {
+	public LibUser getUser() {
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(LibUser user) {
 		this.user = user;
 	}
 
