@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.dxc.librarymanagement.dao.LibRoleDAO;
 import com.dxc.librarymanagement.dao.TuanDAO;
-import com.dxc.librarymanagement.entities.LibRole;
 import com.dxc.librarymanagement.entities.LibUser;
 import com.dxc.librarymanagement.dao.LibUserDAO;
 
@@ -24,9 +23,6 @@ import com.dxc.librarymanagement.dao.LibUserDAO;
 public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private LibUserDAO libUserDAO;
-
-    @Autowired
-    private LibRoleDAO libRoleDAO;
 
     @Override
     public UserDetails loadUserByUsername(String userName)
@@ -40,10 +36,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         }
 
         System.out.println("Found User: " + libUser);
-
         // [ROLE_USER, ROLE_ADMIN,..]
-        LibRole libRole = this.libRoleDAO.findAllById(libUser.getRole().getIdRole());
-        String roleNames = libRole.getNameRole();
+        String roleNames = libUser.getRole().getNameRole();
+
         List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
         GrantedAuthority authority = new SimpleGrantedAuthority(roleNames);
         grantList.add(authority);
