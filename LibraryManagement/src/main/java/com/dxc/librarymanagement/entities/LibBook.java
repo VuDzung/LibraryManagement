@@ -3,15 +3,14 @@ package com.dxc.librarymanagement.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
-import java.util.Date;
 
 /**
  * The persistent class for the Book database table.
  * 
  */
 @Entity
-@Table(name="LibBook")
-//@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+@Table(name = "LibBook")
+// @NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
 public class LibBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -24,8 +23,10 @@ public class LibBook implements Serializable {
 	private String author;
 
 	@Column(name = "PublishYear")
-	@Temporal(TemporalType.DATE)
-	private Date publishYear;
+	private int publishYear;
+
+	@Column(name = "Image")
+	private String image;
 
 	@Column(name = "ShortDescription")
 	private String shortDescription;
@@ -56,12 +57,20 @@ public class LibBook implements Serializable {
 		this.author = author;
 	}
 
-	public Date getPublishYear() {
+	public int getPublishYear() {
 		return this.publishYear;
 	}
 
-	public void setPublishYear(Date publishYear) {
+	public void setPublishYear(int publishYear) {
 		this.publishYear = publishYear;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getShortDescription() {
