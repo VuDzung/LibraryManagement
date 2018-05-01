@@ -10,7 +10,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "ISBN")
-@NamedQuery(name = "Isbn.findAll", query = "SELECT i FROM Isbn i")
+//@NamedQuery(name = "Isbn.findAll", query = "SELECT i FROM Isbn i")
 public class Isbn implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class Isbn implements Serializable {
 	private List<BorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Book
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdBook")
 	private Book book;
 

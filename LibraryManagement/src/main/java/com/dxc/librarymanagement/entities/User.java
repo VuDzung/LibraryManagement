@@ -9,11 +9,13 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
+@Table(name="User")
+//@NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	@Column(name = "IdUser")
 	private int idUser;
 
@@ -21,24 +23,24 @@ public class User implements Serializable {
 	private int borrowedNumber;
 
 	@Column(name = "FullName")
-	private Object fullName;
+	private String fullName;
 
 	@Column(name = "LimitNumber")
 	private int limitNumber;
 
 	@Column(name = "Password")
-	private Object password;
+	private String password;
 
 	@Column(name = "UserName")
-	private Object userName;
+	private String userName;
 
 	// bi-directional many-to-one association to BorrowBook
 	@OneToMany(mappedBy = "user")
 	private List<BorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Role
-	@ManyToOne
-	@JoinColumn(name = "IdRole")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "IdRole", nullable = false)
 	private Role role;
 
 	public User() {
@@ -60,11 +62,11 @@ public class User implements Serializable {
 		this.borrowedNumber = borrowedNumber;
 	}
 
-	public Object getFullName() {
+	public String getFullName() {
 		return this.fullName;
 	}
 
-	public void setFullName(Object fullName) {
+	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
 
@@ -76,19 +78,19 @@ public class User implements Serializable {
 		this.limitNumber = limitNumber;
 	}
 
-	public Object getPassword() {
+	public String getPassword() {
 		return this.password;
 	}
 
-	public void setPassword(Object password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public Object getUserName() {
+	public String getUserName() {
 		return this.userName;
 	}
 
-	public void setUserName(Object userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
 

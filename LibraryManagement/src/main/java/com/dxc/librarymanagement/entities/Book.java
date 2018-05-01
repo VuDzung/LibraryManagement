@@ -3,31 +3,35 @@ package com.dxc.librarymanagement.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Date;
 
 /**
  * The persistent class for the Book database table.
  * 
  */
 @Entity
-@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
+@Table(name="Book")
+//@NamedQuery(name = "Book.findAll", query = "SELECT b FROM Book b")
 public class Book implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "IdBook")
+	@GeneratedValue
+	@Column(name = "IdBook", nullable = false)
 	private int idBook;
 
 	@Column(name = "Author")
-	private Object author;
+	private String author;
 
 	@Column(name = "PublishYear")
-	private Object publishYear;
+	@Temporal(TemporalType.DATE)
+	private Date publishYear;
 
 	@Column(name = "ShortDescription")
-	private Object shortDescription;
+	private String shortDescription;
 
 	@Column(name = "TitleOfBook")
-	private Object titleOfBook;
+	private String titleOfBook;
 
 	// bi-directional many-to-one association to Isbn
 	@OneToMany(mappedBy = "book")
@@ -44,35 +48,35 @@ public class Book implements Serializable {
 		this.idBook = idBook;
 	}
 
-	public Object getAuthor() {
+	public String getAuthor() {
 		return this.author;
 	}
 
-	public void setAuthor(Object author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public Object getPublishYear() {
+	public Date getPublishYear() {
 		return this.publishYear;
 	}
 
-	public void setPublishYear(Object publishYear) {
+	public void setPublishYear(Date publishYear) {
 		this.publishYear = publishYear;
 	}
 
-	public Object getShortDescription() {
+	public String getShortDescription() {
 		return this.shortDescription;
 	}
 
-	public void setShortDescription(Object shortDescription) {
+	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
 
-	public Object getTitleOfBook() {
+	public String getTitleOfBook() {
 		return this.titleOfBook;
 	}
 
-	public void setTitleOfBook(Object titleOfBook) {
+	public void setTitleOfBook(String titleOfBook) {
 		this.titleOfBook = titleOfBook;
 	}
 

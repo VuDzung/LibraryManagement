@@ -2,33 +2,38 @@ package com.dxc.librarymanagement.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * The persistent class for the BorrowBook database table.
  * 
  */
 @Entity
-@NamedQuery(name = "BorrowBook.findAll", query = "SELECT b FROM BorrowBook b")
+@Table(name="BorrowBook")
+//@NamedQuery(name = "BorrowBook.findAll", query = "SELECT b FROM BorrowBook b")
 public class BorrowBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue
 	@Column(name = "IdBorrow")
 	private int idBorrow;
 
 	@Column(name = "DateBorrow")
-	private Object dateBorrow;
+	@Temporal(TemporalType.DATE)
+	private Date dateBorrow;
 
 	@Column(name = "DateReturn")
-	private Object dateReturn;
+	@Temporal(TemporalType.DATE)
+	private Date dateReturn;
 
 	// bi-directional many-to-one association to Isbn
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ISBN")
 	private Isbn isbnBean;
 
 	// bi-directional many-to-one association to User
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdUser")
 	private User user;
 
@@ -43,19 +48,19 @@ public class BorrowBook implements Serializable {
 		this.idBorrow = idBorrow;
 	}
 
-	public Object getDateBorrow() {
+	public Date getDateBorrow() {
 		return this.dateBorrow;
 	}
 
-	public void setDateBorrow(Object dateBorrow) {
+	public void setDateBorrow(Date dateBorrow) {
 		this.dateBorrow = dateBorrow;
 	}
 
-	public Object getDateReturn() {
+	public Date getDateReturn() {
 		return this.dateReturn;
 	}
 
-	public void setDateReturn(Object dateReturn) {
+	public void setDateReturn(Date dateReturn) {
 		this.dateReturn = dateReturn;
 	}
 
