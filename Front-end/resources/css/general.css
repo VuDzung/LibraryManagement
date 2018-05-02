@@ -1,0 +1,15 @@
+.error{
+    color: #ED1713;
+    font-size: 14px;
+
+}
+.valid{
+    color: #00DD00;
+    font-size: 14px;
+}
+.ok{
+    color: green;
+}
+.notok{
+    color: red;
+}
