@@ -1,27 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="../resources/css/loginUtil.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/loginCss.css">
-	<link rel="stylesheet" type="text/css" href="../resources/css/general.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!--===============================================================================================-->
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script type="text/javascript" src="../app/app.js"></script>
-	<script type="text/javascript" src="../app/controllers/loginController.js"></script>
-
-
-</head>
-<body>
-	
-	<div class="limiter" ng-app="myApp" ng-controller="LoginController">
+	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(../resources/images/bg-01.jpg);">
@@ -50,14 +27,7 @@
 						<span class="error" ng-show="login.password.$error.required && login.password.$dirty">Password is required</span>
 					</div>
 
-					<div class="flex-sb-m w-full p-b-30 left">
-						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
-							</a>
-						</div>
-					</div>
-
+					
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn">
 							Login
@@ -67,5 +37,3 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>

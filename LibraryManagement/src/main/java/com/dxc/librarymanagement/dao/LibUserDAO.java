@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LibUserDAO extends JpaRepository<LibUser, Integer> {
-    LibUser findByUserName(String username);
+	LibUser findByUserName(String username);
 }
