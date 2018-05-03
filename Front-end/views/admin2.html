@@ -9,18 +9,14 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../resources/css/admincss.css" />
+<link type="text/css" rel="stylesheet" href="../resources/css/admin2.css" />
+    <script src="../resources/js/adminOverlay.js" type="text/javascript"></script>
 
 </head>
-<body>
-	<div class="wrapper">
-		<nav id="sidebar">
-			<div class="sidebar-header">
-				<h3>Manage Tools</h3>
-				<strong>Hello Admin</strong>
-			</div>
-
-			<ul class="list-unstyled components">
+    <body>
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <ul class="list-unstyled components">
 				<li><a href="../views/ticketmanagement.html" aria-expanded="false"> <i
 						class="	glyphicon glyphicon-tag"></i> Tickets Management
 				</a></li>
@@ -45,8 +41,16 @@
 						Log out
 				</a></li>
 			</ul>
+</div>
 
-		</nav>
-	</div>
-</body>
+<div id="main">
+  <h2>Management Tools</h2>
+  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+</div>
+
+<script>
+
+
+</script>
+    </body>
 </html>
