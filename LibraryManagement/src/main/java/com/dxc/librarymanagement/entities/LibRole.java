@@ -16,8 +16,8 @@ public class LibRole implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
 	@Column(name="IdRole")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idRole;
 
 	@Column(name="NameRole")
