@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V15</title>
+	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -9,11 +9,19 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="../resources/css/loginUtil.css">
 	<link rel="stylesheet" type="text/css" href="../resources/css/loginCss.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/general.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--===============================================================================================-->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="../app/app.js"></script>
+	<script type="text/javascript" src="../app/controllers/loginController.js"></script>
+
+
 </head>
 <body>
 	
-	<div class="limiter">
+	<div class="limiter" ng-app="myApp" ng-controller="LoginController">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(../resources/images/bg-01.jpg);">
@@ -22,20 +30,27 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form">
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+				<form class="login100-form " name="login" ng-submit="loginForm()" novalidate>
+					<!-- username -->
+					<div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Enter username">
+						<input class="input100" type="text" name="username" placeholder="Enter username" ng-model="username" ng-required="true">
 						<span class="focus-input100"></span>
 					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+					<div ng-if="login.username.$touched">
+						<span class="error" ng-show="login.username.$error.required && login.username.$dirty">Username is required</span>
+					</div>
+					<!-- password -->
+					<div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Enter password">
+						<input class="input100" type="password" name="password" placeholder="Enter password" ng-model="password" ng-required="true">
 						<span class="focus-input100"></span>
 					</div>
+					<div ng-if="login.password.$touched" class="m-b-10">
+						<span class="error" ng-show="login.password.$error.required && login.password.$dirty">Password is required</span>
+					</div>
 
-					<div class="flex-sb-m w-full p-b-30">
+					<div class="flex-sb-m w-full p-b-30 left">
 						<div>
 							<a href="#" class="txt1">
 								Forgot Password?
