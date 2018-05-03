@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Reports Management</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- bootstrap 3-->
+<!--<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+     <!--END bootstrap 3-->
+<link type="text/css" rel="stylesheet"
+	href="../resources/css/managementCss.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--Boostrap 4-->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+	integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+	crossorigin="anonymous"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+	integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+	crossorigin="anonymous"></script>
+<!--END Boostrap 4-->
+</head>
+<body>
+	<div class="container">
+		<h2>Statistics For Number Of Borrowing Tickets</h2>
+
+		<button type="button" class="btn btn-info" data-toggle="collapse"
+			data-target="#demo">Reports</button>
+		<div id="demo" class="collapse">
+			<a class="dropdown-item" href="#">Week</a> <a class="dropdown-item"
+				href="#">Month</a> <a class="dropdown-item" href="#">Year</a>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID User</th>
+					<th>User Name</th>
+					<th>Full Name</th>
+					<th>Books Borrows</th>
+					<th>Books Not Return</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+				</tr>
+				<tr>
+					<td>11</td>
+					<td>22</td>
+					<td>33</td>
+					<td>44</td>
+					<td>55</td>
+				</tr>
+				<tr>
+					<td>111</td>
+					<td>222</td>
+					<td>333</td>
+					<td>444</td>
+					<td>555</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="divNextPage">
+			<a href="#"> <i style="font-size:24px" class="fa">&#xf100;</i>
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf104;</i>
+			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf105;</i>
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf101;</i>
+			</a>
+		</div>
+
+	</div>
+</body>
+</html>
