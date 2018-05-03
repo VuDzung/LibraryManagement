@@ -1,7 +1,9 @@
 .form-detail {
-  padding-top: 50px;
-  display: flex;
-  align-items: flex-end;
+    padding-top: 2%;
+    display: flex;
+    align-items: flex-end;
+    /*margin-left: 14%;*/
+    width: 73%;
 }
 
 .form-detail .control-custom {
@@ -88,6 +90,6 @@ textarea:focus {
     margin-left: 20%;
 }
 #formAdd{
-    margin-left: auto;
+    margin-left: 3%;
 }
 
