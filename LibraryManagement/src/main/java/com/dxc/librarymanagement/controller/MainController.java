@@ -17,7 +17,7 @@ public class MainController {
     public String welcomePage(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
-        return "index";
+        return "login";
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -31,17 +31,17 @@ public class MainController {
         return "adminPage";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage(Model model) {
 
-        return "index";
+        return "login";
     }
 
-    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
-    public String logoutSuccessfulPage(Model model) {
-        model.addAttribute("title", "Logout");
-        return "index";
-    }
+//    @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+//    public String logoutSuccessfulPage(Model model) {
+//        model.addAttribute("title", "Logout");
+//        return "login";
+//    }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
