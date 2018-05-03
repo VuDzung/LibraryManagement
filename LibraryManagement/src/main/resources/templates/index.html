@@ -1,36 +1,73 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>Welcome</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="../resources/images/favicon.ico"/>
+<title>Welcome</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="/resources/css/registerUtil.css">
-	<link rel="stylesheet" type="text/css" href="/resources/css/registerCss.css">
-	<link rel="stylesheet" type="text/css" href="/resources/css/loginUtil.css">
-	<link rel="stylesheet" type="text/css" href="/resources/css/loginCss.css">
-	<link rel="stylesheet" type="text/css" href="/resources/css/general.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="icon" type="image/png" href="../resources/images/favicon.ico" />
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/registerUtil.css">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/registerCss.css">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/loginUtil.css">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/loginCss.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/general.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 </head>
 <body>
-    <div ng-view></div>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-form-title"
+					style="background-image: url(../resources/images/bg-01.jpg);">
+					<span class="login100-form-title-1"> Sign In </span>
+				</div>
+
+				<form class="login100-form " name="login" novalidate
+					th:action="@{/j_spring_security_check}" method='POST'>
+					<div th:if="${#request.getParameter('error') == 'true'}">
+						<span class="error"
+							th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Login
+							Failed!!!</span>
+					</div>
+					<!-- username -->
+					<div class="wrap-input100 validate-input m-b-5">
+						<span class="label-input100">Username</span> <input
+							class="input100" type="text" name="username"
+							placeholder="Enter username"> <span
+							class="focus-input100"></span>
+					</div>
+
+					<!-- password -->
+					<div class="wrap-input100 validate-input m-b-5">
+						<span class="label-input100">Password</span> <input
+							class="input100" type="password" name="password"
+							placeholder="Enter password"> <span
+							class="focus-input100"></span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<input class="login100-form-btn" name="submit" type="submit"
+							value="submit" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 
 
 
-    <!--===============================================================================================-->
+
+	<!--===============================================================================================-->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-	<script src="//code.angularjs.org/1.6.0/angular-route.min.js"></script>
-    <script src="//code.angularjs.org/1.6.0/angular-cookies.min.js"></script>
-    <!-- module -->
-	<script src="/app/app.js"></script>
-	<!-- directive -->
-	<script src="/app/directives/validate.js"></script>
-	<!-- controller -->
-	<script src="/app/controllers/registerController.js"></script>
-	<script type="text/javascript" src="/app/controllers/loginController.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>
 </html>

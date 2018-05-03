@@ -31,19 +31,19 @@ public class MainController {
         return "adminPage";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String loginPage(Model model) {
 
-        return "loginPage";
+        return "index";
     }
 
     @RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
     public String logoutSuccessfulPage(Model model) {
         model.addAttribute("title", "Logout");
-        return "logoutSuccessfulPage";
+        return "index";
     }
 
-    @RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String userInfo(Model model, Principal principal) {
 
         // Sau khi user login thanh cong se co principal
@@ -56,7 +56,7 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
 
-        return "userInfoPage";
+        return "home";
     }
 
     @RequestMapping(value = "/403", method = RequestMethod.GET)
