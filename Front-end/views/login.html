@@ -23,21 +23,18 @@
 						<input class="input100" type="password" name="password" placeholder="Enter password" ng-model="password" ng-required="true">
 						<span class="focus-input100"></span>
 					</div>
-					<div ng-if="login.password.$touched" class="m-b-10">
+					<div ng-if="login.password.$touched" class="m-b-5">
 						<span class="error" ng-show="login.password.$error.required && login.password.$dirty">Password is required</span>
-					</div>
-                    <br>
-                    <br>
-                    <br>
 
-                    <div class="checkbox">
-                        <label><input type="checkbox" value="">Remember username &amp; password</label>
+					</div>
+
+
+                    <div class="checkbox wrap-input101">
+                        <label><input type="checkbox" value="">Remember me</label>
                     </div>
-					<br>
-                    <br>
-                    <br>
+
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							Login
 						</button>
 					</div>
@@ -45,3 +42,5 @@
 			</div>
 		</div>
 	</div>
+	<link rel="stylesheet" type="text/css" href="/resources/css/loginUtil.css">
+	<link rel="stylesheet" type="text/css" href="/resources/css/loginCss.css">

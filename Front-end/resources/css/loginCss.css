@@ -149,6 +149,11 @@ label {
   position: relative;
   border-bottom: 1px solid #b2b2b2;
 }
+.wrap-input101 {
+  width: 100%;
+  position: relative;
+
+}
 
 .label-input100 {
   font-family: Poppins-Regular;

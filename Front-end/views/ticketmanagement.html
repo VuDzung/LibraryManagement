@@ -1,9 +1,224 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>test</title>
-    </head>
-    <body>
-        <h1>H2ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</h1>
-    </body>
+<head>
+<title>Ticket Management</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="../resources/css/managementCss.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<h2>Tickets Management</h2>
+        <div class="topnav">
+			<div class="search-container">
+				<form action="#">
+					<input type="text" placeholder="Search.." name="search">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ID User</th>
+					<th>User Name</th>
+					<th>Password</th>
+                    <th>Full Name</th>
+                    <th>ID Role</th>
+                    <th>Limit Number</th>
+                    <th>Borrowed Number</th>
+                    
+                    <th></th>                     		
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>aaaa1</td>
+					<td>123456</td>
+                    <td>Donal Trump</td>
+                    <td>1</td>
+                    <td>8</td>
+                    <td>2</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>aaaa2</td>
+					<td>123456</td>
+                    <td>Donal Trump 1</td>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>3</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+                <tr>
+					<td>3</td>
+					<td>aaaa3</td>
+					<td>123456</td>
+                    <td>Donal Trump 3</td>
+                    <td>1</td>
+                    <td>8</td>
+                    <td>4</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+                <tr>
+					<td>4</td>
+					<td>aaaa4</td>
+					<td>123456</td>
+                    <td>Donal Trump 4</td>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+                <tr>
+					<td>5</td>
+					<td>aaaa5</td>
+					<td>123456</td>
+                    <td>Donal Trump 5</td>
+                    <td>2</td>
+                    <td>8</td>
+                    <td>5</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+                <tr>
+					<td>6</td>
+					<td>aaaa6</td>
+					<td>123456</td>
+                    <td>Donal Trump 6</td>
+                    <td>1</td>
+                    <td>8</td>
+                    <td>1</td>
+                    <td>
+                        <button type="button" id="btnadd" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#add">
+							<span class="glyphicon glyphicon-edit"></span>  edit
+						</button>
+                    </td>
+				</tr>
+			</tbody>
+		</table>
+        <div id="divNextPage">
+			<a href="#"> <i style="font-size:24px" class="fa">&#xf100;</i>
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf104;</i>
+			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf105;</i>
+			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf101;</i>
+			</a>
+		</div>
+
+        
+        <!-- Modal -->
+		<div class="modal fade" id="add" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Update Limit Number</h4>
+					</div>
+					<div class="modal-body">
+						<div class="wrapper">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID User</th>
+                                        <th>User Name</th>
+                                        <th>Password</th>
+                                        <th>Full Name</th>
+                                        <th>ID Role</th>
+                                        <th>Limit Number</th>
+                                        <th>Borrowed Number</th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control"  value="1">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="aaaa1">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="123456">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="Donal Trump">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="1">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="8">
+            								</div>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+									            <input type="text" class="form-control" value="2">
+            								</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+						</div>
+					</div>
+					<div class="modal-footer">
+                        <button type="button" class="btn btn-success">Submit</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
 </html>

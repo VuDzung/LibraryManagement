@@ -80,4 +80,47 @@ body {
     line-height: 1.3333333;
     border-radius: 8px;
 }
+thead{
+    background-color: #F5F5DC;
+}
+tbody{
+    background-color:#F0FFFF;
+}
 
+#nextPage{
+    width: 4%;
+    text-align:  center;
+}
+
+#divNextPage{
+    padding-left: 45%;
+}
+
+#demo{
+  display: inline-block;
+    width: 60%;
+}
+
+.collapse:not(.show) {
+    display: none!important;
+}
+
+.dropdown-item{
+    display: inline-block!important;
+    width: 25%!important;
+    padding: .25rem 3.5rem!important;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: bisque!important;
+    border: 0;
+}
+
+.btn-info {
+    color: #fff;
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    margin-bottom: 1%;
+}
