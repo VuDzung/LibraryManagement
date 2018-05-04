@@ -34,8 +34,8 @@
 					th:action="@{/j_spring_security_check}" method='POST'>
 					<div th:if="${#request.getParameter('error') == 'true'}">
 						<span class="error"
-							th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">Login
-							Failed!!!</span>
+							>Login
+							Failed!!!</span> <br>
 					</div>
 					<!-- username -->
 					<div class="wrap-input100 validate-input m-b-5">
