@@ -96,22 +96,22 @@
 							<form>
 								<div class="form-group">
 									<label for="inputISBN">ISBN</label> <input type="text" 
-										class="form-control" id="inputISBN" placeholder="Insert ISBN" >
+										class="form-control" id="inputISBN" placeholder="Insert ISBN" maxlength="13" >
 								</div>
 								<div class="form-group">
-									<label for="inputTitle">Title Of The Book</label> <p
+									<label for="inputTitle">Title Of The Book</label> <input
 										type="text" class="form-control" id="inputTitle"
-										placeholder="Title of the book" disabled></p>
+										placeholder="Title of the book" disabled>
 								</div>
 								<div class="form-group">
-									<label for="inputAuthor">Author</label> <p type="text"
+									<label for="inputAuthor">Author</label> <input type="text"
 										class="form-control" id="inputAuthor"
-										placeholder="Author" disabled></p>
+										placeholder="Author" disabled>
 								</div>
 								<div class="form-group">
-									<label for="inputPublishYear">Publish Year</label> <p
+									<label for="inputPublishYear">Publish Year</label> <input
 										type="text" class="form-control" id="inputPublishYear"
-										placeholder="Publish Year" disabled></p>
+										placeholder="Publish Year" disabled>
 								</div>
 								<!--<div class="form-inputFile">
 									<label for="inputFile">Choose file of your images </label> <input
@@ -225,7 +225,7 @@
 			$('#inputShortDescription').empty();
 			$('#inputPublishYear').empty();
 			$('#inputImage').attr("src", "");
-			$('#addbook').attr('data-dismiss', 'modal')
+
 		})
 
 		$('#close').click(function(){
@@ -241,25 +241,25 @@
 		$('#inputISBN').keyup(function(){
 		var search = document.getElementById('inputISBN').value
 
-		console.log(search)
-
-		$.ajax({
+		if($('#inputISBN').val().length==10 ||$('#inputISBN').val().length==13){
+			$.ajax({
 			url:'https://www.googleapis.com/books/v1/volumes?q=isbn:' +search,
 			dataType: 'json',
 
 					success: function(data){
 						if (data.totalItems==0) {
-							$('#inputTitle').empty()
-							$('#inputAuthor').empty()
-							$('#inputShortDescription').empty()
-							$('#inputPublishYear').empty()
+							$('#inputTitle').val('')
+							$('#inputAuthor').val('')
+							$('#inputShortDescription').val('')
+							$('#inputPublishYear').val('')
 							$('#inputImage').attr("src", "")
 
 						} else{
-							$('#inputTitle').append( data.items[0].volumeInfo.title)
-							$('#inputAuthor').append( data.items[0].volumeInfo.authors)
-							$('#inputShortDescription').append( data.items[0].volumeInfo.description)
-							$('#inputPublishYear').append( data.items[0].volumeInfo.publishedDate)
+						
+							$('#inputTitle').val( data.items[0].volumeInfo.title)
+							$('#inputAuthor').val( data.items[0].volumeInfo.authors)
+							$('#inputShortDescription').val( data.items[0].volumeInfo.description)
+							$('#inputPublishYear').val( data.items[0].volumeInfo.publishedDate)
 							$('#inputImage').attr("src", data.items[0].volumeInfo.imageLinks.thumbnail)
 						}
 							
@@ -268,7 +268,15 @@
 					},
 					type: 'GET'
 				});
-		})
+		} else{
+			$('#inputTitle').val('')
+							$('#inputAuthor').val('')
+							$('#inputShortDescription').val('')
+							$('#inputPublishYear').val('')
+							$('#inputImage').attr("src", "")
+		}
+		
+	})
 	</script>
 </body>
 </html>
