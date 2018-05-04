@@ -99,32 +99,32 @@
 										class="form-control" id="inputISBN" placeholder="Insert ISBN" >
 								</div>
 								<div class="form-group">
-									<label for="inputTitle">Title Of The Book</label> <input
+									<label for="inputTitle">Title Of The Book</label> <p
 										type="text" class="form-control" id="inputTitle"
-										placeholder="Insert title of the book" disabled>
+										placeholder="Title of the book" disabled></p>
 								</div>
 								<div class="form-group">
-									<label for="inputAuthor">Author</label> <input type="text"
+									<label for="inputAuthor">Author</label> <p type="text"
 										class="form-control" id="inputAuthor"
-										placeholder="Insert name of Author" disabled>
+										placeholder="Author" disabled></p>
 								</div>
 								<div class="form-group">
-									<label for="inputPublishYear">Publish Year</label> <input
+									<label for="inputPublishYear">Publish Year</label> <p
 										type="text" class="form-control" id="inputPublishYear"
-										placeholder="Insert Publish Year" disabled>
+										placeholder="Publish Year" disabled></p>
 								</div>
 								<!--<div class="form-inputFile">
 									<label for="inputFile">Choose file of your images </label> <input
 										type="file" class="form-control-file" id="inputFile">
                                     
 								</div>-->
-                                <label>Choose Your File</label>
+                                <label>Thumbnail</label>
                                 <div id="divchooseFile">
-                                  
+                                  <img id="inputImage" src="">
                                 </div>
                                 <br>
 								<div class="form-group">
-									<label for="inputTotal">Total</label> <input type="password"
+									<label for="inputTotal">Total</label> <input type="number" min="1"
 										class="form-control" id="inputTotal"
 										placeholder="Insert Total">
 								</div>
@@ -138,8 +138,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success">Submit</button>
-						<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+						<button id="addBook" type="button" class="btn btn-success">Submit</button>
+						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
@@ -207,7 +207,7 @@
 						<!--END EDIT BUTTON EDIT-->
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success">Submit</button>
+						<button type="button" class="btn btn-success" onClick="addBook()">Submit</button>
 						<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -215,5 +215,60 @@
 		</div>
 
 	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#addBook').click(function(){
+			$('#inputISBN').val('');
+			$('#inputTitle').empty();
+			$('#inputAuthor').empty();
+			$('#inputShortDescription').empty();
+			$('#inputPublishYear').empty();
+			$('#inputImage').attr("src", "");
+			$('#addbook').attr('data-dismiss', 'modal')
+		})
+
+		$('#close').click(function(){
+			$('#inputISBN').val('');
+			$('#inputISBN').empty();
+			$('#inputTitle').empty();
+			$('#inputAuthor').empty();
+			$('#inputShortDescription').empty();
+			$('#inputPublishYear').empty();
+			$('#inputImage').attr("src", "");
+		})
+
+		$('#inputISBN').keyup(function(){
+		var search = document.getElementById('inputISBN').value
+
+		console.log(search)
+
+		$.ajax({
+			url:'https://www.googleapis.com/books/v1/volumes?q=isbn:' +search,
+			dataType: 'json',
+
+					success: function(data){
+						if (data.totalItems==0) {
+							$('#inputTitle').empty()
+							$('#inputAuthor').empty()
+							$('#inputShortDescription').empty()
+							$('#inputPublishYear').empty()
+							$('#inputImage').attr("src", "")
+
+						} else{
+							$('#inputTitle').append( data.items[0].volumeInfo.title)
+							$('#inputAuthor').append( data.items[0].volumeInfo.authors)
+							$('#inputShortDescription').append( data.items[0].volumeInfo.description)
+							$('#inputPublishYear').append( data.items[0].volumeInfo.publishedDate)
+							$('#inputImage').attr("src", data.items[0].volumeInfo.imageLinks.thumbnail)
+						}
+							
+							
+
+					},
+					type: 'GET'
+				});
+		})
+	</script>
 </body>
 </html>

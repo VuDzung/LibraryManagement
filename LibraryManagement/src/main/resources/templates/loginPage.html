@@ -3,7 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Login</title>
+ <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.min.js"></script>
+<script src="../static/app/directives/validate.js"></script>
 </head>
+
 <body>
 	<!-- Include _menu.html -->
 	<th:block th:include="/_menu"></th:block>
@@ -21,14 +25,14 @@
 	</div>
 
 	<h3>Enter user name and password:</h3>
-	<form name='f' th:action="@{/j_spring_security_check}" method='POST'>
+	<form name='registration' th:action="@{/j_spring_security_check}" method='POST'>
 		<table>
 			<tr>
-				<td>User:</td>
-				<td><input type='text' name='username' value=''></td>
+				<td for="username">User:</td>
+				<td><input type='text' name='username' th:field="*{username}" value=''></td>
 			</tr>
 			<tr>
-				<td>Password:</td>
+				<td for="password">Password:</td>
 				<td><input type='password' name='password' /></td>
 			</tr>
 			<tr>
