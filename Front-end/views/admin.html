@@ -3,13 +3,17 @@
 <head>
 <title>Administrator</title>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="../resources/css/admin.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../resources/css/admin.css" />
 <script src="../resources/js/adminOverlay.js" type="text/javascript"></script>
 </head>
 <body>
@@ -19,14 +23,14 @@
 			<ul class="list-unstyled components">
 				<br>
 				<br>
-				<li><a href="../views/ticketmanagement.html"
-					aria-expanded="false"> <i class="	glyphicon glyphicon-tag"></i>
-						Tickets Management
+				<li><a href="#"
+					aria-expanded="false"> <i class="glyphicon glyphicon-tag"></i>
+						Tickets
 				</a></li>
 				<br>
-				<li><a href="../views/bookmanagement.html"
-					aria-expanded="false"> <i class="glyphicon glyphicon-cog"></i>
-						Books Management
+				<li><a href="#"
+					aria-expanded="false"> <i class="glyphicon glyphicon-book"></i>
+						Books
 				</a>
 					<ul class="collapse list-unstyled">
 					</ul></li>
@@ -36,93 +40,46 @@
 						Reports
 				</a>
 					<ul class="collapse list-unstyled" id="reports">
-						<li><a class="a1" href="../views/reportsTicket.html">Borrowing
-								tickets</a></li>
-						<li><a class="a1" href="../views/reporstIncome.html">Income</a></li>
+						<li><a class="a1" href="#">Borrowing</a></li>
+						<li><a class="a1" href="#">Income</a></li>
 					</ul></li>
 				<br>
 			</ul>
 		</div>
-
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<div id="main">
-
-
+		<div id="main">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+					<div class="navbar-header">
 
 						<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;
 							Tools</span>
+
 					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#"><span class="glyphicon glyphicon-lock"></span>
+								Support</a></li>
+						<li class="dropdown"><a class="dropdown-toggle"
+							data-toggle="dropdown" href="#"> <span
+								class="glyphicon glyphicon-user"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+										Your Profile</a></li>
+								<li><a href="#"><span
+										class="glyphicon glyphicon-wrench"></span> Edit Your Profile</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+										Account Settings</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><span
+										class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+							</ul></li>
+					</ul>
+
+
 				</div>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-tasks"></span></a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-envelope"></span></a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
-							Hi,Admin</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
-							Login</a></li>
-				</ul>
-
-			</div>
-		</nav>
-
-		
-
-		<div>
-			<div class="month">
-				<ul>
-					<li class="prev">&#10094;</li>
-					<li class="next">&#10095;</li>
-					<li>August<br> <span style="font-size: 18px">2018</span>
-					</li>
-				</ul>
-			</div>
-
-			<ul class="weekdays">
-				<li>Mo</li>
-				<li>Tu</li>
-				<li>We</li>
-				<li>Th</li>
-				<li>Fr</li>
-				<li>Sa</li>
-				<li>Su</li>
-			</ul>
-
-			<ul class="days">
-				<li>1</li>
-				<li>2</li>
-				<li>3</li>
-				<li>4</li>
-				<li>5</li>
-				<li>6</li>
-				<li>7</li>
-				<li>8</li>
-				<li>9</li>
-				<li>10</li>
-				<li>11</li>
-				<li>12</li>
-				<li>13</li>
-				<li>14</li>
-				<li>15</li>
-				<li>16</li>
-				<li>17</li>
-				<li>18</li>
-				<li>19</li>
-				<li>20</li>
-				<li>21</li>
-				<li>22</li>
-				<li>23</li>
-				<li>24</li>
-				<li>25</li>
-				<li>26</li>
-				<li>27</li>
-				<li>28</li>
-				<li>29</li>
-				<li>30</li>
-				<li>31</li>
-			</ul>
-
+			</nav>
+            <!--add link html-->
+            <div>
+            </div>
 		</div>
 	</div>
 </body>
