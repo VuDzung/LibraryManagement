@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Welcome</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+<link rel="icon" type="image/png" href="../resources/images/favicon.ico" />
+<!--===============================================================================================-->
+
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/registerUtil.css">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/registerCss.css">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/general.css">
+<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<link type="text/css" rel="stylesheet"
+	href="../resources/css/managementCss.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="../resources/js/register.js"></script>
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container">
+			<div class="wrap">
+
+				<div class="form-title"
+					style="background-image: url(../resources/images/bg-01.jpg);">
+					<span class="form-title-1"> REGISTER ACCOUNT </span>
+				</div>
+
+				<form class="login100-form validate-form" name="register" id="registerForm" novalidate
+					th:action="@{/register}" th:object="${libuser}" method="post">
+					
+					<div th:if="${#request.getParameter('error') == 'true'}">
+						<span class="error"
+							>Register
+							Failed!!!</span> <br>
+					</div>
+					
+					<div th:if="${#request.getParameter('error') == 'false'}">
+						<span class="success"
+							>Register
+							Done!!!</span> <br>
+					</div>
+					
+					<!--username-->
+					<div class="wrap-input100 ">
+						<span class="label-input100">Username</span> <input
+							class="input100" type="text" name="userName"
+							placeholder="Enter username" th:field="*{userName}" >
+					</div>
+
+					<!--password-->
+					<div class="wrap-input100 ">
+						<span class="label-input100">Password</span> <input
+							class="input100" type="password" name="password" id="password"
+							placeholder="Enter password" th:field="*{password}"> 
+					</div>
+					<!--confirm password-->
+					<div class="wrap-input100 ">
+						<span class="label-input100">Confirm password</span> <input
+							class="input100" type="password" name="confirmPass"
+							placeholder="Confirm password">
+					</div>
+
+
+					<!--name-->
+					<div class="wrap-input100">
+						<span class="label-input100">FullName</span> <input
+							class="input100" type="text" name="fullName" placeholder="Enter Name"
+							th:field="*{fullName}">
+					</div>
+
+
+					<!--role-->
+					<div id="role" class="wrap-input100 "
+						data-validate="Username is required">
+						<span class="label-input100">Role</span>
+						<select th:field="*{role}">
+							<option th:each="role : ${listRole}"
+								th:value="${role.idRole}"
+								th:text="${role.nameRole}"></option>
+<!-- 							<option value="user" selected>User</option>
+							<option value="admin">Admin</option> -->
+						</select>
+					</div>
+
+
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<!--===============================================================================================-->
+
+</body>
+</html>
+
+
+
