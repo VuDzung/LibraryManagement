@@ -49,13 +49,18 @@
 					<div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Password</span> <input
 							class="input100" type="password" name="password"
-							placeholder="Enter password"> <span
+							placeholder="Enter password" id="inputPass"> <span
 							class="focus-input100"></span>
+                        <input type="checkbox" onclick="myFunction()">Show Password
 					</div>
 
 					<div class="container-login100-form-btn">
+                        <input type="checkbox"/>Remember me
+                        <br>
 						<input class="login100-form-btn" name="submit" type="submit"
 							value="submit" />
+                        <br>
+                        <p>If you dont have accoutn,<a href="#"> Click here</a></p>
 					</div>
 				</form>
 			</div>
@@ -66,6 +71,16 @@
 
 
 	<!--===============================================================================================-->
+    <script>
+        function myFunction() {
+            var x = document.getElementById("inputPass");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
