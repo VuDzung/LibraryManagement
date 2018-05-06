@@ -3,6 +3,7 @@
 [ RESTYLE TAG ]*/
 
 * {
+<<<<<<< HEAD
   margin: 0px; 
   padding: 0px; 
   box-sizing: border-box;
@@ -16,6 +17,21 @@ body, html {
 input {
   outline: none;
   border: none;
+=======
+	margin: 0px; 
+	padding: 0px; 
+	box-sizing: border-box;
+}
+
+body, html {
+	height: 100%;
+	font-family: "Times New Roman", serif;
+}
+
+input {
+	outline: none;
+	border: none;
+>>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
 }
 
 input[type="number"] {
@@ -158,6 +174,7 @@ label {
   width: 80px;
 
 }
+<<<<<<< HEAD
 #role select{
   color: #555555;
   font-family: Poppins-Regular important;
@@ -168,6 +185,8 @@ label {
 #role select option{
   color: #555555;
 }
+=======
+>>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
 
 /*---------------------------------------------*/
 .input100 {
@@ -320,8 +339,15 @@ input.input100 {
 
 #role{
     border-bottom: none;
+<<<<<<< HEAD
+=======
+    padding-top: 4%;
+>>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
 
 }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
