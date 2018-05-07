@@ -19,14 +19,14 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
-<!-- <link rel="stylesheet" type="text/css" href="../static/resources/css/registerUtil.css">
+<!--<link rel="stylesheet" type="text/css" href="../static/resources/css/registerUtil.css">
 <link rel="stylesheet" type="text/css" href="../static/resources/css/registerCss.css">
 <link rel="stylesheet" type="text/css" href="../static/resources/css/loginUtil.css">
 <link rel="stylesheet" type="text/css" href="../static/resources/css/loginCss.css">
-<link rel="stylesheet" type="text/css" href="../static/resources/css/general.css"> -->
+<link rel="stylesheet" type="text/css" href="../static/resources/css/general.css">-->
 </head>
 <body>
-<div class"wrapper">
+	<divclass"wrapper">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -38,9 +38,8 @@
 				<form class="login100-form " name="login" novalidate
 					th:action="@{/j_spring_security_check}" method='POST'>
 					<div th:if="${#request.getParameter('error') == 'true'}">
-						<span class="error"
-							>Login
-							Failed! Check your username or passowrd.</span> <br>
+						<span class="error">Login Failed! Check your
+							username or passowrd.</span> <br>
 					</div>
 					<!-- username -->
 					<div class="wrap-input100 validate-input m-b-5">
@@ -57,39 +56,42 @@
 							placeholder="Enter password" id="inputPass"> <span
 							class="focus-input100"></span>
 					</div>
-                    <div class="divctrlSubmit">
-                        <div class="cssCheckbox">
-                            <input type="checkbox" onclick="myFunction()">Show Password<br><br>
-                            <input type="checkbox" name="remember-me"/>Remember me
-                        </div>
-                        <br>
-                        <div class="cssbottomctrlSubmit">
-                            <input class="login100-form-btn" name="submit" type="submit" value="Submit" />
-                            <p>If you dont have account, <a href="/register">Click here</a></p>
-                        </div>
-                    </div>
-                    
-                  
+					<div class="divctrlSubmit">
+						<div class="cssCheckbox">
+							<input type="checkbox" onclick="myFunction()">Show
+							Password<br>
+							<br> <input type="checkbox" name="remember-me" />Remember me
+						</div>
+						<br>
+						<div class="cssbottomctrlSubmit">
+							<input class="login100-form-btn" name="submit" type="submit"
+								value="Submit" />
+							<p>
+								If you dont have account, <a href="/register">Click here</a>
+							</p>
+						</div>
+					</div>
+
+
 				</form>
 			</div>
 		</div>
 	</div>
-    </div>
+	</div>
 
 
 
 	<!--===============================================================================================-->
-    <script>
-        function myFunction() {
-            var x = document.getElementById("inputPass");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		function myFunction() {
+			var x = document.getElementById("inputPass");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
+	</script> <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>
