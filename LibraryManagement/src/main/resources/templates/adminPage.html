@@ -1,22 +1,84 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-   <head>
-      <title th:utext="${title}"></title>
-   </head>
-   <body>
-      <!-- Include _menu.html -->
-      <th:block th:include="/_menu"></th:block>
-       
-      <h2>Admin Page</h2>
-      <h3>Welcome :
-         <span th:utext="${#request.userPrincipal.name}"></span>
-      </h3>
-      <b>This is protected page!</b>  
-       
-      <br/><br/>
-       
-      <div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-       
-   </body>
-    
+<head>
+<title th:utext="${title}"></title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<!-- Include _menu.html -->
+	<th:block th:include="/_menu"></th:block>
+
+	<h2>Admin Page</h2>
+	<h3>
+		Welcome : <span th:utext="${#request.userPrincipal.name}"></span>
+	</h3>
+	<b>This is protected page!</b>
+
+	<br />
+	<br />
+
+	<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
+
+	<input type="text" name="username" id="username" value="Mickey">
+	<br> Last name:
+	<br>
+	<br>
+	<input type="button" id="mybutton" value="Submit">
+	<span id="myresult"></span>
+	<br> <br> <br>
+
+	<input type="text" name="username2" id="username2" value="Mickey">
+	<br> Last name:
+	<br>
+	<br>
+	<input type="button" id="mybutton2" value="Submit2">
+	<span id="myresult2"></span>
+
+</body>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$("#mybutton").click(function(event) {
+			fire_ajax_submit();
+		});
+		$("#mybutton2").click(function(event) {
+			fire_ajax_submit2();
+		});
+
+	});
+
+	function fire_ajax_submit() {
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/api/tuantest/getdata',
+			success : function(data) {
+				$("#myresult").text(data.nameRole);
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+
+	}
+
+	function fire_ajax_submit2() {
+		var username = $("#username2").val();
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/api/tuantest/getdata2/' + username,
+			success : function(data) {
+				$("#myresul2t").text(data.nameRole);
+				window.location.href = "home";
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+
+	}
+</script>
 </html>

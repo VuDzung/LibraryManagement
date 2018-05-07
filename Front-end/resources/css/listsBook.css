@@ -1,0 +1,32 @@
+.imagListBook{
+    margin-left: 17%;
+}
+
+.customListBook{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.tdListBook{
+    margin-left: 5%;
+}
+.itemBook{
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    width: 24%;
+
+}
+
+.garary{
+    margin-left: 2%;
+}
+#nextPage{
+    width: 4%;
+    text-align:  center;
+}
+#divNextPage{
+    padding-left: 46%;
+}
