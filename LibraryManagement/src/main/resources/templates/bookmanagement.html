@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Books Management</title>
+<meta charset="utf-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="/resources/css/admin.css" />
+    
+<link type="text/css" rel="stylesheet" href="/resources/css/managementCss.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+	<div class="container">
+		<h2>Books Management</h2>
+		<div class="topnav">
+			<div class="search-container">
+				<form action="#">
+					<input type="text" placeholder="Search.." name="search">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>ISBN</th>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Publish</th>
+					<th>Short Description</th>
+					<th>Total</th>
+					<th>
+						<!--button modal add-->
+						<button type="button" id="btnadd" class="btn btn-info btn-lg"
+							data-toggle="modal" data-target="#addModal">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>
+						<button type="button" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#editModal">
+							<span class="glyphicon glyphicon-edit"></span> Edit
+						</button>
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div id="divNextPage">
+			<a href="#"> <i class="fa">&#xf100;</i>
+			</a> <a href="#"> <i class="fa">&#xf104;</i>
+			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
+			</a> <a href="#"> <i class="fa">&#xf105;</i>
+			</a> <a href="#"> <i class="fa">&#xf101;</i>
+			</a>
+		</div>
+
+
+
+		<!-- Modal Add -->
+		<div class="modal fade" id="addModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Add New Book</h4>
+					</div>
+					<div class="modal-body">
+						<div class="wrapper">
+							<form>
+								<div class="form-group">
+									<label for="inputISBN">ISBN</label> <input type="text" 
+										class="form-control" id="inputISBN" placeholder="Insert ISBN" maxlength="13" >
+								</div>
+								<div class="form-group">
+									<label for="inputTitle">Title Of The Book</label> <input
+										type="text" class="form-control" id="inputTitle"
+										placeholder="Title of the book" disabled>
+								</div>
+								<div class="form-group">
+									<label for="inputAuthor">Author</label> <input type="text"
+										class="form-control" id="inputAuthor"
+										placeholder="Author" disabled>
+								</div>
+								<div class="form-group">
+									<label for="inputPublishYear">Publish Year</label> <input
+										type="text" class="form-control" id="inputPublishYear"
+										placeholder="Publish Year" disabled>
+								</div>
+								<!--<div class="form-inputFile">
+									<label for="inputFile">Choose file of your images </label> <input
+										type="file" class="form-control-file" id="inputFile">
+                                    
+								</div>-->
+                                <label>Thumbnail</label>
+                                <div id="divchooseFile">
+                                  <img id="inputImage" src="">
+                                </div>
+                                <br>
+								<div class="form-group">
+									<label for="inputTotal">Total</label> <input type="number" min="1"
+										class="form-control" id="inputTotal"
+										placeholder="Insert Total">
+								</div>
+								<br>
+								<div class="form-group">
+									<label for="inputShortDescription">Short Description</label>
+									<textarea class="form-control" id="inputShortDescription"
+										rows="3" disabled></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="addBook" type="button" class="btn btn-success">Submit</button>
+						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal Edit -->
+		<div class="modal fade" id="editModal" role="dialog">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Edit</h4>
+					</div>
+					<div class="modal-body">
+						<div class="wrapper">
+							<!--EDIT BUTTON EDIT-->
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ISBN</th>
+										<th>Title</th>
+										<th>Author</th>
+										<th>Publish</th>
+										<th>Short Description</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+										<td>
+											<div class="form-group">
+												<input type="text" class="form-control" value="1">
+											</div>
+										</td>
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<!--END EDIT BUTTON EDIT-->
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" onClick="addBook()">Submit</button>
+						<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		$('#addBook').click(function(){
+			$('#inputISBN').val('');
+			$('#inputTitle').empty();
+			$('#inputAuthor').empty();
+			$('#inputShortDescription').empty();
+			$('#inputPublishYear').empty();
+			$('#inputImage').attr("src", "");
+
+		})
+
+		$('#close').click(function(){
+			$('#inputISBN').val('');
+			$('#inputISBN').empty();
+			$('#inputTitle').empty();
+			$('#inputAuthor').empty();
+			$('#inputShortDescription').empty();
+			$('#inputPublishYear').empty();
+			$('#inputImage').attr("src", "");
+		})
+
+		$('#inputISBN').keyup(function(){
+		var search = document.getElementById('inputISBN').value
+
+		if($('#inputISBN').val().length==10 ||$('#inputISBN').val().length==13){
+			$.ajax({
+			url:'https://www.googleapis.com/books/v1/volumes?q=isbn:' +search,
+			dataType: 'json',
+
+					success: function(data){
+						if (data.totalItems==0) {
+							$('#inputTitle').val('')
+							$('#inputAuthor').val('')
+							$('#inputShortDescription').val('')
+							$('#inputPublishYear').val('')
+							$('#inputImage').attr("src", "")
+
+						} else{
+						
+							$('#inputTitle').val( data.items[0].volumeInfo.title)
+							$('#inputAuthor').val( data.items[0].volumeInfo.authors)
+							$('#inputShortDescription').val( data.items[0].volumeInfo.description)
+							$('#inputPublishYear').val( data.items[0].volumeInfo.publishedDate)
+							$('#inputImage').attr("src", data.items[0].volumeInfo.imageLinks.thumbnail)
+						}
+							
+							
+
+					},
+					type: 'GET'
+				});
+		} else{
+			$('#inputTitle').val('')
+							$('#inputAuthor').val('')
+							$('#inputShortDescription').val('')
+							$('#inputPublishYear').val('')
+							$('#inputImage').attr("src", "")
+		}
+		
+	})
+	</script>
+</body>
+</html>
