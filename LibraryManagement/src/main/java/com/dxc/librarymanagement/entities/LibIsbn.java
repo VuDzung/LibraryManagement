@@ -32,7 +32,7 @@ public class LibIsbn implements Serializable {
 	private List<LibBorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Book
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdBook")
 	private LibBook book;
 
