@@ -1,8 +1,9 @@
 $(document).ready(function(){
 	$('#registerForm').validate({
 		rules:{
-			username:{
+			userName:{
 				required: true,
+				email: true,
 				maxlength: 16
 			},
 			password:{
@@ -13,14 +14,15 @@ $(document).ready(function(){
 				required: true,
 				equalTo: '#password'
 			},
-			name:{
+			fullName:{
 				required: true,
 				maxlength: 30
 			}
 		},
 		messages:{
-			username:{
+			userName:{
 				required: "Username is required",
+				email: "UserName must be email",
 				maxlength: "Username must be less than 16 characters"
 			},
 			password:{
@@ -31,7 +33,7 @@ $(document).ready(function(){
 				required: "Confirm password is required",
 				equalTo: "Confirm password did not match"
 			},
-			name:{
+			fullName:{
 				required: "Name is required",
 				maxlength: "Name must be less than 30 characters"
 			}
