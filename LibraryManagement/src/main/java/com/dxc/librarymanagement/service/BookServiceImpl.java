@@ -18,7 +18,7 @@ import com.dxc.librarymanagement.entities.LibIsbn;
 
 @Service
 @Transactional
-public class BookService {
+public class BookServiceImpl {
 	@Autowired
 	private LibBookDAO bookdao;
 	@Autowired
