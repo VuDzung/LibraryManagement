@@ -136,3 +136,29 @@ body {font-family: Verdana, sans-serif;}
 @media screen and (max-width: 290px) {
     .weekdays li, .days li {width: 12.2%;}
 }
+
+
+/*css button group*/
+.btn-group-lg>.btn, .btn-lg {
+    padding: 25px 18px;
+    font-size: 20px;
+    line-height: 2.333333;
+    border-radius: 9px;
+    margin-left: 12%;
+    width: 71%;
+}
+.btn-info {
+    color: #5bc0de;
+    background-color: #fff;
+    border-color: #46b8da;
+}
+
+.row {
+    margin-right: -3px;
+    margin-left: -30px;
+}
+
+.col-sm-4{
+    margin-top: 4%;
+}
+

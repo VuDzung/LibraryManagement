@@ -1,3 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Welcome</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="../resources/images/favicon.ico"/>
+<!--===============================================================================================-->
+
+	<link rel="stylesheet" type="text/css" href="../resources/css/registerUtil.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/registerCss.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/general.css">
+	<!--<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+	<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<link type="text/css" rel="stylesheet" href="../resources/css/managementCss.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+
+
+</head>
+<body>
+   
  <div class="limiter">
 		<div class="container">
 			<div class="wrap">
@@ -15,37 +46,20 @@
 						<input class="input100" type="text" name="username" placeholder="Enter username" ng-model="username" ng-required="true" ng-minlength="3" ng-maxlength="16">
 						<span class="focus-input100"></span>
 					</div>
-					<div ng-if="register.username.$touched">
-						<span class="error" ng-show="register.username.$error.required && register.username.$dirty">Username is required</span>
-						<span class="error" ng-show="register.username.$error.minlength">Username must be greater than 3 characters</span>
-						<span class="error" ng-show="register.username.$error.maxlength">Username must be less than 16 characters</span>
-						<!--<span class="valid" ng-show="register.username.$valid">Ok bede</span>-->
-						<i class="material-icons left ok"  ng-show="register.username.$valid">done</i>
-					</div>
+					
 					<!--password-->
 					<div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Password</span>
 						<input class="input100" type="password" name="password" placeholder="Enter password" ng-model="password" ng-required="true" ng-maxlength="16" ng-minlength="6">
 						<span class="focus-input100"></span>
-					</div>
-					<div ng-if="register.password.$touched">
-						<span class="error" ng-show="register.password.$error.required && register.password.$dirty">Password is required</span>
-						<span class="error" ng-show="register.password.$error.maxlength">Password must be less than 16 characters</span>
-						<span class="error" ng-show="register.password.$error.minlength">Password must be greater than 6 characters</span>
-
-					</div>
+					
 					<!--confirm password-->
                     <div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Confirm password</span>
 						<input class="input100" type="password" name="confirmPass" placeholder="Confirm password" ng-model="confirmPass" ng-required="true" match-password="password">
 						<span class="focus-input100"></span>
 					</div>
-					<div ng-if="register.confirmPass.$touched">
-						<span class="error" ng-show="register.confirmPass.$error.required">Confirm Password is required</span>
-						<span class="error" ng-show="register.confirmPass.$error.matchPassword && !register.$error.required">Confirm password didnt match</span>
-						<!--<span class="valid" ng-show="register.confirmPass.$valid">Oke</span>-->
-						<i class="material-icons left ok"  ng-show="register.confirmPass.$valid">done</i>
-					</div>
+					
 
 					<!--name-->
                     <div class="wrap-input100 validate-input m-b-5">
@@ -53,13 +67,7 @@
 						<input class="input100" type="text" name="name" placeholder="Enter Name" ng-model="name" ng-required="true" ng-maxlength="16" ng-minlength="3">
 						<span class="focus-input100"></span>
 					</div>
-					<div ng-if="register.name.$touched">
-						<span class="error" ng-show="register.name.$error.required && register.name.$dirty">Name is required</span>
-						<span class="error" ng-show="register.name.$error.minlength">Name must be greater than 3 characters</span>
-						<span class="error" ng-show="register.name.$error.maxlength">Name must be less than 16 characters</span>
-						<!--<span class="valid" ng-show="register.name.$valid">Ok</span>-->
-						<i class="material-icons left ok"  ng-show="register.name.$valid">done</i>
-					</div>
+					
 
 					<!--role-->
                     <div id="role" class="wrap-input100 validate-input m-b-5" data-validate="Username is required">
@@ -82,5 +90,12 @@
 			</div>
 		</div>
 	</div>
- <link rel="stylesheet" type="text/css" href="/resources/css/registerUtil.css">
- <link rel="stylesheet" type="text/css" href="/resources/css/registerCss.css">
+ 
+
+    <!--===============================================================================================-->
+	
+</body>
+</html>
+
+
+

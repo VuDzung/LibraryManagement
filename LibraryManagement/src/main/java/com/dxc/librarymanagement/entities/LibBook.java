@@ -2,7 +2,6 @@ package com.dxc.librarymanagement.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * The persistent class for the Book database table.
@@ -15,7 +14,7 @@ public class LibBook implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "IdBook", nullable = false)
 	private int idBook;
 
@@ -35,8 +34,8 @@ public class LibBook implements Serializable {
 	private String titleOfBook;
 
 	// bi-directional many-to-one association to Isbn
-	@OneToMany(mappedBy = "book")
-	private List<LibIsbn> isbns;
+	// @OneToMany(mappedBy = "book")
+	// private List<LibIsbn> isbns;
 
 	public LibBook() {
 	}
@@ -89,26 +88,26 @@ public class LibBook implements Serializable {
 		this.titleOfBook = titleOfBook;
 	}
 
-	public List<LibIsbn> getIsbns() {
-		return this.isbns;
-	}
+	// public List<LibIsbn> getIsbns() {
+	// return this.isbns;
+	// }
+	//
+	// public void setIsbns(List<LibIsbn> isbns) {
+	// this.isbns = isbns;
+	// }
 
-	public void setIsbns(List<LibIsbn> isbns) {
-		this.isbns = isbns;
-	}
-
-	public LibIsbn addIsbn(LibIsbn isbn) {
-		getIsbns().add(isbn);
-		isbn.setBook(this);
-
-		return isbn;
-	}
-
-	public LibIsbn removeIsbn(LibIsbn isbn) {
-		getIsbns().remove(isbn);
-		isbn.setBook(null);
-
-		return isbn;
-	}
+	// public LibIsbn addIsbn(LibIsbn isbn) {
+	// getIsbns().add(isbn);
+	// isbn.setBook(this);
+	//
+	// return isbn;
+	// }
+	//
+	// public LibIsbn removeIsbn(LibIsbn isbn) {
+	// getIsbns().remove(isbn);
+	// isbn.setBook(null);
+	//
+	// return isbn;
+	// }
 
 }
