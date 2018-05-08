@@ -1,21 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Books Management</title>
 <meta charset="utf-8">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link type="text/css" rel="stylesheet" href="../resources/css/admin.css" />
-<link rel="stylesheet" href="../resources/css/adminCss2.css"
-	type="text/css" />
-<link type="text/css" rel="stylesheet"
-	href="../resources/css/managementCss.css" />
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../resources/css/adminCss2.css"	type="text/css" />
+<link type="text/css" rel="stylesheet"	href="../resources/css/managementCss.css" />
+<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -52,35 +46,16 @@
 					</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>2</td>
-					<td>3</td>
-					<td>4</td>
-					<td>5</td>
-					<td>6</td>
-					<td>
-						<button type="button" class="btn btn-default btn-sm"
-							data-toggle="modal" data-target="#editModal">
-							<span class="glyphicon glyphicon-edit"></span> Edit
-						</button>
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-trash"></span>
-						</button>
-					</td>
-				</tr>
+			<tbody id="book-management">
+				
+				
 			</tbody>
 		</table>
-
 		<div id="divNextPage">
-			<a href="#"> <i class="fa">&#xf100;</i>
-			</a> <a href="#"> <i class="fa">&#xf104;</i>
-			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
-			</a> <a href="#"> <i class="fa">&#xf105;</i>
-			</a> <a href="#"> <i class="fa">&#xf101;</i>
-			</a>
-		</div>
+			<nav aria-label="Page navigation">
+	        	<ul class="pagination" id="pagination"></ul>
+	    	</nav>
+	    </div>
 
 
 
@@ -175,32 +150,32 @@
 									<tr>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-isbn" type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-title" type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-author" type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-publish-year" type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-description" type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input type="text" class="form-control" value="1">
+												<input id="book-total" type="text" class="form-control" value="1">
 											</div>
 										</td>
 
@@ -219,12 +194,10 @@
 		</div>
 
 	</div>
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>		
-			<script
-		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
-	
-
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>		
+	<script	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>	
+	<script src="/resources/js/jquery.twbsPagination.min.js"></script>
 	<script type="text/javascript" src="../resources/js/bookmanagement.js"></script>
+	
 </body>
 </html>

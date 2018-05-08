@@ -94,6 +94,7 @@ tbody{
 
 #divNextPage{
     padding-left: 45%;
+    padding-bottom: 100px;
 }
 
 /*.collapse:not(.show) {
