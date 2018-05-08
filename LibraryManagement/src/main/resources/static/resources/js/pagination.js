@@ -20,7 +20,7 @@ $(function () {
                                                     <div class='allcontain'>\
                                                         <div class='product-f-image'>\
                                                             <div class='txthover'>\
-                                                                <img src='"+val.book.image+"' alt='car2'>\
+                                                                <img class='setImgListBook' src='"+val.book.image+"' alt='car2'>\
                                                                     <div class='txtcontent'>\
                                                                         <div class='stars'>\
                                                                             <div class='glyphicon glyphicon-star'></div>\
@@ -50,6 +50,9 @@ $(function () {
                         });
                     }
                 });
+                $("html, body").animate({
+                    scrollTop: $('.galary').offset().top 
+                });
             }
         });
         $("body").on("click", ".btn-info", function() {
@@ -58,9 +61,9 @@ $(function () {
                 url : info_url,
                 success : function(data) {
                 	if(data.totalBook<=data.numberBooksBorrowed){
-                		$("#addBook").attr('disable','');
+                		$("button#addBook").attr('disabled','');
                 	}else{
-                		$("#addBook").removeAttr('disable');
+                		$("button#addBook").removeAttr('disabled');
                 	}
                     $("#book-image").attr("src",data.book.image);
                     $("#book-isbn").text(data.isbn);
