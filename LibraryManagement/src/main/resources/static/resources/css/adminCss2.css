@@ -98,6 +98,22 @@
 }
 /*END css button add*/
 /*-------------------------------------*/
+/*css button edit + delete*/
+.btn-custom{
+	color: #FFF;
+	background-color: #17a2b8;
+	border-color: #ccc;
+}
+/*END css button edit + delete*/
+/*-------------------------------------*/
+/*css button of edit*/
+.buttonOfEdit{
+	color: #FFF;
+	background-color: #17a2b8;
+	border-color: #ccc;
+}
+/*END css button of edit*/
+/*-------------------------------------*/
 /*css table*/
 .table {
     margin-top: 3%;
@@ -119,7 +135,7 @@ tbody{
     text-align:  center;
 }
 .divNextPage{
-    padding-left: 45%;
+    padding-bottom: 3%;
 }
 .divNextPage a{
     color: #337ab7;
