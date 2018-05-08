@@ -96,14 +96,9 @@ tbody{
     padding-left: 45%;
 }
 
-#demo{
-  display: inline-block;
-    width: 60%;
-}
-
-.collapse:not(.show) {
+/*.collapse:not(.show) {
     display: none!important;
-}
+}*/
 
 .dropdown-item{
     display: inline-block!important;
@@ -138,3 +133,44 @@ tbody{
     padding:10px;
     border:1px solid #aaaaaa;
 }
+.table {
+    margin-top: 3%;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 2%;
+}
+
+/* Style the links inside the sidenav */
+#mySidenav a {
+    position: absolute; /* Position them relative to the browser window */
+    left: -80px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; 
+    font-size: 20px; 
+    color: white; 
+    border-radius: 0 5px 5px 0; 
+    margin-top: 3%;
+}
+
+#mySidenav a:hover {
+    left: 0; 
+}
+
+
+#week {
+    top: 20px;
+    background-color: #4CAF50;
+}
+
+#month {
+    top: 80px;
+    background-color: #2196F3; /* Blue */
+}
+
+#year {
+    top: 140px;
+    background-color: #f44336; /* Red */
+}
+

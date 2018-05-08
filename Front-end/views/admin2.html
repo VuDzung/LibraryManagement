@@ -1,56 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Administrator</title>
-        <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="../resources/js/adminOverlay.js" type="text/javascript"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="../resources/css/admin2.css"></script>
-    </head>
-    <body>
-        <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'London')" id="defaultOpen">London</button>
-  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+<head>
+    <title>Administrator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../resources/css/adminCss2.css" type="text/css"/>
+    
+</head>
+<body>
+    <nav class="navbar navbar-inverse headerCustom">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Library Management</a>
+        </div>
+        <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+          
+        <li><a href="#" aria-expanded="false"> <i class="glyphicon glyphicon-book"></i> Books </a></li>
+            
+            <li><a href="#" aria-expanded="false"> <i class="glyphicon glyphicon-tag"></i> Tickets </a></li>
+            <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-file"></i> Reports <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"> Borrowing Tickets</a></li>
+                  <li><a href="#"> Income</a></li>
+                </ul>
+              </li> 
+            
+        </ul>
+          
+          
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+              <span class="glyphicon glyphicon-user"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+										Your Profile</a></li>
+								<li><a href="#"><span
+										class="glyphicon glyphicon-wrench"></span> Edit Your Profile</a></li>
+								<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+										Account Settings</a></li>
+								<li class="divider"></li>
+								<li><a href="#"><span
+										class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+							</ul></li>
+        </ul>
+      </div>
+    </nav>
+  
+<div class="container">
+  <h3>Right Aligned Navbar</h3>
+  <p>The .navbar-right class is used to right-align navigation bar buttons.</p>
+    
+    
 </div>
-
-<div id="London" class="tabcontent">
-  <h3>London</h3>
-  <p>London is the capital city of England.</p>
-</div>
-
-<div id="Paris" class="tabcontent">
-  <h3>Paris</h3>
-  <p>Paris is the capital of France.</p> 
-</div>
-
-<div id="Tokyo" class="tabcontent">
-  <h3>Tokyo</h3>
-  <p>Tokyo is the capital of Japan.</p>
-</div>
-        <div class="divBody"></div>
-        <script>
-function openCity(evt, cityName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(cityName).style.display = "block";
-    evt.currentTarget.className += " active";
-}
-
-// Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
-</script>
-    </body>
+    
+    <nav class="navbar navbar-inverse navbar-fixed-bottom bottomCustom">
+      <div class="container-fluid">
+        <div class="copyright">
+            &copy; Copy right 2018 | Designed by Group 2 - Fersher Java DXC.technology 04/2018
+        </div>
+      </div>
+    </nav>
+    
+</body>
 </html>
