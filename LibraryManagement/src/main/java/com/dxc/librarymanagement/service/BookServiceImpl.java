@@ -61,7 +61,11 @@ public class BookServiceImpl {
 		double records = this.isbndao.count();
 		double pageNum = records / this.limitRecords;
 		return (int) Math.ceil(pageNum);
+	}
 
+	// get book by ISBN
+	public LibIsbn getSingleBook(String isbn) {
+		return isbndao.findByIsbn(isbn);
 	}
 
 }

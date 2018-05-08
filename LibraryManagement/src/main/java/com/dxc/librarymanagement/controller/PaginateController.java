@@ -17,16 +17,21 @@ public class PaginateController {
 	@Autowired
 	private BookServiceImpl bookservice;
 
-	@RequestMapping(value = "/home/{pagenumber}")
+	@RequestMapping(value = "/home/page/{pagenumber}")
 	@ResponseBody
 	public List<LibIsbn> usersPageable(@PathVariable int pagenumber) {
 		return bookservice.getPaginateBooks(pagenumber);
 	}
 
-	@RequestMapping(value = "/home/newbook")
+	@RequestMapping(value = "/home")
 	@ResponseBody
 	public List<LibIsbn> getNewBooks() {
 		return bookservice.getNewBook();
+	}
+
+	@RequestMapping(value = "/home/book/{isbn}")
+	public LibIsbn getBookByIsbn(@PathVariable String isbn) {
+		return bookservice.getSingleBook(isbn);
 	}
 
 }

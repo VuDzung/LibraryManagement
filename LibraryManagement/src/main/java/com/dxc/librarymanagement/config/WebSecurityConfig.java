@@ -1,5 +1,7 @@
 package com.dxc.librarymanagement.config;
 
+import java.util.Collection;
+
 import javax.sql.DataSource;
 
 import com.dxc.librarymanagement.service.UserDetailsServiceImpl;
@@ -10,10 +12,18 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Configuration
 @EnableWebSecurity
@@ -45,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
 		// Nếu chưa login, nó sẽ redirect tới trang /login.
-		http.authorizeRequests().antMatchers("/home/*").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/home").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
 		// Trang chỉ dành cho ADMIN
 		http.authorizeRequests().antMatchers("/admin").access("hasRole('ROLE_ADMIN')");
@@ -61,6 +71,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/login")//
 				.defaultSuccessUrl("/home")//
+				.successHandler(new AuthenticationSuccessHandler() {
+					@Override
+					public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+							Authentication authentication) throws IOException, ServletException {
+						Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+						authorities.forEach(authority -> {
+							if (authority.getAuthority().equals("ROLE_USER")) {
+								try {
+									response.sendRedirect("/home");
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							} else if (authority.getAuthority().equals("ROLE_ADMIN")) {
+								try {
+									response.sendRedirect("/admin");
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+							} else {
+								throw new IllegalStateException();
+							}
+						});
+					}
+				})//
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
 				.passwordParameter("password")
