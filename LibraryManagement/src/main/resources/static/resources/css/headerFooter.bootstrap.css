@@ -1114,7 +1114,8 @@ figure {
   margin: 0;
 }
 img {
-  vertical-align: middle;
+    vertical-align: middle;
+/*    height:  max-content;*/
 }
 .img-responsive,
 .thumbnail > img,
@@ -3001,11 +3002,11 @@ select[multiple].input-lg {
     font-size: 12px;
   }
 }
-.btn {
+ .btn {
   display: inline-block;
   padding: 6px 12px;
   margin-bottom: 0;
-  font-size: 14px;
+  font-size: 4px;
   font-weight: normal;
   line-height: 1.42857143;
   text-align: center;
@@ -3022,6 +3023,7 @@ select[multiple].input-lg {
   border: 1px solid transparent;
   border-radius: 4px;
 }
+
 .btn:focus,
 .btn:active:focus,
 .btn.active:focus,
@@ -6747,3 +6749,40 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+/*CSS Set image of listBooks*/
+.setImgListBook{
+    vertical-align: middle;
+    height: 150px;
+}
+@media screen and (min-width: 800px){
+ .setImgListBook{
+    vertical-align: middle;
+    height: 450px;
+} 
+.btn {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+   
+    
+}
+
