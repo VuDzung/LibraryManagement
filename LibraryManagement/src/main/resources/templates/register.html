@@ -40,9 +40,9 @@
 					<span class="form-title-1"> REGISTER ACCOUNT </span>
 				</div>
 
-				<form class="login100-form validate-form" name="register"
+				<form class="login100-form" name="register"
 					id="registerForm" th:action="@{/register}" th:object="${libuser}"
-					method="post">
+					method="post" novalidate>
 
 					<div th:if="${#request.getParameter('error') == 'true'}">
 						<span class="alert alert-danger">Register Failed! Please
@@ -87,12 +87,11 @@
 
 
 					<!--role-->
-					<div id="role" class="wrap-input100 "
-						data-validate="Username is required">
+					<div id="role" class="wrap-input100">
 						<span class="label-input100">Role</span> <select
-							th:field="*{role}">
+							th:field="*{role}" name="ignore">
 							<option th:each="role : ${listRole}" th:value="${role.idRole}"
-								th:text="${role.nameRole}"></option>
+								th:text="${role.nameRole}" ></option>
 							<!--<option value="user" selected>User</option>
 							<option value="admin">Admin</option> -->
 						</select>
