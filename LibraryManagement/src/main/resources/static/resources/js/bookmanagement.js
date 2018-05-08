@@ -1,64 +1,32 @@
-$(document).ready(function(){
-	$('#addBookForm').validate({
-		rules : {
-			inputISBN : {
-				required : true,
-				maxlength : true
-			},
-			inputTotal : {
-				required : true,
-				digits : true
-			}
+$('#addBookForm').validate({
+	rules : {
+		inputISBN : {
+			required : true,
+			maxlength : 13
 		},
-		messages : {
-			inputISBN : {
-				required : 'ISBN is required',
-				maxlength : 'ISBN must be less than 12 characters'
-			},
-			inputTotal : {
-				required : 'Total is required',
-				digits : 'Total must be number'
-			}
+		inputTotal : {
+			required : true,
+			digits : true
 		}
-	})
-}
-
-
-
-
-$('#addBook').click(function() {
-	
-	var libIsbn = {
-		      "isbn" : $('#inputISBN').val,
-		      "totalBook" :$('#inputTotal').val
-		    	"author" : $('#inputAuthor').val,
-			   "publishYear" :$('#inputPublishYear').val
-				"image" : $('#inputImage').attr("src"),
-				 "ShortDescription" :$('#inputShortDescription').val
-				"titleOfBook" :$('#inputTitle').val
-		   }
-		   $.ajax({
-		      type: "POST",
-		      contentType : 'application/json; charset=utf-8',
-		      dataType : 'json',
-		      url: '/bookmanagement/savebook',
-		      data: JSON.stringify(libIsbn), // Note it is important
-		      success :function(result) {
-		       // do what ever you want with data
-		     }
-	
-// $('#inputISBN').val('');
-// $('#inputTitle').val('')
-// $('#inputAuthor').val('')
-// $('#inputShortDescription').val('')
-// $('#inputPublishYear').val('')
-// $('#inputImage').attr("src", "")
-// $('#inputTotal').val('')
-
+	},
+	messages : {
+		inputISBN : {
+			required : 'ISBN is required',
+			maxlength : 'ISBN must be less than 12 characters'
+		},
+		inputTotal : {
+			required : 'Total is required',
+			digits : 'Total must be number'
+		}
+	}
 })
 
+// $('#addBook').click(function() {
+//	
+// }
+
 $('#close').click(function() {
-	$('#inputISBN').val('');	
+	$('#inputISBN').val('');
 	$('#inputTitle').val('')
 	$('#inputAuthor').val('')
 	$('#inputShortDescription').val('')
@@ -67,7 +35,6 @@ $('#close').click(function() {
 	$('#inputTotal').val('')
 })
 
-
 $('#inputISBN')
 		.keyup(
 				function() {
@@ -75,7 +42,7 @@ $('#inputISBN')
 
 					if ($('#inputISBN').val().length == 10
 							|| $('#inputISBN').val().length == 13) {
-						checkvalidateisbn();
+						// checkvalidateisbn();
 						$
 								.ajax({
 									url : 'https://www.googleapis.com/books/v1/volumes?q=isbn:'
@@ -104,7 +71,7 @@ $('#inputISBN')
 															data.items[0].volumeInfo.description)
 											$('#inputPublishYear')
 													.val(
-															data.items[0].volumeInfo.publishedDate)
+															data.items[0].volumeInfo.publishedDate.substr(0,4))
 											$('#inputImage')
 													.attr(
 															"src",
@@ -125,27 +92,45 @@ $('#inputISBN')
 
 				})
 
-function checkvalidateisbn() {
-	var isbn = document.getElementById('inputISBN').value;
+// function checkvalidateisbn() {
+// var isbn = document.getElementById('inputISBN').value;
+// $.ajax({
+// type : "GET",
+// dataType : 'json',
+// contentType : "application/json",
+// url : '/bookmanagement/checkisbn/' + isbn,
+// success : function(data) {
+// if (data != null && data.isbn != null) {
+// alert("Error");
+// }
+// // $("#myresul2t").text(data.nameRole);
+// // window.location.href = "home";
+// },
+// error : function(e) {
+// console.log("ERROR : ", e);
+// }
+// });
+//
+// }
+
+function myaddbook() {
+	var libIsbn = {
+		"isbn" : $('#inputISBN').val(),
+		"totalBook" : $('#inputTotal').val(),
+		"author" : $('#inputAuthor').val(),
+		"publishYear" : $('#inputPublishYear').val(),
+		"image" : $('#inputImage').attr("src"),
+		"shortDescription" : $('#inputShortDescription').val(),
+		"titleOfBook" : $('#inputTitle').val()
+	}
 	$.ajax({
-		type : "GET",
+		type : "POST",
+		contentType : 'application/json; charset=utf-8',
 		dataType : 'json',
-		contentType : "application/json",
-		url : '/bookmanagement/checkisbn/' + isbn,
-		success : function(data) {
-			if (data != null && data.isbn != null) {
-				alert("Error");
-			}
-			// $("#myresul2t").text(data.nameRole);
-			// window.location.href = "home";
-		},
-		error : function(e) {
-			console.log("ERROR : ", e);
+		url : '/bookmanagement/savebook',
+		data : JSON.stringify(libIsbn), // Note it is important
+		success : function(libIsbn) {
+			alert(libIsbn.totalBook)
 		}
 	});
-
-}
-
-function addBook() {
-
 }

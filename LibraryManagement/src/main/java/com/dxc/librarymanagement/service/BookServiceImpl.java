@@ -7,6 +7,7 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,25 +25,38 @@ public class BookServiceImpl {
 	@Autowired
 	private LibIsbnDAO isbndao;
 
-	private int limitRecords = 10;
+	@Autowired
+	private IsbnServiceImpl isbnServiceImpl;
+	@Value("${StatusAvailable}")
+	private boolean StatusAvailable;
+	@Value("${LimitRecords}")
+	private int LimitRecords;
 
 	// save new book or ISBN of existing book
 	public void saveBook(LibBook book, LibIsbn isbn) {
+		isbn.setStatus(StatusAvailable);
 		LibBook bookexistcheck = this.bookdao.findByTitleOfBookAndAuthor(book.getTitleOfBook(), book.getAuthor());
 		if (bookexistcheck == null) {
 			isbn.setBook(this.bookdao.save(book));
 			this.isbndao.save(isbn);
 		} else {
-			isbn.setBook(book);
-			this.isbndao.save(isbn);
+			isbn.setBook(bookexistcheck);
+			LibIsbn libIsbn = this.isbnServiceImpl.getSingleBook(isbn.getIsbn());
+			if (libIsbn == null) {
+				this.isbndao.save(isbn);
+			} else {
+				isbn.setTotalBook(libIsbn.getTotalBook() + isbn.getTotalBook());
+				isbn.setNumberBooksBorrowed(libIsbn.getNumberBooksBorrowed());
+				this.isbndao.save(isbn);
+			}
 		}
 	}
 
 	// get New Book List
 	public List<LibIsbn> getNewBook() {
 		int totalpage = this.getPaginatePageNum();
-		Pageable pageable1 = PageRequest.of(totalpage - 1, this.limitRecords);
-		Pageable pageable2 = PageRequest.of(totalpage - 2, this.limitRecords);
+		Pageable pageable1 = PageRequest.of(totalpage - 1, this.LimitRecords);
+		Pageable pageable2 = PageRequest.of(totalpage - 2, this.LimitRecords);
 		List<LibIsbn> newbook = new ArrayList<LibIsbn>();
 		newbook.addAll((isbndao.findAll(pageable2).getContent()));
 		newbook.addAll(isbndao.findAll(pageable1).getContent());
@@ -52,14 +66,14 @@ public class BookServiceImpl {
 
 	// get List Book for paginating
 	public List<LibIsbn> getPaginateBooks(int number) {
-		Pageable pageable = PageRequest.of(number - 1, this.limitRecords);
+		Pageable pageable = PageRequest.of(number - 1, this.LimitRecords);
 		return isbndao.findAll(pageable).getContent();
 	}
 
 	// get Number of page paginate
 	public int getPaginatePageNum() {
 		double records = this.isbndao.count();
-		double pageNum = records / this.limitRecords;
+		double pageNum = records / this.LimitRecords;
 		return (int) Math.ceil(pageNum);
 	}
 
