@@ -9,11 +9,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-<link type="text/css" rel="stylesheet" href="../resources/css/managementCss.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+<link type="text/css" rel="stylesheet"
+	href="../resources/css/adminCss2.css" />
+
 </head>
 
 <body>
@@ -41,7 +41,7 @@
 					<th>Total</th>
 					<th>
 						<!--button modal add-->
-						<button type="button" id="btnadd" class="btn btn-info btn-lg"
+						<button type="button" class="btn btn-info btn-lg"
 							data-toggle="modal" data-target="#addModal">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
@@ -70,12 +70,12 @@
 			</tbody>
 		</table>
 
-		<div id="divNextPage">
-			<a href="#"> <i style="font-size:24px" class="fa">&#xf100;</i>
-			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf104;</i>
+		<div class="divNextPage">
+			<a href="#"> <i style="font-size: 24px" class="fa">&#xf100;</i>
+			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf104;</i>
 			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
-			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf105;</i>
-			</a> <a href="#"> <i style="font-size:24px" class="fa">&#xf101;</i>
+			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf105;</i>
+			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf101;</i>
 			</a>
 		</div>
 
@@ -94,8 +94,9 @@
 						<div class="wrapper">
 							<form>
 								<div class="form-group">
-									<label for="inputISBN">ISBN</label> <input type="text" 
-										class="form-control" id="inputISBN" placeholder="Insert ISBN" maxlength="13" >
+									<label for="inputISBN">ISBN</label> <input type="text"
+										class="form-control" id="inputISBN" placeholder="Insert ISBN"
+										maxlength="13">
 								</div>
 								<div class="form-group">
 									<label for="inputTitle">Title Of The Book</label> <input
@@ -104,8 +105,8 @@
 								</div>
 								<div class="form-group">
 									<label for="inputAuthor">Author</label> <input type="text"
-										class="form-control" id="inputAuthor"
-										placeholder="Author" disabled>
+										class="form-control" id="inputAuthor" placeholder="Author"
+										disabled>
 								</div>
 								<div class="form-group">
 									<label for="inputPublishYear">Publish Year</label> <input
@@ -117,14 +118,14 @@
 										type="file" class="form-control-file" id="inputFile">
                                     
 								</div>-->
-                                <label>Thumbnail</label>
-                                <div id="divchooseFile">
-                                  <img id="inputImage" src="">
-                                </div>
-                                <br>
+								<label>Thumbnail</label>
+								<div id="divchooseFile">
+									<img id="inputImage" src="">
+								</div>
+								<br>
 								<div class="form-group">
-									<label for="inputTotal">Total</label> <input type="number" min="1"
-										class="form-control" id="inputTotal"
+									<label for="inputTotal">Total</label> <input type="number"
+										min="1" class="form-control" id="inputTotal"
 										placeholder="Insert Total">
 								</div>
 								<br>
@@ -138,7 +139,8 @@
 					</div>
 					<div class="modal-footer">
 						<button id="addBook" type="button" class="btn btn-success">Submit</button>
-						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+						<button id="close" type="button" class="btn btn-success"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
@@ -214,8 +216,10 @@
 		</div>
 
 	</div>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 	<script type="text/javascript">
 		$('#addBook').click(function(){
 			$('#inputISBN').val('');
