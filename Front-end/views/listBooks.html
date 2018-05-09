@@ -7,25 +7,8 @@
 	<meta name="author" content="Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-<!-- Google Fonts  Phần header va footer-->
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.font-awesome.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.slider.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.mystyle.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/listsBook.css">
-
-<!-- Google Fonts  Phần khung show book-->
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="../resources/css/showBook.owl.carousel.css">
-<link rel="stylesheet" href="../resources/css/showBook.styleBody.css">
-    
-    <!--  css management-->
-<!--<link rel="stylesheet" href="../resources/css/managementCss.css">-->
-<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
+	<!--    Backup CSS-->
+    <link rel="stylesheet" type="text/css" href="../resources/css/css_home.css">
 </head>
 <body>
 <div class="allcontain">
@@ -54,7 +37,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand logo" href="#"><img src="../resources/images/logo1.png" alt="logo"></a>
+				<a class="navbar-brand logo" href="../views/home.html"><img src="../resources/images/logo1.png" alt="logo"></a>
 			</div>	 
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
@@ -68,10 +51,10 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#">SERVICE SCHEDULE</a> 
+					<a href="../views/serviceSchedule.html">SERVICE SCHEDULE</a> 
 				</li>
 				<li>
-					<a href="contact.html">CONTACT</a>
+					<a href="../views/ContactUS.html">CONTACT</a>
 				</li>
 			</ul>
 		</div>
@@ -95,11 +78,7 @@
 			</div>
 			<div class="item">
 				<img src="../resources/images/sach3.jpg" alt="sach3">
-				<div class="carousel-caption">
-					<!--<h2>Car</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>-->
-				</div>
+				<div class="carousel-caption"></div>
 			</div>
 		</div>
 		<nav class="navbar navbar-default midle-nav">
@@ -116,7 +95,6 @@
 				<br><br>
 				<form class="navbar-form navbar-left searchformmargin" role="search">
 					<div class="form-group">
-<!--						<input type="text" class="form-control searchform" placeholder="Enter Keyword">-->
                         <input type="text" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
@@ -129,10 +107,6 @@
 </div>
     
 <!--    RESULT SREACH LIST BOOKS-->
-    
-   
-
-
 <div class="allcontain">
     <div class="latestcars">
         <h2 class="text-center" > LIST BOOKS </h2>
@@ -492,20 +466,22 @@
                                 </div>
                                 <br>
 								<br>
-								<div class="form-group">
-									<label>ISBN</label> code in here
-								</div>
-                                <div class="form-group">
-									<label>Title Of The Book: </label> Nhật Ký Trong Tù
-								</div>
-                                <div class="form-group">
-									<label>Author: </label> Ho Chi Minh
-								</div>
-                                <div class="form-group">
-									<label>Publish Year: </label> 2008
-								</div>
-                                <div class="form-group">
-									<label>Short Description</label> Somethings in here
+								<div class="titleShowBook">
+									<div class="form-group">
+										<label>ISBN</label> code in here
+									</div>
+									<div class="form-group">
+										<label>Title Of The Book: </label> Nhật Ký Trong Tù
+									</div>
+									<div class="form-group">
+										<label>Author: </label> Ho Chi Minh
+									</div>
+									<div class="form-group">
+										<label>Publish Year: </label> 2008
+									</div>
+									<div class="form-group">
+										<label>Short Description</label> Somethings in here
+									</div>
 								</div>
 							</form>
 						</div>
@@ -518,228 +494,12 @@
 			</div>
 		</div>
 
-<!--
-     ________________________NEW LIST BOOKS _______________________
-<div class="latestcars">
-	<h1 class="text-center">&bullet; NEW LIST BOOKS &bullet;</h1>
-</div>
-    <div class="maincontent-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-book">
-                        <div class="product-carousel">
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="../resources/images/nhatkytrongtu.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a>Nhật Ký Trong Tù</a></h2>
-                                <div>
-                                     ISBN: code in here
-                                </div>
-                                <div>
-                                     Status: Available/Not
-                                </div>
-                                <div>
-                                     Author: Ho Chi Minh
-                                </div>
-                                <div>
-                                    Description: some things in here/
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
--->
-
+<!-- ______________________________________________________Bottom Menu ______________________________-->
 <div class="allcontain">   
-<!-- _______________________________News Letter ____________________-->
-	<div class="newslettercontent">
-		<div class="leftside">
-			<img src="../resources/images/border.png" alt="border">
-			<h1>NEWSLETTER</h1>
-			<p>Subscribe to the COLLECTIONCARS mailing list to <br>
-				receive updates on new arrivals, special offers <br>
-				and other discount information.</p>
-		</div>
-		<div class="rightside">
-			<img class="newsimage" src="../resources/images/newsletter.jpg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
-			<button>SUBSCRIBE</button>
-		</div>
-	</div>
-	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
 		<div class="bottomlogo">
 		<span class="dotlogo">&bullet;</span><img src="../resources/images/footerLogo.png" alt="logo1"><span class="dotlogo">&bullet;;</span>
 		</div>
-		<ul class="nav nav-tabs bottomlinks">
-			<li role="presentation" ><a href="#/" role="button">HOME</a></li>
-			<li role="presentation"><a href="#/">ABOUT US</a></li>
-			<li role="presentation"><a href="#/">FIND US</a></li>
-			<li role="presentation"><a href="#/">CONTACT US</a></li>
-		</ul>
 		<p>"To laugh with others is one of life’s great pleasures. To be laughed at by others is one of life’s great hurts."<br> </p>
 		 <img src="../resources/images/line.png" alt="line"> <br>
 		 <div class="bottomsocial">
@@ -765,7 +525,6 @@
 <script type="text/javascript" src="../resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
 <script type="text/javascript" src="../resources/js/headerFooter.isotope.js"></script>
 <script type="text/javascript" src="../resources/js/headerFooter.myscript.js"></script> 
-<!--<script type="text/javascript" src="js/jquery.1.11.js"></script>-->
 <script type="text/javascript" src="../resources/js/headerFooter.bootstrap.js"></script>
     <!-- Google Fonts  Phần khung show book-->
 <script src="https://code.jquery.com/jquery.min.js"></script>
