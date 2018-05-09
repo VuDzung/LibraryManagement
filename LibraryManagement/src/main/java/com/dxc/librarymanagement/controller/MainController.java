@@ -59,7 +59,7 @@ public class MainController {
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("numofpage", this.bookServiceImpl.getPaginatePageNum());
         model.addAttribute("numofpageuser", this.userServiceImpl.getPaginatePageNum());
-        return "admin2";
+        return "admin";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)

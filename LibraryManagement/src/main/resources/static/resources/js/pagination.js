@@ -63,20 +63,61 @@ $(function () {
             $.ajax({
                 url : info_url,
                 success : function(data) {
-                	if(data.totalBook<=data.numberBooksBorrowed){
-                		$("button#addBook").attr('disabled','');
-                	}else{
-                		$("button#addBook").removeAttr('disabled');
-                	}
-                    $("#book-image").attr("src",data.book.image);
-                    $("#book-isbn").text(data.isbn);
-                    $("#book-title").text(data.book.titleOfBook);
-                    $("#book-author").text(data.book.author);
-                    $("#book-publish-year").text(data.book.publishYear);
-                    $("#book-description").text(data.book.shortDescription);
-                    $("#addBook").attr('value',data.isbn);
+                	setdatatomodal(data);
                 }
             });
         });
+        
+        
+        $('#w-input-search').autocomplete({
+    		autoSelectFirst: true,
+    		serviceUrl: '/search/book',
+    		paramName: "titlebook",
+    		delimiter: ",",
+    		onSelect: function(suggestion) {
+    			checkvalidateisbn(suggestion.data);
+            },
+    	   transformResult: function(response) {
+    		    	
+    		return {      	
+    		  suggestions: $.map($.parseJSON(response), function(item) {
+    		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+    		   })
+    		            
+    		 };
+            }
+    	 });
+    	function checkvalidateisbn(isbn) {
+    		$.ajax({
+    			type : "GET",
+    			dataType : 'json',
+    			contentType : "application/json",
+    			url : '/bookmanagement/checkisbn/' + isbn,
+    			success : function(data) {
+    				setdatatomodal(data);
+    				$("#mytest").click();
+    			},
+    			error : function(e) {
+    				console.log("ERROR : ", e);
+    			}
+    		});
+    	}
+    	
+    	function setdatatomodal(data){
+    		if (data != null && data.isbn != null) {
+				if(data.totalBook<=data.numberBooksBorrowed){
+					$("button#addBook").attr('disabled','');
+				}else{
+					$("button#addBook").removeAttr('disabled');
+				}
+			    $("#book-image").attr("src",data.book.image);
+			    $("#book-isbn").text(data.isbn);
+			    $("#book-title").text(data.book.titleOfBook);
+			    $("#book-author").text(data.book.author);
+			    $("#book-publish-year").text(data.book.publishYear);
+			    $("#book-description").text(data.book.shortDescription);
+			    $("#addBook").attr('value',data.isbn);
+			}
+    	}
     });
 
