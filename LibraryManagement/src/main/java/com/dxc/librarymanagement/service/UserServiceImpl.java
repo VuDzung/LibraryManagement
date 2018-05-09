@@ -1,5 +1,7 @@
 package com.dxc.librarymanagement.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +17,12 @@ public class UserServiceImpl {
 	private LibUserDAO libUserDAO;
 	public LibUser saveUser(LibUser libUser) {
 		return libUserDAO.save(libUser);
+	}
+	public List<LibUser> findByUserNameContaining(String username){
+		return libUserDAO.findByUserNameContaining(username);
+	}
+	
+	public LibUser findByIdUser(int iduser){
+		return libUserDAO.findByIdUser(iduser);
 	}
 }

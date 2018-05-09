@@ -39,7 +39,7 @@ public class LibUser implements Serializable {
 	private List<LibBorrowBook> borrowBooks;
 
 	// bi-directional many-to-one association to Role
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne//(fetch = FetchType.LAZY)
 	@JoinColumn(name = "IdRole", nullable = false)
 	private LibRole role;
 

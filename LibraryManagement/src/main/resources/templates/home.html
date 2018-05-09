@@ -311,7 +311,6 @@
 		paramName: "titlebook",
 		delimiter: ",",
 		onSelect: function(suggestion) {
-			alert(suggestion.data);
 			checkvalidateisbn(suggestion.data);
         },
 	   transformResult: function(response) {
@@ -347,8 +346,6 @@
 				    $("#addBook").attr('value',data.isbn);
 					$("#mytest").click();
 				}
-				
-				 //window.location.href = "home";
 			},
 			error : function(e) {
 				console.log("ERROR : ", e);

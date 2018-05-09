@@ -21,7 +21,7 @@
 		<div class="topnav">
 			<div class="search-container">
 				<form action="#">
-					<input type="text" placeholder="Search.." name="search">
+					<input type="text" id="w-input-searchuser" placeholder="Search.." name="search">
 					<button type="submit">
 						<i class="fa fa-search"></i>
 					</button>
@@ -307,4 +307,48 @@
 
 	</div>
 </body>
+
+  <script>
+  $(document).ready(function() {
+	$('#w-input-searchuser').autocomplete({
+		autoSelectFirst: true,
+		serviceUrl: '/search/user',
+		paramName: "username",
+		delimiter: ",",
+		onSelect: function(suggestion) {
+			getinforuser(suggestion.data);
+        },
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.fullName + '( Account: ' + item.userName + ' ) ', data: item.idUser };
+		   })
+		            
+		 };
+        }
+	 });
+	function getinforuser(iduser) {
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/search/user/' + iduser,
+			success : function(data) {
+				if (data != null && data.idUser != null) {
+					alert(data.idUser);
+				}
+				
+				 //window.location.href = "home";
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+  });
+  </script>
+
+
 </html>

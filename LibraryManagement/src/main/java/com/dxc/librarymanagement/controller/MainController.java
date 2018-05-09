@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class MainController {
-	
+
 	@Autowired
 	private BookServiceImpl bookServiceImpl;
 
@@ -47,20 +47,12 @@ public class MainController {
 		return "reportsTicket";
 	}
 
-	@RequestMapping(value = { "/reportsIncome" }, method = RequestMethod.GET)
-	public String welcomereportsIncome(Model model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("message", "This is welcome page!");
-		return "reportsIncome";
-	}
-	
 	@RequestMapping(value = { "/exampleautocomplete" }, method = RequestMethod.GET)
 	public String exampleautocomplete(Model model) {
 		model.addAttribute("title", "Welcome");
 		model.addAttribute("message", "This is welcome page!");
 		return "exampleautocomplete";
 	}
-	
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model, Principal principal) {
