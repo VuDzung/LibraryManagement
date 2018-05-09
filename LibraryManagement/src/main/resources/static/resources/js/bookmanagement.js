@@ -1,4 +1,8 @@
-$(function () {
+$( document ).ready(function() {
+//	$('#addBook').click(function() {
+//		 myaddbook();
+//	}
+	
 	$('#addBookForm').validate({
 		rules : {
 			inputISBN : {
@@ -22,9 +26,6 @@ $(function () {
 		}
 	});
 
-	// $('#addBook').click(function() {
-	//	
-	// }
 
 	$('#close').click(function() {
 		$('#inputISBN').val('');
@@ -192,6 +193,9 @@ $(function () {
 	}
     
 });
+
+
+
 function myaddbook() {
 		var libIsbn = {
 			"isbn" : $('#inputISBN').val(),

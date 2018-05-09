@@ -7,9 +7,6 @@
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../resources/images/favicon.ico" />
 <!--===============================================================================================-->
-<!-- sweet alert -->
- <script src="http://tristanedwards.me/u/SweetAlert//lib/sweet-alert.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://tristanedwards.me/u/SweetAlert//lib/sweet-alert.css">
 <!-- ENDsweet alert -->
 <!-- -====================================- -->
 <link rel="stylesheet" type="text/css"
@@ -50,92 +47,75 @@
 					th:action="@{/register}" th:object="${libuser}" method="post"
 					novalidate>
 
-					<div th:if="${#request.getParameter('error') == 'true'}">
-						<span class="alert alert-danger">Register Failed! Please
-							check the input information</span> <br> <br> <br>
-					</div>
+					<div th:unless="${#request.getParameter('error') == 'false'}">
+						<div th:if="${#request.getParameter('error') == 'true'}"
+							class="alert alert-danger alert-dismissible mycustom-alert">
+							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+							<strong>Register Failed!</strong> Please check the input
+							information.
+						</div>
+						<!-- <div class="form-group"> -->
+							<!--username-->
+							<div class="wrap-input100 ">
+								<span class="label-input100">Username</span> <input
+									class="input100" type="text" name="userName"
+									placeholder="Enter username" th:field="*{userName}"> <span
+									class="focus-input100"></span>
+							</div>
+
+							<!--password-->
+							<div class="wrap-input100 ">
+								<span class="label-input100">Password</span> <input
+									class="input100" type="password" name="password" id="password"
+									placeholder="Enter password" th:field="*{password}">
+							</div>
+							<!--confirm password-->
+							<div class="wrap-input100 ">
+								<span class="label-input100">Confirm password</span> <input
+									class="input100" type="password" name="confirmPass"
+									placeholder="Confirm password">
+							</div>
+
+
+							<!--name-->
+							<div class="wrap-input100">
+								<span class="label-input100">FullName</span> <input
+									class="input100" type="text" name="fullName"
+									placeholder="Enter Name" th:field="*{fullName}"> <span
+									class="focus-input100"></span>
+							</div>
+
+
+							<!--role-->
+							<div id="role">
+								<span class="label-input100">Role</span> <select
+									class="form-control" th:field="*{role}" name="ignore">
+									<option th:each="role : ${listRole}" th:value="${role.idRole}"
+										th:text="${role.nameRole}"></option>
+								</select>
+							</div>
+
+
+
+							<div class="container-login100-form-btn">
+								<button class="login100-form-btn" type="submit">Submit</button>
+							</div>
+						</div>
+
+					<!-- </div> -->
 
 					<div th:if="${#request.getParameter('error') == 'false'}">
-						<span class="alert alert-success">Register Done! You can
-							login <a href="/login">here</a>
-						</span> <br> <br> <br>
-					</div>
-
-					<!--username-->
-					<div class="wrap-input100 ">
-						<span class="label-input100">Username</span> <input
-							class="input100" type="text" name="userName"
-							placeholder="Enter username" th:field="*{userName}"> <span
-							class="focus-input100"></span>
-					</div>
-
-					<!--password-->
-					<div class="wrap-input100 ">
-						<span class="label-input100">Password</span> <input
-							class="input100" type="password" name="password" id="password"
-							placeholder="Enter password" th:field="*{password}">
-					</div>
-					<!--confirm password-->
-					<div class="wrap-input100 ">
-						<span class="label-input100">Confirm password</span> <input
-							class="input100" type="password" name="confirmPass"
-							placeholder="Confirm password">
-					</div>
-
-
-					<!--name-->
-					<div class="wrap-input100">
-						<span class="label-input100">FullName</span> <input
-							class="input100" type="text" name="fullName"
-							placeholder="Enter Name" th:field="*{fullName}"> <span
-							class="focus-input100"></span>
-					</div>
-
-
-					<!--role-->
-					<div id="role" class="wrap-input100">
-						<span class="label-input100">Role</span> <select
-							th:field="*{role}" name="ignore">
-							<option th:each="role : ${listRole}" th:value="${role.idRole}"
-								th:text="${role.nameRole}"></option>
-							<!--<option value="user" selected>User</option>
-							<option value="admin">Admin</option> -->
-						</select>
-					</div>
-
-
-
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn"  onclick="myFunction()" type="submit">Submit</button>
+						<div class="alert alert-success alert-dismissible mycustom-alert">
+							<a href="/login" class="close" data-dismiss="alert"
+								aria-label="close">&times;</a> <strong>Register Done!</strong>
+							You can login <a href="/login">here</a>
+						</div>
 					</div>
 				</form>
 			</div>
 		</div>
-		<div>
-
-<!-- <button>Show Message</button> -->
-</div>
-		 <script>
-		 function myFunction() {
-			 swal({
-				  title: "Becarefull!",
-				  text: "Don't tell your password for anybody!!",
-				  type: "warning",
-				  /* showCancelButton: true, */
-				  confirmButtonClass: "btn-danger",
-				  confirmButtonText: "Yes, I got it!",
-				  closeOnConfirm: false 
-				},
-				function(){
-				  swal("Done!", "Your account was successfully created.", "success");
-				});
-			}
-  </script>
+		<div></div>
 	</div>
-
-
-	<!--===============================================================================================-->
-
 </body>
 </html>
 
