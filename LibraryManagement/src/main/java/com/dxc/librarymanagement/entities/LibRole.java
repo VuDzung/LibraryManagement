@@ -21,10 +21,6 @@ public class LibRole implements Serializable {
 	@Column(name = "NameRole")
 	private String nameRole;
 
-	// bi-directional many-to-one association to User
-	// @OneToMany(mappedBy="role")
-	// private List<LibUser> users;
-
 	public LibRole() {
 	}
 
@@ -43,27 +39,5 @@ public class LibRole implements Serializable {
 	public void setNameRole(String nameRole) {
 		this.nameRole = nameRole;
 	}
-
-	// public List<LibUser> getUsers() {
-	// return this.users;
-	// }
-	//
-	// public void setUsers(List<LibUser> users) {
-	// this.users = users;
-	// }
-
-	// public LibUser addUser(LibUser user) {
-	// getUsers().add(user);
-	// user.setRole(this);
-	//
-	// return user;
-	// }
-	//
-	// public LibUser removeUser(LibUser user) {
-	// getUsers().remove(user);
-	// user.setRole(null);
-	//
-	// return user;
-	// }
 
 }

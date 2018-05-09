@@ -25,4 +25,8 @@ public class IsbnServiceImpl {
 	public List<LibIsbn> findByBook(LibBook book) {
 		return isbndao.findByBook(book);
 	}
+
+	public List<LibIsbn> findByBookIds(Iterable<LibBook> books) {
+        return isbndao.findByBookIn(books);
+    }
 }

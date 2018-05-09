@@ -20,4 +20,6 @@ public interface LibIsbnDAO extends JpaRepository<LibIsbn, String> {
 	LibIsbn findByIsbn(@Param("isbn") String isbn);
 
 	List<LibIsbn> findByBook(LibBook book);
+	
+	List<LibIsbn> findByBookIn(Iterable<LibBook> books);
 }

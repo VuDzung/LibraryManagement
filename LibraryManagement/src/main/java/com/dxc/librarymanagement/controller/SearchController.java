@@ -3,6 +3,7 @@ package com.dxc.librarymanagement.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import com.dxc.librarymanagement.entities.LibUser;
 import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
+import com.google.common.collect.Iterables;
 
 @RestController
 @RequestMapping("/search")
@@ -34,15 +36,7 @@ public class SearchController {
 	@RequestMapping(value = "/book", method = RequestMethod.GET)
 	public List<LibIsbn> getBook(@RequestParam String titlebook) {
 		List<LibBook> listBook = this.bookServiceImpl.findByTitleOfBookContaining(titlebook);
-		List<LibIsbn> listIsbn = new ArrayList<LibIsbn>();
-		for (LibBook libBook : listBook) {
-			List<LibIsbn> listIsbn2 = isbnServiceImpl.findByBook(libBook);
-			for (LibIsbn libIsbn : listIsbn2) {
-				listIsbn.add(libIsbn);
-			}
-		}
-		return listIsbn;
-
+		return isbnServiceImpl.findByBookIds(listBook);
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
