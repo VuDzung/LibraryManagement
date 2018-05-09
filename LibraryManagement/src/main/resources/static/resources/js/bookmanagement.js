@@ -173,13 +173,13 @@ $(function () {
             	notvailable = "";
             }
             $("#book-management").append('<tr>\
-											<td>'+val.isbn+'</td>\
-											<td>'+val.book.titleOfBook+'</td>\
-											<td>'+val.book.author+'</td>\
-											<td>'+val.book.publishYear+'</td>\
+											<td class="textPosition">'+val.isbn+'</td>\
+											<td class="textPosition">'+val.book.titleOfBook+'</td>\
+											<td class="textPosition">'+val.book.author+'</td>\
+											<td class="textPosition">'+val.book.publishYear+'</td>\
 											<td>'+val.book.shortDescription+'</td>\
-											<td>'+val.totalBook+'</td>\
-											<td style="width:11%;">\
+											<td class="textPosition">'+val.totalBook+'</td>\
+											<td class="textPosition" style="width:11%;">\
 												<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
 													<span class="glyphicon glyphicon-edit"></span> Edit\
 												</button>\
