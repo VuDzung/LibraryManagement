@@ -114,7 +114,7 @@ $(function () {
                                                             data-toggle="modal" data-target="#modalview" user="'+val.idUser+'" '+status+'>'+val.borrowedNumber+'\
                                                         </button>\
                                                     </td>\
-                                                    <td>\
+                                                    <td class="textPosition">\
                                                         <button type="button" class="btn btn-custom btn-sm btn-ticket-edit"\
                                                             data-toggle="modal" data-target="#add" user="'+val.idUser+'">\
                                                             <span class="glyphicon glyphicon-edit"></span> edit\

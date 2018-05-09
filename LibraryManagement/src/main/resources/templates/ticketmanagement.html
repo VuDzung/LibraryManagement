@@ -13,12 +13,15 @@
 			<div class="search-container">
 				<form action="#">
 					<input type="text" id="w-input-searchuser" placeholder="Search.." name="search">
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
 				</form>
 			</div>
 		</div>
-		<table class="table">
+		<table class="table table-striped">
 			<thead>
-				<tr>
+				<tr class="trMenu">
 					<th>ID User</th>
 					<th>User Name</th>
 					<th>Full Name</th>
@@ -51,7 +54,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<table class="table">
+							<table class="table table-striped">
 								<thead>
 									<tr class="trMenu">
 										<th>ID User</th>
@@ -60,38 +63,36 @@
 										<th>Role</th>
 										<th>Limit Number</th>
 										<th>Borrowed Number</th>
-										<th></th>
-
 									</tr>
 								</thead>
 								<tbody>
 									<tr>
-										<td>
+										<td class="textPosition" style="width: 8%">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-id" value="1">
 											</div>
 										</td>
-										<td>
+										<td class="textPosition" style="width: 30%">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-mail" value="aaaa1">
 											</div>
 										</td>
-										<td>
+										<td class="textPosition" style="width: 22%">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-name" value="Donal Trump">
 											</div>
 										</td>
-										<td>
+										<td class="textPosition" style="width: 18%">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-role" value="1">
 											</div>
 										</td>
-										<td>
+										<td class="textPosition" style="width: 1%">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-limit" value="8">
 											</div>
 										</td>
-										<td>
+										<td class="textPosition">
 											<div class="form-group">
 												<input type="text" class="form-control" id="ticket-borrowed" value="2">
 											</div>
@@ -121,7 +122,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<table class="table">
+							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>ISBN</th>
@@ -130,7 +131,6 @@
 										<th>Publish</th>
 										<th>Borrow Date</th>
 										<th>Total</th>
-										<th></th>
 									</tr>
 								</thead>
 								<tbody id="ticket-borrowed-book">
