@@ -10,33 +10,21 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.dxc.librarymanagement.entities.LibRole;
-import com.dxc.librarymanagement.entities.LibUser;
-import com.dxc.librarymanagement.dao.LibRoleDAO;
 import com.dxc.librarymanagement.dao.LibUserDAO;
+import com.dxc.librarymanagement.entities.LibUser;
 
 @Service
 @Transactional
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	private LibUserDAO libUserDAO;
-	@Autowired
-	private LibRoleDAO libRoleDAO;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		LibUser libUser = this.libUserDAO.findByUserName(userName);
-		LibRole testRole = new LibRole();
-		testRole.setIdRole(3);
-		testRole.setNameRole("Test Role2");
-		testRole.setUsers(null);
-		this.libRoleDAO.save(testRole);
 		if (libUser == null) {
 			System.out.println("User not found! " + userName);
 			throw new UsernameNotFoundException("User " + userName + " was not found in the database");

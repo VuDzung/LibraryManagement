@@ -32,6 +32,11 @@ public class BookServiceImpl {
 	@Value("${LimitRecords}")
 	private int LimitRecords;
 
+	
+	public List<LibBook> findByTitleOfBookContaining(String titleOfBook) {
+		return this.bookdao.findByTitleOfBookContaining(titleOfBook);
+	}
+	
 	// save new book or ISBN of existing book
 	public void saveBook(LibBook book, LibIsbn isbn) {
 		isbn.setStatus(StatusAvailable);
@@ -41,7 +46,7 @@ public class BookServiceImpl {
 			this.isbndao.save(isbn);
 		} else {
 			isbn.setBook(bookexistcheck);
-			LibIsbn libIsbn = this.isbnServiceImpl.getSingleBook(isbn.getIsbn());
+			LibIsbn libIsbn = this.isbnServiceImpl.findByIsbn(isbn.getIsbn());
 			if (libIsbn == null) {
 				this.isbndao.save(isbn);
 			} else {

@@ -53,6 +53,14 @@ public class MainController {
 		model.addAttribute("message", "This is welcome page!");
 		return "reportsIncome";
 	}
+	
+	@RequestMapping(value = { "/exampleautocomplete" }, method = RequestMethod.GET)
+	public String exampleautocomplete(Model model) {
+		model.addAttribute("title", "Welcome");
+		model.addAttribute("message", "This is welcome page!");
+		return "exampleautocomplete";
+	}
+	
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminPage(Model model, Principal principal) {

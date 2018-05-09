@@ -120,7 +120,7 @@
 				<form class="navbar-form navbar-left searchformmargin" role="search">
 					<div class="form-group">
 <!--						<input type="text" class="form-control searchform" placeholder="Enter Keyword">-->
-                        <input type="text" class="searchText" name="txtSearch" placeholder="Enter Keyword">
+                        <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
                 <a href="../views/listBooks.html">
@@ -138,7 +138,6 @@
 		</nav>
 	</div>
 </div>
-	
 <!-- ________________________LIST NEW BOOKS _______________________-->
 <div class="latestcars">
 	<h1 class="text-center">&bullet; LIST NEW BOOKS &bullet;</h1>
@@ -166,6 +165,7 @@
                                                         <p class="price" th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'"> </p>
                                                         <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
                                                         <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
+                                                        <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}">BORROW</button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
                                                     </div>
@@ -298,5 +298,66 @@
 	<!-- Pagination -->
 <script src="/resources/js/jquery.twbsPagination.min.js"></script>
 <script src="/resources/js/pagination.js"></script>
+
+
+
+<script src="/resources/core/jquery.autocomplete.min.js" /></script>
+<link href="/resources/core/main.css" rel="stylesheet">
+<script>
+  $(document).ready(function() {
+	$('#w-input-search').autocomplete({
+		autoSelectFirst: true,
+		serviceUrl: '/search/book',
+		paramName: "titlebook",
+		delimiter: ",",
+		onSelect: function(suggestion) {
+			alert(suggestion.data);
+			checkvalidateisbn(suggestion.data);
+        },
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+		   })
+		            
+		 };
+        }
+	 });
+	function checkvalidateisbn(isbn) {
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/bookmanagement/checkisbn/' + isbn,
+			success : function(data) {
+				if (data != null && data.isbn != null) {
+					if(data.totalBook<=data.numberBooksBorrowed){
+						$("button#addBook").attr('disabled','');
+					}else{
+						$("button#addBook").removeAttr('disabled');
+					}
+				    $("#book-image").attr("src",data.book.image);
+				    $("#book-isbn").text(data.isbn);
+				    $("#book-title").text(data.book.titleOfBook);
+				    $("#book-author").text(data.book.author);
+				    $("#book-publish-year").text(data.book.publishYear);
+				    $("#book-description").text(data.book.shortDescription);
+				    $("#addBook").attr('value',data.isbn);
+					$("#mytest").click();
+				}
+				
+				 //window.location.href = "home";
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+  });
+  </script>
+  
+  
 </body>
 </html>

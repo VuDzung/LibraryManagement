@@ -23,14 +23,13 @@ public class AdminBookmanagement {
 
 	@Autowired
 	private IsbnServiceImpl isbnServiceImpl;
-	
+
 	@Autowired
 	private BookServiceImpl bookServiceImpl;
 
 	@RequestMapping(value = "/checkisbn/{isbn}", method = RequestMethod.GET)
 	public ResponseEntity<LibIsbn> apiWithAjax2(@PathVariable("isbn") String isbn) {
-		System.out.println("This is value reciver from form: " + isbn);
-		LibIsbn libIsbn = this.isbnServiceImpl.getSingleBook(isbn);
+		LibIsbn libIsbn = this.isbnServiceImpl.findByIsbn(isbn);
 		return new ResponseEntity<>(libIsbn, HttpStatus.OK);
 	}
 
@@ -48,5 +47,20 @@ public class AdminBookmanagement {
 		this.bookServiceImpl.saveBook(libBook, libIsbn);
 		return new ResponseEntity<>(libIsbn, HttpStatus.OK);
 	}
+
+	// @RequestMapping(value = "/getTags", method = RequestMethod.GET)
+	// public List<LibIsbn> getTags(@RequestParam String tagName) {
+	// List<LibBook> listBook =
+	// this.bookServiceImpl.findByTitleOfBookContaining(tagName);
+	// List<LibIsbn> listIsbn = new ArrayList<LibIsbn>();
+	// for (LibBook libBook : listBook) {
+	// List<LibIsbn> listIsbn2 = isbnServiceImpl.findByBook(libBook);
+	// for (LibIsbn libIsbn : listIsbn2) {
+	// listIsbn.add(libIsbn);
+	// }
+	// }
+	// return listIsbn;
+	//
+	// }
 
 }
