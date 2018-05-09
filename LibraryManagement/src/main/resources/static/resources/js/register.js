@@ -1,10 +1,11 @@
 $(document).ready(function(){
 	$('#registerForm').validate({
+		
 		rules:{
 			userName:{
 				required: true,
 				email: true,
-				maxlength: 16
+				maxlength: 50
 			},
 			password:{
 				required: true,
@@ -37,6 +38,6 @@ $(document).ready(function(){
 				required: "Name is required",
 				maxlength: "Name must be less than 30 characters"
 			}
-		}
+		}		
 	})
 })
