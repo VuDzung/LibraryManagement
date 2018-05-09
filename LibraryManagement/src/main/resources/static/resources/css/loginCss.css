@@ -310,8 +310,23 @@ input.input100 {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
   transition: all 0.4s;
+    
+  color: #FFF;
+  background-color: #17a2b8;
+  border-color: #ccc;
 }
 
 .login100-form-btn:hover {
   background-color: #333333;
+}
+
+.divctrlSubmit{
+	padding-top:2%;
+}
+
+.cssbottomctrlSubmit{
+	font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #808080;
+    padding-top:3%;
 }

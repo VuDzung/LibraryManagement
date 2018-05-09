@@ -1,31 +1,33 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-    <meta charset="UTF-8">
-    <title>MY LIBRARY </title>
-    <meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
-    <meta name="author" content="Web Domus Italia">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
+	<meta charset="UTF-8">
+	<title>MY LIBRARY </title>
+	<meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+	<meta name="author" content="Web Domus Italia">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <!---->
 </head>
 <body>
-<!-- Header -->
 
 <!-- Google Fonts  Phần header va footer-->
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.font-awesome.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.slider.css">
-<link rel="stylesheet" type="text/css" href="../resources/css/headerFooter.mystyle.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.font-awesome.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.slider.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.mystyle.css">
+<link rel="stylesheet" type="text/css" href="/resources/css/listsBook.css">
+
 
 <!-- Google Fonts  Phần khung show book-->
-<!--<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>-->
-<!--<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>-->
-<!--<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>-->
-<!--<link rel="stylesheet" href="../resources/css/showBook.owl.carousel.css">-->
-<!--<link rel="stylesheet" href="../resources/css/showBook.styleBody.css">-->
-<!-- <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" /> -->
-<link rel="stylesheet" type="text/css" href="../resources/css/home.css">
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="/resources/css/showBook.owl.carousel.css">
+<link rel="stylesheet" href="/resources/css/showBook.styleBody.css">
+    
+<!--<link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />-->
+<!--<link rel="stylesheet" type="text/css" href="../resources/css/home.css">-->
 
 
 
@@ -60,12 +62,12 @@
 		</div>
 		<div class="collapse navbar-collapse" id="upmenu">
 			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="#">HOME</a> </li>
+				<li class="active"><a href="../views/home.html">HOME</a> </li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ABOUT US <span class="caret"></span></a>
 					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="#">History</a></li>
-						<li><a href="#">Policy</a></li>
+						<li><a href="../views/history.html">History</a></li>
+						<li><a href="../views/policy.html">Policy</a></li>
 					</ul>
 				</li>
 				<li>
@@ -121,197 +123,124 @@
                         <input type="text" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
+                <a href="../views/listBooks.html">
+                    <ul class="nav navbar-nav navbarborder">
+					   <li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
+				    </ul>
+                </a>
+                
+<!--
 				<ul class="nav navbar-nav navbarborder">
 					<li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
 				</ul>
+-->
 			</div>
 		</nav>
 	</div>
 </div>
-
-<div class="allcontain">
 	
-<!-- ________________________LATEST BOOKS SECTION _______________________-->
+<!-- ________________________LIST NEW BOOKS _______________________-->
 <div class="latestcars">
-	<h1 class="text-center">&bullet; NEW LIST BOOKS &bullet;</h1>
+	<h1 class="text-center">&bullet; LIST NEW BOOKS &bullet;</h1>
 </div>
-<!--<div class="maincontent-area">-->
-<!--&lt;!&ndash;        <div class="zigzag-bottom"></div>&ndash;&gt;-->
-        <!--<div class="container">-->
-            <!--<div class="row">-->
-                <!--<div class="col-md-12">-->
-                    <!--<div class="latest-book">-->
-<!--&lt;!&ndash;                        <h2 class="title">LIST BOOKS</h2>&ndash;&gt;-->
-                        <!--<div class="product-carousel">-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/nhatkytrongtu.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                       <!--&lt;!&ndash; <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> Details of books </a>&ndash;&gt;-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2><a>Nhật Ký Trong Tù</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Ho Chi Minh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/banconamchongoi.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2> <a>Bàn có năm chỗ ngồi</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Nguyễn Nhật Ánh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div>                                 -->
-                            <!--</div>-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/nhatkytrongtu.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2><a>Nhật Ký Trong Tù</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Ho Chi Minh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div> -->
-                            <!--</div>-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/toithayhoavangtrencoxanh.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2><a>Tôi Thấy Hoa Vàng Trên Cỏ xanh</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Nguyễn Nhật Ánh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div>                           -->
-                            <!--</div>-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/bimattoctien.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2><a>Bí Mật Tóc Tiên</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Nguyễn Nhật Ánh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div>                                 -->
-                            <!--</div>-->
-                            <!--<div class="single-product">-->
-                                <!--<div class="product-f-image">-->
-                                    <!--<img src="../resources/images/cogaidentuhomqua.jpg" alt="">-->
-                                    <!--<div class="product-hover">-->
-                                        <!--<a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to borrow</a>-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!---->
-                                <!--<h2><a>Cô Gái Đến Từ Hôm Qua</a></h2>-->
-                                <!--<div>-->
-                                     <!--ISBN: code in here-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Status: Available/Not-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                     <!--Author: Nguyễn Nhật Ánh-->
-                                <!--</div>-->
-                                <!--<div>-->
-                                    <!--Description: some things in here/-->
-                                <!--</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-<!--     </div> &lt;!&ndash; End body content area &ndash;&gt; -->
-<!-- <div class="container"> -->
-<!-- 	<div class="row"> -->
-<!-- 		<div class="col-sm-6 col-md-4 col-lg-3" ng-repeat="book in filteredItems"> -->
-<!-- 			<div class="card card-inverse card-info"> -->
-<!-- 				<img class="card-img-top" src='{{book.img}}'> -->
-<!-- 				<div class="card-block"> -->
-<!-- 					<figure class="profile profile-inline"> -->
-<!-- 						<img src='{{book.img}}' class="profile-avatar" alt=""> -->
-<!-- 					</figure> -->
-<!-- 					<h4 class="card-title">{{book.title}}</h4> -->
-<!-- 					<div class="card-text book-description"> -->
-<!-- 						Description: {{book.Description}} -->
-<!-- 					</div> -->
-<!-- 					<div class="card-text book-status"> -->
-<!-- 						Status: {{book.Status}} -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="card-footer"> -->
-<!-- 					<button class="btn btn-info btn-sm">Borrow</button> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </div> -->
+    <div class="maincontent-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="latest-book">
+                        <div class="product-carousel">
+                            <div th:each="newbook : ${listnewbooks}" class="single-product">
+                                <div class="product-f-image">
+                                    <div class="txthover">
+                                            <img th:src="${newbook.book.image}">
+                                                <div class="txtcontent">
+                                                    <div class="stars">
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                    </div>
+                                                    <div class="simpletxt">
+                                                        <p class="name" th:text="'Title: '+${newbook.book.titleOfBook}"></p>
+                                                        <p th:text="'ISBN code: '+${newbook.isbn}"></p>
+                                                        <p th:text="'Author: '+${newbook.book.author}"></p>
+                                                        <p class="price" th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'"> </p>
+                                                        <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
+                                                        <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
+                                                        <button class="btn btn-success" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}">BORROW</button>
+                                                        <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
+                                                    </div>
+                                                    <div class="stars2">
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                        <div class="glyphicon glyphicon-star"></div>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- Modal Add -->
+		<div class="modal fade" id="addModal" role="dialog">
+			<div class="modal-dialog">
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Details Book</h4>
+					</div>
+					<div class="modal-body">
+						<div class="wrapper">
+							<form>
+                                <div id="divDetailImg">
+                                  <img id="book-image"  class="setImgDetail" src="../resources/images/nhatkytrongtu.jpg">
+                                </div>
+                                <br>
+								<br>
+								<div class="form-group">
+									<label>ISBN</label> <p id="book-isbn">code in here</p>
+								</div>
+                                <div class="form-group">
+									<label>Title Of The Book: </label> <p id="book-title">Nhật Ký Trong Tù</p>
+								</div>
+                                <div class="form-group">
+									<label>Author: </label> <p id="book-author">Ho Chi Minh</p>
+								</div>
+                                <div class="form-group">
+									<label>Publish Year: </label> <p id="book-publish-year">2008</p>
+								</div>
+                                <div class="form-group">
+									<label>Short Description</label> <p id="book-description">Somethings in here</p>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="addBook" type="button" class="btn btn-success">Borrow</button>
+						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- ________________________LIST BOOKS _______________________-->
+<div class="latestcars">
+        <h1 class="text-center">&bullet; LIST BOOKS &bullet;</h1>
+    </div>
+    <div class="galary" th:num="${numofpage}">
 
+        
+    </div>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" id="pagination"></ul>
+    </nav>
 
-<!-- 	<div data-pagination="" data-num-pages="numOfPages()" data-current-page="curPage" data-max-size="maxSize" -->
-<!-- 		 data-boundary-links="true"></div> -->
-<!-- <div class="allcontain">    -->
+<div class="allcontain">   
 <!-- _______________________________News Letter ____________________-->
 	<div class="newslettercontent">
 		<div class="leftside">
@@ -356,20 +285,18 @@
 			</div>
 	</div>
 </div>
-</div>
 
-
-
-
-<script type="text/javascript" src="../resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
-<script type="text/javascript" src="../resources/js/headerFooter.isotope.js"></script>
-<script type="text/javascript" src="../resources/js/headerFooter.myscript.js"></script> 
-<!--<script type="text/javascript" src="js/jquery.1.11.js"></script>-->
-<script type="text/javascript" src="../resources/js/headerFooter.bootstrap.js"></script>
+<script type="text/javascript" src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
+<script type="text/javascript" src="/resources/js/headerFooter.isotope.js"></script>
+<script type="text/javascript" src="/resources/js/headerFooter.myscript.js"></script> 
+<script type="text/javascript" src="/resources/js/headerFooter.bootstrap.js"></script>
     <!-- Google Fonts  Phần khung show book-->
-<!--<script src="https://code.jquery.com/jquery.min.js"></script>-->
-<!--<script src="../resources/js/showBook.owl.carousel.min.js"></script>-->
-<!--<script src="../resources/js/showBook.jquery.sticky.js"></script>    -->
-<!--<script src="../resources/js/showBook.main.js"></script>-->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="/resources/js/showBook.owl.carousel.min.js"></script>
+<script src="/resources/js/showBook.jquery.sticky.js"></script>    
+<script src="/resources/js/showBook.main.js"></script>
+	<!-- Pagination -->
+<script src="/resources/js/jquery.twbsPagination.min.js"></script>
+<script src="/resources/js/pagination.js"></script>
 </body>
 </html>

@@ -9,10 +9,13 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link type="text/css" rel="stylesheet" href="/resources/css/admin.css" />
+<link rel="stylesheet" href="../resources/css/adminCss2.css"
+	type="text/css" />
+<link type="text/css" rel="stylesheet"
+	href="/resources/css/managementCss.css" />
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link type="text/css" rel="stylesheet"
-	href="../resources/css/adminCss2.css" />
 
 </head>
 
@@ -41,7 +44,7 @@
 					<th>Total</th>
 					<th>
 						<!--button modal add-->
-						<button type="button" class="btn btn-info btn-lg"
+						<button type="button" id="btnadd" class="btn btn-info btn-lg"
 							data-toggle="modal" data-target="#addModal">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
@@ -70,12 +73,12 @@
 			</tbody>
 		</table>
 
-		<div class="divNextPage">
-			<a href="#"> <i style="font-size: 24px" class="fa">&#xf100;</i>
-			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf104;</i>
+		<div id="divNextPage">
+			<a href="#"> <i class="fa">&#xf100;</i>
+			</a> <a href="#"> <i class="fa">&#xf104;</i>
 			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
-			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf105;</i>
-			</a> <a href="#"> <i style="font-size: 24px" class="fa">&#xf101;</i>
+			</a> <a href="#"> <i class="fa">&#xf105;</i>
+			</a> <a href="#"> <i class="fa">&#xf101;</i>
 			</a>
 		</div>
 
@@ -92,11 +95,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<form>
+							<form id="addBookForm" novalidate>
 								<div class="form-group">
 									<label for="inputISBN">ISBN</label> <input type="text"
-										class="form-control" id="inputISBN" placeholder="Insert ISBN"
-										maxlength="13">
+										class="form-control" id="inputISBN" name="inputISBN"
+										placeholder="Insert ISBN" maxlength="13">
 								</div>
 								<div class="form-group">
 									<label for="inputTitle">Title Of The Book</label> <input
@@ -218,68 +221,12 @@
 	</div>
 	<script type="text/javascript"
 		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 	<script type="text/javascript"
 		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-	<script type="text/javascript">
-		$('#addBook').click(function(){
-			$('#inputISBN').val('');
-			$('#inputTitle').empty();
-			$('#inputAuthor').empty();
-			$('#inputShortDescription').empty();
-			$('#inputPublishYear').empty();
-			$('#inputImage').attr("src", "");
 
-		})
 
-		$('#close').click(function(){
-			$('#inputISBN').val('');
-			$('#inputISBN').empty();
-			$('#inputTitle').empty();
-			$('#inputAuthor').empty();
-			$('#inputShortDescription').empty();
-			$('#inputPublishYear').empty();
-			$('#inputImage').attr("src", "");
-		})
-
-		$('#inputISBN').keyup(function(){
-		var search = document.getElementById('inputISBN').value
-
-		if($('#inputISBN').val().length==10 ||$('#inputISBN').val().length==13){
-			$.ajax({
-			url:'https://www.googleapis.com/books/v1/volumes?q=isbn:' +search,
-			dataType: 'json',
-
-					success: function(data){
-						if (data.totalItems==0) {
-							$('#inputTitle').val('')
-							$('#inputAuthor').val('')
-							$('#inputShortDescription').val('')
-							$('#inputPublishYear').val('')
-							$('#inputImage').attr("src", "")
-
-						} else{
-						
-							$('#inputTitle').val( data.items[0].volumeInfo.title)
-							$('#inputAuthor').val( data.items[0].volumeInfo.authors)
-							$('#inputShortDescription').val( data.items[0].volumeInfo.description)
-							$('#inputPublishYear').val( data.items[0].volumeInfo.publishedDate)
-							$('#inputImage').attr("src", data.items[0].volumeInfo.imageLinks.thumbnail)
-						}
-							
-							
-
-					},
-					type: 'GET'
-				});
-		} else{
-			$('#inputTitle').val('')
-							$('#inputAuthor').val('')
-							$('#inputShortDescription').val('')
-							$('#inputPublishYear').val('')
-							$('#inputImage').attr("src", "")
-		}
-		
-	})
-	</script>
+	<script type="text/javascript" src="/resources/js/bookmanagement.js"></script>
 </body>
 </html>

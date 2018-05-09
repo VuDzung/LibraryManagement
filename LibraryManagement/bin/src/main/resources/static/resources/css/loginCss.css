@@ -149,6 +149,11 @@ label {
   position: relative;
   border-bottom: 1px solid #b2b2b2;
 }
+.wrap-input101 {
+  width: 100%;
+  position: relative;
+
+}
 
 .label-input100 {
   font-family: Poppins-Regular;
@@ -283,66 +288,6 @@ input.input100 {
 }
 
 .login100-form-btn {
-<<<<<<< HEAD
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 160px;
-    height: 50px;
-    background-color: #57b846;
-    border-radius: 25px;
-    font-family: Poppins-Regular;
-    font-size: 16px;
-    color: #fff;
-    line-height: 1.2;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-    margin-top: 13%;
-    margin-left: -55%;
-}
-
-.login100-form-btn:hover {
-  background-color: #333333;
-}
-
-.divctrlSubmit{
-    
-}
-.cssCheckbox{
-    font-family: Poppins-Regular;
-    font-size: 15px;
-    color: #808080;
-    line-height: 10px;
-    text-align: left;
-}
-.cssCheckbox chb1{
-    margin-left: 3%;
-}
-
-.cssCheckbox chb2{
-    margin-left: 10%;
-}
-.cssbottomctrlSubmit p{
-    font-family: Poppins-Regular;
-    font-size: 15px;
-    color: #808080;
-    line-height: 1.2;
-    text-align: right;
-    position: absolute;
-    margin-left: 6%;
-    margin-top: 2%;
-}
-.cssbottomctrlSubmit input{
-    margin-left: 34%;
-    
-=======
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -369,5 +314,4 @@ input.input100 {
 
 .login100-form-btn:hover {
   background-color: #333333;
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
 }

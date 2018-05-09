@@ -21,7 +21,8 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <link type="text/css" rel="stylesheet"
 	href="../resources/css/managementCss.css" />
 <link rel="stylesheet"
@@ -39,33 +40,34 @@
 					<span class="form-title-1"> REGISTER ACCOUNT </span>
 				</div>
 
-				<form class="login100-form validate-form" name="register" id="registerForm" novalidate
-					th:action="@{/register}" th:object="${libuser}" method="post">
-					
+				<form class="login100-form validate-form" name="register"
+					id="registerForm" th:action="@{/register}" th:object="${libuser}"
+					method="post">
+
 					<div th:if="${#request.getParameter('error') == 'true'}">
-						<span class="error"
-							>Register
-							Failed!!!</span> <br>
+						<span class="alert alert-danger">Register Failed! Please
+							check the input information</span> <br> <br> <br>
 					</div>
-					
+
 					<div th:if="${#request.getParameter('error') == 'false'}">
-						<span class="success"
-							>Register
-							Done!!!</span> <br>
+						<span class="alert alert-success">Register Done! You can
+							login <a href="/login">here</a>
+						</span> <br> <br> <br>
 					</div>
-					
+
 					<!--username-->
 					<div class="wrap-input100 ">
 						<span class="label-input100">Username</span> <input
 							class="input100" type="text" name="userName"
-							placeholder="Enter username" th:field="*{userName}" >
+							placeholder="Enter username" th:field="*{userName}"> <span
+							class="focus-input100"></span>
 					</div>
 
 					<!--password-->
 					<div class="wrap-input100 ">
 						<span class="label-input100">Password</span> <input
 							class="input100" type="password" name="password" id="password"
-							placeholder="Enter password" th:field="*{password}"> 
+							placeholder="Enter password" th:field="*{password}">
 					</div>
 					<!--confirm password-->
 					<div class="wrap-input100 ">
@@ -78,20 +80,20 @@
 					<!--name-->
 					<div class="wrap-input100">
 						<span class="label-input100">FullName</span> <input
-							class="input100" type="text" name="fullName" placeholder="Enter Name"
-							th:field="*{fullName}">
+							class="input100" type="text" name="fullName"
+							placeholder="Enter Name" th:field="*{fullName}"> <span
+							class="focus-input100"></span>
 					</div>
 
 
 					<!--role-->
 					<div id="role" class="wrap-input100 "
 						data-validate="Username is required">
-						<span class="label-input100">Role</span>
-						<select th:field="*{role}">
-							<option th:each="role : ${listRole}"
-								th:value="${role.idRole}"
+						<span class="label-input100">Role</span> <select
+							th:field="*{role}">
+							<option th:each="role : ${listRole}" th:value="${role.idRole}"
 								th:text="${role.nameRole}"></option>
-<!-- 							<option value="user" selected>User</option>
+							<!--<option value="user" selected>User</option>
 							<option value="admin">Admin</option> -->
 						</select>
 					</div>

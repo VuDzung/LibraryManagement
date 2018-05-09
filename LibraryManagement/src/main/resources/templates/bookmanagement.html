@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <title>Books Management</title>
 <meta charset="utf-8">
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link type="text/css" rel="stylesheet" href="../resources/css/admin.css" />
-<link rel="stylesheet" href="../resources/css/adminCss2.css"	type="text/css" />
-<link type="text/css" rel="stylesheet"	href="../resources/css/managementCss.css" />
-<link rel="stylesheet"	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link type="text/css" rel="stylesheet"
+	href="../resources/css/adminCss2.css" />
+	<script type="text/javascript" src="../resources/js/bookmanagement.js"></script>
 
 </head>
 
@@ -38,7 +42,7 @@
 					<th>Total</th>
 					<th>
 						<!--button modal add-->
-						<button type="button" id="btnadd" class="btn btn-info btn-lg"
+						<button type="button" class="btn btn-info btn-lg"
 							data-toggle="modal" data-target="#addModal">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
@@ -48,14 +52,14 @@
 			</thead>
 			<tbody id="book-management">
 				
-				
 			</tbody>
 		</table>
-		<div id="divNextPage">
-			<nav aria-label="Page navigation">
+
+		<div class="divNextPage">
+			<nav aria-label="Page navigation" style="text-align:center">
 	        	<ul class="pagination" id="pagination"></ul>
 	    	</nav>
-	    </div>
+		</div>
 
 
 
@@ -70,11 +74,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<form id="addBookForm" novalidate>
+							<form>
 								<div class="form-group">
 									<label for="inputISBN">ISBN</label> <input type="text"
-										class="form-control" id="inputISBN" name="inputISBN"
-										placeholder="Insert ISBN" maxlength="13">
+										class="form-control" id="inputISBN" placeholder="Insert ISBN"
+										maxlength="13">
 								</div>
 								<div class="form-group">
 									<label for="inputTitle">Title Of The Book</label> <input
@@ -116,8 +120,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="addBook" type="button" class="btn btn-success" onclick="myaddbook()">Submit</button>
-						<button id="close" type="button" class="btn btn-success"
+						<button id="addBook" type="button" class="btn buttonOfEdit">Submit</button>
+						<button id="close" type="button" class="btn buttonOfEdit"
 							data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -186,18 +190,13 @@
 						<!--END EDIT BUTTON EDIT-->
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-success" onClick="addBook()">Submit</button>
-						<button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+						<button type="button" class="btn buttonOfEdit" onClick="addBook()">Submit</button>
+						<button type="button" class="btn buttonOfEdit" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>		
-	<script	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>	
-	<script src="/resources/js/jquery.twbsPagination.min.js"></script>
-	<script type="text/javascript" src="../resources/js/bookmanagement.js"></script>
-	
 </body>
 </html>

@@ -138,11 +138,11 @@ $(function () {
 														<td>'+val.book.publishYear+'</td>\
 														<td>'+val.book.shortDescription+'</td>\
 														<td>'+val.totalBook+'</td>\
-														<td>\
-															<button type="button" class="btn btn-default btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
+														<td style="width:11%;">\
+															<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
 																<span class="glyphicon glyphicon-edit"></span> Edit\
 															</button>\
-															<button type="button" class="btn btn-default btn-sm" isbn="'+val.isbn+'">\
+															<button type="button" class="btn btn-custom btn-sm" isbn="'+val.isbn+'">\
 																<span class="glyphicon glyphicon-trash"></span>\
 															</button>\
 														</td>\
