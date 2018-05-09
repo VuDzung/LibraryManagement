@@ -177,7 +177,7 @@ $(function () {
 											<td class="textPosition">'+val.book.titleOfBook+'</td>\
 											<td class="textPosition">'+val.book.author+'</td>\
 											<td class="textPosition">'+val.book.publishYear+'</td>\
-											<td>'+val.book.shortDescription+'</td>\
+											<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
 											<td class="textPosition">'+val.totalBook+'</td>\
 											<td class="textPosition" style="width:11%;">\
 												<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\

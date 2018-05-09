@@ -104,12 +104,12 @@ $(function () {
             	if(val.borrowedNumber>0) status="";
             	else status="disabled";
                 $("#tickets-management").append('<tr>\
-                                                    <td class="textPosition">'+val.idUser+'</td>\
+                                                    <td class="textPosition" style="width:6%;">'+val.idUser+'</td>\
                                                     <td class="textPosition">'+val.userName+'</td>\
                                                     <td class="textPosition">'+val.fullName+'</td>\
                                                     <td class="textPosition">'+val.role.nameRole+'</td>\
-                                                    <td class="textPosition">'+val.limitNumber+'</td>\
-                                                    <td class="textPosition">\
+                                                    <td class="textPosition" style="width:10%;">'+val.limitNumber+'</td>\
+                                                    <td class="textPosition" style="width:13%;">\
                                                         <button type="button" class="btn btn-custom btn-sm btn-borrowed"\
                                                             data-toggle="modal" data-target="#modalview" user="'+val.idUser+'" '+status+'>'+val.borrowedNumber+'\
                                                         </button>\
