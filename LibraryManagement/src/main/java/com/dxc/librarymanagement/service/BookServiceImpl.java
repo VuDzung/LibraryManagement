@@ -1,7 +1,5 @@
 package com.dxc.librarymanagement.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -59,14 +57,8 @@ public class BookServiceImpl {
 
 	// get New Book List
 	public List<LibIsbn> getNewBook() {
-		int totalpage = this.getPaginatePageNum();
-		Pageable pageable1 = PageRequest.of(totalpage - 1, this.LimitRecords);
-		Pageable pageable2 = PageRequest.of(totalpage - 2, this.LimitRecords);
-		List<LibIsbn> newbook = new ArrayList<LibIsbn>();
-		newbook.addAll((isbndao.findAll(pageable2).getContent()));
-		newbook.addAll(isbndao.findAll(pageable1).getContent());
-		Collections.reverse(newbook);
-		return newbook;
+		Pageable pageable = PageRequest.of(0, 10);
+		return this.isbndao. findFirst10(pageable);
 	}
 
 	// get List Book for paginating

@@ -5,6 +5,9 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibUserDAO;
@@ -15,6 +18,9 @@ import com.dxc.librarymanagement.entities.LibUser;
 public class UserServiceImpl {
 	@Autowired
 	private LibUserDAO libUserDAO;
+	@Value("${LimitRecords}")
+	private int LimitRecords;
+	
 	public LibUser saveUser(LibUser libUser) {
 		return libUserDAO.save(libUser);
 	}
@@ -25,4 +31,16 @@ public class UserServiceImpl {
 	public LibUser findByIdUser(int iduser){
 		return libUserDAO.findByIdUser(iduser);
 	}
+	//get number of page for paginate in database
+	public int getPaginatePageNum() {
+		double records = this.libUserDAO.count();
+		double pageNum = records / this.LimitRecords;
+		return (int) Math.ceil(pageNum);
+	}
+		
+		//get users paginate
+	public List<LibUser> getPaginateUsers(int number) {
+		Pageable pageable = PageRequest.of(number - 1, this.LimitRecords);
+		return libUserDAO.findAll(pageable).getContent();
+	}		
 }

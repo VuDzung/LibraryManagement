@@ -27,7 +27,7 @@ public class LibIsbn implements Serializable {
     private int totalBook;
 
     // bi-directional many-to-one association to Book
-    @ManyToOne // (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "IdBook")
     private LibBook book;
 

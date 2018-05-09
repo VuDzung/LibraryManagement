@@ -34,7 +34,7 @@ public class LibUser implements Serializable {
     private String userName;
 
     // bi-directional many-to-one association to Role
-    @ManyToOne // (fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "IdRole", nullable = false)
     private LibRole role;
 

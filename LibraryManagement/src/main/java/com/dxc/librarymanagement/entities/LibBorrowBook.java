@@ -28,12 +28,12 @@ public class LibBorrowBook implements Serializable {
 	private Date dateReturn;
 
 	// bi-directional many-to-one association to Isbn
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "ISBN")
 	private LibIsbn isbnBean;
 
 	// bi-directional many-to-one association to User
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "IdUser")
 	private LibUser user;
 

@@ -51,10 +51,13 @@ $(function () {
                     }
                 });
                 $("html, body").animate({
-                    scrollTop: $('.galary').offset().top 
-                });
+    	            scrollTop: $('.galary').offset().top 
+    	        });
             }
         });
+	    $("html, body").animate({
+	        scrollTop: $('body').offset().top 
+	    });
         $("body").on("click", ".btn-info", function() {
             var info_url = "./home/book/"+$(this).attr("isbn");
             $.ajax({

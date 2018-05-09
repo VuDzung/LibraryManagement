@@ -3,6 +3,7 @@ package com.dxc.librarymanagement.controller;
 import java.security.Principal;
 
 import com.dxc.librarymanagement.service.BookServiceImpl;
+import com.dxc.librarymanagement.service.UserServiceImpl;
 import com.dxc.librarymanagement.utils.WebUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class MainController {
 
     @Autowired
     private BookServiceImpl bookServiceImpl;
+    @Autowired
+	private UserServiceImpl userServiceImpl;
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
@@ -55,7 +58,7 @@ public class MainController {
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
         model.addAttribute("numofpage", this.bookServiceImpl.getPaginatePageNum());
-
+        model.addAttribute("numofpageuser", this.userServiceImpl.getPaginatePageNum());
         return "admin2";
     }
 
