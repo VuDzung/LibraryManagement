@@ -1,0 +1,17 @@
+.navbar-inverse .navbar-brand,a {
+    color: #FFFF00;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: yellow;
+    background-color: #080808;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: yellow;
+}
+.bottomCustom {
+    color: #FFFF00;
+}
+.copyright{
+    padding-left: 32%; 
+    padding-top: 1%;
+}

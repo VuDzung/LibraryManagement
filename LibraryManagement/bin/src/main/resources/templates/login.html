@@ -7,11 +7,7 @@
 <!--===============================================================================================-->
 <link rel="icon" type="image/png" href="../resources/images/favicon.ico" />
 <!--===============================================================================================-->
-<<<<<<< HEAD
-<!-- <!-- <link rel="stylesheet" type="text/css"
-=======
 <link rel="stylesheet" type="text/css"
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
 	href="/resources/css/registerUtil.css">
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/registerCss.css">
@@ -19,28 +15,18 @@
 	href="/resources/css/loginUtil.css">
 <link rel="stylesheet" type="text/css"
 	href="/resources/css/loginCss.css">
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="/resources/css/general.css"> --> -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-
-<link rel="stylesheet" type="text/css" href="../static/resources/css/registerUtil.css">
-<link rel="stylesheet" type="text/css" href="../static/resources/css/registerCss.css">
-<link rel="stylesheet" type="text/css" href="../static/resources/css/loginUtil.css">
-<link rel="stylesheet" type="text/css" href="../static/resources/css/loginCss.css">
-<link rel="stylesheet" type="text/css" href="../static/resources/css/general.css">
-</head><!-- <!--  --> -->
-<body>
-<div class"wrapper">
-=======
 <link rel="stylesheet" type="text/css" href="/resources/css/general.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 
+<!--<link rel="stylesheet" type="text/css" href="../static/resources/css/registerUtil.css">
+<link rel="stylesheet" type="text/css" href="../static/resources/css/registerCss.css">
+<link rel="stylesheet" type="text/css" href="../static/resources/css/loginUtil.css">
+<link rel="stylesheet" type="text/css" href="../static/resources/css/loginCss.css">
+<link rel="stylesheet" type="text/css" href="../static/resources/css/general.css">-->
 </head>
 <body>
-
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
+	<divclass"wrapper">
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -52,13 +38,8 @@
 				<form class="login100-form " name="login" novalidate
 					th:action="@{/j_spring_security_check}" method='POST'>
 					<div th:if="${#request.getParameter('error') == 'true'}">
-						<span class="error"
-							>Login
-<<<<<<< HEAD
-							Failed! Check your username or passowrd.</span> <br>
-=======
-							Failed!!!</span> <br>
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
+						<span class="error">Login Failed! Check your
+							username or passowrd.</span> <br>
 					</div>
 					<!-- username -->
 					<div class="wrap-input100 validate-input m-b-5">
@@ -72,60 +53,45 @@
 					<div class="wrap-input100 validate-input m-b-5">
 						<span class="label-input100">Password</span> <input
 							class="input100" type="password" name="password"
-<<<<<<< HEAD
 							placeholder="Enter password" id="inputPass"> <span
 							class="focus-input100"></span>
 					</div>
-                    <div class="divctrlSubmit">
-                        <div class="cssCheckbox">
-                            <input type="checkbox" onclick="myFunction()">Show Password<br><br>
-                            <input type="checkbox"/>Remember me
-                        </div>
-                        <br>
-                        <div class="cssbottomctrlSubmit">
-                            <input class="login100-form-btn" name="submit" type="submit" value="Submit" />
-                            <p>If you dont have account, <a href="#">Click here</a></p>
-                        </div>
-                    </div>
-                    
-                  
-=======
-							placeholder="Enter password"> <span
-							class="focus-input100"></span>
+					<div class="divctrlSubmit">
+						<div class="cssCheckbox">
+							<input type="checkbox" onclick="myFunction()">Show
+							Password<br>
+							<br> <input type="checkbox" name="remember-me" />Remember me
+						</div>
+						<br>
+						<div class="cssbottomctrlSubmit">
+							<input class="login100-form-btn" name="submit" type="submit"
+								value="Submit" />
+							<p>
+								If you dont have account, <a href="/register">Click here</a>
+							</p>
+						</div>
 					</div>
 
-					<div class="container-login100-form-btn">
-						<input class="login100-form-btn" name="submit" type="submit"
-							value="submit" />
-					</div>
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
+
 				</form>
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
-    </div>
-=======
-
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
+	</div>
 
 
 
 	<!--===============================================================================================-->
-<<<<<<< HEAD
-    <script>
-        function myFunction() {
-            var x = document.getElementById("inputPass");
-            if (x.type === "password") {
-                x.type = "text";
-            } else {
-                x.type = "password";
-            }
-        }
-    </script>
-=======
->>>>>>> 2658dcd8dd8ce8abd8177a13c5d67d97f5637eb2
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		function myFunction() {
+			var x = document.getElementById("inputPass");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
+	</script> <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>

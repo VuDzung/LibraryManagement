@@ -3,17 +3,19 @@
 <head>
 <title>Books Management</title>
 <meta charset="utf-8">
-<!-- <link rel="stylesheet"
+<link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link type="text/css" rel="stylesheet" href="/resources/css/admin.css" />
+<link rel="stylesheet" href="../resources/css/adminCss2.css"
+	type="text/css" />
 <link type="text/css" rel="stylesheet"
-	href="../resources/css/adminCss2.css" />
-	<script type="text/javascript" src="../resources/js/bookmanagement.js"></script>
+	href="/resources/css/managementCss.css" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -42,7 +44,7 @@
 					<th>Total</th>
 					<th>
 						<!--button modal add-->
-						<button type="button" class="btn btn-info btn-lg"
+						<button type="button" id="btnadd" class="btn btn-info btn-lg"
 							data-toggle="modal" data-target="#addModal">
 							<span class="glyphicon glyphicon-plus"></span>
 						</button>
@@ -50,15 +52,34 @@
 					</th>
 				</tr>
 			</thead>
-			<tbody id="book-management">
-				
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>2</td>
+					<td>3</td>
+					<td>4</td>
+					<td>5</td>
+					<td>6</td>
+					<td>
+						<button type="button" class="btn btn-default btn-sm"
+							data-toggle="modal" data-target="#editModal">
+							<span class="glyphicon glyphicon-edit"></span> Edit
+						</button>
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-trash"></span>
+						</button>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 
-		<div class="divNextPage">
-			<nav aria-label="Page navigation">
-	        	<ul class="pagination" id="pagination"></ul>
-	    	</nav>
+		<div id="divNextPage">
+			<a href="#"> <i class="fa">&#xf100;</i>
+			</a> <a href="#"> <i class="fa">&#xf104;</i>
+			</a> <a href="#"> <input id="nextPage" type="text" value=" 1 ">
+			</a> <a href="#"> <i class="fa">&#xf105;</i>
+			</a> <a href="#"> <i class="fa">&#xf101;</i>
+			</a>
 		</div>
 
 
@@ -74,11 +95,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<form>
+							<form id="addBookForm" novalidate>
 								<div class="form-group">
 									<label for="inputISBN">ISBN</label> <input type="text"
-										class="form-control" id="inputISBN" placeholder="Insert ISBN"
-										maxlength="13">
+										class="form-control" id="inputISBN" name="inputISBN"
+										placeholder="Insert ISBN" maxlength="13">
 								</div>
 								<div class="form-group">
 									<label for="inputTitle">Title Of The Book</label> <input
@@ -154,32 +175,32 @@
 									<tr>
 										<td>
 											<div class="form-group">
-												<input id="book-isbn" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input id="book-title" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input id="book-author" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input id="book-publish-year" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input id="book-description" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 										<td>
 											<div class="form-group">
-												<input id="book-total" type="text" class="form-control" value="1">
+												<input type="text" class="form-control" value="1">
 											</div>
 										</td>
 
@@ -198,5 +219,14 @@
 		</div>
 
 	</div>
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+			<script
+		src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+	<script type="text/javascript"
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+
+	<script type="text/javascript" src="/resources/js/bookmanagement.js"></script>
 </body>
 </html>

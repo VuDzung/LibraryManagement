@@ -3,6 +3,7 @@ $(document).ready(function(){
 		rules:{
 			userName:{
 				required: true,
+				email: true,
 				maxlength: 16
 			},
 			password:{
@@ -21,6 +22,7 @@ $(document).ready(function(){
 		messages:{
 			userName:{
 				required: "Username is required",
+				email: "UserName must be email",
 				maxlength: "Username must be less than 16 characters"
 			},
 			password:{

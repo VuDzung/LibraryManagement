@@ -4,17 +4,21 @@
 <title>Administrator</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<script	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="../resources/css/adminCss2.css" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+<link rel="stylesheet" href="../resources/css/adminCss2.css"
+	type="text/css" />
+<script src="/resources/js/jquery.twbsPagination.min.js"></script>
 <script>
 	$(document).ready(function() {
-		$("#content").load("bookmanagement");
 		$("#books").click(function() {
 			$("#content").load("bookmanagement");
 		});
@@ -24,67 +28,67 @@
 		$("#reportTicket").click(function() {
 			$("#content").load("reportsTicket");
 		});
+		$("#books").trigger('click');
 	});
 </script>
-<script	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse headerCustom">
 		<div class="container-fluid">
 			<div class="navbar-header">
+
 				<a class="navbar-brand" href="/admin">Library Management</a>
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="#">Home</a></li>
 
-				<li id="books" th:num="${numofpage}"><a href="#" aria-expanded="false"> <i
-						class="glyphicon glyphicon-book"></i> Books
+				<li id="books" th:num="${numofpage}"><a href="#"
+					aria-expanded="false"> <i class="glyphicon glyphicon-book"></i>
+						Books
 				</a></li>
 
 				<li id="ticket"><a href="#" aria-expanded="false"> <i
 						class="glyphicon glyphicon-tag"></i> Tickets
 				</a></li>
 				<li id="reportTicket"><a href="#" aria-expanded="false"> <i
-						class="glyphicon glyphicon-tag"></i> Statictis
+						class="glyphicon glyphicon-file"></i> Statictis
 				</a></li>
-				<!-- 				<li class="dropdown"><a class="dropdown-toggle" -->
-				<!-- 					data-toggle="dropdown" href="#"><i -->
-				<!-- 						class="glyphicon glyphicon-file"></i> Reports <span class="caret"></span></a> -->
-				<!-- 					<ul class="dropdown-menu"> -->
-				<!-- 						<li id="reportTicket"><a href="#"> Borrowing Tickets</a></li> -->
-				<!-- 						<li id="reportIncome"><a href="#"> Income</a></li> -->
-				<!-- 					</ul></li> -->
+				<!--<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-file"></i> Reports <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"> Borrowing Tickets</a></li>
+                  <li><a href="#"> Income</a></li>
+                </ul>
+              </li>-->
 
 			</ul>
 
 
 			<ul class="nav navbar-nav navbar-right">
-				<!-- 				<li class="dropdown"><a class="dropdown-toggle" -->
-				<!-- 					data-toggle="dropdown" href="#"> <span -->
-				<!-- 						class="glyphicon glyphicon-user"></span></a> -->
-				<!-- 					<ul class="dropdown-menu"> -->
-				<!-- 						<li><a href="#"><span class="glyphicon glyphicon-user"></span> -->
-				<!-- 								Your Profile</a></li> -->
-				<!-- 						<li><a href="#"><span class="glyphicon glyphicon-wrench"></span> -->
-				<!-- 								Edit Your Profile</a></li> -->
-				<!-- 						<li><a href="#"><span class="glyphicon glyphicon-cog"></span> -->
-				<!-- 								Account Settings</a></li> -->
-				<!-- 						<li class="divider"></li> -->
-				<!-- 						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> -->
-				<!-- 								Log Out</a></li> -->
-				<!-- 					</ul></li> -->
-				<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
-						Log Out</a></li>
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <span
+						class="glyphicon glyphicon-user"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+								Your Profile</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-wrench"></span>
+								Edit Your Profile</a></li>
+						<li><a href="#"><span class="glyphicon glyphicon-cog"></span>
+								Account Settings</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
+								Log Out</a></li>
+					</ul></li>
 			</ul>
 		</div>
 	</nav>
 
+	<!-- load page -->
 	<div class="container" id="content"></div>
 
 	<nav class="navbar navbar-inverse navbar-fixed-bottom bottomCustom">
 		<div class="container-fluid">
 			<div class="copyright">&copy; Copy right 2018 | Designed by
-				Group 2 - Fersher Java DXC.technology 04/2018</div>
+				Group 2 - Fresher Java DXC.technology 04/2018</div>
 		</div>
 	</nav>
 
