@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-//	$('#addBook').click(function() {
-//		 myaddbook();
-//	}
-	
 	$('#addBookForm').validate({
 		rules : {
 			inputISBN : {
@@ -11,7 +7,9 @@ $( document ).ready(function() {
 			},
 			inputTotal : {
 				required : true,
-				digits : true
+				digits : true,
+				minlength: 1,
+				maxlength: 3
 			}
 		},
 		messages : {
@@ -21,11 +19,12 @@ $( document ).ready(function() {
 			},
 			inputTotal : {
 				required : 'Total is required',
-				digits : 'Total must be number'
+				digits : 'Total must be number',
+				minlength: 'Total must be greater than 1',
+				maxlength: 'Total must be less than 999'
 			}
 		}
 	});
-
 
 	$('#close').click(function() {
 		$('#inputISBN').val('');
