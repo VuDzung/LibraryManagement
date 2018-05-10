@@ -7,30 +7,10 @@
 	<meta name="author" content="Web Domus Italia">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <!---->
+	<!-- Backup CSS -->
+	<link rel="stylesheet" type="text/css" href="/resources/css/css_home.css">
 </head>
 <body>
-
-<!-- Google Fonts  Phần header va footer-->
-<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.bootstrap.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.font-awesome.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.slider.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/headerFooter.mystyle.css">
-<link rel="stylesheet" type="text/css" href="/resources/css/listsBook.css">
-
-
-<!-- Google Fonts  Phần khung show book-->
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,300,700,600' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,100' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="/resources/css/showBook.owl.carousel.css">
-<link rel="stylesheet" href="/resources/css/showBook.styleBody.css">
-    
-<!--<link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />-->
-<!--<link rel="stylesheet" type="text/css" href="../resources/css/home.css">-->
-
-
-
 <div class="allcontain">
 	<div class="header">
 			<ul class="socialicon">
@@ -99,9 +79,6 @@
 			<div class="item">
 				<img src="../resources/images/sach3.jpg" alt="sach3">
 				<div class="carousel-caption">
-					<!--<h2>Car</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur ,<br>
-						sed do eiusmod tempor incididunt ut labore </p>-->
 				</div>
 			</div>
 		</div>
@@ -119,7 +96,6 @@
 				<br><br>
 				<form class="navbar-form navbar-left searchformmargin" role="search">
 					<div class="form-group">
-<!--						<input type="text" class="form-control searchform" placeholder="Enter Keyword">-->
                         <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
@@ -128,12 +104,6 @@
 					   <li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
 				    </ul>
                 </a>
-                
-<!--
-				<ul class="nav navbar-nav navbarborder">
-					<li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
-				</ul>
--->
 			</div>
 		</nav>
 	</div>
@@ -203,20 +173,22 @@
                                 </div>
                                 <br>
 								<br>
-								<div class="form-group">
-									<label>ISBN</label> <p id="book-isbn">code in here</p>
-								</div>
-                                <div class="form-group">
-									<label>Title Of The Book: </label> <p id="book-title">Nhật Ký Trong Tù</p>
-								</div>
-                                <div class="form-group">
-									<label>Author: </label> <p id="book-author">Ho Chi Minh</p>
-								</div>
-                                <div class="form-group">
-									<label>Publish Year: </label> <p id="book-publish-year">2008</p>
-								</div>
-                                <div class="form-group">
-									<label>Short Description</label> <p id="book-description">Somethings in here</p>
+								<div class="titleShowBook">
+									<div class="form-group">
+										<label>ISBN</label> <p id="book-isbn">code in here</p>
+									</div>
+	                                <div class="form-group">
+										<label>Title Of The Book: </label> <p id="book-title">Nhật Ký Trong Tù</p>
+									</div>
+	                                <div class="form-group">
+										<label>Author: </label> <p id="book-author">Ho Chi Minh</p>
+									</div>
+	                                <div class="form-group">
+										<label>Publish Year: </label> <p id="book-publish-year">2008</p>
+									</div>
+	                                <div class="form-group">
+										<label>Short Description</label> <p id="book-description">Somethings in here</p>
+									</div>
 								</div>
 							</form>
 						</div>
@@ -229,44 +201,50 @@
 			</div>
 		</div>
 <!-- ________________________LIST BOOKS _______________________-->
-<div class="latestcars">
-        <h1 class="text-center">&bullet; LIST BOOKS &bullet;</h1>
-    </div>
-    <div class="galary" th:num="${numofpage}">
-
-        
-    </div>
-    <nav aria-label="Page navigation">
-        <ul class="pagination" id="pagination"></ul>
-    </nav>
-
+	<div class="allcontain">
+		<div class="latestcars">
+	        <h1 class="text-center">&bullet; LIST BOOKS &bullet;</h1>
+	    </div>
+	    <div class="galary" th:num="${numofpage}">
+	
+	        
+	    </div>
+	    <nav aria-label="Page navigation">
+	        <ul class="pagination" id="pagination"></ul>
+	    </nav>
+	</div>
 <div class="allcontain">   
-<!-- _______________________________News Letter ____________________-->
-	<div class="newslettercontent">
-		<div class="leftside">
-			<img src="../resources/images/border.png" alt="border">
-			<h1>NEWSLETTER</h1>
-			<p>Subscribe to the COLLECTIONCARS mailing list to <br>
-				receive updates on new arrivals, special offers <br>
-				and other discount information.</p>
-		</div>
-		<div class="rightside">
-			<img class="newsimage" src="../resources/images/newsletter.jpg" alt="newsletter">
-			<input type="text" class="form-control" id="subemail" placeholder="EMAIL">
-			<button>SUBSCRIBE</button>
+<!-- _______________________________________________________Contact ______________________________-->
+	<div class="allcontain">
+		<div class="contact">
+		<div class="newslettercontent">
+				<div class="leftside">
+					<img id="image_border" src="../resources/images/border.png" alt="border">
+						<div class="contact-form">
+							<h1>Contact Us</h1>
+								<div class="form-group group-coustume">
+									<p class="form-control name-form"><strong>Library:</strong> DXC Library</p>
+									<p class="form-control name-form"><strong>Phone:</strong> 0123456789</p>
+									<p class="form-control name-form"><strong>Email:</strong> dxclibrary123@gmail.com</p>
+									<p class="form-control name-form"><strong>Fax:</strong> dxclibrary123@gmail.com</p>
+									<p class="form-control name-form"><strong>Address:</strong> 364 Cong Hoa, Tan Binh</p>
+								</div>
+						</div>
+				</div>
+				<div class="google-maps">
+				 <div id="googleMap"></div>
+
+				</div>
+			</div>
+
 		</div>
 	</div>
+		<!-- ______________________________________________________End Contact ______________________________-->
 	<!-- ______________________________________________________Bottom Menu ______________________________-->
 	<div class="bottommenu">
 		<div class="bottomlogo">
 		<span class="dotlogo">&bullet;</span><img src="../resources/images/footerLogo.png" alt="logo1"><span class="dotlogo">&bullet;;</span>
 		</div>
-		<ul class="nav nav-tabs bottomlinks">
-			<li role="presentation" ><a href="#/" role="button">HOME</a></li>
-			<li role="presentation"><a href="#/">ABOUT US</a></li>
-			<li role="presentation"><a href="#/">FIND US</a></li>
-			<li role="presentation"><a href="#/">CONTACT US</a></li>
-		</ul>
 		<p>"To laugh with others is one of life’s great pleasures. To be laughed at by others is one of life’s great hurts."<br> </p>
 		 <img src="../resources/images/line.png" alt="line"> <br>
 		 <div class="bottomsocial">
@@ -285,6 +263,47 @@
 			</div>
 	</div>
 </div>
+
+<!--Contact JS-->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+
+var myCenter=new google.maps.LatLng(10.801726,106.640103);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:16,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+
+marker.setMap(map);
+}
+</script>
+<!--    Cái Script này dùng cho cả google API, cố định để đây không được di chuyển. -->
+<script type="text/javascript" src="../resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>  
+<script>
+	$(window).resize(function(){
+		var new_height = $("#image_border").height();
+		console.log(new_height);
+		$("#googleMap").height(new_height);
+	});
+
+	$(window).load(function(){
+		var new_height = $("#image_border").height();
+		$("#googleMap").height(new_height);
+		google.maps.event.addDomListener(window, 'load', initialize());
+	});
+	
+</script>
+<!--End contact JS-->
 
 <script type="text/javascript" src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
 <script type="text/javascript" src="/resources/js/headerFooter.isotope.js"></script>

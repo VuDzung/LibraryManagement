@@ -225,6 +225,10 @@ table, td, th {
 	left: 0;
 }
 
+#mySidenav a:focus {
+	left: 0;
+}
+
 #week {
 	top: 20px;
 	background-color: #4CAF50;
