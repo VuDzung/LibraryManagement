@@ -137,7 +137,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 43px 88px 93px 190px;
+  padding: 43px 88px 40px 190px;
 }
 
 
@@ -207,8 +207,7 @@ label {
   transition: all 0.6s;
 
   background: #57b846;
-}
-
+} 
 
 /*---------------------------------------------*/
 input.input100 {
@@ -271,6 +270,7 @@ input.input100 {
   transform: translateY(-50%);
 }
 
+
 .input-checkbox100:checked + .label-checkbox100::before {
   color: #57b846;
 }
@@ -327,10 +327,12 @@ input.input100 {
     padding-bottom: 3%;
 }
 .btnS{
-	padding-left: 22%;
+	padding-left: 27%;
+    padding-right: 15%;
 }
 .cssbottomctrlSubmit1{
-	padding-top: 3%;
-    margin-left: 12%;
-    width: 130%;
+    bottom: 0;
+    float: right;
+    padding-right: 3%;
+    padding-bottom: 0%;
 }
