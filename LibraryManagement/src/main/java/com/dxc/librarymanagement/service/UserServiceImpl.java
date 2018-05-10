@@ -31,6 +31,11 @@ public class UserServiceImpl {
 	public LibUser findByIdUser(int iduser){
 		return libUserDAO.findByIdUser(iduser);
 	}
+	
+	LibUser findByUserName(String username) {
+		return this.libUserDAO.findByUserName(username);
+	}
+	
 	//get number of page for paginate in database
 	public int getPaginatePageNum() {
 		double records = this.libUserDAO.count();
