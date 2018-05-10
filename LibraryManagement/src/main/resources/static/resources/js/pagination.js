@@ -34,7 +34,7 @@ $(function () {
                                                                             <p class='price'>Status: "+status+" </p>\
                                                                             <p>Year publish: "+val.book.publishYear+" </p>\
                                                                             <button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"'> Read more </button>\
-                                                                            <button class='btn btn-success' "+notvailable+">BORROW</button>\
+                                                                            <button class='btn btn-success btn-borrow' isbn='"+val.isbn+"' "+notvailable+">BORROW</button>\
                                                                         </div>\
                                                                         <div class='stars2'>\
                                                                             <div class='glyphicon glyphicon-star'></div>\
@@ -87,11 +87,27 @@ $(function () {
     		 };
             }
     	 });
-    	function checkvalidateisbn(isbn) {
-    		$.ajax({
+        
+        //borrow
+        $("body").on("click", ".btn-borrow", function() {
+        	var isbn = $(this).attr("isbn");
+        	$.ajax({
     			type : "GET",
     			dataType : 'json',
     			contentType : "application/json",
+    			url : '/home/borrow/' + isbn,
+    			success : function(data) {
+    				alert: data.status;
+    			},
+    			error : function(e) {
+    				console.log("ERROR : ", e);
+    			}
+    		});
+        });
+        
+    	function checkvalidateisbn(isbn) {
+    		$.ajax({
+    			type : "GET",
     			url : '/bookmanagement/checkisbn/' + isbn,
     			success : function(data) {
     				setdatatomodal(data);
@@ -116,7 +132,7 @@ $(function () {
 			    $("#book-author").text(data.book.author);
 			    $("#book-publish-year").text(data.book.publishYear);
 			    $("#book-description").text(data.book.shortDescription);
-			    $("#addBook").attr('value',data.isbn);
+			    $("#addBook").attr('isbn',data.isbn);
 			}
     	}
     });

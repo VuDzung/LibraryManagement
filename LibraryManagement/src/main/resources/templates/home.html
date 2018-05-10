@@ -136,7 +136,7 @@
                                                         <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
                                                         <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
                                                         <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
-                                                        <button class="btn btn-success" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}">BORROW</button>
+                                                        <button class="btn btn-success btn-borrow" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}" th:isbn="${newbook.isbn}">BORROW</button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
                                                     </div>
                                                     <div class="stars2">
@@ -194,7 +194,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="addBook" type="button" class="btn btn-success">Borrow</button>
+						<button id="addBook" type="button" class="btn btn-success btn-borrow">Borrow</button>
 						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
 					</div>
 				</div>
