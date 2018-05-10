@@ -1,4 +1,5 @@
 $(function () {
+		var paginate_time = 0;
         var total = $(".galary").attr("num");
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
@@ -50,14 +51,13 @@ $(function () {
                         });
                     }
                 });
-                $("html, body").animate({
-    	            scrollTop: $('.galary').offset().top 
-    	        });
+                if(paginate_time==1)
+	                $("html, body").animate({
+	    	            scrollTop: $('.galary').offset().top 
+	    	        });
+                else paginate_time=1;
             }
         });
-	    $("html, body").animate({
-	        scrollTop: $('body').offset().top 
-	    });
         $("body").on("click", ".btn-info", function() {
             var info_url = "./home/book/"+$(this).attr("isbn");
             $.ajax({
@@ -93,8 +93,6 @@ $(function () {
         	var isbn = $(this).attr("isbn");
         	$.ajax({
     			type : "GET",
-    			dataType : 'json',
-    			contentType : "application/json",
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
     				alert: data.status;

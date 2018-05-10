@@ -27,9 +27,11 @@ public class BorrowBookServiceImpl {
 	public List<LibBorrowBook> getBorrowBookOfUser(int iduser) {
 		return this.borrowbookdao.findByUser(this.userservice.findByIdUser(iduser));
 	}
+	
 	public LibBorrowBook save(LibBorrowBook borrowbook) {
 		return borrowbookdao.save(borrowbook);
 	}
+	
 	public LibBorrowBook saveBorrowBook(String isbn, Principal principal) {
 		LibIsbn libisbn = this.isbnservice.findByIsbn(isbn);
 		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
@@ -37,7 +39,19 @@ public class BorrowBookServiceImpl {
 		user.setBorrowedNumber(user.getBorrowedNumber()+1);
 		LibBorrowBook libborrow = new LibBorrowBook();
 		libborrow.setDateBorrow(new Date());
-		libborrow.setIsbnBean(isbnservice.save(libisbn));
+		libborrow.setIsbnBean(isbnservice.saveIsbn(libisbn));
+		libborrow.setUser(userservice.saveUser(user));
+		return borrowbookdao.save(libborrow);
+	}
+	
+	public LibBorrowBook returnBorrowBook(int idborrow) {
+		LibBorrowBook libborrow = borrowbookdao.findByIdBorrow(idborrow);
+		LibIsbn libisbn = libborrow.getIsbnBean();
+		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()-1);
+		LibUser user = libborrow.getUser();
+		user.setBorrowedNumber(user.getBorrowedNumber()-1);		
+		libborrow.setDateReturn(new Date());
+		libborrow.setIsbnBean(isbnservice.saveIsbn(libisbn));
 		libborrow.setUser(userservice.saveUser(user));
 		return borrowbookdao.save(libborrow);
 	}
