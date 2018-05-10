@@ -35,4 +35,15 @@ public class StatisticController {
 		return borrowdao.getWeekly(week,year);
 	}
 	
+	@RequestMapping(value= "/home/statistic/topbook/{year}")
+	@ResponseBody
+	public List<Map<Integer,String>> getTopBookOfDaYear(@PathVariable Integer year) {
+		return borrowdao.getTopBookOfDaYear(year);
+	}
+	
+	@RequestMapping(value= "/home/statistic/topbook/{year}/{month}")
+	@ResponseBody
+	public List<Map<Integer,String>> getTopBookOfDaYear(@PathVariable Integer year,@PathVariable Integer month) {
+		return borrowdao.getTopBookOfDaMonth(year,month);
+	}
 }

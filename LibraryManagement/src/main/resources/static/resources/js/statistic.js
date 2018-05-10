@@ -7,7 +7,7 @@ $('#year').click(function() {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Ahihi"
+			text: "Total Borrowed Books of da Year"
 		},
 		axisY: {
 			title: "Borrowed Books",
@@ -41,17 +41,62 @@ $('#year').click(function() {
 	    	console.log('ok');
 	    }
 	 });
-	}) 
+
+	
+	var dataPoints2 = [];
+	var chart2 = new CanvasJS.Chart("chartContainer2", {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: "Top 5 Borrowed Books of The Year"
+		},
+		axisY: {
+			title: "Borrowed Books",
+			titleFontSize: 24
+		},
+		axisX:{	        	       
+	   		interval: 1,
+			intervalType: "year",
+			valueFormatString: "####"
+	    },
+		data: [{
+			type: "pie",
+			indexLabelFontColor: "red",
+			indexLabel: "{title}: {y} (times)",				
+			xValueFormatString: "#",
+			dataPoints: dataPoints2
+		}]
+	});
+
+
+	$.ajax({
+	    url : "/home/statistic/topbook/" + today.getFullYear() ,
+	    success : function(data2) {
+	    	for (var i = 0; i < data2.length; i++) {
+	    		dataPoints2.push({
+	    			title: data2[i].Title,
+	    			y: data2[i].total
+	    		});
+	    	}
+	    	chart2.render();
+	    	console.log('ok');
+	    }
+	 });
+	
+}) 
+	
+	
 	
 $('#month').click(function() {
-	var today = new Date()
+	var today = new Date();
+	var realMonth = today.getMonth() +1;
 	var dataPoints = [];
 
 	var chart = new CanvasJS.Chart("chartContainer", {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Ahihi"
+			text: "Total Borrowed Books of the Month"
 		},
 		axisY: {
 			title: "Borrowed Books (Units)",
@@ -130,7 +175,49 @@ $('#month').click(function() {
 	    	console.log('ok');
 	    }
 	 });
-	}) 
+	
+	
+
+	var dataPoints2 = [];
+	var chart2 = new CanvasJS.Chart("chartContainer2", {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: "Top 5 Borrowed Books of Da Month"
+		},
+		axisY: {
+			title: "Borrowed Books",
+			titleFontSize: 24
+		},
+		axisX:{	        	       
+	   		interval: 1,
+			intervalType: "year",
+			valueFormatString: "####"
+	    },
+		data: [{
+			type: "pie",
+			indexLabelFontColor: "red",
+			indexLabel: "{title}: {y} (times)",				
+			xValueFormatString: "#",
+			dataPoints: dataPoints2
+		}]
+	});
+
+
+	$.ajax({
+	    url : "/home/statistic/topbook/" + today.getFullYear() + "/" + realMonth ,
+	    success : function(data2) {
+	    	for (var i = 0; i < data2.length; i++) {
+	    		dataPoints2.push({
+	    			title: data2[i].Title,
+	    			y: data2[i].total
+	    		});
+	    	}
+	    	chart2.render();
+	    	console.log('ok');
+	    }
+	 });
+}) 
 	
 	
 Date.prototype.getWeek = function() {
@@ -146,7 +233,7 @@ $('#week').click(function() {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Ahihi"
+			text: "Total Borrowed Books of da Week"
 		},
 		axisY: {
 			title: "Borrowed Books",
@@ -217,5 +304,49 @@ $('#week').click(function() {
 	 });
 	}) 
 	
+
+$('#year2').click(function() {
+	var today = new Date()
+	var dataPoints = [];
+
+	var chart = new CanvasJS.Chart("chartContainer2", {
+		animationEnabled: true,
+		theme: "light2",
+		title: {
+			text: "Ahihi"
+		},
+		axisY: {
+			title: "Borrowed Books",
+			titleFontSize: 24
+		},
+		axisX:{	        	       
+	   		interval: 1,
+			intervalType: "year",
+			valueFormatString: "####"
+	    },
+		data: [{
+			type: "pie",
+			indexLabelFontColor: "red",
+			indexLabel: "{title}: {y} (times)",				
+			xValueFormatString: "#",
+			dataPoints: dataPoints
+		}]
+	});
+
+
+	$.ajax({
+	    url : "/home/statistic/topbook/" + today.getFullYear() ,
+	    success : function(data) {
+	    	for (var i = 0; i < data.length; i++) {
+	    		dataPoints.push({
+	    			title: data[i].Title,
+	    			y: data[i].total
+	    		});
+	    	}
+	    	chart.render();
+	    	console.log('ok');
+	    }
+	 });
+	}) 
 	
 	

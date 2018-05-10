@@ -25,5 +25,24 @@ public interface LibBorrowBookDAO extends JpaRepository<LibBorrowBook, Integer> 
 			"from LibBorrowBook where  DATEPART(WW,DateBorrow)=:week and YEAR(DateBorrow)=:year \r\n" + 
 			"group by datepart(dw, DateBorrow)", nativeQuery = true)
 	public List<Map<Integer,Integer>> getWeekly(@Param("week") Integer week, @Param("year") Integer year);
-
+	
+	@Query(value="select top 5 COUNT(bb.ISBN) as total , b.TitleOfBook as Title from LibBorrowBook bb, LibISBN i, LibBook b  \r\n" + 
+			"where \r\n" + 
+			"	bb.ISBN = i.ISBN and i.IdBook = b.IdBook and\r\n" + 
+			"	YEAR(DateBorrow)=:year\r\n" + 
+			"group by b.TitleOfBook order by total desc", nativeQuery=true)
+	public List<Map<Integer,String>> getTopBookOfDaYear(@Param("year") Integer year);
+	
+	
+	
+	@Query(value="select top 5 COUNT(bb.ISBN) as total , b.TitleOfBook as Title from LibBorrowBook bb, LibISBN i, LibBook b  \r\n" + 
+			"	where \r\n" + 
+			"		bb.ISBN = i.ISBN and i.IdBook = b.IdBook and\r\n" + 
+			"		month(DateBorrow)=:month and YEAR(DateBorrow)=:year\r\n" + 
+			"	group by b.TitleOfBook\r\n" + 
+			"	order by total desc", nativeQuery=true)
+	public List<Map<Integer,String>> getTopBookOfDaMonth(@Param("year") Integer year,@Param("month") Integer month);
+	
+	
+	
 }
