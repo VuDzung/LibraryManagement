@@ -14,3 +14,5 @@ Finally run the project by right-clicking on the project in eclipse> Run as> Spr
 Open your browser, visit http: // localhost: 8080 to see the website
 
 You can use the account: "hqt95na@gmail.com" with password: "1" to test the function
+
+Note: By default, the website will direct you to the admin page, so you can access http: // localhost: 8080 / home to access the main page (we will update the interface soon to be able to access the main page with a click)
