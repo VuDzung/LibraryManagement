@@ -9,28 +9,8 @@ $(function () {
                 $.ajax({
                     url : url,
                     success : function(data) {
-                    	var status="";
                         $.each(data, function(key, val){
-                        	if(val.borrowedNumber>0) status="";
-                        	else status="disabled";
-                            $("#tickets-management").append('<tr>\
-                                                                <td>'+val.idUser+'</td>\
-                                                                <td>'+val.userName+'</td>\
-                                                                <td>'+val.fullName+'</td>\
-                                                                <td>'+val.role.nameRole+'</td>\
-                                                                <td>'+val.limitNumber+'</td>\
-                                                                <td>\
-                                                                    <button type="button" class="btn btn-default btn-sm btn-borrowed"\
-                                                                        data-toggle="modal" data-target="#modalview" user="'+val.idUser+'" '+status+'>'+val.borrowedNumber+'\
-                                                                    </button>\
-                                                                </td>\
-                                                                <td>\
-                                                                    <button type="button" class="btn btn-default btn-sm btn-ticket-edit"\
-                                                                        data-toggle="modal" data-target="#add" user="'+val.idUser+'">\
-                                                                        <span class="glyphicon glyphicon-edit"></span> edit\
-                                                                    </button>\
-                                                                </td>\
-                                                            </tr>');                                                                      
+                        	setdatapopup(val);                                                                     
                         });
                     }
                 });
@@ -78,4 +58,68 @@ $(function () {
                 }
             });
         });
+        
+        
+        $('#w-input-searchuser').autocomplete({
+    		autoSelectFirst: true,
+    		serviceUrl: '/search/user',
+    		paramName: "username",
+    		delimiter: ",",
+    		onSelect: function(suggestion) {
+    			getinforuser(suggestion.data);
+    			$(".divNextPage").attr('hidden','');
+            },
+    	   transformResult: function(response) {
+    		    	
+    		return {      	
+    		  suggestions: $.map($.parseJSON(response), function(item) {
+    		      return { value: item.fullName + '( Account: ' + item.userName + ' ) ', data: item.idUser };
+    		   })
+    		            
+    		 };
+            }
+    	 });
+    	function getinforuser(iduser) {
+    		$.ajax({
+    			type : "GET",
+    			dataType : 'json',
+    			contentType : "application/json",
+    			url : '/search/user/' + iduser,
+    			success : function(data) {
+    				if (data != null && data.idUser != null) {
+    					$("#tickets-management").empty();
+    					setdatapopup(data);
+    				}
+    				
+    				 //window.location.href = "home";
+    			},
+    			error : function(e) {
+    				console.log("ERROR : ", e);
+    			}
+    		});
+    	}
+    	
+    	function setdatapopup(val){
+    		var status="";
+            	if(val.borrowedNumber>0) status="";
+            	else status="disabled";
+                $("#tickets-management").append('<tr>\
+                                                    <td>'+val.idUser+'</td>\
+                                                    <td>'+val.userName+'</td>\
+                                                    <td>'+val.fullName+'</td>\
+                                                    <td>'+val.role.nameRole+'</td>\
+                                                    <td>'+val.limitNumber+'</td>\
+                                                    <td>\
+                                                        <button type="button" class="btn btn-default btn-sm btn-borrowed"\
+                                                            data-toggle="modal" data-target="#modalview" user="'+val.idUser+'" '+status+'>'+val.borrowedNumber+'\
+                                                        </button>\
+                                                    </td>\
+                                                    <td>\
+                                                        <button type="button" class="btn btn-default btn-sm btn-ticket-edit"\
+                                                            data-toggle="modal" data-target="#add" user="'+val.idUser+'">\
+                                                            <span class="glyphicon glyphicon-edit"></span> edit\
+                                                        </button>\
+                                                    </td>\
+                                                </tr>');                                                                      
+    	}
     });
