@@ -29,4 +29,7 @@ public class IsbnServiceImpl {
 	public List<LibIsbn> findByBookIds(Iterable<LibBook> books) {
         return isbndao.findByBookIn(books);
     }
+	public LibIsbn save(LibIsbn isbn) {
+		return isbndao.save(isbn);
+	}
 }

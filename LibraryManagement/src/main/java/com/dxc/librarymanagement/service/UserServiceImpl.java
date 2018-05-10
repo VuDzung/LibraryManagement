@@ -32,7 +32,7 @@ public class UserServiceImpl {
 		return libUserDAO.findByIdUser(iduser);
 	}
 	
-	LibUser findByUserName(String username) {
+	public LibUser findByUserName(String username) {
 		return this.libUserDAO.findByUserName(username);
 	}
 	
@@ -47,5 +47,5 @@ public class UserServiceImpl {
 	public List<LibUser> getPaginateUsers(int number) {
 		Pageable pageable = PageRequest.of(number - 1, this.LimitRecords);
 		return libUserDAO.findAll(pageable).getContent();
-	}		
+	}
 }
