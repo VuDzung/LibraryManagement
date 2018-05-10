@@ -54,7 +54,7 @@
 							<strong>Register Failed!</strong> Please check the input
 							information.
 						</div>
-						<!-- <div class="divR"> -->
+						<!-- <div class="form-group"> -->
 							<!--username-->
 							<div class="wrap-input100 ">
 								<span class="label-input100">Username</span> <input
@@ -87,9 +87,9 @@
 
 
 							<!--role-->
-							<div id="role" class="wrap-input100">
+							<div id="role">
 								<span class="label-input100">Role</span> <select
-									th:field="*{role}" name="ignore">
+									class="form-control" th:field="*{role}" name="ignore">
 									<option th:each="role : ${listRole}" th:value="${role.idRole}"
 										th:text="${role.nameRole}"></option>
 								</select>
