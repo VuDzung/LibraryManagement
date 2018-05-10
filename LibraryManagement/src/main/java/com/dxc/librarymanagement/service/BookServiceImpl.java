@@ -58,7 +58,7 @@ public class BookServiceImpl {
 	// get New Book List
 	public List<LibIsbn> getNewBook() {
 		Pageable pageable = PageRequest.of(0, 10);
-		return this.isbndao. findFirst10(pageable);
+		return this.isbndao.findFirst10();
 	}
 
 	// get List Book for paginating
