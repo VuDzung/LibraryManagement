@@ -320,13 +320,17 @@ input.input100 {
   background-color: #333333;
 }
 
-.divctrlSubmit{
-	padding-top:2%;
-}
-
-.cssbottomctrlSubmit{
+.cssbottomctrlSubmit, .cssbottomctrlSubmit1{
 	font-family: Poppins-Regular;
     font-size: 15px;
     color: #808080;
-    padding-top:3%;
+    padding-bottom: 3%;
+}
+.btnS{
+	padding-left: 22%;
+}
+.cssbottomctrlSubmit1{
+	padding-top: 3%;
+    margin-left: 12%;
+    width: 130%;
 }
