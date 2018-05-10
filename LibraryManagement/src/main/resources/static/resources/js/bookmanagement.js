@@ -92,26 +92,6 @@ $(function () {
 						}
 	});
 
-	// function checkvalidateisbn() {
-	// var isbn = document.getElementById('inputISBN').value;
-	// $.ajax({
-	// type : "GET",
-	// dataType : 'json',
-	// contentType : "application/json",
-	// url : '/bookmanagement/checkisbn/' + isbn,
-	// success : function(data) {
-	// if (data != null && data.isbn != null) {
-	// alert("Error");
-	// }
-	// // $("#myresul2t").text(data.nameRole);
-	// // window.location.href = "home";
-	// },
-	// error : function(e) {
-	// console.log("ERROR : ", e);
-	// }
-	// });
-	//
-	// }
 
 	// paginate-----------------------
 	var total = $("#books").attr("num");
@@ -125,28 +105,7 @@ $(function () {
                 url : url,
                 success : function(data) {
                     $.each(data, function(key, val){
-                        var status = "Unavailable";
-                        var notvailable = "disabled";
-                        if(val.totalBook>val.numberBooksBorrowed){
-                        	status = "Available";
-                        	notvailable = "";
-                        }
-                        $("#book-management").append('<tr>\
-														<td>'+val.isbn+'</td>\
-														<td>'+val.book.titleOfBook+'</td>\
-														<td>'+val.book.author+'</td>\
-														<td>'+val.book.publishYear+'</td>\
-														<td>'+val.book.shortDescription+'</td>\
-														<td>'+val.totalBook+'</td>\
-														<td style="width:11%;">\
-															<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
-																<span class="glyphicon glyphicon-edit"></span> Edit\
-															</button>\
-															<button type="button" class="btn btn-custom btn-sm" isbn="'+val.isbn+'">\
-																<span class="glyphicon glyphicon-trash"></span>\
-															</button>\
-														</td>\
-													</tr>');                           
+                    	setdataaline(val);                       
                                                 
                     });
                 }
@@ -168,6 +127,70 @@ $(function () {
             }
          });
      });
+    
+    
+    $('#w-input-searchbook').autocomplete({
+		autoSelectFirst: true,
+		serviceUrl: '/search/book',
+		paramName: "titlebook",
+		delimiter: ",",
+		onSelect: function(suggestion) {
+			checkvalidateisbn(suggestion.data);
+			$(".divNextPage").attr('hidden','');
+        },
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+		   })
+		            
+		 };
+        }
+	 });
+	function checkvalidateisbn(isbn) {
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/bookmanagement/checkisbn/' + isbn,
+			success : function(val) {
+				$("#book-management").empty();
+				setdataaline(val);
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+	
+	function setdataaline(val){
+		if (val != null && val.isbn != null) {
+			var status = "Unavailable";
+            var notvailable = "disabled";
+            if(val.totalBook>val.numberBooksBorrowed){
+            	status = "Available";
+            	notvailable = "";
+            }
+            $("#book-management").append('<tr>\
+											<td class="textPosition">'+val.isbn+'</td>\
+											<td class="textPosition">'+val.book.titleOfBook+'</td>\
+											<td class="textPosition">'+val.book.author+'</td>\
+											<td class="textPosition">'+val.book.publishYear+'</td>\
+											<td>'+val.book.shortDescription+'</td>\
+											<td class="textPosition">'+val.totalBook+'</td>\
+											<td class="textPosition" style="width:11%;">\
+												<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
+													<span class="glyphicon glyphicon-edit"></span> Edit\
+												</button>\
+												<button type="button" class="btn btn-custom btn-sm" isbn="'+val.isbn+'">\
+													<span class="glyphicon glyphicon-trash"></span>\
+												</button>\
+											</td>\
+										</tr>');
+		}
+	}
+    
 });
 function myaddbook() {
 		var libIsbn = {
