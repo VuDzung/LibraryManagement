@@ -47,7 +47,8 @@
 		</div>
 
 		<div class="divNextPage">
-			<nav aria-label="Page navigation" style="text-align: center;padding-bottom: 2%;">
+			<nav aria-label="Page navigation"
+				style="text-align: center; padding-bottom: 2%;">
 				<ul class="pagination" id="pagination"></ul>
 			</nav>
 		</div>
@@ -56,7 +57,7 @@
 
 		<!-- Modal Add -->
 		<div class="modal fade" id="addModal" role="dialog">
-			<div class="modal-dialog">
+			<div class="modal-dialog modal-lg">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -65,45 +66,74 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<form id="addBookForm">
-								<div class="form-group">
-									<label for="inputISBN">ISBN</label> <input type="text"
-										class="form-control" id="inputISBN" placeholder="Insert ISBN"
-										maxlength="13" name="inputISBN">
-								</div>
-								<div class="form-group">
-									<label for="inputTitle">Title Of The Book</label> <input
-										type="text" class="form-control" id="inputTitle"
-										placeholder="Title of the book" disabled>
-								</div>
-								<div class="form-group">
-									<label for="inputAuthor">Author</label> <input type="text"
-										class="form-control" id="inputAuthor" placeholder="Author"
-										disabled>
-								</div>
-								<div class="form-group">
-									<label for="inputPublishYear">Publish Year</label> <input
-										type="text" class="form-control" id="inputPublishYear"
-										placeholder="Publish Year" disabled>
-								</div>
+							<!-- button add show -->
+							<div style="overflow-x: auto;">
+								<table class="table1">
+									<tr>
+										<td class="tdColum3">ISBN</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="text" class="form-control" id="inputISBN"
+													placeholder="Insert ISBN" maxlength="13" name="inputISBN">
+											</div>
+										</td>
+										<td class="tdColum3">Thumbnail</td>
 
-								<label>Thumbnail</label>
-								<div id="divchooseFile">
-									<img id="inputImage" src="">
-								</div>
-								<br>
-								<div class="form-group">
-									<label for="inputTotal">Total</label> <input type="number"
-										min="1" class="form-control" id="inputTotal"
-										placeholder="Insert Total" name="inputTotal">
-								</div>
-								<br>
-								<div class="form-group">
-									<label for="inputShortDescription">Short Description</label>
-									<textarea class="form-control" id="inputShortDescription"
-										rows="3" disabled></textarea>
-								</div>
-							</form>
+									</tr>
+									<tr>
+										<td class="tdColum3">Title</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="text" class="form-control" id="inputTitle"
+													placeholder="Title of the book" disabled>
+											</div>
+										</td>
+										<td class="tdColum3" rowspan="4"><div id="divchooseFile">
+												<img id="inputImage" src="">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Author</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="text" class="form-control" id="inputAuthor"
+													placeholder="Author" disabled>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Publish</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="text" class="form-control"
+													id="inputPublishYear" placeholder="Publish Year" disabled>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Total</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="number" min="1" class="form-control"
+													id="inputTotal" placeholder="Insert Total"
+													name="inputTotal">
+											</div>
+										</td>
+									<tr>
+										<td class="tdColum3">Short Description</td>
+										<td class="tdColum2" colspan="3">
+											<div class="form-group customForm-Group">
+												<textarea class="form-control" id="inputShortDescription"
+													rows="3" disabled>
+												</textarea>
+											</div>
+										</td>
+									</tr>
+
+								</table>
+							</div>
+													
+							<!-- END button add show -->
 						</div>
 					</div>
 					<div class="modal-footer">
