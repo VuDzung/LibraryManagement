@@ -1,7 +1,9 @@
-$(function () {
+$(function () {	
+        
+        //PAGINATE--------------------------------------------------------------------------------------------------------------
 		var paginate_time = 0;
-        var total = $(".galary").attr("num");
-        window.pagObj = $('#pagination').twbsPagination({
+		var total = $(".galary").attr("num");    
+		window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
             visiblePages: 10,
             onPageClick: function (evt, page) {
@@ -58,6 +60,8 @@ $(function () {
                 else paginate_time=1;
             }
         });
+        
+        //SHOW BOOK'S INFO IN POP UP--------------------------------------------------------------------------------------------
         $("body").on("click", ".btn-info", function() {
             var info_url = "./home/book/"+$(this).attr("isbn");
             $.ajax({
@@ -68,7 +72,7 @@ $(function () {
             });
         });
         
-        
+        //SEARCH BOOK-----------------------------------------------------------------------------------------------------------
         $('#w-input-search').autocomplete({
     		autoSelectFirst: true,
     		serviceUrl: '/search/book',
@@ -88,7 +92,7 @@ $(function () {
             }
     	 });
         
-        //borrow
+        //BORROW BOOK-----------------------------------------------------------------------------------------------------------
         $("body").on("click", ".btn-borrow", function() {
         	var isbn = $(this).attr("isbn");
         	$.ajax({
@@ -103,6 +107,7 @@ $(function () {
     		});
         });
         
+        //CHECK ISBN------------------------------------------------------------------------------------------------------------
     	function checkvalidateisbn(isbn) {
     		$.ajax({
     			type : "GET",
@@ -117,6 +122,7 @@ $(function () {
     		});
     	}
     	
+    	//FUNCTION TO SHOW BOOK'S INFO------------------------------------------------------------------------------------------ 
     	function setdatatomodal(data){
     		if (data != null && data.isbn != null) {
 				if(data.totalBook<=data.numberBooksBorrowed){
