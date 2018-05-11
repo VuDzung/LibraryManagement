@@ -14,24 +14,47 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 <link type="text/css" rel="stylesheet"
 	href="../resources/css/adminCss2.css" />
-	<script type="text/javascript" src="../resources/js/statistic.js"></script>
-	
-<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript" src="../resources/js/statistic.js"></script>
+
+<script type="text/javascript"
+	src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 
 
 </head>
 <body>
 	<div class="wrapper">
-		<div class="container">			
+		<div class="container">
 			<div id="mySidenav" class="sidenav">
 				<a href="#" id="week">Week</a> <a href="#" id="month">Month</a> <a
 					href="#" id="year">Year</a>
-					
+
+			</div>
+			<br />
+			<div id="chooseYear">
+				<h3>Choose Year</h3>
+				<div class="ui calendar" id="yearOnly">
+					<div class="ui input left icon">
+						<i class="time icon"></i> <input id="inputYear" type="text"
+							placeholder="Time">
+					</div>
+				</div>
 			</div>
 
-			<div id="chartContainer" style="height: auto; width: 100%; margin-bottom:400px"></div>
-			<br><hr>
+			<div id="chooseMonth">
+				<h3>Month and year</h3>
+				<div class="ui calendar" id="monthAndYear">
+					<div class="ui input left icon">
+						<i class="time icon"></i> <input id="inputMonthAndYear" type="text" placeholder="Time">
+					</div>
+				</div>
+				<br />
+			</div>
+
+			<div id="chartContainer"
+				style="height: auto; width: 100%; margin-bottom: 400px"></div>
+			<br>
+			<hr>
 			<div id="chartContainer2" style="height: auto; width: 100%;"></div>
 		</div>
 	</div>

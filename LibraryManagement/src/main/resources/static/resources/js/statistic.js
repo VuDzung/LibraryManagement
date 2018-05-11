@@ -1,13 +1,33 @@
+var today = new Date();
 
-$('#year').click(function() {
-	var today = new Date()
+$(document).ready(function(){
+	$('#inputYear').val(today.getFullYear());
+	$('#inputMonthAndYear').val(today.getMonth()+1+ " "+ today.getFullYear());
+	$('#chooseYear').hide();
+	$('#chooseMonth').hide();
+})
+//tao sua
+$('body').on('change keyup paste','#inputYear', function(){
+	console.log($(this).text());	
+});
+
+$('#yearOnly').calendar({
+  type: 'year'
+});
+
+$('#monthAndYear').calendar({
+	  type: 'month'
+	});
+
+function loadYear(){
+	var thisYear = $('#inputYear').val();
 	var dataPoints = [];
-
+	
 	var chart = new CanvasJS.Chart("chartContainer", {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Total Borrowed Books of da Year"
+			text: "Total Borrowed Books of the Year" 
 		},
 		axisY: {
 			title: "Borrowed Books",
@@ -48,7 +68,7 @@ $('#year').click(function() {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Top 5 Borrowed Books of The Year"
+			text: "Top 5 Borrowed Books of "+ thisYear
 		},
 		axisY: {
 			title: "Borrowed Books",
@@ -70,7 +90,7 @@ $('#year').click(function() {
 
 
 	$.ajax({
-	    url : "/home/statistic/topbook/" + today.getFullYear() ,
+	    url : "/home/statistic/topbook/" + thisYear ,
 	    success : function(data2) {
 	    	for (var i = 0; i < data2.length; i++) {
 	    		dataPoints2.push({
@@ -82,13 +102,10 @@ $('#year').click(function() {
 	    	console.log('ok');
 	    }
 	 });
-	
-}) 
-	
-	
-	
-$('#month').click(function() {
-	var today = new Date();
+}
+
+function loadMonth(){
+	var thisYear = $('#inputMonthAndYear').val().slice(-4);
 	var realMonth = today.getMonth() +1;
 	var dataPoints = [];
 
@@ -96,7 +113,7 @@ $('#month').click(function() {
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Total Borrowed Books of the Month"
+			text: "Total Borrowed Books of the Month in " + thisYear
 		},
 		axisY: {
 			title: "Borrowed Books (Units)",
@@ -163,7 +180,7 @@ $('#month').click(function() {
 
 
 	$.ajax({
-	    url : "/home/statistic/" + today.getFullYear(),
+	    url : "/home/statistic/" + thisYear,
 	    success : function(data) {
 	    	for (var i = 0; i < data.length; i++) {
 	    		dataPoints.push({
@@ -205,7 +222,7 @@ $('#month').click(function() {
 
 
 	$.ajax({
-	    url : "/home/statistic/topbook/" + today.getFullYear() + "/" + realMonth ,
+	    url : "/home/statistic/topbook/" + thisYear + "/" + realMonth ,
 	    success : function(data2) {
 	    	for (var i = 0; i < data2.length; i++) {
 	    		dataPoints2.push({
@@ -217,8 +234,25 @@ $('#month').click(function() {
 	    	console.log('ok');
 	    }
 	 });
-}) 
-	
+}
+
+$('#year').click(function(){
+	$('#chooseYear').show();
+	$('#chooseMonth').hide();
+	loadYear();
+}); 
+
+$('#inputYear').focusout(loadYear);
+
+
+
+$('#month').click(function(){
+	$('#chooseYear').hide();
+	$('#chooseMonth').show();
+	loadMonth();
+});
+
+$('#inputMonthAndYear').focusout(loadMonth);
 	
 Date.prototype.getWeek = function() {
   var onejan = new Date(this.getFullYear(),0,1);
