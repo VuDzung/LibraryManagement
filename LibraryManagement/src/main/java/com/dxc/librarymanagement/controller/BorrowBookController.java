@@ -18,9 +18,14 @@ public class BorrowBookController {
 	private BorrowBookServiceImpl borrowbookservice;
 	
 	@RequestMapping(value = "/home/borrow/{isbn}", method = RequestMethod.GET)
-	
 	public ResponseEntity<String> borrowBook(@PathVariable String isbn, Principal principal) {
 		this.borrowbookservice.saveBorrowBook(isbn, principal);
-		return new ResponseEntity<>(isbn,HttpStatus.OK);
+		return new ResponseEntity<>(isbn, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/admin/return/{idborrow}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> returnBook(@PathVariable int idborrow) {
+		this.borrowbookservice.returnBorrowBook(idborrow);
+		return new ResponseEntity<>(idborrow, HttpStatus.OK);
 	}
 }	

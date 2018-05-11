@@ -57,7 +57,6 @@ public class BookServiceImpl {
 
 	// get New Book List
 	public List<LibIsbn> getNewBook() {
-		Pageable pageable = PageRequest.of(0, 10);
 		return this.isbndao.findFirst10();
 	}
 
@@ -69,7 +68,7 @@ public class BookServiceImpl {
 
 	// get Number of page paginate
 	public int getPaginatePageNum() {
-		double records = this.isbndao.count();
+		double records = this.isbndao.countByStatus(true);
 		double pageNum = records / this.LimitRecords;
 		return (int) Math.ceil(pageNum);
 	}

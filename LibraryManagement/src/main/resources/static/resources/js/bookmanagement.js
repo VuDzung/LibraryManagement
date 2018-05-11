@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+	//VALIDATE ADDBOOK FORM-----------------------------------------------------------------------------------------------------
 	$('#addBookForm').validate({
 		rules : {
 			inputISBN : {
@@ -25,7 +26,8 @@ $( document ).ready(function() {
 			}
 		}
 	});
-
+	
+	//CLOSE ADD BOOK POP UP-----------------------------------------------------------------------------------------------------
 	$('#close').click(function() {
 		$('#inputISBN').val('');
 		$('#inputTitle').val('')
@@ -35,7 +37,8 @@ $( document ).ready(function() {
 		$('#inputImage').attr("src", "")
 		$('#inputTotal').val('')
 	});
-
+	
+	//AUTO GENDER BOOK INFO BY TYPE ISBN----------------------------------------------------------------------------------------
 	$('#inputISBN')
 			.keyup(
 					function() {
@@ -92,9 +95,8 @@ $( document ).ready(function() {
 						}
 	});
 
-
-	// paginate-----------------------
-	var total = $("#books").attr("num");
+	//PAGINATE------------------------------------------------------------------------------------------------------------------
+	total = $("#books").attr("num");
     window.pagObj = $('#pagination').twbsPagination({
         totalPages: total,
         visiblePages: 10,
@@ -112,6 +114,8 @@ $( document ).ready(function() {
             });
         }
     });
+    
+    //EDIT BOOK-----------------------------------------------------------------------------------------------------------------
     $("body").on("click", ".btn-edit", function() {
          var info_url = "./home/book/"+$(this).attr("isbn");
          $.ajax({
@@ -128,7 +132,23 @@ $( document ).ready(function() {
          });
      });
     
+    //DELETE BOOK---------------------------------------------------------------------------------------------------------------
+    $("body").off("click", ".btn-delete-book").on("click", ".btn-delete-book", function(ev) {
+    	isbn = $(this).attr("isbn");
+    	$.ajax({
+            url : "/bookmanagement/delete/"+isbn,
+            type : "GET",
+            success : function(data) {
+            	$("#books").attr('num',data);
+            	$("#books").trigger('click');
+            },
+	    	error : function(e) {
+				console.log("ERROR : ", e);
+			}
+    	});
+    });
     
+    //SEARCH BOOK---------------------------------------------------------------------------------------------------------------
     $('#w-input-searchbook').autocomplete({
 		autoSelectFirst: true,
 		serviceUrl: '/search/book',
@@ -148,51 +168,50 @@ $( document ).ready(function() {
 		 };
         }
 	 });
-	function checkvalidateisbn(isbn) {
-		$.ajax({
-			type : "GET",
-			dataType : 'json',
-			contentType : "application/json",
-			url : '/bookmanagement/checkisbn/' + isbn,
-			success : function(val) {
-				$("#book-management").empty();
-				setdataaline(val);
-			},
-			error : function(e) {
-				console.log("ERROR : ", e);
-			}
-		});
-	}
-	
-	function setdataaline(val){
-		if (val != null && val.isbn != null) {
-			var status = "Unavailable";
-            var notvailable = "disabled";
-            if(val.totalBook>val.numberBooksBorrowed){
-            	status = "Available";
-            	notvailable = "";
-            }
-            $("#book-management").append('<tr>\
-											<td class="textPosition">'+val.isbn+'</td>\
-											<td class="textPosition">'+val.book.titleOfBook+'</td>\
-											<td class="textPosition">'+val.book.author+'</td>\
-											<td class="textPosition">'+val.book.publishYear+'</td>\
-											<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
-											<td class="textPosition">'+val.totalBook+'</td>\
-											<td class="textPosition" style="width:11%;">\
-												<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
-													<span class="glyphicon glyphicon-edit"></span> Edit\
-												</button>\
-												<button type="button" class="btn btn-custom btn-sm" isbn="'+val.isbn+'">\
-													<span class="glyphicon glyphicon-trash"></span>\
-												</button>\
-											</td>\
-										</tr>');
-		}
-	}
-    
 });
 
+function checkvalidateisbn(isbn) {
+	$.ajax({
+		type : "GET",
+		dataType : 'json',
+		contentType : "application/json",
+		url : '/bookmanagement/checkisbn/' + isbn,
+		success : function(val) {
+			$("#book-management").empty();
+			setdataaline(val);
+		},
+		error : function(e) {
+			console.log("ERROR : ", e);
+		}
+	});
+}    
+    
+function setdataaline(val){
+	if (val != null && val.isbn != null) {
+		var status = "Unavailable";
+        var notvailable = "disabled";
+        if(val.totalBook>val.numberBooksBorrowed){
+           	status = "Available";
+           	notvailable = "";
+        }
+        $("#book-management").append('<tr>\
+										<td class="textPosition">'+val.isbn+'</td>\
+										<td class="textPosition">'+val.book.titleOfBook+'</td>\
+										<td class="textPosition">'+val.book.author+'</td>\
+										<td class="textPosition">'+val.book.publishYear+'</td>\
+										<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
+										<td class="textPosition">'+val.totalBook+'</td>\
+										<td class="textPosition" style="width:11%;">\
+											<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
+												<span class="glyphicon glyphicon-edit"></span> Edit\
+											</button>\
+											<button type="button" class="btn btn-custom btn-sm btn-delete-book" isbn="'+val.isbn+'">\
+												<span class="glyphicon glyphicon-trash"></span>\
+											</button>\
+										</td>\
+									</tr>');
+	}
+}
 
 
 function myaddbook() {

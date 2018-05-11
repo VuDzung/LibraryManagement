@@ -1,6 +1,5 @@
 package com.dxc.librarymanagement.dao;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +12,7 @@ import com.dxc.librarymanagement.entities.LibBorrowBook;
 import com.dxc.librarymanagement.entities.LibUser;
 @Repository
 public interface LibBorrowBookDAO extends JpaRepository<LibBorrowBook, Integer> {
+	@Query("from LibBorrowBook b where b.dateReturn is null")
 	List<LibBorrowBook> findByUser(LibUser user);
 	
 	@Query("select MONTH(DateBorrow) as _month,COUNT(IdBorrow) as borrowed from LibBorrowBook where YEAR(DateBorrow)=:year group by MONTH(DateBorrow)")
@@ -33,8 +33,6 @@ public interface LibBorrowBookDAO extends JpaRepository<LibBorrowBook, Integer> 
 			"group by b.TitleOfBook order by total desc", nativeQuery=true)
 	public List<Map<Integer,String>> getTopBookOfDaYear(@Param("year") Integer year);
 	
-	
-	
 	@Query(value="select top 5 COUNT(bb.ISBN) as total , b.TitleOfBook as Title from LibBorrowBook bb, LibISBN i, LibBook b  \r\n" + 
 			"	where \r\n" + 
 			"		bb.ISBN = i.ISBN and i.IdBook = b.IdBook and\r\n" + 
@@ -42,6 +40,8 @@ public interface LibBorrowBookDAO extends JpaRepository<LibBorrowBook, Integer> 
 			"	group by b.TitleOfBook\r\n" + 
 			"	order by total desc", nativeQuery=true)
 	public List<Map<Integer,String>> getTopBookOfDaMonth(@Param("year") Integer year,@Param("month") Integer month);
+	
+	public LibBorrowBook findByIdBorrow(int idborrow);
 	
 	
 	

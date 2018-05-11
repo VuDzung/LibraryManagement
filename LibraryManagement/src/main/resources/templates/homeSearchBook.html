@@ -108,54 +108,6 @@
 		</nav>
 	</div>
 </div>
-<!-- ________________________LIST NEW BOOKS _______________________-->
-<div class="latestcars">
-	<h1 class="text-center">&bullet; LIST NEW BOOKS &bullet;</h1>
-</div>
-    <div class="maincontent-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-book">
-                        <div class="product-carousel">
-                            <div th:each="newbook : ${listnewbooks}" class="single-product">
-                                <div class="product-f-image">
-                                    <div class="txthover">
-                                            <img class="setImgListBook" th:src="${newbook.book.image}">
-                                                <div class="txtcontent">
-                                                    <div class="stars">
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                    </div>
-                                                    <div class="simpletxt">
-                                                        <p class="name" th:text="'Title: '+${newbook.book.titleOfBook}"></p>
-                                                        <p th:text="'ISBN code: '+${newbook.isbn}"></p>
-                                                        <p th:text="'Author: '+${newbook.book.author}"></p>
-                                                        <p class="price" th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'"> </p>
-                                                        <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
-                                                        <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
-                                                        <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
-                                                        <button class="btn btn-success btn-borrow" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}" th:isbn="${newbook.isbn}">BORROW</button>
-                                                        <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
-                                                    </div>
-                                                    <div class="stars2">
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Add -->
 		<div class="modal fade" id="addModal" role="dialog">
 			<div class="modal-dialog">
@@ -200,10 +152,10 @@
 				</div>
 			</div>
 		</div>
-<!-- ________________________LIST BOOKS _______________________-->
+<!-- ________________________SEARCH RESULTS _______________________-->
 	<div class="allcontain">
 		<div class="latestcars">
-	        <h1 class="text-center">&bullet; LIST BOOKS &bullet;</h1>
+	        <h1 class="text-center">&bullet; SEARCH RESULTS &bullet;</h1>
 	    </div>
 	    <div class="galary" th:num="${numofpage}">
 	

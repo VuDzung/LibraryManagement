@@ -62,5 +62,11 @@ public class AdminBookmanagement {
 	// return listIsbn;
 	//
 	// }
+	
+	@RequestMapping(value = "/delete/{isbn}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> deleteBook(@PathVariable String isbn) {
+		this.isbnServiceImpl.deleteIsbn(isbn);
+		return new ResponseEntity<>(this.bookServiceImpl.getPaginatePageNum(), HttpStatus.OK);
+	}
 
 }
