@@ -19,12 +19,14 @@
 }
 
 .bottomCustom {
-	color: #FFF;
+	text-align: center;
+    position: inherit;
+    color: #FFF;
+    padding-top: 1%;
 }
 
 .copyright {
-	padding-left: 32%;
-	padding-top: 1%;
+	text-align: center padding-top: 1%;
 }
 /*END css admin*/
 /*-------------------------------------*/
@@ -54,31 +56,31 @@
 	color: white;
 }
 
-
 .topnav input[type=text] {
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    padding: 12px 20px 12px 42px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    float: right;
+	box-sizing: border-box;
+	border: 2px solid #ccc;
+	border-radius: 4px;
+	font-size: 16px;
+	background-color: white;
+	padding: 12px 20px 12px 42px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+	float: right;
 }
+
 .topnav input[type=text]:focus {
-    width: 50%;
+	width: 50%;
 }
 
 .topnav .search-container button {
 	float: right;
-    padding: 6px 10px;
-    margin-top: 2px;
-    margin-right: -43px;
-    background: #FFF;
-    font-size: 22px;
-    border: none;
-    cursor: pointer;
+	padding: 6px 10px;
+	margin-top: 2px;
+	margin-right: -43px;
+	background: #FFF;
+	font-size: 22px;
+	border: none;
+	cursor: pointer;
 }
 
 .topnav .search-container button:hover {
@@ -101,6 +103,10 @@
 		border: 1px solid #ccc;
 	}
 }
+.customForm-Group{
+	    padding-left: 1%;
+}
+
 /*END css book banagement*/
 /*-------------------------------------*/
 /*css button add*/
@@ -132,6 +138,7 @@
 	max-width: 100%;
 	margin-bottom: 2%;
 }
+
 .table1 {
 	margin-top: 3%;
 	width: 100%;
@@ -172,23 +179,30 @@ table, td, th {
 	text-align: center;
 }
 
-.tdColum{
-	width:21%;
-	text-align:center;
+.tdColum {
+	width: 21%;
+	text-align: center;
 	background-color: #F5F5DC;
 }
-.tdColum2{
-	width:79%%
+
+.tdColum2 {
+	width: 79%%
 }
-.form-control{
+.tdColum3{
+	width: 15%;
+    text-align: center;
+    background-color: #F5F5DC;
+}
+.form-control {
 	margin-top: 1%;
-    margin-bottom: -1%;
+	margin-bottom: -1%;
+	width: 99%;
 }
-.tdScroll{
+
+.tdScroll {
 	width: 515px;
-    height: 60px;
-    overflow: auto;
-    
+	height: 60px;
+	overflow: auto;
 }
 /*END css table*/
 /*-------------------------------------*/
@@ -210,10 +224,9 @@ table, td, th {
 /*-------------------------------------*/
 /*css div choose file*/
 #divchooseFile {
-	width: 183px;
-	height: 220px;
-	padding: 10px;
-	border: 1px solid #aaaaaa;
+	width: 134px;
+    height: 198px;
+    border: 1px solid #aaaaaa;
 }
 /*END css div choose file*/
 /*-------------------------------------*/
@@ -234,6 +247,7 @@ table, td, th {
 #mySidenav a:hover {
 	left: 0;
 }
+
 #mySidenav a:focus {
 	left: 0;
 }

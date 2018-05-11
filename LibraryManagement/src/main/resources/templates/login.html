@@ -30,56 +30,55 @@
 </head>
 <body>
 	<div class="wrapper">
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title"
-					style="background-image: url(../resources/images/bg-01.jpg);">
-					<span class="login100-form-title-1"> Sign In </span>
+		<div class="limiter">
+			<div class="container-login100">
+				<div class="wrap-login100">
+					<div class="login100-form-title"
+						style="background-image: url(../resources/images/bg-01.jpg);">
+						<span class="login100-form-title-1"> Sign In </span>
+					</div>
+
+					<form class="login100-form " name="login" novalidate
+						th:action="@{/j_spring_security_check}" method='POST'>
+						<div th:if="${#request.getParameter('error') == 'true'}">
+							<span class="error">Login Failed! Check your user name or
+								password.</span> <br>
+						</div>
+						<!-- username -->
+						<div class="wrap-input100 validate-input m-b-5">
+							<span class="label-input100">User name</span> <input
+								class="input100" type="text" name="username"
+								placeholder="Enter username"> <span
+								class="focus-input100"></span>
+						</div>
+
+						<!-- password -->
+						<div class="wrap-input100 validate-input m-b-5">
+							<span class="label-input100">Password</span> <input
+								class="input100" type="password" name="password"
+								placeholder="Enter password" id="inputPass"> <span
+								class="focus-input100"></span>
+						</div>
+						<div class="divctrlSubmit">
+							<div class="cssbottomctrlSubmit">
+								<input type="checkbox" name="remember-me">Remember me
+							</div>
+							<div class="btnS">
+								<input class="login100-form-btn" name="submit" type="submit"
+									value="Submit" />
+							</div>
+
+						</div>
+
+					</form>
+					<div class="cssbottomctrlSubmit1">
+						<p>
+							If you don't have account, <a href="/register">Click here</a>
+						</p>
+					</div>
 				</div>
-
-				<form class="login100-form " name="login" novalidate
-					th:action="@{/j_spring_security_check}" method='POST'>
-					<div th:if="${#request.getParameter('error') == 'true'}">
-						<span class="error">Login Failed! Check your user name or
-							password.</span> <br>
-					</div>
-					<!-- username -->
-					<div class="wrap-input100 validate-input m-b-5">
-						<span class="label-input100">User name</span> <input
-							class="input100" type="text" name="username"
-							placeholder="Enter username"> <span
-							class="focus-input100"></span>
-					</div>
-
-					<!-- password -->
-					<div class="wrap-input100 validate-input m-b-5">
-						<span class="label-input100">Password</span> <input
-							class="input100" type="password" name="password"
-							placeholder="Enter password" id="inputPass"> <span
-							class="focus-input100"></span>
-					</div>
-					<div class="divctrlSubmit">
-						<div class="cssbottomctrlSubmit">
-							<input type="checkbox" name="remember-me">Remember me
-						</div>
-						<div class="btnS">
-							<input class="login100-form-btn" name="submit" type="submit"
-								value="Submit" />
-						</div>
-
-						<div class="cssbottomctrlSubmit1">
-							<p>
-								If you don't have account, <a href="/register">Click here</a>
-							</p>
-						</div>
-					</div>
-
-
-				</form>
 			</div>
 		</div>
-	</div>
 	</div>
 
 
@@ -94,7 +93,9 @@
 				x.type = "password";
 			}
 		}
-	</script> <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <script
+	</script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script
 		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </body>
 </html>

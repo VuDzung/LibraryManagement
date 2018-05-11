@@ -132,7 +132,7 @@ label {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 43px 88px 93px 190px;
+  padding: 43px 88px 40px 190px;
 }
 
 
@@ -150,7 +150,7 @@ label {
   font-size: 15px;
   color: #808080;
   line-height: 1.2;
-  text-align: right;
+  text-align: center;
   font-weight: bolder;
   position: absolute;
   top: 14px;
@@ -268,15 +268,8 @@ input.input100 {
 /*------------------------------------------------------------------
 [ Button ]*/
 .container-login100-form-btn {
-  margin-top: 10px;
-  margin-left: 50px;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  flex-wrap: wrap;
+ padding-left: 17%;
+    padding-right: 29%;
 }
 
 .login100-form-btn {
@@ -311,8 +304,9 @@ input.input100 {
 }
 
 #role{
-    border-bottom: none;
-    padding-top: 4%;
+    padding-top: 2%;
+    width: 100%;
+    position: relative;
 
 }
 
@@ -323,4 +317,13 @@ input.input100 {
 
 .mycustom-alert{
     margin-left: -23%;
+}
+.customform{
+	width:40%!important;
+}
+.cssbottomctrlSubmit1{
+    bottom: 0;
+    float: right;
+    padding-right: 3%;
+    padding-bottom: 0%;
 }
