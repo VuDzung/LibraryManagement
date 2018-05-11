@@ -13,43 +13,7 @@ $(function () {
                     url : url,
                     success : function(data) {
                         $.each(data, function(key, val){
-                        	var status = "Unavailable";
-                        	var notvailable = "disabled";
-                        	if(val.totalBook>val.numberBooksBorrowed){
-                        		status = "Available";
-                        		notvailable = "";
-                        	}
-                            $(".galary").append("<div class='well well-sm itemBook'>\
-                                                    <div class='allcontain'>\
-                                                        <div class='product-f-image'>\
-                                                            <div class='txthover'>\
-                                                                <img class='setImgListBook' src='"+val.book.image+"' alt='car2'>\
-                                                                    <div class='txtcontent'>\
-                                                                        <div class='stars'>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                        </div>\
-                                                                        <div class='simpletxt'>\
-                                                                            <p class='name'>Title: "+val.book.titleOfBook+"</p>\
-                                                                            <p>ISBN: "+val.isbn+" </p>\
-                                                                            <p>Author: "+val.book.author+"</p>\
-                                                                            <p class='price'>Status: "+status+" </p>\
-                                                                            <p>Year publish: "+val.book.publishYear+" </p>\
-                                                                            <button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"'> Read more </button>\
-                                                                            <button class='btn btn-success btn-borrow' isbn='"+val.isbn+"' "+notvailable+">BORROW</button>\
-                                                                        </div>\
-                                                                        <div class='stars2'>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                                        </div>\
-                                                                    </div>\
-                                                            </div>\
-                                                        </div>\
-                                                    </div>\
-                                                </div> ");                           
-                                                
+                        	setdatawhensearchbook(val);               
                         });
                     }
                 });
@@ -139,5 +103,82 @@ $(function () {
 			    $("#addBook").attr('isbn',data.isbn);
 			}
     	}
+    	
+    	//FUNCTION TO SHOW BOOK'S INFO------------------------------------------------------------------------------------------ 
+    	function setdatawhensearchbook(val){
+    		var status = "Unavailable";
+        	var notvailable = "disabled";
+        	if(val.totalBook>val.numberBooksBorrowed){
+        		status = "Available";
+        		notvailable = "";
+        	}
+            $(".galary").append("<div class='well well-sm itemBook'>\
+                                    <div class='allcontain'>\
+                                        <div class='product-f-image'>\
+                                            <div class='txthover'>\
+                                                <img class='setImgListBook' src='"+val.book.image+"' alt='car2'>\
+                                                    <div class='txtcontent'>\
+                                                        <div class='stars'>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                        </div>\
+                                                        <div class='simpletxt'>\
+                                                            <p class='name'>Title: "+val.book.titleOfBook+"</p>\
+                                                            <p>ISBN: "+val.isbn+" </p>\
+                                                            <p>Author: "+val.book.author+"</p>\
+                                                            <p class='price'>Status: "+status+" </p>\
+                                                            <p>Year publish: "+val.book.publishYear+" </p>\
+                                                            <button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"'> Read more </button>\
+                                                            <button class='btn btn-success btn-borrow' isbn='"+val.isbn+"' "+notvailable+">BORROW</button>\
+                                                        </div>\
+                                                        <div class='stars2'>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                            <div class='glyphicon glyphicon-star'></div>\
+                                                        </div>\
+                                                    </div>\
+                                            </div>\
+                                        </div>\
+                                    </div>\
+                                </div> ");  
+    	}
+    	
+    	$("#searchbutton").click(function(){
+    		alert("key press");
+    		var titlebook = $('#w-input-search').val();
+    		$.ajax({
+    			type : "POST",
+    			url : '/search/resultlistbook/' + titlebook,
+    			success : function(data) {
+    				$(".galary").empty();
+    				setdatawhensearchbook(data);
+    			},
+    			error : function(e) {
+    				console.log("ERROR : ", e);
+    			}
+    		});
+    	});
+//    	$('#w-input-search').bind("enterKey",function(e){
+//    		alert("key press");
+//    		var titlebook = $('#w-input-search').val();
+//    		$.ajax({
+//    			type : "POST",
+//    			url : '/search/resultlistbook/' + titlebook,
+//    			success : function(data) {
+//    				$(".galary").empty();
+//    				setdatawhensearchbook(data);
+//    			},
+//    			error : function(e) {
+//    				console.log("ERROR : ", e);
+//    			}
+//    		});
+//    		});
+//    		$('#w-input-search').keyup(function(e){
+//    		    if(e.keyCode == 13)
+//    		    {
+//    		        $(this).trigger("enterKey");
+//    		    }
+//    		});
     });
 

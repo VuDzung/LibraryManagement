@@ -3,3 +3,4 @@
 .metadata/.plugins/org.eclipse.core.resources/.history/0/00aeebb1ae5200181a13c0628083320f
 .metadata/.plugins/org.eclipse.core.resources/.history/0/40ce0124c7510018113dcc7807c34c4b
 *.lock
+*.fdx

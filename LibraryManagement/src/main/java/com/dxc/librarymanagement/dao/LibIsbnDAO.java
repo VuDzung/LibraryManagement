@@ -12,20 +12,20 @@ import com.dxc.librarymanagement.entities.LibBook;
 import com.dxc.librarymanagement.entities.LibIsbn;
 
 public interface LibIsbnDAO extends JpaRepository<LibIsbn, String> {
-	@Query(value="select top 10 * from LibISBN where Status = 1 order by IdBook desc", nativeQuery=true)
+	@Query(value = "select top 10 * from LibISBN where Status = 1 order by IdBook desc", nativeQuery = true)
 	List<LibIsbn> findFirst10();
-	
+
 	@Query("FROM LibIsbn li WHERE li.status = True")
 	Page<LibIsbn> findAll(Pageable pageable);
-	
+
 	long countByStatus(boolean a);
-	
+
 	@Query("FROM LibIsbn li WHERE li.status = true and li.isbn = :isbn")
 	LibIsbn findByIsbn(@Param("isbn") String isbn);
 
 	List<LibIsbn> findByBook(LibBook book);
-	
+
+	// @Query("FROM LibIsbn li where li.status = True li.book = :book")
 	List<LibIsbn> findByBookIn(Iterable<LibBook> books);
-	
-	
+
 }

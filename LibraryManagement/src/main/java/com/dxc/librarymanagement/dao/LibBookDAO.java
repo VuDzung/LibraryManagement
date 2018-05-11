@@ -10,10 +10,9 @@ import com.dxc.librarymanagement.entities.LibBook;
 @Repository
 public interface LibBookDAO extends JpaRepository<LibBook, Integer> {
 
-	List<LibBook> findFirst7ByTitleOfBookContaining(String titleOfBook);
+	List<LibBook> findFirst10ByTitleOfBookContaining(String titleOfBook);
 
 	LibBook findByTitleOfBookAndAuthor(String titleOfBook, String author);
 
 	List<LibBook> findTop10ByOrderByIdBookDesc();
-
 }

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LibUserDAO extends JpaRepository<LibUser, Integer> {
-	List<LibUser> findFirst7ByUserNameContaining(String username);
+	List<LibUser> findFirst10ByUserNameContaining(String username);
 	LibUser findByUserName(String username);
 	LibUser findByIdUser(int iduser);
 	Page<LibUser> findAll(Pageable pageable);

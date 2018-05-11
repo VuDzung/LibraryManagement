@@ -2,10 +2,6 @@ package com.dxc.librarymanagement.controller;
 
 import java.security.Principal;
 
-import com.dxc.librarymanagement.service.BookServiceImpl;
-import com.dxc.librarymanagement.service.UserServiceImpl;
-import com.dxc.librarymanagement.utils.WebUtils;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.dxc.librarymanagement.service.BookServiceImpl;
+import com.dxc.librarymanagement.service.UserServiceImpl;
+import com.dxc.librarymanagement.utils.WebUtils;
 
 @Controller
 public class MainController {
@@ -49,7 +49,7 @@ public class MainController {
         model.addAttribute("message", "This is welcome page!");
         return "reportsTicket";
     }
-
+    
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminPage(Model model, Principal principal) {
 

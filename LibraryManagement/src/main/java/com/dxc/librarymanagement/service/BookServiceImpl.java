@@ -30,11 +30,10 @@ public class BookServiceImpl {
 	@Value("${LimitRecords}")
 	private int LimitRecords;
 
-	
-	public List<LibBook> findByTitleOfBookContaining(String titleOfBook) {
-		return this.bookdao.findFirst7ByTitleOfBookContaining(titleOfBook);
+	public List<LibBook> findFirst10ByTitleOfBookContaining(String titleOfBook) {
+		return this.bookdao.findFirst10ByTitleOfBookContaining(titleOfBook);
 	}
-	
+
 	// save new book or ISBN of existing book
 	public void saveBook(LibBook book, LibIsbn isbn) {
 		isbn.setStatus(StatusAvailable);

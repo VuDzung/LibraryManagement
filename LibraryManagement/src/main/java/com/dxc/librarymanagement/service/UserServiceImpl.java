@@ -26,7 +26,7 @@ public class UserServiceImpl {
 	}
 
 	public List<LibUser> findByUserNameContaining(String username) {
-		return libUserDAO.findFirst7ByUserNameContaining(username);
+		return libUserDAO.findFirst10ByUserNameContaining(username);
 	}
 
 	public LibUser findByIdUser(int iduser) {

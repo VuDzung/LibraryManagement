@@ -32,7 +32,13 @@ public class SearchController {
 
 	@RequestMapping(value = "/book", method = RequestMethod.GET)
 	public List<LibIsbn> getBook(@RequestParam String titlebook) {
-		List<LibBook> listBook = this.bookServiceImpl.findByTitleOfBookContaining(titlebook);
+		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(titlebook);
+		return isbnServiceImpl.findByBookIds(listBook);
+	}
+	
+	@RequestMapping(value = "/resultlistbook/{titlebook}", method = RequestMethod.POST)
+	public List<LibIsbn> returnSearchBook(@PathVariable("titlebook") String titlebook) {
+		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(titlebook);
 		return isbnServiceImpl.findByBookIds(listBook);
 	}
 
@@ -48,4 +54,5 @@ public class SearchController {
 		LibUser LibUser = this.userServiceImpl.findByIdUser(iduser);
 		return new ResponseEntity<>(LibUser, HttpStatus.OK);
 	}
+
 }
