@@ -32,7 +32,7 @@ public class BookServiceImpl {
 
 	
 	public List<LibBook> findByTitleOfBookContaining(String titleOfBook) {
-		return this.bookdao.findByTitleOfBookContaining(titleOfBook);
+		return this.bookdao.findFirst7ByTitleOfBookContaining(titleOfBook);
 	}
 	
 	// save new book or ISBN of existing book

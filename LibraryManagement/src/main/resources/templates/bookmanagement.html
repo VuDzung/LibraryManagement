@@ -20,32 +20,34 @@
 			</div>
 		</div>
 
-		<table class="table table-striped">
-			<thead>
-				<tr class="trMenu">
-					<th>ISBN</th>
-					<th>Title</th>
-					<th>Author</th>
-					<th>Publish</th>
-					<th>Short Description</th>
-					<th>Total</th>
-					<th>
-						<!--button modal add-->
-						<button type="button" class="btn btn-info btn-lg"
-							data-toggle="modal" data-target="#addModal">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
+		<div style="overflow-x: auto;">
+			<table class="table table-striped">
+				<thead>
+					<tr class="trMenu">
+						<th>ISBN</th>
+						<th>Title</th>
+						<th>Author</th>
+						<th>Publish</th>
+						<th>Short Description</th>
+						<th>Total</th>
+						<th>
+							<!--button modal add-->
+							<button type="button" class="btn btn-info btn-lg"
+								data-toggle="modal" data-target="#addModal">
+								<span class="glyphicon glyphicon-plus"></span>
+							</button>
 
-					</th>
-				</tr>
-			</thead>
-			<tbody id="book-management">
+						</th>
+					</tr>
+				</thead>
+				<tbody id="book-management">
 
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 
 		<div class="divNextPage">
-			<nav aria-label="Page navigation" style="text-align: center">
+			<nav aria-label="Page navigation" style="text-align: center;padding-bottom: 2%;">
 				<ul class="pagination" id="pagination"></ul>
 			</nav>
 		</div>
@@ -84,7 +86,7 @@
 										type="text" class="form-control" id="inputPublishYear"
 										placeholder="Publish Year" disabled>
 								</div>
-								
+
 								<label>Thumbnail</label>
 								<div id="divchooseFile">
 									<img id="inputImage" src="">
@@ -124,53 +126,56 @@
 					<div class="modal-body">
 						<div class="wrapper">
 							<!--EDIT BUTTON EDIT-->
-							<table class="table1">
-								<tr>
-									<td class="tdColum">ISBN</td>
-									<td class="tdColum2"><div class="form-group">
-											<input id="book-isbn" type="text" class="form-control"
-												value="1">
-										</div></td>
-								</tr>
-								<tr>
-									<td class="tdColum">Title</td>
-									<td class="tdColum2"><div class="form-group">
-											<input id="book-title" type="text" class="form-control"
-												value="1">
-										</div></td>
-								</tr>
-								<tr>
-									<td class="tdColum">Author</td>
-									<td class="tdColum2"><div class="form-group">
-											<input id="book-author" type="text" class="form-control"
-												value="1">
-										</div></td>
-								</tr>
-								<tr>
-									<td class="tdColum">Publish</td>
-									<td class="tdColum2"><div class="form-group">
-											<input id="book-publish-year" type="text"
-												class="form-control" value="1">
-										</div></td>
-								</tr>
-								<tr>
-									<td class="tdColum">Short Description</td>
-									<td class="tdColum2"><div class="form-group">
-											<textarea class="form-control" id="book-description" rows="4"></textarea>
-										</div></td>
-								</tr>
-								<tr>
-									<td class="tdColum">Total</td>
-									<td class="tdColum2"><div class="form-group">
-											<input id="book-total" type="text" class="form-control"
-												value="1">
-										</div></td>
-								</tr>
+							<div style="overflow-x: auto;">
+								<table class="table1">
+									<tr>
+										<td class="tdColum">ISBN</td>
+										<td class="tdColum2"><div class="form-group">
+												<input id="book-isbn" type="text" class="form-control"
+													value="1">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum">Title</td>
+										<td class="tdColum2"><div class="form-group">
+												<input id="book-title" type="text" class="form-control"
+													value="1">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum">Author</td>
+										<td class="tdColum2"><div class="form-group">
+												<input id="book-author" type="text" class="form-control"
+													value="1">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum">Publish</td>
+										<td class="tdColum2"><div class="form-group">
+												<input id="book-publish-year" type="text"
+													class="form-control" value="1">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum">Short Description</td>
+										<td class="tdColum2"><div class="form-group">
+												<textarea class="form-control" id="book-description"
+													rows="4"></textarea>
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum">Total</td>
+										<td class="tdColum2"><div class="form-group">
+												<input id="book-total" type="text" class="form-control"
+													value="1">
+											</div></td>
+									</tr>
 
-							</table>
+								</table>
+							</div>
 						</div>
-						<!--END EDIT BUTTON EDIT-->
 					</div>
+					<!--END EDIT BUTTON EDIT-->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-custom" onClick="addBook()">Submit</button>
 						<button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>

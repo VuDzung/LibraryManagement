@@ -10,7 +10,7 @@ import com.dxc.librarymanagement.entities.LibBook;
 @Repository
 public interface LibBookDAO extends JpaRepository<LibBook, Integer> {
 
-	List<LibBook> findByTitleOfBookContaining(String titleOfBook);
+	List<LibBook> findFirst7ByTitleOfBookContaining(String titleOfBook);
 
 	LibBook findByTitleOfBookAndAuthor(String titleOfBook, String author);
 
