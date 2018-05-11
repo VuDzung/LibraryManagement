@@ -47,7 +47,7 @@ public class BookServiceImpl {
 			if (libIsbn == null) {
 				this.isbndao.save(isbn);
 			} else {
-				isbn.setTotalBook(libIsbn.getTotalBook() + isbn.getTotalBook());
+				isbn.setTotalBook(libIsbn.getTotalBook());
 				isbn.setNumberBooksBorrowed(libIsbn.getNumberBooksBorrowed());
 				this.isbndao.save(isbn);
 			}
