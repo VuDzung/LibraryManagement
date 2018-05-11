@@ -20,30 +20,31 @@ public class UserServiceImpl {
 	private LibUserDAO libUserDAO;
 	@Value("${LimitRecords}")
 	private int LimitRecords;
-	
+
 	public LibUser saveUser(LibUser libUser) {
 		return libUserDAO.save(libUser);
 	}
-	public List<LibUser> findByUserNameContaining(String username){
-		return libUserDAO.findByUserNameContaining(username);
+
+	public List<LibUser> findByUserNameContaining(String username) {
+		return libUserDAO.findFirst7ByUserNameContaining(username);
 	}
-	
-	public LibUser findByIdUser(int iduser){
+
+	public LibUser findByIdUser(int iduser) {
 		return libUserDAO.findByIdUser(iduser);
 	}
-	
+
 	public LibUser findByUserName(String username) {
 		return this.libUserDAO.findByUserName(username);
 	}
-	
-	//get number of page for paginate in database
+
+	// get number of page for paginate in database
 	public int getPaginatePageNum() {
 		double records = this.libUserDAO.count();
 		double pageNum = records / this.LimitRecords;
 		return (int) Math.ceil(pageNum);
 	}
-		
-		//get users paginate
+
+	// get users paginate
 	public List<LibUser> getPaginateUsers(int number) {
 		Pageable pageable = PageRequest.of(number - 1, this.LimitRecords);
 		return libUserDAO.findAll(pageable).getContent();
