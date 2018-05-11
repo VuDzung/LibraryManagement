@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<script src="/resources/core/jquery.1.10.2.min.js" /></script>
+<script src="/resources/core/jquery.autocomplete.min.js" /></script>
+<link href="/resources/core/main.css" rel="stylesheet">
+</head>
+<body>
+  <h2>Spring + jQuery + Autocomplete example</h2>
+
+  <div>
+	<input type="text"  id="w-input-search" value="" width="800px">
+	<span>
+	  <button id="button-id" type="button">Search</button>
+	</span>
+  </div>
+	
+  <script>
+  $(document).ready(function() {
+	$('#w-input-search').autocomplete({
+		autoSelectFirst: true,
+		serviceUrl: '/search/book',
+		paramName: "titlebook",
+		delimiter: ",",
+		onSelect: function(suggestion) {
+			alert(suggestion.data);
+			checkvalidateisbn(suggestion.data);
+        },
+	   transformResult: function(response) {
+		    	
+		return {      	
+		  //must convert json to javascript object before process
+		  suggestions: $.map($.parseJSON(response), function(item) {
+		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+		   })
+		            
+		 };
+        }
+	 });
+	function checkvalidateisbn(isbn) {
+		$.ajax({
+			type : "GET",
+			dataType : 'json',
+			contentType : "application/json",
+			url : '/bookmanagement/checkisbn/' + isbn,
+			success : function(data) {
+				if (data != null && data.isbn != null) {
+					alert(data.status);
+				}
+				
+				 //window.location.href = "home";
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+  });
+  </script>
+	
+</body>
+</html>

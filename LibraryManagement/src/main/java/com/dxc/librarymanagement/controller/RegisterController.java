@@ -40,7 +40,7 @@ public class RegisterController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerForm(@ModelAttribute(value = "libuser") LibUser libUser) {
 		if (libUser.getUserName() != "" && libUser.getPassword() != ""
-				&& userServiceImpl.findByUserNameContaining(libUser.getUserName()) == null) {
+				&& userServiceImpl.findByUserName(libUser.getUserName()) == null) {
 			libUser.setPassword(passwordEncoder.encode(libUser.getPassword()));
 			libUser.setLimitNumber(LimitNumberDefault);
 			this.userServiceImpl.saveUser(libUser);

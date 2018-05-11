@@ -99,11 +99,9 @@
                         <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
-                <a href="../views/listBooks.html">
                     <ul class="nav navbar-nav navbarborder">
-					   <li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
+					   <li class="li-search"> <button id = "searchbutton" class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
 				    </ul>
-                </a>
 			</div>
 		</nav>
 	</div>
@@ -136,7 +134,7 @@
                                                         <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
                                                         <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
                                                         <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
-                                                        <button class="btn btn-success" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}">BORROW</button>
+                                                        <button class="btn btn-success btn-borrow" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}" th:isbn="${newbook.isbn}">BORROW</button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
                                                     </div>
                                                     <div class="stars2">
@@ -194,7 +192,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="addBook" type="button" class="btn btn-success">Borrow</button>
+						<button id="addBook" type="button" class="btn btn-success btn-borrow">Borrow</button>
 						<button id="close" type="button" class="btn btn-success" data-dismiss="modal">Close</button>
 					</div>
 				</div>
@@ -316,7 +314,7 @@ marker.setMap(map);
 <script src="/resources/js/showBook.main.js"></script>
 	<!-- Pagination -->
 <script src="/resources/js/jquery.twbsPagination.min.js"></script>
-<script src="/resources/js/pagination.js"></script>
+<script src="/resources/js/homePagination.js"></script>
 
 
 

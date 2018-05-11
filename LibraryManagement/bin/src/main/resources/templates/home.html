@@ -120,7 +120,7 @@
 				<form class="navbar-form navbar-left searchformmargin" role="search">
 					<div class="form-group">
 <!--						<input type="text" class="form-control searchform" placeholder="Enter Keyword">-->
-                        <input type="text" class="searchText" name="txtSearch" placeholder="Enter Keyword">
+                        <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
                 <a href="../views/listBooks.html">
@@ -138,7 +138,6 @@
 		</nav>
 	</div>
 </div>
-	
 <!-- ________________________LIST NEW BOOKS _______________________-->
 <div class="latestcars">
 	<h1 class="text-center">&bullet; LIST NEW BOOKS &bullet;</h1>
@@ -152,7 +151,7 @@
                             <div th:each="newbook : ${listnewbooks}" class="single-product">
                                 <div class="product-f-image">
                                     <div class="txthover">
-                                            <img th:src="${newbook.book.image}">
+                                            <img class="setImgListBook" th:src="${newbook.book.image}">
                                                 <div class="txtcontent">
                                                     <div class="stars">
                                                         <div class="glyphicon glyphicon-star"></div>
@@ -166,6 +165,7 @@
                                                         <p class="price" th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'"> </p>
                                                         <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
                                                         <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
+                                                        <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}">BORROW</button>
                                                         <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
                                                     </div>
@@ -298,5 +298,10 @@
 	<!-- Pagination -->
 <script src="/resources/js/jquery.twbsPagination.min.js"></script>
 <script src="/resources/js/pagination.js"></script>
+
+
+
+<script src="/resources/core/jquery.autocomplete.min.js" /></script>
+<link href="/resources/core/main.css" rel="stylesheet">
 </body>
 </html>

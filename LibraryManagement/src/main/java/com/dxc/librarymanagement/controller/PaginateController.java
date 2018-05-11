@@ -39,24 +39,25 @@ public class PaginateController {
 	public LibIsbn getBookByIsbn(@PathVariable String isbn) {
 		return bookservice.getSingleBook(isbn);
 	}
-	
+
 	@RequestMapping(value = "/admin/tickets/{pagenumber}")
 	public List<LibUser> ticketsPageable(@PathVariable int pagenumber) {
 		return userservice.getPaginateUsers(pagenumber);
 	}
-	
+
 	@RequestMapping(value = "/admin/ticket/{userid}")
 	public LibUser getUserById(@PathVariable int userid) {
 		return userservice.findByIdUser(userid);
 	}
-	
-	@RequestMapping(value ="/admin/borrowed/{userid}")
-	public List<LibBorrowBook> getBorrowingBookOfUser(@PathVariable int userid){
+
+	@RequestMapping(value = "/admin/borrowed/{userid}")
+	public List<LibBorrowBook> getBorrowingBookOfUser(@PathVariable int userid) {
 		return this.borrowbookservice.getBorrowBookOfUser(userid);
 	}
+
 	@RequestMapping("/home/new")
 	@ResponseBody
-	public List<LibIsbn> get(){
+	public List<LibIsbn> get() {
 		return bookservice.getNewBook();
 	}
 

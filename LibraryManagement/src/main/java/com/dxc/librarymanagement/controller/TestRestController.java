@@ -29,5 +29,4 @@ public class TestRestController {
 		myRole.setNameRole("Tuan Tien Ti2");
 		return new ResponseEntity<>(myRole, HttpStatus.OK);
 	}
-
 }

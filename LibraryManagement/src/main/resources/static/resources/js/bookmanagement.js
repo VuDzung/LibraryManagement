@@ -1,8 +1,5 @@
 $( document ).ready(function() {
-//	$('#addBook').click(function() {
-//		 myaddbook();
-//	}
-	
+	//VALIDATE ADDBOOK FORM-----------------------------------------------------------------------------------------------------
 	$('#addBookForm').validate({
 		rules : {
 			inputISBN : {
@@ -11,7 +8,9 @@ $( document ).ready(function() {
 			},
 			inputTotal : {
 				required : true,
-				digits : true
+				digits : true,
+				minlength: 1,
+				maxlength: 3
 			}
 		},
 		messages : {
@@ -21,12 +20,14 @@ $( document ).ready(function() {
 			},
 			inputTotal : {
 				required : 'Total is required',
-				digits : 'Total must be number'
+				digits : 'Total must be number',
+				minlength: 'Total must be greater than 1',
+				maxlength: 'Total must be less than 999'
 			}
 		}
 	});
-
-
+	
+	//CLOSE ADD BOOK POP UP-----------------------------------------------------------------------------------------------------
 	$('#close').click(function() {
 		$('#inputISBN').val('');
 		$('#inputTitle').val('')
@@ -36,10 +37,9 @@ $( document ).ready(function() {
 		$('#inputImage').attr("src", "")
 		$('#inputTotal').val('')
 	});
-
-	$('#inputISBN')
-			.keyup(
-					function() {
+	
+	//AUTO GENDER BOOK INFO BY TYPE ISBN----------------------------------------------------------------------------------------
+	$('#inputISBN').keyup(function() {
 						var search = document.getElementById('inputISBN').value
 
 						if ($('#inputISBN').val().length == 10
@@ -93,9 +93,8 @@ $( document ).ready(function() {
 						}
 	});
 
-
-	// paginate-----------------------
-	var total = $("#books").attr("num");
+	//PAGINATE------------------------------------------------------------------------------------------------------------------
+	total = $("#books").attr("num");
     window.pagObj = $('#pagination').twbsPagination({
         totalPages: total,
         visiblePages: 10,
@@ -113,23 +112,90 @@ $( document ).ready(function() {
             });
         }
     });
-    $("body").on("click", ".btn-edit", function() {
-         var info_url = "./home/book/"+$(this).attr("isbn");
-         $.ajax({
-            url : info_url,
-            success : function(data) {
-                $("#book-image").attr("src",data.book.image);
-                $("#book-isbn").val(data.isbn);
-                $("#book-title").val(data.book.titleOfBook);
-                $("#book-author").val(data.book.author);
-                $("#book-publish-year").val(data.book.publishYear);
-                $("#book-description").val(data.book.shortDescription);
-                $("#book-total").val(data.totalBook);
-            }
-         });
+    //ADD BOOK
+    $("body").off("click", "#addBook").on("click", "#addBook", function() {
+    	url = '/bookmanagement/savebook';
+    	libIsbn = {
+    			"isbn" : $('#inputISBN').val(),
+    			"totalBook" : $('#inputTotal').val(),
+    			"author" : $('#inputAuthor').val(),
+    			"publishYear" : $('#inputPublishYear').val(),
+    			"image" : $('#inputImage').attr("src"),
+    			"shortDescription" : $('#inputShortDescription').val(),
+    			"titleOfBook" : $('#inputTitle').val()
+    		}
+    		$.ajax({
+    			type : "POST",
+    			contentType : 'application/json; charset=utf-8',
+    			dataType : 'json',
+    			url : url,
+    			data : JSON.stringify(libIsbn), // Note it is important
+    			success : function(data) {
+    				$("#books").attr('num',data);
+                	$("#books").trigger('click');
+    			}
+    		});
+    });
+    //EDIT BTN CLICK EVENT
+    $("body").off('click', '.btn-edit').on('click', '.btn-edit', function(){
+    	$.ajax({
+    		type : "GET",
+    		url: "/home/book/"+$(this).attr("isbn"),
+    		success : function(data) {
+			    $("#book-isbn").val(data.isbn);
+			    $("#book-title").val(data.book.titleOfBook);
+			    $("#book-author").val(data.book.author);
+			    $("#book-publish-year").val(data.book.publishYear);
+			    $("#book-description").val(data.book.shortDescription);
+			    $('#book-total').val(data.totalBook)
+    		},
+	    	error : function(e) {
+				console.log("ERROR : ", e);
+			}
+    	});
+    });
+    
+    //EDIT BOOK ----------------------------------------------------------------------------------------------------------------
+    $("body").off("click", ".btn-edit-book").on("click", ".btn-edit-book", function() {
+        var url = "/bookmanagement/editbook",
+        libIsbn = {
+     			"isbn" : $('#book-isbn').val(),
+     			"totalBook" : $('#book-total').val(),
+     			"author" : $('#book-author').val(),
+     			"publishYear" : $('#book-publish-year').val(),
+     			"shortDescription" : $('#book-description').val(),
+     			"titleOfBook" : $('#book-title').val()
+     	}
+     	$.ajax({
+     		type : "POST",
+     		contentType : 'application/json; charset=utf-8',
+     		dataType : 'json',
+     		url : url,
+     		data : JSON.stringify(libIsbn), // Note it is important
+     		success : function(data) {
+     			$("#books").attr('num',data);
+               	$("#books").trigger('click');
+     		}
+     	});
      });
     
+    //DELETE BOOK---------------------------------------------------------------------------------------------------------------
+    $("body").off("click", ".btn-delete-book").on("click", ".btn-delete-book", function(ev) {
+    	isbn = $(this).attr("isbn");
+    	$.ajax({
+            url : "/bookmanagement/delete/"+isbn,
+            type : "GET",
+            success : function(data) {
+            	$("#books").attr('num',data);
+            	$("#books").trigger('click');
+            },
+	    	error : function(e) {
+				console.log("ERROR : ", e);
+			}
+    	});
+    });
     
+    //SEARCH BOOK---------------------------------------------------------------------------------------------------------------
     $('#w-input-searchbook').autocomplete({
 		autoSelectFirst: true,
 		serviceUrl: '/search/book',
@@ -149,54 +215,52 @@ $( document ).ready(function() {
 		 };
         }
 	 });
-	function checkvalidateisbn(isbn) {
-		$.ajax({
-			type : "GET",
-			dataType : 'json',
-			contentType : "application/json",
-			url : '/bookmanagement/checkisbn/' + isbn,
-			success : function(val) {
-				$("#book-management").empty();
-				setdataaline(val);
-			},
-			error : function(e) {
-				console.log("ERROR : ", e);
-			}
-		});
-	}
-	
-	function setdataaline(val){
-		if (val != null && val.isbn != null) {
-			var status = "Unavailable";
-            var notvailable = "disabled";
-            if(val.totalBook>val.numberBooksBorrowed){
-            	status = "Available";
-            	notvailable = "";
-            }
-            $("#book-management").append('<tr>\
-											<td class="textPosition">'+val.isbn+'</td>\
-											<td class="textPosition">'+val.book.titleOfBook+'</td>\
-											<td class="textPosition">'+val.book.author+'</td>\
-											<td class="textPosition">'+val.book.publishYear+'</td>\
-											<td>'+val.book.shortDescription+'</td>\
-											<td class="textPosition">'+val.totalBook+'</td>\
-											<td class="textPosition" style="width:11%;">\
-												<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
-													<span class="glyphicon glyphicon-edit"></span> Edit\
-												</button>\
-												<button type="button" class="btn btn-custom btn-sm" isbn="'+val.isbn+'">\
-													<span class="glyphicon glyphicon-trash"></span>\
-												</button>\
-											</td>\
-										</tr>');
-		}
-	}
-    
 });
 
+function checkvalidateisbn(isbn) {
+	$.ajax({
+		type : "GET",
+		dataType : 'json',
+		contentType : "application/json",
+		url : '/bookmanagement/checkisbn/' + isbn,
+		success : function(val) {
+			$("#book-management").empty();
+			setdataaline(val);
+		},
+		error : function(e) {
+			console.log("ERROR : ", e);
+		}
+	});
+}    
+    
+function setdataaline(val){
+	if (val != null && val.isbn != null) {
+		var status = "Unavailable";
+        var notvailable = "disabled";
+        if(val.totalBook>val.numberBooksBorrowed){
+           	status = "Available";
+           	notvailable = "";
+        }
+        $("#book-management").append('<tr>\
+										<td class="textPosition">'+val.isbn+'</td>\
+										<td class="textPosition">'+val.book.titleOfBook+'</td>\
+										<td class="textPosition">'+val.book.author+'</td>\
+										<td class="textPosition">'+val.book.publishYear+'</td>\
+										<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
+										<td class="textPosition">'+val.totalBook+'</td>\
+										<td class="textPosition" style="width:11%;">\
+											<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
+												<span class="glyphicon glyphicon-edit"></span> Edit\
+											</button>\
+											<button type="button" class="btn btn-custom btn-sm btn-delete-book" isbn="'+val.isbn+'">\
+												<span class="glyphicon glyphicon-trash"></span>\
+											</button>\
+										</td>\
+									</tr>');
+	}
+}
 
-
-function myaddbook() {
+function myaddbook(url) {
 		var libIsbn = {
 			"isbn" : $('#inputISBN').val(),
 			"totalBook" : $('#inputTotal').val(),
@@ -210,9 +274,11 @@ function myaddbook() {
 			type : "POST",
 			contentType : 'application/json; charset=utf-8',
 			dataType : 'json',
-			url : '/bookmanagement/savebook',
+			url : url,
 			data : JSON.stringify(libIsbn), // Note it is important
 			success : function(libIsbn) {
+				$("#books").attr('num',data);
+            	$("#books").trigger('click');
 				alert(libIsbn.totalBook)
 			}
 		});
