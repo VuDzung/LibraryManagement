@@ -19,7 +19,7 @@ $(function () {
                 });
             }
         });
-        $("body").on("click", ".btn-ticket-edit", function() {
+        $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {
             var info_url = "./admin/ticket/"+$(this).attr("user");
             $.ajax({
                 url : info_url,
@@ -35,11 +35,11 @@ $(function () {
             });
         });
         
-        $("body").on("click", ".btn-borrowed", function() {
+        $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
         	ajaxBorrowedBook($(this).attr("user"));         
         });
         
-        $("body").on("click", ".btn-return", function() {
+        $("body").off("click", ".btn-return").on("click", ".btn-return", function() {
         	var url = "/admin/return/"+$(this).attr("idborrow");
         	$.ajax({
     			type : "GET",

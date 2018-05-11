@@ -129,7 +129,7 @@ $( document ).ready(function() {
     			contentType : 'application/json; charset=utf-8',
     			dataType : 'json',
     			url : url,
-    			data : JSON.stringify(data), // Note it is important
+    			data : JSON.stringify(libIsbn), // Note it is important
     			success : function(data) {
     				$("#books").attr('num',data);
                 	$("#books").trigger('click');

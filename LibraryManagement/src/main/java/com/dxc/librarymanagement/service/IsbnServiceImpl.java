@@ -69,7 +69,7 @@ public class IsbnServiceImpl {
 		libBook.setTitleOfBook(bookDTO.getTitleOfBook());
 		
 		libIsbn.setBook(this.bookdao.save(libBook));
-		libIsbn.setTotalBook(bookDTO.getTotalBook());
+		libIsbn.setTotalBook(libIsbn.getTotalBook()+bookDTO.getTotalBook());
 		this.isbndao.save(libIsbn);
 	}
 	
