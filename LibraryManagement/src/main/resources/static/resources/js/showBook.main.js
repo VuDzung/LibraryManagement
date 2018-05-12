@@ -14,8 +14,14 @@ jQuery(document).ready(function($){
             0:{
                 items:1,
             },
-            600:{
+            250:{
+            	items:2,
+            },
+            400:{
                 items:3,
+            },
+            600:{
+            	items:4,
             },
             1000:{
                 items:5,
