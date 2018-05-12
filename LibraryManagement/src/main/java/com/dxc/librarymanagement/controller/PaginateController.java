@@ -11,33 +11,32 @@ import org.springframework.web.bind.annotation.RestController;
 import com.dxc.librarymanagement.entities.LibBorrowBook;
 import com.dxc.librarymanagement.entities.LibIsbn;
 import com.dxc.librarymanagement.entities.LibUser;
-import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.BorrowBookServiceImpl;
+import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
 
 @RestController
 public class PaginateController {
 
 	@Autowired
-	private BookServiceImpl bookservice;
-	@Autowired
 	private UserServiceImpl userservice;
 	@Autowired
 	private BorrowBookServiceImpl borrowbookservice;
+	@Autowired IsbnServiceImpl isbnservice;
 
 	@RequestMapping(value = "/home/page/{pagenumber}")
 	public List<LibIsbn> usersPageable(@PathVariable int pagenumber) {
-		return bookservice.getPaginateBooks(pagenumber);
+		return isbnservice.getPaginateBooks(pagenumber);
 	}
 
 	@RequestMapping(value = "/home")
 	public List<LibIsbn> getNewBooks() {
-		return bookservice.getNewBook();
+		return isbnservice.getNewBook();
 	}
 
 	@RequestMapping(value = "/home/book/{isbn}")
 	public LibIsbn getBookByIsbn(@PathVariable String isbn) {
-		return bookservice.getSingleBook(isbn);
+		return isbnservice.getSingleBook(isbn);
 	}
 
 	@RequestMapping(value = "/admin/tickets/{pagenumber}")
@@ -56,9 +55,8 @@ public class PaginateController {
 	}
 
 	@RequestMapping("/home/new")
-	@ResponseBody
 	public List<LibIsbn> get() {
-		return bookservice.getNewBook();
+		return isbnservice.getNewBook();
 	}
 
 }

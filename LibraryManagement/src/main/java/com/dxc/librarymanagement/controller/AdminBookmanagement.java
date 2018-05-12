@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.librarymanagement.dto.BookDTO;
-import com.dxc.librarymanagement.entities.LibBook;
 import com.dxc.librarymanagement.entities.LibIsbn;
-import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.IsbnServiceImpl;
 
 @RestController
@@ -24,21 +22,19 @@ import com.dxc.librarymanagement.service.IsbnServiceImpl;
 public class AdminBookmanagement {
 
 	@Autowired
-	private IsbnServiceImpl isbnServiceImpl;
+	private IsbnServiceImpl isbnservice;
 
-	@Autowired
-	private BookServiceImpl bookServiceImpl;
 	//GET ISBN FOR SEARCH FEATURE
 	@RequestMapping(value = "/checkisbn/{isbn}", method = RequestMethod.GET)
 	public ResponseEntity<LibIsbn> apiWithAjax2(@PathVariable("isbn") String isbn) {
-		LibIsbn libIsbn = this.isbnServiceImpl.findByIsbn(isbn);
+		LibIsbn libIsbn = this.isbnservice.findByIsbn(isbn);
 		return new ResponseEntity<>(libIsbn, HttpStatus.OK);
 	}
+	
 	//SAVE BOOK FEATURE
 	@RequestMapping(value = "/savebook", method = RequestMethod.POST)
-	public ResponseEntity<String> saveNewIsbn(@RequestBody BookDTO bookDTO, HttpServletRequest request) {
-		this.isbnServiceImpl.addIsbn(bookDTO);
-		return new ResponseEntity<>("ok", HttpStatus.OK);
+	public ResponseEntity<List<String>> saveNewIsbn(@RequestBody BookDTO bookDTO, HttpServletRequest request) {		
+		return new ResponseEntity<>(this.isbnservice.addIsbn(bookDTO), HttpStatus.OK);
 	}
 
 	// @RequestMapping(value = "/getTags", method = RequestMethod.GET)
@@ -59,14 +55,13 @@ public class AdminBookmanagement {
 	//DELETE BOOK FEATURE
 	@RequestMapping(value = "/delete/{isbn}", method = RequestMethod.GET)
 	public ResponseEntity<List<String>> deleteBook(@PathVariable String isbn) {	
-		return this.isbnServiceImpl.deleteIsbn(isbn);
+		return new ResponseEntity<>(this.isbnservice.deleteIsbn(isbn),HttpStatus.OK);
 	}
 	
 	//EDIT BOOK FEATURE
 	@RequestMapping(value = "/editbook", method = RequestMethod.POST)
-	public ResponseEntity<String> editBook(@RequestBody BookDTO bookDTO){
-		this.isbnServiceImpl.editIsbn(bookDTO);
-		return new ResponseEntity<>("ok", HttpStatus.OK);
+	public ResponseEntity<String> editBook(@RequestBody BookDTO bookDTO){	
+		return new ResponseEntity<>(this.isbnservice.editIsbn(bookDTO), HttpStatus.OK);
 	}
 
 }

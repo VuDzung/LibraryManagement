@@ -14,17 +14,19 @@ import com.dxc.librarymanagement.service.BorrowBookServiceImpl;
 
 @RestController
 public class BorrowBookController {
+	
 	@Autowired
 	private BorrowBookServiceImpl borrowbookservice;
 	
+	//BORROW BOOK FEATURE
 	@RequestMapping(value = "/home/borrow/{isbn}", method = RequestMethod.GET)
 	public ResponseEntity<String> borrowBook(@PathVariable String isbn, Principal principal) {
-		return this.borrowbookservice.saveBorrowBook(isbn, principal);
+		return new ResponseEntity<>(this.borrowbookservice.saveBorrowBook(isbn, principal), HttpStatus.OK);
 	}
 	
+	//RETURN BORROWED BOOK FEATURE
 	@RequestMapping(value = "/admin/return/{idborrow}", method = RequestMethod.GET)
-	public ResponseEntity<Integer> returnBook(@PathVariable int idborrow) {
-		this.borrowbookservice.returnBorrowBook(idborrow);
-		return new ResponseEntity<>(idborrow, HttpStatus.OK);
+	public ResponseEntity<String> returnBook(@PathVariable int idborrow) {
+		return new ResponseEntity<>(this.borrowbookservice.returnBorrowBook(idborrow), HttpStatus.OK);
 	}
 }	

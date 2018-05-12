@@ -64,7 +64,6 @@ $(function () {
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
     					alert(data)
-    					console.log(data)
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);

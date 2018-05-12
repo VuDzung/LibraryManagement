@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.dxc.librarymanagement.service.BookServiceImpl;
+import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
 import com.dxc.librarymanagement.utils.WebUtils;
 
@@ -18,9 +18,9 @@ import com.dxc.librarymanagement.utils.WebUtils;
 public class MainController {
 
     @Autowired
-    private BookServiceImpl bookServiceImpl;
+	private UserServiceImpl userservice;
     @Autowired
-	private UserServiceImpl userServiceImpl;
+    private IsbnServiceImpl isbnservice;
 
     @RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String welcomePage(Model model) {
@@ -57,8 +57,8 @@ public class MainController {
 
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("numofpage", this.bookServiceImpl.getPaginatePageNum());
-        model.addAttribute("numofpageuser", this.userServiceImpl.getPaginatePageNum());
+        model.addAttribute("numofpage", this.isbnservice.getPaginatePageNum());
+        model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
         return "admin";
     }
 
@@ -75,13 +75,11 @@ public class MainController {
         String userName = principal.getName();
 
         System.out.println("User Name: " + userName);
-
         User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
         String userInfo = WebUtils.toString(loginedUser);
         model.addAttribute("userInfo", userInfo);
-        model.addAttribute("listnewbooks", this.bookServiceImpl.getNewBook());
-        model.addAttribute("numofpage", this.bookServiceImpl.getPaginatePageNum());
+        model.addAttribute("listnewbooks", this.isbnservice.getNewBook());
+        model.addAttribute("numofpage", this.isbnservice.getPaginatePageNum());
         return "home";
     }
 

@@ -112,7 +112,7 @@ $( document ).ready(function() {
             });
         }
     });
-    //SAVE BOOK
+    //ADD BOOK
     $("body").off("click", "#addBook").on("click", "#addBook", function() {
     	url = '/bookmanagement/savebook';
     	libIsbn = {
@@ -131,9 +131,9 @@ $( document ).ready(function() {
     			url : url,
     			data : JSON.stringify(libIsbn), // Note it is important
     			success : function(data) {
-    				alert(data);
-    				$("#books").attr('num',data);
+    				$("#books").attr('num',data[0]);
                 	$("#books").trigger('click');
+                	alert(data[1]);
     			}
     		});
     });
@@ -173,11 +173,9 @@ $( document ).ready(function() {
      		dataType : 'json',
      		url : url,
      		data : JSON.stringify(libIsbn), // Note it is important
-     		success : function(data) {
-     			alert(data)
-     			console.log(data)
-     			$("#books").attr('num',data);
-               	$("#books").trigger('click');
+     		success : function(data) {   			
+               	$("#book").trigger('click');
+               	alert(data[0]);
      		}
      	});
      });

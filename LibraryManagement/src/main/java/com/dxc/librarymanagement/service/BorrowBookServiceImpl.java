@@ -7,8 +7,6 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibBorrowBookDAO;
@@ -19,6 +17,7 @@ import com.dxc.librarymanagement.entities.LibUser;
 @Service
 @Transactional
 public class BorrowBookServiceImpl {
+	
 	@Autowired
 	private LibBorrowBookDAO borrowbookdao;
 	@Autowired
@@ -26,45 +25,51 @@ public class BorrowBookServiceImpl {
 	@Autowired
 	private IsbnServiceImpl isbnservice;
 	
+	//GET BORROWED BOOK OF USER
 	public List<LibBorrowBook> getBorrowBookOfUser(int iduser) {
 		return this.borrowbookdao.findByUser(this.userservice.findByIdUser(iduser));
 	}
 	
+	//SAVE LIBBORROWBOOK
 	public LibBorrowBook save(LibBorrowBook borrowbook) {
 		return borrowbookdao.save(borrowbook);
 	}
 	
-	public ResponseEntity<String> saveBorrowBook(String isbn, Principal principal) {
+	//BORROW BOOK FUNCTON
+	public String saveBorrowBook(String isbn, Principal principal) {
 		LibIsbn libisbn = this.isbnservice.findByIsbn(isbn);
 		LibUser user = this.userservice.findByUserName(principal.getName());
 		if(libisbn == null) {
-			return new ResponseEntity<>("ISBN is null", HttpStatus.OK);
+			return "ISBN Code Is Not Correct!";
 		}
-		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
 		if(libisbn.getNumberBooksBorrowed() >= libisbn.getTotalBook()) {
-			return new ResponseEntity<>("This book has been borrowed", HttpStatus.OK);
+			return "Book Is Not Available!";
 		}
+		if(user.getBorrowedNumber() >= user.getLimitNumber()) {
+			return "Number Of Borowed Books Reached The Limit!";
+		}		
+		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
 		user.setBorrowedNumber(user.getBorrowedNumber()+1);
-		if(user.getBorrowedNumber() > user.getLimitNumber()) {
-			return new ResponseEntity<>("Number Of Borowed Books is Limited", HttpStatus.OK);
-		}
 		LibBorrowBook libborrow = new LibBorrowBook();
 		libborrow.setDateBorrow(new Date());
-		libborrow.setIsbnBean(isbnservice.saveIsbn(libisbn));
-		libborrow.setUser(userservice.saveUser(user));
-		borrowbookdao.save(libborrow);
-		return new ResponseEntity<>("Successful!", HttpStatus.OK);
+		libborrow.setIsbnBean(this.isbnservice.saveIsbn(libisbn));
+		libborrow.setUser(this.userservice.saveUser(user));
+		this.borrowbookdao.save(libborrow);
+		return "Borrow Successful!";
 	}
 	
-	public LibBorrowBook returnBorrowBook(int idborrow) {
-		LibBorrowBook libborrow = borrowbookdao.findByIdBorrow(idborrow);
+	//RETURN BOOK FUNCTION
+	public String returnBorrowBook(int idborrow) {
+		LibBorrowBook libborrow = this.borrowbookdao.findByIdBorrow(idborrow);
+		if(libborrow==null) return "Borrow Not Exist!";
 		LibIsbn libisbn = libborrow.getIsbnBean();
 		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()-1);
 		LibUser user = libborrow.getUser();
 		user.setBorrowedNumber(user.getBorrowedNumber()-1);		
 		libborrow.setDateReturn(new Date());
-		libborrow.setIsbnBean(isbnservice.saveIsbn(libisbn));
-		libborrow.setUser(userservice.saveUser(user));
-		return borrowbookdao.save(libborrow);
+		libborrow.setIsbnBean(this.isbnservice.saveIsbn(libisbn));
+		libborrow.setUser(this.userservice.saveUser(user));
+		this.borrowbookdao.save(libborrow);
+		return "Return Successful!";
 	}
 }
