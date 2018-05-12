@@ -1,5 +1,7 @@
 package com.dxc.librarymanagement.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,9 +58,8 @@ public class AdminBookmanagement {
 	
 	//DELETE BOOK FEATURE
 	@RequestMapping(value = "/delete/{isbn}", method = RequestMethod.GET)
-	public ResponseEntity<Integer> deleteBook(@PathVariable String isbn) {
-		this.isbnServiceImpl.deleteIsbn(isbn);
-		return new ResponseEntity<>(this.bookServiceImpl.getPaginatePageNum(), HttpStatus.OK);
+	public ResponseEntity<List<String>> deleteBook(@PathVariable String isbn) {	
+		return this.isbnServiceImpl.deleteIsbn(isbn);
 	}
 	
 	//EDIT BOOK FEATURE

@@ -63,7 +63,8 @@ $(function () {
     			type : "GET",
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
-    				alert: data.status;
+    					alert(data)
+    					console.log(data)
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);

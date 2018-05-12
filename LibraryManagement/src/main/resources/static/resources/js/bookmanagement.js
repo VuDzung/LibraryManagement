@@ -112,7 +112,7 @@ $( document ).ready(function() {
             });
         }
     });
-    //ADD BOOK
+    //SAVE BOOK
     $("body").off("click", "#addBook").on("click", "#addBook", function() {
     	url = '/bookmanagement/savebook';
     	libIsbn = {
@@ -131,6 +131,7 @@ $( document ).ready(function() {
     			url : url,
     			data : JSON.stringify(libIsbn), // Note it is important
     			success : function(data) {
+    				alert(data);
     				$("#books").attr('num',data);
                 	$("#books").trigger('click');
     			}
@@ -173,6 +174,8 @@ $( document ).ready(function() {
      		url : url,
      		data : JSON.stringify(libIsbn), // Note it is important
      		success : function(data) {
+     			alert(data)
+     			console.log(data)
      			$("#books").attr('num',data);
                	$("#books").trigger('click');
      		}
@@ -186,12 +189,16 @@ $( document ).ready(function() {
             url : "/bookmanagement/delete/"+isbn,
             type : "GET",
             success : function(data) {
-            	$("#books").attr('num',data);
-            	$("#books").trigger('click');
-            },
-	    	error : function(e) {
-				console.log("ERROR : ", e);
-			}
+            	if(data[0] != ""){
+            		alert(data[1])
+					console.log(data)
+    				$("#books").attr('num',data);
+                	$("#books").trigger('click');
+				}else {
+					alert(data[1])
+					console.log(data)
+				}	
+            }
     	});
     });
     

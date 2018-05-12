@@ -7,6 +7,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibBorrowBookDAO;
@@ -32,16 +34,26 @@ public class BorrowBookServiceImpl {
 		return borrowbookdao.save(borrowbook);
 	}
 	
-	public LibBorrowBook saveBorrowBook(String isbn, Principal principal) {
+	public ResponseEntity<String> saveBorrowBook(String isbn, Principal principal) {
 		LibIsbn libisbn = this.isbnservice.findByIsbn(isbn);
-		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
 		LibUser user = this.userservice.findByUserName(principal.getName());
+		if(libisbn == null) {
+			return new ResponseEntity<>("ISBN is null", HttpStatus.OK);
+		}
+		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
+		if(libisbn.getNumberBooksBorrowed() >= libisbn.getTotalBook()) {
+			return new ResponseEntity<>("This book has been borrowed", HttpStatus.OK);
+		}
 		user.setBorrowedNumber(user.getBorrowedNumber()+1);
+		if(user.getBorrowedNumber() > user.getLimitNumber()) {
+			return new ResponseEntity<>("Number Of Borowed Books is Limited", HttpStatus.OK);
+		}
 		LibBorrowBook libborrow = new LibBorrowBook();
 		libborrow.setDateBorrow(new Date());
 		libborrow.setIsbnBean(isbnservice.saveIsbn(libisbn));
 		libborrow.setUser(userservice.saveUser(user));
-		return borrowbookdao.save(libborrow);
+		borrowbookdao.save(libborrow);
+		return new ResponseEntity<>("Successful!", HttpStatus.OK);
 	}
 	
 	public LibBorrowBook returnBorrowBook(int idborrow) {

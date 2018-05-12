@@ -1,10 +1,13 @@
 package com.dxc.librarymanagement.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibBookDAO;
@@ -22,6 +25,7 @@ public class IsbnServiceImpl {
 	private LibBookDAO bookdao;
 	@Autowired
 	private BookServiceImpl bookService;
+	
 
 	// get book by ISBN
 	public LibIsbn findByIsbn(String isbn) {
@@ -40,6 +44,7 @@ public class IsbnServiceImpl {
 		return isbndao.save(isbn);
 	}
 	
+	//ADD ISBN
 	public void addIsbn(BookDTO bookDTO) {
 		LibIsbn libIsbn = new LibIsbn();
 		libIsbn.setIsbn(bookDTO.getIsbn());
@@ -53,24 +58,40 @@ public class IsbnServiceImpl {
 		this.bookService.saveBook(libBook, libIsbn);
 	}
 	
-	public void deleteIsbn(String isbn) {
+	//DELTETE ISBN
+	public ResponseEntity<List<String>> deleteIsbn(String isbn) {
+		List<String> status = new ArrayList<>();
 		LibIsbn libisbn = this.isbndao.findByIsbn(isbn);
+		if(libisbn.getNumberBooksBorrowed() > 0) {
+			status.add("");
+			status.add("Books are being borrowed");
+			return new ResponseEntity<>(status, HttpStatus.OK);
+		}
 		libisbn.setTotalBook(0);
 		libisbn.setStatus(false);
 		this.isbndao.save(libisbn);
+		status.add(String.valueOf(this.bookService.getPaginatePageNum()));
+		status.add("Delete Successful!");
+		return new ResponseEntity<>(status, HttpStatus.OK);
 	}
 	
-	public void editIsbn(BookDTO bookDTO) {
+	// EDIT ISBN
+	public ResponseEntity<String> editIsbn(BookDTO bookDTO) {
 		LibIsbn libIsbn = this.isbndao.findByIsbn(bookDTO.getIsbn());
 		LibBook libBook = libIsbn.getBook();
+		
 		libBook.setAuthor(bookDTO.getAuthor());
 		libBook.setPublishYear(bookDTO.getPublishYear());
 		libBook.setShortDescription(bookDTO.getShortDescription());
 		libBook.setTitleOfBook(bookDTO.getTitleOfBook());
 		
 		libIsbn.setBook(this.bookdao.save(libBook));
-		libIsbn.setTotalBook(libIsbn.getTotalBook()+bookDTO.getTotalBook());
+//		libIsbn.setTotalBook(bookDTO.getTotalBook());
+//		if(libIsbn.getTotalBook() < libIsbn.getNumberBooksBorrowed()) {
+//			return new ResponseEntity<>("Total less than number of borrowed book", HttpStatus.OK);
+//		}
 		this.isbndao.save(libIsbn);
+		return new ResponseEntity<>("Edit successful", HttpStatus.OK);
 	}
 	
 }
