@@ -16,7 +16,7 @@ public class StatisticController {
 	@Autowired
 	private LibBorrowBookDAO borrowdao;
 	
-	@RequestMapping(value= "/home/statistic/{year}")
+	@RequestMapping(value= "/home/statistic/month/{year}")
 	@ResponseBody
 	public List<Map<Integer,Integer>> getMonthly(@PathVariable Integer year) {
 		return borrowdao.getMonthly(year);
@@ -28,21 +28,27 @@ public class StatisticController {
 		return borrowdao.getYearly();
 	}
 	
-	@RequestMapping(value= "/home/statistic/{year}/{week}")
+	@RequestMapping(value= "/home/statistic/week/{year}/{week}")
 	@ResponseBody
 	public List<Map<Integer,Integer>> getWeekly(@PathVariable Integer week, @PathVariable Integer year) {
 		return borrowdao.getWeekly(week,year);
 	}
 	
-	@RequestMapping(value= "/home/statistic/topbook/{year}")
+	@RequestMapping(value= "/home/statistic/topbook/year/{year}")
 	@ResponseBody
 	public List<Map<Integer,String>> getTopBookOfDaYear(@PathVariable Integer year) {
 		return borrowdao.getTopBookOfDaYear(year);
 	}
 	
-	@RequestMapping(value= "/home/statistic/topbook/{year}/{month}")
+	@RequestMapping(value= "/home/statistic/topbook/month/{year}/{month}")
 	@ResponseBody
 	public List<Map<Integer,String>> getTopBookOfDaYear(@PathVariable Integer year,@PathVariable Integer month) {
 		return borrowdao.getTopBookOfDaMonth(year,month);
+	}
+	
+	@RequestMapping(value= "/home/statistic/topbook/week/{year}/{week}")
+	@ResponseBody
+	public List<Map<Integer,Integer>> getTopBookOfDaWeek(@PathVariable Integer week,@PathVariable Integer year) {
+		return borrowdao.getTopBookOfDaWeek(week,year);
 	}
 }
