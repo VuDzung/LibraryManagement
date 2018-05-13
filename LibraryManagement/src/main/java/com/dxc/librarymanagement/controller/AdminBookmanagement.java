@@ -40,7 +40,7 @@ public class AdminBookmanagement {
 	// @RequestMapping(value = "/getTags", method = RequestMethod.GET)
 	// public List<LibIsbn> getTags(@RequestParam String tagName) {
 	// List<LibBook> listBook =
-	// this.bookServiceImpl.findByTitleOfBookContaining(tagName);
+	// this.bookServiceImpl.findBy;TitleOfBookContaining(tagName);
 	// List<LibIsbn> listIsbn = new ArrayList<LibIsbn>();
 	// for (LibBook libBook : listBook) {
 	// List<LibIsbn> listIsbn2 = isbnServiceImpl.findByBook(libBook);

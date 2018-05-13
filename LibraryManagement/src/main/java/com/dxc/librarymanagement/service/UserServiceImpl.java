@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibUserDAO;
 import com.dxc.librarymanagement.dto.UserDTO;
+import com.dxc.librarymanagement.entities.LibRole;
 import com.dxc.librarymanagement.entities.LibUser;
 
 @Service
@@ -19,6 +20,8 @@ import com.dxc.librarymanagement.entities.LibUser;
 public class UserServiceImpl {
 	@Autowired
 	private LibUserDAO libUserDAO;
+	@Autowired
+	private RoleServiceImpl roleServices;
 	@Value("${LimitRecords}")
 	private int LimitRecords;
 
@@ -65,4 +68,20 @@ public class UserServiceImpl {
 		this.libUserDAO.save(libuser);
 		return "Edit Successful!";
 	}
+
+	public String addUser(UserDTO userDTO) {
+		LibUser libuser = new LibUser();
+		libuser.setUserName(userDTO.getUsername());
+		if(findByUserName(libuser.getUserName()) != null ) {
+			return "Username Already Exist!";
+		}
+		libuser.setFullName(userDTO.getFullname());
+		libuser.setRole(this.roleServices.findByNameRole(userDTO.getRole()));
+		libuser.setLimitNumber(userDTO.getLimit());
+		libuser.setBorrowedNumber(0);
+		this.libUserDAO.save(libuser);
+		return "Add User Successful!";
+	}
+
+	
 }
