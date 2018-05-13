@@ -70,9 +70,8 @@ label {
   align-items: center;
   padding: 15px;
   background-image: url('../images/loginbackground.png');
-  -webkit-background-size: cover;
-  background-size: cover;
-  /* background: #ebeeef; */
+  -webkit-background-size: cover; */
+  background-size: cover; 
 }
 
 
