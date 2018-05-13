@@ -99,7 +99,9 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    		      return { value: item.fullName + '( Account: ' + item.userName + ' ) ', data: item.idUser };
+    			  var fullName = $.trim(item.fullName);
+    			  var userName = $.trim(item.userName);
+    		      return { value: fullName + '( Account: ' + userName + ' ) ', data: item.idUser };
     		   })
     		            
     		 };
