@@ -4,24 +4,26 @@ jQuery(document).ready(function($){
     
 	$(".mainmenu-area").sticky({topSpacing:0});
     
-    
     $('.product-carousel').owlCarousel({
         loop:true,
-        nav:true,
+        nav:false,
         margin:20,
+        autoplay:true,
+        autoplayTimeout:2000,
+        autoplayHoverPause:true,
         responsiveClass:true,
         responsive:{
             0:{
-                items:1,
+                items:5,
             },
             250:{
-            	items:2,
+            	items:5,
             },
             400:{
-                items:3,
+                items:5,
             },
             600:{
-            	items:4,
+            	items:5,
             },
             1000:{
                 items:5,
@@ -29,44 +31,44 @@ jQuery(document).ready(function($){
         }
     });  
     
-    $('.related-products-carousel').owlCarousel({
-        loop:true,
-        nav:true,
-        margin:20,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:2,
-            },
-            1000:{
-                items:2,
-            },
-            1200:{
-                items:3,
-            }
-        }
-    });  
-    
-    $('.brand-list').owlCarousel({
-        loop:true,
-        nav:true,
-        margin:20,
-        responsiveClass:true,
-        responsive:{
-            0:{
-                items:1,
-            },
-            600:{
-                items:3,
-            },
-            1000:{
-                items:4,
-            }
-        }
-    });    
+//    $('.related-products-carousel').owlCarousel({
+//        loop:true,
+//        nav:true,
+//        margin:20,
+//        responsiveClass:true,
+//        responsive:{
+//            0:{
+//                items:1,
+//            },
+//            600:{
+//                items:2,
+//            },
+//            1000:{
+//                items:2,
+//            },
+//            1200:{
+//                items:3,
+//            }
+//        }
+//    });  
+//    
+//    $('.brand-list').owlCarousel({
+//        loop:true,
+//        nav:true,
+//        margin:20,
+//        responsiveClass:true,
+//        responsive:{
+//            0:{
+//                items:1,
+//            },
+//            600:{
+//                items:3,
+//            },
+//            1000:{
+//                items:4,
+//            }
+//        }
+//    });    
     
     
     // Bootstrap Mobile Menu fix

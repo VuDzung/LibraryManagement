@@ -1,4 +1,8 @@
 $(function () {	
+	a = $(".price").each(function(){
+		if($(this).text().indexOf("Unavailable")!=-1) $(this).css("background-color","rgba(255,0,0,0.5)");
+		else $(this).css("background-color","rgba(0,255,0,0.5)");
+	});
         
         //PAGINATE--------------------------------------------------------------------------------------------------------------
 		var paginate_time = 0;
@@ -104,7 +108,7 @@ $(function () {
 			}
     	}
     	
-    	//FUNCTION TO SHOW BOOK'S INFO------------------------------------------------------------------------------------------ 
+    	//FUNCTION TO SHOW BOOK lIST-------------------------------------------------------------------------------------------- 
     	function setdatawhensearchbook(val){
     		var status = "Unavailable";
         	var notvailable = "disabled";

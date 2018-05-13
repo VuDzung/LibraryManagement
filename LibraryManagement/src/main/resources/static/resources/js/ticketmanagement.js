@@ -1,4 +1,5 @@
 $(function () {
+		//PAGINATION TICKET------------------------------------------------------------------------------------------------------
         var total = $("#ticket").attr("num");
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
@@ -19,6 +20,8 @@ $(function () {
                 });
             }
         });
+        
+        //PARSE TICKET INFO INTO POPUP EDIT-------------------------------------------------------------------------------------
         $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {
             var info_url = "./admin/ticket/"+$(this).attr("user");
             $.ajax({
@@ -35,20 +38,46 @@ $(function () {
             });
         });
         
+        //EDIT TICKET       
+        $("body").off("click", "#edit-ticket").on("click", "#edit-ticket", function(){
+        	libuser = {iduser:  $("#ticket-id").val(),
+        			   username:  $("#ticket-mail").val(),
+        			   fullname: $("#ticket-name").val(),
+        			   role: $("#ticket-role").val(),
+        			   limit: $("#ticket-limit").val(),
+        			   borrowed: $("#ticket-borrowed").val()
+        			  };
+        	$.ajax({
+    			type : "POST",
+    			contentType : 'application/json; charset=utf-8',
+    			dataType : 'json',
+    			url : "/admin/edit/ticket",
+    			data : JSON.stringify(libuser),
+    			success : function(data) {
+    				alert(data);
+    			}
+    		});
+        });
+        
+        //PASRE BOROWED BOOK OF TICKET INTO BORROWED POPUP----------------------------------------------------------------------
         $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
         	ajaxBorrowedBook($(this).attr("user"));         
         });
         
+        //RETURN BOOK-----------------------------------------------------------------------------------------------------------
         $("body").off("click", ".btn-return").on("click", ".btn-return", function() {
         	var url = "/admin/return/"+$(this).attr("idborrow");
         	$.ajax({
     			type : "GET",
     			url : url ,
     			success : function(data) {
-    				var user = $("#title-and-name").attr("user");		
-    				$(".btn-borrowed[user='" + user +"']").text( $("#title-and-name").attr("numborrowed")-1);
-    				ajaxBorrowedBook(user);
-    				alert: data.status;
+    				if(data.indexOf('Successful')!=-1){
+	    				var user = $("#title-and-name").attr("user");		
+	    				$(".btn-borrowed[user='" + user +"']").text( $("#title-and-name").attr("numborrowed")-1);
+	    				ajaxBorrowedBook(user);
+	    				alert(data);
+    				}
+    				else alert(data);
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);
@@ -56,6 +85,7 @@ $(function () {
     		});
         });
         
+        //SEARCH TICKET---------------------------------------------------------------------------------------------------------
         $('#w-input-searchuser').autocomplete({
     		autoSelectFirst: true,
     		serviceUrl: '/search/user',
@@ -75,6 +105,8 @@ $(function () {
     		 };
             }
     	 });
+        
+        //GET TICKET INFO FUNCTION----------------------------------------------------------------------------------------------
     	function getinforuser(iduser) {
     		$.ajax({
     			type : "GET",
@@ -95,6 +127,7 @@ $(function () {
     		});
     	}
     	
+    	//SET DATA POPUP EDIT TICKET FUNCTION-----------------------------------------------------------------------------------
     	function setdatapopup(val){
     		var status="";
             	if(val.borrowedNumber>0) status="";
@@ -119,6 +152,7 @@ $(function () {
                                                 </tr>');                                                                      
     	}
     	
+    	//GET BORROWED BOOK FUNCTION---------------------------------------------------------------------------------------------
     	function ajaxBorrowedBook(iduser){
     		$.ajax({
                 url : "./admin/borrowed/"+iduser,

@@ -1489,10 +1489,6 @@ h1 small, h2 small, h3 small, h4 small, h5 small, h6 small, .h1 small,
 	color: #777;
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
-	margin-top: 20px;
-	margin-bottom: 10px;
-}
 
 h1 small, .h1 small, h2 small, .h2 small, h3 small, .h3 small, h1 .small,
 	.h1 .small, h2 .small, .h2 .small, h3 .small, .h3 .small {
@@ -1567,13 +1563,11 @@ mark, .mark {
 	text-align: right;
 }
 
-.text-center {
+.text-center{
 	text-align: center;
+	font-size: 200%;
 	font-family: "OpenSans-Light";
-	font-size: 41px;
 	letter-spacing: 10px;
-	padding-top: 66px;
-	padding-bottom: 70px;
 	color: #020243;
 }
 
@@ -1870,9 +1864,10 @@ pre code {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
+	width: 88%;
 }
 
-@media ( min-width : 768px) {
+/* @media ( min-width : 768px) {
 	.container {
 		width: 750px;
 	}
@@ -1888,7 +1883,7 @@ pre code {
 	.container {
 		width: 1170px;
 	}
-}
+} */
 
 .container-fluid {
 	padding-right: 15px;
@@ -6747,7 +6742,8 @@ button.close {
 }
 
 .modal-body {
-	background-image: url(../images/showBookBackgroup2.jpg);
+	background-image: url(../images/bookinfobg.jpg);
+	background-size: cover;
 	position: relative;
 	padding: 15px;
 }
@@ -12240,9 +12236,7 @@ body .ui-tooltip {
  Template: GARAGE
  */
 .allcontain {
-	max-width: 1366px;
-	margin-left: auto;
-	margin-right: auto;
+	text-align: center;
 }
 
 .header {
@@ -13299,12 +13293,12 @@ border-color
 	 max-width: 100%;
 }
 */
+.latestcars{
+	background-color: rgb(248, 199, 45);
+}
 .latestcars>h1 {
 	font-family: "OpenSans-Light";
-	font-size: 41px;
 	letter-spacing: 10px;
-	padding-top: 66px;
-	padding-bottom: 70px;
 	color: #020243;
 }
 /*
@@ -13370,7 +13364,7 @@ border-color
 }
 */
 @media screen and (max-width: 767px) {
-	.latestcars>h1 {
+	.latestcars>owl-carousel>h1 {
 		font-size: 18px;
 		letter-spacing: 5px;
 		padding-top: 20px;
@@ -14082,11 +14076,8 @@ padding-left: 0px;
 }
 /*css of detail book*/
 #divDetailImg {
-	width: 183px;
-	height: 220px;
-	padding: 10px;
-	/*    border:1px solid #aaaaaa;*/
-	margin-left: 32%;
+	float: right;
+    margin: 8%;
 }
 
 #labelDetailImg {
@@ -14139,12 +14130,9 @@ padding-left: 0px;
 	display: inline-block;
 	border-style: solid;
 	border-width: 2px;
-	width: 19%;
+	width: 17%;
 }
 
-.garary {
-	margin-left: 2%;
-}
 
 #nextPage {
 	width: 4%;
@@ -14271,10 +14259,6 @@ padding-left: 0px;
 	left: 0
 }
 
-.product-carousel {
-	padding-top: 40px;
-}
-
 .latest-book .owl-nav {
 	position: absolute;
 	right: 0;
@@ -14319,11 +14303,6 @@ padding-left: 0px;
 	display: inline-block;
 	margin-left: 15px;
 	padding: 1px 10px;
-}
-
-.maincontent-area {
-	padding-bottom: 50px;
-	padding-top: 20px;
 }
 
 .product-wid-title {
@@ -14371,6 +14350,7 @@ padding-left: 0px;
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
+	
 	display: none;
 	width: 100%;
 	-webkit-tap-highlight-color: transparent;
@@ -14463,11 +14443,11 @@ padding-left: 0px;
 	position: sticky;
 }
 
-.contact-form>h1 {
+/* .contact-form>h1 {
 	margin-top: 5%;
 	text-align: center;
 	font-family: "OpenSans-Light";
-}
+} */
 
 .group-coustume {
 	width: 150%;
@@ -14478,6 +14458,7 @@ padding-left: 0px;
 }
 
 .leftside>img {
+	left: 0;
 	position: absolute !important;
 	max-width: 696px;
 }
@@ -14678,10 +14659,10 @@ padding-left: 0px;
     color: #E7E7E7;
     padding-top: 0%;
 	}
-	.contact-form>h1 {
+/* 	.contact-form>h1 {
 		margin-top: 3%;
 		font-size: 20px;
-	}
+	} */
 	.group-coustume {
 		top: 50px;
 	}
@@ -14762,14 +14743,16 @@ padding-left: 0px;
 .titleShowBook {
 	color: #fff;
 	text-align: left;
-	margin-left: 14%;
+	margin: 0 10%;
 	font-size: 125%;
+	padding-bottom: 5%;
 }
 /*css zoom showBook*/
 .txthover:hover {
 	transform: scale(1.1);
 }
 
-.galary {
-	margin-left: 5%;
+div.wrapper{
+	background-color: rgba(0,0,0,0.6);
+    border-radius: 10px;
 }
