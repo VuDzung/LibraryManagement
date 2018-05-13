@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 	
 	var today = new Date();
 	var charMonth = '';
