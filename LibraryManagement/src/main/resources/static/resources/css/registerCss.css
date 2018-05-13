@@ -9,6 +9,9 @@
 body, html {
 	height: 100%;
 	font-family: "Times New Roman", serif;
+	background-image: url('../images/registerbackground.png');
+	-webkit-background-size: cover;
+	background-size: cover;
 }
 
 input {
@@ -60,7 +63,8 @@ label {
 	justify-content: center;
 	align-items: center;
 	padding: 15px;
-	background: #ebeeef;
+	
+	/* background: #ebeeef; */
 }
 
 .wrap {
@@ -249,7 +253,7 @@ input.input100 {
 .container-login100-form-btn {
 	padding-left: 17%;
 	padding-right: 29%;
-	    padding-top: 3%;
+	padding-top: 3%;
 }
 
 .login100-form-btn {
@@ -299,13 +303,13 @@ input.input100 {
 	bottom: 0;
 	float: right;
 	padding-right: 3%;
-	padding-bottom: 0%;
+	padding-top: 3%;
 }
 
 .false {
-	width:100%;
+	width: 100%;
 }
 
 .success {
-	width:100%;
+	width: 100%;
 }

@@ -69,7 +69,10 @@ label {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #ebeeef;
+  background-image: url('../images/loginbackground.png');
+  -webkit-background-size: cover;
+  background-size: cover;
+  /* background: #ebeeef; */
 }
 
 
