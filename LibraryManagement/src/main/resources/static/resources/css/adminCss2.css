@@ -26,7 +26,10 @@
 }
 
 .copyright {
-	text-align: center padding-top: 1%;
+	text-align: center ;
+	padding-top: 1%;
+	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	color:#FFF;
 }
 /*END css admin*/
 /*-------------------------------------*/
@@ -237,71 +240,5 @@ table, td, th {
 	left: 0;
 }
 
-
-#week {
-	
-	background-color: #caf1cb;
-}
-
-#month {
-	
-	background-color: #bddaf1; /* Blue */
-}
-
-#year {
-	
-	background-color: #f7c8c4; /* Red */
-}
-/*END css sidenav of report page*/
-
-/* button */
-
-
-
-button {
-  position: relative;
-  //display:block;
-  height: 45px;
-  width: 150px;
-  margin: 10px 7px;
-  padding: 5px 5px;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 2px;
-  color: #383736;
- 
-  border-radius: 4px;
-  text-transform: uppercase;
-  outline: 0;
-  overflow:hidden;
-  background: none;
-  z-index: 1;
-  cursor: pointer;
-  transition:         0.08s ease-in;
-  -o-transition:      0.08s ease-in;
-  -ms-transition:     0.08s ease-in;
-  -moz-transition:    0.08s ease-in;
-  -webkit-transition: 0.08s ease-in;
-}
-
-.fill:hover {
-  color: whitesmoke;
-}
-
-.fill:before {
-  content: "";
-  position: absolute;
-  background: #383736;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 100%;
-  z-index: -1;
-  -webkit-transition: top 0.09s ease-in;
-}
-
-.fill:hover:before {
-  top: 0;
-}
 
 
