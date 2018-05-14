@@ -6921,14 +6921,14 @@ button.close {
 }
 
 .modal-title {
-	margin: 0;
+	text-align: left;
 	line-height: 1.42857143;
 	font-style: italic;
 	font-size: 215%;
 }
 
 .modal-body {
-	background-image: url(../images/bookinfobg.jpg);
+	background-image: url(../images/borrowedbg.jpg);
 	background-size: cover;
 	position: relative;
 	padding: 15px;
@@ -12495,11 +12495,12 @@ body .ui-tooltip {
 	font-size: 15pt;
 	color: #E7E7E7;
 	margin-bottom: 0px;
-	padding-left: 23%;
+	padding-left: 50%;
 }
 
 .logreg>li {
 	float: left;
+	line-height: 40px;
 }
 
 .logreg>li>a {
@@ -14992,19 +14993,9 @@ div.wrapper {
 	background-color: rgba(0, 0, 0, 0.6);
 	border-radius: 10px;
 }
+#menu-contact, #menu-borrowed{
+	cursor: pointer;
+}
+#modalview>button{
 
-#homeBtnBorrowedBooks{
-	font-family: 'BebasNeue Regular';
-    font-size: 17px;
-    color: black;
-    padding-top: 2px;
-    padding-bottom: 6px;
-    margin-bottom: 22px;
-    padding-left: 10px;
-    padding-right: 10px !important;
-    margin-left: 34px;
-    border-color: #e7f3ef;
-    border-bottom: 2px solid rgba(0, 0, 0, .0);
-    background-color: #e7f3ef;
-	
 }

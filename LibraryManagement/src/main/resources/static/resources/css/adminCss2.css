@@ -239,6 +239,29 @@ table, td, th {
 #mySidenav a:focus {
 	left: 0;
 }
-
-
+.fa-spin{
+	font-size: 30px;
+	color: green;
+}
+.fa-close{
+	font-size: 30px;
+	color: red;
+}
+.fa-check{
+	font-size: 30px;
+	color: green;
+}
+#spin-icon, #close-icon, #check-icon{
+	background-color: rgba(0,0,0,0) !important;
+	border: none;
+	cursor: default;
+}
+table.table-striped>tbody>tr>td>img{
+	max-width: 40px;
+}
+table.table-striped>tbody>tr>td{
+	padding: 5px !important;
+    vertical-align: middle;
+    text-align: center;	
+}
 

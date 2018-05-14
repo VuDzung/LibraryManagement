@@ -50,16 +50,20 @@ $(function () {
         	$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
-    			dataType : 'json',
+    			cache:false,
     			url : "/admin/edit/ticket",
     			data : JSON.stringify(libuser),
     			success : function(data) {
     				if(data.indexOf('Successful')!=-1){
-						swal("Successful!", "You changed the user " + fullname + " information successfully!", "success");
+						swal("Successful!", data, "success");
 					}else{
 						swal("Error!", data, "error");
 					}
-    			}
+    			},
+    			error : function(e) {
+    				swal("Error!", "System error! Please try again.", "error");
+    				console.log("ERROR : ", e);
+    			} 	
     		});
         });
         
@@ -74,7 +78,6 @@ $(function () {
         	$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
-    			dataType : 'json',
     			url : "/admin/add-ticket",
     			data : JSON.stringify(libuser),
     			success : function(data) {

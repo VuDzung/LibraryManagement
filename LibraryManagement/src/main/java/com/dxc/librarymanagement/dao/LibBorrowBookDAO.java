@@ -12,8 +12,8 @@ import com.dxc.librarymanagement.entities.LibBorrowBook;
 import com.dxc.librarymanagement.entities.LibUser;
 @Repository
 public interface LibBorrowBookDAO extends JpaRepository<LibBorrowBook, Integer> {
-	@Query("from LibBorrowBook b where b.dateReturn is null")
-	List<LibBorrowBook> findByUser(LibUser user);
+	@Query("from LibBorrowBook b where b.dateReturn is null and b.user=:user")
+	List<LibBorrowBook> findByUser(@Param("user") LibUser user);
 	
 	@Query("select MONTH(DateBorrow) as _month,COUNT(IdBorrow) as borrowed from LibBorrowBook where YEAR(DateBorrow)=:year group by MONTH(DateBorrow)")
 	public List<Map<Integer,Integer>> getMonthly(@Param("year") Integer year);

@@ -1,6 +1,7 @@
 package com.dxc.librarymanagement.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,10 +80,10 @@ public class MainController {
 
 		// Sau khi user login thanh cong se co principal
 		String userName = principal.getName();
-
 		System.out.println("User Name: " + userName);
-		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-		String userInfo = WebUtils.toString(loginedUser);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("listnewbooks", this.isbnservice.getNewBook());
 		model.addAttribute("numofpage", this.isbnservice.getPaginatePageNum());

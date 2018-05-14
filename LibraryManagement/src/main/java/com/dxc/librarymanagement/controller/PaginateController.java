@@ -1,5 +1,6 @@
 package com.dxc.librarymanagement.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +57,11 @@ public class PaginateController {
 	@RequestMapping("/home/new")
 	public List<LibIsbn> get() {
 		return isbnservice.getNewBook();
+	}
+	@RequestMapping("/home/borrowed-books")
+	public List<LibBorrowBook> getBorrowedBooks(Principal principal) {
+		System.out.println(this.userservice.findByUserName(principal.getName()).getIdUser());
+		return this.borrowbookservice.getBorrowBookOfUser(this.userservice.findByUserName(principal.getName()).getIdUser());
 	}
 
 }

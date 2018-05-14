@@ -19,18 +19,12 @@
 <body>
 	<div class="allcontain">
 		<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
 			<ul class="givusacall">
 				<li></li>
 			</ul>
 			<ul class="logreg">
-				<li>Hello: <a th:utext="${#request.userPrincipal.name}"></a></li>
-				<li><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
+				<li th:text="'Hello: ' +${userInfo[0]}+' &nbsp'"></li>
+				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
 				<li><a th:href="@{/logout}"><span class="register">Logout</span></a></li>
 			</ul>
 		</div>
@@ -60,10 +54,8 @@
 							<li><a href="../views/policy.html">Policy</a></li>
 						</ul></li>
 					<li><a href="#">SERVICE SCHEDULE</a></li>
-					<li><a href="contact.html">CONTACT</a></li>
-					<li>
-						<button type="button"  id="homeBtnBorrowedBooks" class="btn btn-custom btn-sm btn-borrowed" data-toggle="modal" data-target="#modalview">Borrowed Books</button>
-					</li>
+					<li><a id="menu-contact">CONTACT</a></li>
+					<li><a id="menu-borrowed" data-toggle="modal" data-target="#modalview">BORROWED BOOKS</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -92,41 +84,7 @@
 									</tr>
 								</thead>
 								<tbody id="ticket-borrowed-book">
-									<tr>
-										<td>312365</td>
-										<td>Some things</td>
-										<td>Some body</td>
-										<td>2018</td>
-										<td>2018-05-14</td>
-									</tr>
-									<tr>
-										<td>312365</td>
-										<td>Some things</td>
-										<td>Some body</td>
-										<td>2018</td>
-										<td>2018-05-14</td>
-									</tr>
-									<tr>
-										<td>312365</td>
-										<td>Some things</td>
-										<td>Some body</td>
-										<td>2018</td>
-										<td>2018-05-14</td>
-									</tr>
-									<tr>
-										<td>312365</td>
-										<td>Some things</td>
-										<td>Some body</td>
-										<td>2018</td>
-										<td>2018-05-14</td>
-									</tr>
-									<tr>
-										<td>312365</td>
-										<td>Some things</td>
-										<td>Some body</td>
-										<td>2018</td>
-										<td>2018-05-14</td>
-									</tr>
+									
 
 								</tbody>
 							</table>
@@ -134,7 +92,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom btn-success" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
