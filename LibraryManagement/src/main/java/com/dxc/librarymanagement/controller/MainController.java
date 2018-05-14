@@ -8,9 +8,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.dxc.librarymanagement.entities.LibBook;
 import com.dxc.librarymanagement.service.BookServiceImpl;
@@ -87,8 +89,8 @@ public class MainController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/home/search", method = RequestMethod.GET)
-	public String searchBook(Model model, Principal principal, @RequestParam("txtSearch") String txtSearch) {
+	@RequestMapping(value = "/home//{txtSearch}")
+	public @ResponseBody String searchBook(Model model, Principal principal, @PathVariable(value="txtSearch") String txtSearch) {
 
 		// Sau khi user login thanh cong se co principal
 		String userName = principal.getName();
@@ -97,8 +99,8 @@ public class MainController {
 		User loginedUser = (User) ((Authentication) principal).getPrincipal();
 		String userInfo = WebUtils.toString(loginedUser);
 		model.addAttribute("userInfo", userInfo);
-//		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(txtSearch);
-//		model.addAttribute("listBook", listBook);
+		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(txtSearch);
+		model.addAttribute("listBook", listBook);
 		return "homeSearchBook";
 	}
 
