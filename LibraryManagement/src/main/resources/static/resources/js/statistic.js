@@ -46,7 +46,7 @@ $(function(){
 	$('#chooseYear').hide();
 	$('#chooseMonth').hide();
 	$('#chooseWeek').hide();
-	
+	loadWeek();
 	
 	$('#year').click(function(){
 		$('#chooseYear').show();
@@ -111,7 +111,7 @@ function loadYear(){
 			valueFormatString: "####"
 	    },
 		data: [{
-			type: "column",
+			type: "line",
 			indexLabelFontColor: "red",
 			indexLabel: "{y}",				
 			xValueFormatString: "#",
@@ -153,7 +153,7 @@ function loadYear(){
 			valueFormatString: "####"
 	    },
 		data: [{
-			type: "pie",
+			type: "doughnut",
 			indexLabelFontColor: "red",
 			indexLabel: "{title}: {y} (times)",				
 			xValueFormatString: "#",
@@ -315,7 +315,7 @@ function loadMonth(){
 		animationEnabled: true,
 		theme: "light2",
 		title: {
-			text: "Top 5 Borrowed Books of "+ charMonth
+			text: "Top 5 Borrowed Books of "+ charMonth +" "+ thisYear
 		},
 		axisY: {
 			title: "Borrowed Books",
@@ -327,7 +327,7 @@ function loadMonth(){
 			valueFormatString: "####"
 	    },
 		data: [{
-			type: "pie",
+			type: "doughnut",
 			indexLabelFontColor: "red",
 			indexLabel: "{title}: {y} (times)",				
 			xValueFormatString: "#",
@@ -515,7 +515,7 @@ function loadWeek(){
 			valueFormatString: "####"
 	    },
 		data: [{
-			type: "pie",
+			type: "doughnut",
 			indexLabelFontColor: "red",
 			indexLabel: "{title}: {y} (times)",				
 			xValueFormatString: "#",
