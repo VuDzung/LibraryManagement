@@ -78,14 +78,14 @@
 									<tr>
 										<td class="textPosition" style="width: 8%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-id" disabled
-													value="1">
+												<input type="text" class="form-control" id="ticket-id"
+													disabled value="1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 30%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-mail" disabled
-													value="aaaa1">
+												<input type="text" class="form-control" id="ticket-mail"
+													disabled value="aaaa1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 22%">
@@ -96,8 +96,8 @@
 										</td>
 										<td class="textPosition" style="width: 18%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-role" disabled
-													value="1">
+												<input type="text" class="form-control" id="ticket-role"
+													disabled value="1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 1%">
@@ -108,8 +108,8 @@
 										</td>
 										<td class="textPosition">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-borrowed" disabled
-													value="2">
+												<input type="text" class="form-control" id="ticket-borrowed"
+													disabled value="2">
 											</div>
 										</td>
 									</tr>
@@ -119,7 +119,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-custom" id="edit-ticket">Submit</button>
-						<button type="button" class="btn btn-custom" id="edit-close" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom" id="edit-close"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
@@ -164,7 +165,7 @@
 
 		<!-- Modal Add new-->
 		<div class="modal fade" id="addModal" role="dialog">
-			<div class="modal-dialog modal-lg">
+			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
@@ -173,50 +174,69 @@
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<table class="table table-striped">
-								<thead>
-									<tr class="trMenu">
-										<th>User Name</th>
-										<th>Full Name</th>
-										<th>Role</th>
-										<th>Limit Number</th>
-									</tr>
-								</thead>
-								<tbody>
+							<div class="table-responsive">
+								<table class="table1">
 									<tr>
-										<td class="textPosition" style="width: 30%">
+										<td class="tdColum3">User Name</td>
+										<td class="tdColum2">
 											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-username">
+												<input type="text" class="form-control" id="">
 											</div>
 										</td>
-										<td class="textPosition" style="width: 22%">
+									</tr>
+									<tr>
+										<td class="tdColum3">Full Name</td>
+										<td class="tdColum2">
 											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-fullname">
+												<input type="text" class="form-control" id="">
 											</div>
 										</td>
-										<td class="textPosition" style="width: 18%">
-											<div class="form-group">
-												<select id="new-role">
-													<option> ROLE_ADMIN</option>
-													<option> ROLE_USER</option>
+									</tr>
+									<tr>
+										<td class="tdColum3">Password</td>
+										<td class="tdColum2">
+											<div class="form-group customForm-Group">
+												<input type="text" class="form-control" id="">
+											</div>
+										</td>
+									</tr>
+
+									<tr>
+										<td class="tdColum3">Role</td>
+										<td class="tdColum2">
+											<div class="form-group" style="padding-top:3%;">
+												<select >
+													<option>ROLE_ADMIN</option>
+													<option>ROLE_USER</option>
 												</select>
 											</div>
 										</td>
-										<td class="textPosition" style="width: 1%">
+									</tr>
+									<tr>
+										<td class="tdColum3">Limit Number</td>
+										<td class="tdColum2">
 											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-limitnum">
+												<input type="text" class="form-control" id="">
+											</div>
+										</td>
+									<tr>
+										<td class="tdColum3">Borrowed Number</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input type="text" class="form-control" id="">
 											</div>
 										</td>
 									</tr>
-								</tbody>
-							</table>
 
+								</table>
+							</div>
 
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button id="add-ticket" type="button" class="btn btn-custom">Submit</button>
-						<button id="add-close" type="button" class="btn btn-custom"	data-dismiss="modal">Close</button>
+						<button id="add-close" type="button" class="btn btn-custom"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
