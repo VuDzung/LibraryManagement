@@ -8,27 +8,27 @@
 <script src="/resources/js/bookmanagement.js"></script>
 </head>
 <body>
-<th:block th:include="_adminheader"></th:block>
+	<th:block th:include="_adminheader"></th:block>
 	<div class="container">
 		<h2>Books Management</h2>
+		<!-- input search -->
 		<div class="topnav">
 			<div class="search-container">
 				<form action="#">
-					<input type="text" placeholder="Search.." id="w-input-searchbook"
-						name="search">
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
+					<input type="text" placeholder="Search.." name="search"
+						id="w-input-searchbook" />
 				</form>
 			</div>
 		</div>
 
-		<div style="overflow-x: auto;">
+		<div class="table-responsive">
+			<!-- <div style="overflow-x: auto;"> -->
 			<table class="table table-striped">
 				<thead>
 					<tr class="trMenu">
 						<th>ISBN</th>
 						<th>Title</th>
+						<th>Image</th>
 						<th>Author</th>
 						<th>Publish</th>
 						<th>Short Description</th>
@@ -70,7 +70,7 @@
 					<div class="modal-body">
 						<div class="wrapper">
 							<!-- button add show -->
-							<div style="overflow-x: auto;">
+							<div class="table-responsive">
 								<table class="table1">
 									<tr>
 										<td class="tdColum3">ISBN</td>
@@ -135,7 +135,7 @@
 
 								</table>
 							</div>
-													
+
 							<!-- END button add show -->
 						</div>
 					</div>
@@ -159,7 +159,71 @@
 					<div class="modal-body">
 						<div class="wrapper">
 							<!--EDIT BUTTON EDIT-->
-							<div style="overflow-x: auto;">
+							<div class="table-responsive">
+								<table class="table1">
+									<tr>
+										<td class="tdColum3">ISBN</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input id="book-isbn" type="text" class="form-control"
+													value="1">
+											</div>
+										</td>
+										<td class="tdColum3">Image</td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Title</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input id="book-title" type="text" class="form-control"
+													value="1">
+											</div>
+										</td>
+										<!--  ----image-------- -->
+										<td class="tdColum3" rowspan="4"><div id="divchooseFile">
+												<img id="inputImage" src="">
+											</div></td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Author</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input id="book-author" type="text" class="form-control"
+													value="1">
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Publish</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input id="book-publish-year" type="text"
+													class="form-control" value="1">
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="tdColum3">Total</td>
+										<td class="tdColum2">
+											<div class="form-group">
+												<input id="book-total" type="text" class="form-control"
+													value="1">
+											</div>
+										</td>
+									<tr>
+										<td class="tdColum3">Short Description</td>
+										<td class="tdColum2" colspan="3">
+											<div class="form-group">
+												<textarea class="form-control" id="book-description"
+													rows="4"></textarea>
+											</div>
+										</td>
+									</tr>
+
+								</table>
+							</div>
+
+							<!-- <div style="overflow-x: auto;">
 								<table class="table1">
 									<tr>
 										<td class="tdColum">ISBN</td>
@@ -205,7 +269,7 @@
 									</tr>
 
 								</table>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<!--END EDIT BUTTON EDIT-->
