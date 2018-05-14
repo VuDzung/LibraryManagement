@@ -43,11 +43,11 @@ public class MainController {
         return "bookmanagement";
     }
 
-    @RequestMapping(value = { "/reportsTicket" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/reportsticket" }, method = RequestMethod.GET)
     public String welcomereportsTicket(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
-        return "reportsTicket";
+        return "reportsticket";
     }
     
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
