@@ -50,8 +50,35 @@ $(function () {
         	$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
-    			dataType : 'json',
+    			cache:false,
     			url : "/admin/edit/ticket",
+    			data : JSON.stringify(libuser),
+    			success : function(data) {
+    				if(data.indexOf('Successful')!=-1){
+						swal("Successful!", data, "success");
+					}else{
+						swal("Error!", data, "error");
+					}
+    			},
+    			error : function(e) {
+    				swal("Error!", "System error! Please try again.", "error");
+    				console.log("ERROR : ", e);
+    			} 	
+    		});
+        });
+        
+        // ADD USER----------------------------------------------------
+        $("body").off("click", "#add-user").on("click", "#add-user", function(){
+        	libuser = {
+        			   username:  $("#new-username").val(),
+        			   fullname: $("#new-fullname").val(),
+        			   role: $("#new-role").val(),
+        			   limit: $("#new-limitnum").val(),
+        			  };
+        	$.ajax({
+    			type : "POST",
+    			contentType : 'application/json; charset=utf-8',
+    			url : "/admin/add-ticket",
     			data : JSON.stringify(libuser),
     			success : function(data) {
     				alert(data);
@@ -75,9 +102,9 @@ $(function () {
 	    				var user = $("#title-and-name").attr("user");		
 	    				$(".btn-borrowed[user='" + user +"']").text( $("#title-and-name").attr("numborrowed")-1);
 	    				ajaxBorrowedBook(user);
-	    				alert(data);
+						swal("Successful!", data, "success");
     				}
-    				else alert(data);
+    				else swal("Error!", data, "error");
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);
@@ -99,7 +126,9 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    		      return { value: item.fullName + '( Account: ' + item.userName + ' ) ', data: item.idUser };
+    			  var fullName = $.trim(item.fullName);
+    			  var userName = $.trim(item.userName);
+    		      return { value: fullName + '( Account: ' + userName + ' ) ', data: item.idUser };
     		   })
     		            
     		 };

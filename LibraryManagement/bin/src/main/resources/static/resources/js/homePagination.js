@@ -53,7 +53,9 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+    			  var titleOfBook = $.trim(item.book.titleOfBook);
+    			  var author = $.trim(item.book.author);
+    		      return { value: titleOfBook + ' ( Author: ' + author + ' ) ', data: item.isbn };
     		   })
     		            
     		 };
@@ -67,12 +69,48 @@ $(function () {
     			type : "GET",
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
-    					alert(data)
+    					//alert(data);
+    					if(data=='Borrow Successful!'){
+    						swal("Borrow done!", "Please return the book early!", "success");
+    					}if(data=='Number Of Borowed Books Reached The Limit!'){
+    						swal("Error!", "Number Of Borowed Books Reached The Limit!", "error");
+    					}if(data=='ISBN Code Is Not Correct!'){
+    						swal("Error!", "ISBN Code Is Not Correct!", "error");
+    					}if(data=='Book Is Not Available!'){
+    						swal("Error!", "Book Is Not Available!", "error");
+    					}
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);
     			}
     		});
+        });
+        
+        //SHOW BORROWED BOOK
+        $('body').off('click', '#menu-borrowed').on('click', '#menu-borrowed', function(){
+        	$.ajax({
+        		type : "GET",
+        		url : "/home/borrowed-books",
+        		success : function(data){
+        			$('#ticket-borrowed-book').empty();
+        			$.each(data , function(key, val){
+        				$('#ticket-borrowed-book').append('<tr>\
+																<td>'+val.isbnBean.isbn+'</td>\
+																<td>'+val.isbnBean.book.titleOfBook+'</td>\
+																<td>'+val.isbnBean.book.author+'</td>\
+																<td>'+val.isbnBean.book.publishYear+'</td>\
+																<td>'+val.dateBorrow+'</td>\
+															</tr>');       													
+        			});
+        		}
+        	});
+        });
+        
+        //SCROLL TO CONTACT DIV
+        $("body").on('click', '#menu-contact', function() {
+            $('html, body').animate({
+                scrollTop: $(".contact").offset().top
+            }, 1000);
         });
         
         //CHECK ISBN------------------------------------------------------------------------------------------------------------
@@ -148,7 +186,8 @@ $(function () {
                                 </div> ");  
     	}
     	
-    	$("#searchbutton").click(function(){
+    	
+    	function loadbeforeloadpage(){
     		alert("key press");
     		var titlebook = $('#w-input-search').val();
     		$.ajax({
@@ -162,7 +201,7 @@ $(function () {
     				console.log("ERROR : ", e);
     			}
     		});
-    	});
+    	}
 //    	$('#w-input-search').bind("enterKey",function(e){
 //    		alert("key press");
 //    		var titlebook = $('#w-input-search').val();
@@ -184,5 +223,7 @@ $(function () {
 //    		        $(this).trigger("enterKey");
 //    		    }
 //    		});
+    	
+    
     });
 

@@ -18,17 +18,26 @@
 <!-- END link bootstrap + font awesome -->
 <link rel="stylesheet" href="../resources/css/adminCss2.css"
 	type="text/css" />
+<script src="https://unpkg.com/sweetalert2@7.17.0/dist/sweetalert2.all.js"></script>
 <script src="/resources/js/jquery.twbsPagination.min.js"></script>
 <script src="/resources/core/jquery.autocomplete.min.js" /></script>
 <link href="/resources/core/main.css" rel="stylesheet">
 
+
 <link
-	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+	href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css"
 	rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet"
+	href="/resources/css/adminCss2.css" />
+<script
+	src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
 
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css" />
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script src="/resources/js/statistic.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -65,7 +74,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span>
 							Info</a></li>
-					<li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>
+					<li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"></span>
 							Logout</a></li>
 				</ul>
 			</div>

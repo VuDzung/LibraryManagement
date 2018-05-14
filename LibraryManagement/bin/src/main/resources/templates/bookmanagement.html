@@ -8,26 +8,25 @@
 <script src="/resources/js/bookmanagement.js"></script>
 </head>
 <body>
-<th:block th:include="_adminheader"></th:block>
+	<th:block th:include="_adminheader"></th:block>
 	<div class="container">
 		<h2>Books Management</h2>
+		<!-- input search -->
 		<div class="topnav">
 			<div class="search-container">
 				<form action="#">
-					<input type="text" placeholder="Search.." id="w-input-searchbook"
-						name="search">
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
+					<input type="text" placeholder="Search.." name="search"
+						id="w-input-searchbook" />
 				</form>
 			</div>
 		</div>
-
-		<div style="overflow-x: auto;">
+		<div class="table-responsive">
+			<!-- <div style="overflow-x: auto;"> -->
 			<table class="table table-striped">
 				<thead>
 					<tr class="trMenu">
 						<th>ISBN</th>
+						<th>Image</th>
 						<th>Title</th>
 						<th>Author</th>
 						<th>Publish</th>
@@ -70,7 +69,7 @@
 					<div class="modal-body">
 						<div class="wrapper">
 							<!-- button add show -->
-							<div style="overflow-x: auto;">
+							<div class="table-responsive">
 								<table class="table1">
 									<tr>
 										<td class="tdColum3">ISBN</td>
@@ -135,83 +134,104 @@
 
 								</table>
 							</div>
-													
-							<!-- END button add show -->
+
+
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="addBook" type="button" class="btn btn-custom">Submit</button>
-						<button id="close" type="button" class="btn btn-custom"
+						<button id="spin-icon" hidden><i class="fa fa-refresh fa-spin"></i></button>
+						<button id="close-icon" hidden><i class="fa fa-close"></i></button>
+						<button id="check-icon" hidden><i class="fa fa-check"></i></button>
+						<button id="addBook" type="button" class="btn btn-custom" disabled>Submit</button>
+						<button type="button" id="add-close" class="btn btn-custom"
 							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-
+		<!-- END button add show -->
+		
 		<!-- Modal Edit -->
 		<div class="modal fade" id="editModal" role="dialog">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<button class="close" type="button" data-dismiss="modal">&times;</button>
 						<h4 class="modal-title">Edit</h4>
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
 							<!--EDIT BUTTON EDIT-->
-							<div style="overflow-x: auto;">
+							<div class="table-responsive">
 								<table class="table1">
 									<tr>
-										<td class="tdColum">ISBN</td>
-										<td class="tdColum2"><div class="form-group">
+										<td class="tdColum3">ISBN</td>
+										<td class="tdColum2">
+											<div class="form-group">
 												<input id="book-isbn" type="text" class="form-control"
-													value="1">
-											</div></td>
+													value="1" disabled>
+											</div>
+										</td>
+										<td class="tdColum3">Image</td>
 									</tr>
 									<tr>
-										<td class="tdColum">Title</td>
-										<td class="tdColum2"><div class="form-group">
+										<td class="tdColum3">Title</td>
+										<td class="tdColum2">
+											<div class="form-group">
 												<input id="book-title" type="text" class="form-control"
-													value="1">
+													value="1" disabled>
+											</div>
+										</td>
+										<!--  ----image-------- -->
+										<td class="tdColum3" rowspan="4"><div id="divchooseFile">
+												<img id="inputImage2" src="">
 											</div></td>
 									</tr>
 									<tr>
-										<td class="tdColum">Author</td>
-										<td class="tdColum2"><div class="form-group">
+										<td class="tdColum3">Author</td>
+										<td class="tdColum2">
+											<div class="form-group">
 												<input id="book-author" type="text" class="form-control"
-													value="1">
-											</div></td>
+													value="1" disabled>
+											</div>
+										</td>
 									</tr>
 									<tr>
-										<td class="tdColum">Publish</td>
-										<td class="tdColum2"><div class="form-group">
+										<td class="tdColum3">Publish</td>
+										<td class="tdColum2">
+											<div class="form-group">
 												<input id="book-publish-year" type="text"
-													class="form-control" value="1">
-											</div></td>
+													class="form-control" value="1" disabled>
+											</div>
+										</td>
 									</tr>
 									<tr>
-										<td class="tdColum">Short Description</td>
-										<td class="tdColum2"><div class="form-group">
-												<textarea class="form-control" id="book-description"
-													rows="4"></textarea>
-											</div></td>
-									</tr>
-									<tr>
-										<td class="tdColum">Total</td>
-										<td class="tdColum2"><div class="form-group">
+										<td class="tdColum3">Total</td>
+										<td class="tdColum2">
+											<div class="form-group">
 												<input id="book-total" type="text" class="form-control"
 													value="1">
-											</div></td>
+											</div>
+										</td>
+									<tr>
+										<td class="tdColum3">Short Description</td>
+										<td class="tdColum2" colspan="3">
+											<div class="form-group">
+												<textarea class="form-control" id="book-description"
+													rows="4"></textarea>
+											</div>
+										</td>
 									</tr>
 
 								</table>
 							</div>
+
 						</div>
 					</div>
 					<!--END EDIT BUTTON EDIT-->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-custom btn-edit-book">Submit</button>
-						<button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+						<button type="button" id="edit-close" class="btn btn-custom" data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>

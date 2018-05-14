@@ -86,6 +86,7 @@ public class IsbnServiceImpl {
 			isbndao.save(libIsbn);
 			status.add(String.valueOf(this.getPaginatePageNum()));
 			status.add("Add Successful!");
+			status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
 			return status;
 		}
 		//else libIsbn==null
@@ -100,6 +101,7 @@ public class IsbnServiceImpl {
 				isbndao.save(libIsbn);
 				status.add(String.valueOf(this.getPaginatePageNum()));
 				status.add("Add Successful!");
+				status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
 				return status;
 			}
 			//else libBook==null
@@ -119,7 +121,13 @@ public class IsbnServiceImpl {
 				isbndao.save(libIsbn);
 				status.add(String.valueOf(this.getPaginatePageNum()));
 				status.add("Add Successful!");
+				status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
 				return status;	
+	}
+	
+	//GET PAGE NUM OF A LIBISBN
+	public int getISBNpage(String isbn) {
+		return (int)Math.ceil((float)this.isbndao.getLibISBNRecordNum(isbn)/(float)LimitRecords);
 	}
 	
 	//DELTETE ISBN

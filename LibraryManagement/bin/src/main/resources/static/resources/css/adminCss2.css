@@ -26,99 +26,83 @@
 }
 
 .copyright {
-	text-align: center padding-top: 1%;
+	text-align: center ;
+	padding-top: 1%;
+	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	color:#FFF;
 }
 /*END css admin*/
 /*-------------------------------------*/
 /*css book management*/
+/* search field */
 .topnav {
-	overflow: hidden;
-	background-color: #e9e9e9;
+  overflow: hidden;
+  background-color: #e9e9e9;
 }
 
 .topnav a {
-	float: left;
-	display: block;
-	color: black;
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	font-size: 17px;
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
 .topnav a:hover {
-	background-color: #ddd;
-	color: black;
+  background-color: #ddd;
+  color: black;
 }
 
 .topnav a.active {
-	background-color: #2196F3;
-	color: white;
+  background-color: #2196F3;
+  color: white;
 }
+
+
 
 .topnav input[type=text] {
-	box-sizing: border-box;
-	border: 2px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-	background-color: white;
-	padding: 12px 20px 12px 42px;
-	-webkit-transition: width 0.4s ease-in-out;
-	transition: width 0.4s ease-in-out;
-	float: right;
+  width: 100%;
+    padding: 1em;
+    padding-right: 7em;
+    position: relative;
+    top: 0;
 }
 
-.topnav input[type=text]:focus {
-	width: 50%;
-}
-
-.topnav .search-container button {
-	float: right;
-	padding: 6px 10px;
-	margin-top: 2px;
-	margin-right: -43px;
-	background: #FFF;
-	font-size: 22px;
-	border: none;
-	cursor: pointer;
-}
 
 .topnav .search-container button:hover {
-	background: #FFF;
+  background: #ccc;
 }
 
 @media screen and (max-width: 600px) {
-	.topnav .search-container {
-		float: none;
-	}
-	.topnav a, .topnav input[type=text], .topnav .search-container button {
-		float: none;
-		display: block;
-		text-align: left;
-		width: 100%;
-		margin: 0;
-		padding: 14px;
-	}
-	.topnav input[type=text] {
-		border: 1px solid #ccc;
-	}
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
 }
-.customForm-Group{
-	    padding-left: 1%;
-}
-
 /*END css book banagement*/
 /*-------------------------------------*/
 /*css button add*/
 .btn-info {
 	color: #fff;
-	background-color: #17a2b8;
-	border-color: #17a2b8;
+	background-color: #47e047;
+	border-color: #47e047;
 	margin-bottom: 1%;
 	padding: 7px 10px;
 	font-size: 11px;
 	line-height: 1.3333333;
-	border-radius: 8px;
+	border-radius: 3px;
 }
 /*END css button add*/
 /*-------------------------------------*/
@@ -255,19 +239,29 @@ table, td, th {
 #mySidenav a:focus {
 	left: 0;
 }
-
-#week {
-	top: 20px;
-	background-color: #4CAF50;
+.fa-spin{
+	font-size: 30px;
+	color: green;
+}
+.fa-close{
+	font-size: 30px;
+	color: red;
+}
+.fa-check{
+	font-size: 30px;
+	color: green;
+}
+#spin-icon, #close-icon, #check-icon{
+	background-color: rgba(0,0,0,0) !important;
+	border: none;
+	cursor: default;
+}
+table.table-striped>tbody>tr>td>img{
+	max-width: 40px;
+}
+table.table-striped>tbody>tr>td{
+	padding: 5px !important;
+    vertical-align: middle;
+    text-align: center;	
 }
 
-#month {
-	top: 80px;
-	background-color: #2196F3; /* Blue */
-}
-
-#year {
-	top: 140px;
-	background-color: #f44336; /* Red */
-}
-/*END css sidenav of report page*/

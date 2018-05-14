@@ -69,7 +69,9 @@ label {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #ebeeef;
+  background-image: url('../images/loginbackground.png');
+  -webkit-background-size: cover; */
+  background-size: cover; 
 }
 
 
@@ -121,7 +123,6 @@ label {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(54,84,99,0.7);
 }
 
 
