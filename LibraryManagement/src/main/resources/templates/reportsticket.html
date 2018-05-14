@@ -25,46 +25,53 @@
 	<th:block th:include="_adminheader"></th:block>
 	<div class="wrapper">
 		<div class="container">
-			<div id="mySidenav" class="sidenav">
-				<a href="#" id="week">Week</a> <a href="#" id="month">Month</a> <a
-					href="#" id="year">Year</a>
-
+			<div class="col-md-offset-3">
+				<button id="week" class="fill">Weekly</button>
+				<button id="month" class="fill">Monthly</button>
+				<button id="year" class="fill">Yearly</button>
 			</div>
-			<br />
-			<div id="chooseYear">
-				<h3>Choose Year</h3>
-				<div class="ui calendar" id="yearOnly">
-					<div class="ui input left icon">
-						<i class="time icon"></i> <input id="inputYear" type="text"
-							placeholder="Time">
+
+
+			<div class="container">
+				<div id="chooseYear">
+					<h3>Choose Year</h3>
+					<div class="ui calendar" id="yearOnly">
+						<div class="ui input left icon">
+							<i class="time icon"></i> <input id="inputYear" type="text"
+								placeholder="Time">
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div id="chooseMonth">
-				<h3>Month and year</h3>
-				<div class="ui calendar" id="monthAndYear">
-					<div class="ui input left icon">
-						<i class="time icon"></i> <input id="inputMonthAndYear"
-							type="text" placeholder="Time">
+				<div id="chooseMonth">
+					<h3>Choose month and year</h3>
+					<div class="ui calendar" id="monthAndYear">
+						<div class="ui input left icon">
+							<i class="time icon"></i> <input id="inputMonthAndYear"
+								type="text" placeholder="Time">
+						</div>
 					</div>
+					<br />
 				</div>
-				<br />
-			</div>
 
-			<div id="chooseWeek">
-				<h3>Date only</h3>
-				<div class="ui calendar" id="weekOfChoosenDate">
-					<div class="ui input left icon">
-						<i class="calendar icon"></i> <input type="text" id="inputDate"
-							placeholder="Date">
+				<div id="chooseWeek">
+					<h3>Choose Date</h3>
+					<div class="ui calendar" id="weekOfChoosenDate">
+						<div class="ui input left icon">
+							<i class="calendar icon"></i> <input type="text" id="inputDate"
+								placeholder="Date">
+						</div>
 					</div>
+					<br />
 				</div>
-				<br />
+
+
+
 			</div>
 
-			<div id="chartContainer"
-				style="height: 400px; width: 100%;" align="center"></div>
+
+			<div id="chartContainer" style="height: 400px; width: 100%;"
+				align="center"></div>
 			<br>
 			<hr>
 			<div id="chartContainer2" style="height: 400px; width: 100%;"></div>
