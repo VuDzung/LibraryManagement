@@ -25,7 +25,7 @@ public interface LibIsbnDAO extends JpaRepository<LibIsbn, String> {
 
 	List<LibIsbn> findByBook(LibBook book);
 
-	// @Query("FROM LibIsbn li where li.status = True li.book = :book")
+	@Query("FROM LibIsbn li where li.status = True")
 	List<LibIsbn> findByBookIn(Iterable<LibBook> books);
 
 }

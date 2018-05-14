@@ -53,7 +53,9 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
+    			  var titleOfBook = $.trim(item.book.titleOfBook);
+    			  var author = $.trim(item.book.author);
+    		      return { value: titleOfBook + ' ( Author: ' + author + ' ) ', data: item.isbn };
     		   })
     		            
     		 };
