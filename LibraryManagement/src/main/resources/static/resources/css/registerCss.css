@@ -125,7 +125,7 @@ label {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	padding: 43px 88px 40px 190px;
+	padding: 43px 88px 0px 190px;
 }
 
 /*------------------------------------------------------------------
