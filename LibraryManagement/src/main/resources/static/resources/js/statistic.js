@@ -1,63 +1,94 @@
-var today = new Date();
-var charMonth = '';
-if(today.getMonth()==0){
-	charMonth = 'January'
-}
-if(today.getMonth()==1){
-	charMonth = 'February'
-}
-if(today.getMonth()==2){
-	charMonth = 'March'
-}
-if(today.getMonth()==3){
-	charMonth = 'April'
-}
-if(today.getMonth()==4){
-	charMonth = 'May'
-}
-if(today.getMonth()==5){
-	charMonth = 'June'
-}
-if(today.getMonth()==6){
-	charMonth = 'July'
-}
-if(today.getMonth()==7){
-	charMonth = 'August'
-}
-if(today.getMonth()==8){
-	charMonth = 'September'
-}
-if(today.getMonth()==9){
-	charMonth = 'October'
-}
-if(today.getMonth()==10){
-	charMonth = 'November'
-}
-if(today.getMonth()==11){
-	charMonth = 'December'
-}
-
 $(document).ready(function(){
+	
+	var today = new Date();
+	var charMonth = '';
+	if(today.getMonth()==0){
+		charMonth = 'January'
+	}
+	if(today.getMonth()==1){
+		charMonth = 'February'
+	}
+	if(today.getMonth()==2){
+		charMonth = 'March'
+	}
+	if(today.getMonth()==3){
+		charMonth = 'April'
+	}
+	if(today.getMonth()==4){
+		charMonth = 'May'
+	}
+	if(today.getMonth()==5){
+		charMonth = 'June'
+	}
+	if(today.getMonth()==6){
+		charMonth = 'July'
+	}
+	if(today.getMonth()==7){
+		charMonth = 'August'
+	}
+	if(today.getMonth()==8){
+		charMonth = 'September'
+	}
+	if(today.getMonth()==9){
+		charMonth = 'October'
+	}
+	if(today.getMonth()==10){
+		charMonth = 'November'
+	}
+	if(today.getMonth()==11){
+		charMonth = 'December'
+	}
+	
+	
 	$('#inputYear').val(today.getFullYear());
 	$('#inputMonthAndYear').val(charMonth+ " "+ today.getFullYear());
 	$('#inputDate').val(today.getDate() + " " + charMonth + ", " + today.getFullYear());
 	$('#chooseYear').hide();
 	$('#chooseMonth').hide();
 	$('#chooseWeek').hide();
+	
+	
+	$('#year').click(function(){
+		$('#chooseYear').show();
+		$('#chooseMonth').hide();
+		$('#chooseWeek').hide();
+		loadYear();
+	}); 
+
+	$('#inputYear').focusout(loadYear);
+
+	$('#month').click(function(){
+		$('#chooseYear').hide();
+		$('#chooseMonth').show();
+		$('#chooseWeek').hide();
+		loadMonth();
+	});
+
+	$('#inputMonthAndYear').focusout(loadMonth);
+	$('#week').click(function() {
+		$('#chooseYear').hide();
+		$('#chooseMonth').hide();
+		$('#chooseWeek').show();
+		loadWeek();
+	}) 
+	$('#inputDate').focusout(loadWeek);
+	$('#yearOnly').calendar({
+		  type: 'year'
+		});
+
+	$('#monthAndYear').calendar({
+		  type: 'month'
+		});
+	$('#weekOfChoosenDate').calendar({
+		  monthFirst: false,
+		  type: 'date'
+		});
+	
+	
 })
 
 
-$('#yearOnly').calendar({
-  type: 'year'
-});
 
-$('#monthAndYear').calendar({
-	  type: 'month'
-	});
-$('#weekOfChoosenDate').calendar({
-	  monthFirst: false,
-	  type: 'date'
-	});
 
 //year part
 function loadYear(){
@@ -320,23 +351,7 @@ function loadMonth(){
 	 });
 }
 
-$('#year').click(function(){
-	$('#chooseYear').show();
-	$('#chooseMonth').hide();
-	$('#chooseWeek').hide();
-	loadYear();
-}); 
 
-$('#inputYear').focusout(loadYear);
-
-$('#month').click(function(){
-	$('#chooseYear').hide();
-	$('#chooseMonth').show();
-	$('#chooseWeek').hide();
-	loadMonth();
-});
-
-$('#inputMonthAndYear').focusout(loadMonth);
 
 
 
@@ -523,13 +538,7 @@ function loadWeek(){
 	    }
 	 });
 }
-$('#week').click(function() {
-	$('#chooseYear').hide();
-	$('#chooseMonth').hide();
-	$('#chooseWeek').show();
-	loadWeek();
-}) 
-$('#inputDate').focusout(loadWeek);
+
 
 
 	

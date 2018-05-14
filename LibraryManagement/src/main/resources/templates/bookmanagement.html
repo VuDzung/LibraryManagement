@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Books Management</title>
 <meta charset="utf-8">
-<script type="text/javascript" src="../resources/js/bookmanagement.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/resources/js/bookmanagement.js"></script>
 </head>
 <body>
+<th:block th:include="_adminheader"></th:block>
 	<div class="container">
 		<h2>Books Management</h2>
 		<div class="topnav">
@@ -215,5 +218,6 @@
 		</div>
 
 	</div>
+	<th:block th:include="_adminfooter"></th:block>
 </body>
 </html>
