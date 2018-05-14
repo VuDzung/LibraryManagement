@@ -159,7 +159,7 @@ $(function () {
                                 </div> ");  
     	}
     	
-    	$("#searchbutton").click(function(){
+    	function loadbeforeloadpage(){
     		alert("key press");
     		var titlebook = $('#w-input-search').val();
     		$.ajax({
@@ -173,7 +173,7 @@ $(function () {
     				console.log("ERROR : ", e);
     			}
     		});
-    	});
+    	}
 //    	$('#w-input-search').bind("enterKey",function(e){
 //    		alert("key press");
 //    		var titlebook = $('#w-input-search').val();
