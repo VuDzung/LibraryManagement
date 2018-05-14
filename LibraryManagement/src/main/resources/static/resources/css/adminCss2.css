@@ -26,10 +26,14 @@
 }
 
 .copyright {
+	background-color: #189;
 	text-align: center ;
 	padding-top: 1%;
+	padding-bottom:1%;
 	font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
 	color:#FFF;
+	display:block;
+	
 }
 /*END css admin*/
 /*-------------------------------------*/
