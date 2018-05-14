@@ -19,4 +19,9 @@ public class TicketController {
 	public ResponseEntity<String> editTicket(@RequestBody UserDTO userDTO) {
 		return new ResponseEntity<>(this.userservice.editTicket(userDTO), HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/admin/add_user", method = RequestMethod.POST)
+	public ResponseEntity<String> addUser(@RequestBody UserDTO userDTO) {
+		return new ResponseEntity<>(this.userservice.addUser(userDTO), HttpStatus.OK);
+	}
 }

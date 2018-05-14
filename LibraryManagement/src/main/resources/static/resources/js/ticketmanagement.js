@@ -63,6 +63,26 @@ $(function () {
     		});
         });
         
+        // ADD USER----------------------------------------------------
+        $("body").off("click", "#add-user").on("click", "#add-user", function(){
+        	libuser = {
+        			   username:  $("#new-username").val(),
+        			   fullname: $("#new-fullname").val(),
+        			   role: $("#new-role").val(),
+        			   limit: $("#new-limitnum").val(),
+        			  };
+        	$.ajax({
+    			type : "POST",
+    			contentType : 'application/json; charset=utf-8',
+    			dataType : 'json',
+    			url : "/admin/add-ticket",
+    			data : JSON.stringify(libuser),
+    			success : function(data) {
+    				alert(data);
+    			}
+    		});
+        });
+        
         //PASRE BOROWED BOOK OF TICKET INTO BORROWED POPUP----------------------------------------------------------------------
         $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
         	ajaxBorrowedBook($(this).attr("user"));         
