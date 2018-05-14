@@ -85,7 +85,7 @@ public class IsbnServiceImpl {
 			libIsbn.setTotalBook(libIsbn.getTotalBook() + bookDTO.getTotalBook());
 			isbndao.save(libIsbn);
 			status.add(String.valueOf(this.getPaginatePageNum()));
-			status.add("Add Succesful!");
+			status.add("Add Successful!");
 			return status;
 		}
 		//else libIsbn==null
@@ -99,7 +99,7 @@ public class IsbnServiceImpl {
 				libIsbn.setNumberBooksBorrowed(0);
 				isbndao.save(libIsbn);
 				status.add(String.valueOf(this.getPaginatePageNum()));
-				status.add("Add Succesful!");
+				status.add("Add Successful!");
 				return status;
 			}
 			//else libBook==null
@@ -118,7 +118,7 @@ public class IsbnServiceImpl {
 				libIsbn.setBook(this.bookService.save(libBook));
 				isbndao.save(libIsbn);
 				status.add(String.valueOf(this.getPaginatePageNum()));
-				status.add("Add Succesful!");
+				status.add("Add Successful!");
 				return status;	
 	}
 	

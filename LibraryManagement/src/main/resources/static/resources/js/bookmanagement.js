@@ -133,7 +133,12 @@ $( document ).ready(function() {
     			success : function(data) {
     				$("#books").attr('num',data[0]);
                 	$("#books").trigger('click');
-                	alert(data[1]);
+                	if(data[1].indexOf('Successful')!=-1){
+						swal("Successful!", data[1], "success");
+					}else{
+						swal("Error!", data[1], "error");
+					}
+                	//alert(data[1]);
     			}
     		});
     });
@@ -175,7 +180,12 @@ $( document ).ready(function() {
      		data : JSON.stringify(libIsbn), // Note it is important
      		success : function(data) {   			
                	$("#book").trigger('click');
-               	alert(data[0]);
+               	if(data.indexOf('Successful')!=-1){
+					swal("Successful!", data, "success");
+				}else{
+					swal("Error!", data, "error");
+				}
+               	//alert(data[0]);
      		}
      	});
      });
@@ -193,8 +203,13 @@ $( document ).ready(function() {
     				$("#books").attr('num',data);
                 	$("#books").trigger('click');
 				}else {
-					alert(data[1])
-					console.log(data)
+					if(data[1].indexOf('Successful')!=-1){
+						swal("Successful!", data[1], "success");
+					}else{
+						swal("Error!", data[1], "error");
+					}
+					//alert(data[1])
+					//console.log(data)
 				}	
             }
     	});
