@@ -85,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 								}
 							} else if (authority.getAuthority().equals("ROLE_ADMIN")) {
 								try {
-									response.sendRedirect("/admin");
+									response.sendRedirect("/bookmanagement");
 								} catch (Exception e) {
 									e.printStackTrace();
 								}

@@ -46,15 +46,16 @@
 				<form class="login100-form" name="register" id="registerForm"
 					th:action="@{/register}" th:object="${libuser}" method="post"
 					novalidate>
-
-					<div th:unless="${#request.getParameter('error') == 'false'}">
-						<div th:if="${#request.getParameter('error') == 'true'}"
-							class="alert alert-danger alert-dismissible mycustom-alert">
-							<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-							<strong>Register Failed!</strong> Please check the input
-							information.
-						</div>
-						<!-- <div class="divR"> -->
+					<div class="false">
+						<div th:unless="${#request.getParameter('error') == 'false'}">
+							<div th:if="${#request.getParameter('error') == 'true'}"
+								class="alert alert-danger alert-dismissible mycustom-alert">
+								<a href="#" class="close" data-dismiss="alert"
+									aria-label="close">&times;</a> <strong>Register
+									Failed!</strong> Username already exists, please choose another
+								username.
+							</div>
+							<!-- <div class="form-group"> -->
 							<!--username-->
 							<div class="wrap-input100 ">
 								<span class="label-input100">Username</span> <input
@@ -87,24 +88,23 @@
 
 
 							<!--role-->
-							<div id="role" class="wrap-input100">
+							<div id="role">
 								<span class="label-input100">Role</span> <select
-									th:field="*{role}" name="ignore">
+									class="form-control" th:field="*{role}" name="ignore">
 									<option th:each="role : ${listRole}" th:value="${role.idRole}"
 										th:text="${role.nameRole}"></option>
 								</select>
 							</div>
 
-
-
 							<div class="container-login100-form-btn">
 								<button class="login100-form-btn" type="submit">Submit</button>
 							</div>
 						</div>
-
+					</div>
 					<!-- </div> -->
 
-					<div th:if="${#request.getParameter('error') == 'false'}">
+					<div class="success"
+						th:if="${#request.getParameter('error') == 'false'}">
 						<div class="alert alert-success alert-dismissible mycustom-alert">
 							<a href="/login" class="close" data-dismiss="alert"
 								aria-label="close">&times;</a> <strong>Register Done!</strong>

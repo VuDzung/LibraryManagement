@@ -99,61 +99,15 @@
                         <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
 					</div>
 				</form>
+                <a href="../views/listBooks.html">
                     <ul class="nav navbar-nav navbarborder">
-					   <li class="li-search"> <button id = "searchbutton" class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
+					   <li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
 				    </ul>
+                </a>
 			</div>
 		</nav>
 	</div>
 </div>
-<!-- ________________________LIST NEW BOOKS _______________________-->
-<div class="latestcars">
-	<h1 class="text-center">LIST NEW BOOKS</h1>
-</div>
-    <div class="maincontent-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="latest-book">
-                        <div class="product-carousel">
-                            <div th:each="newbook : ${listnewbooks}" class="single-product">
-                                <div class="product-f-image">
-                                    <div class="txthover">
-                                            <img class="setImgListBook" th:src="${newbook.book.image}">
-                                                <div class="txtcontent">
-                                                    <div class="stars">
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                    </div>
-                                                    <div class="simpletxt">
-                                                        <p class="name" th:text="'Title: '+${newbook.book.titleOfBook}"></p>
-                                                        <p th:text="'ISBN code: '+${newbook.isbn}"></p>
-                                                        <p th:text="'Author: '+${newbook.book.author}"></p>
-                                                        <p class="price" th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'"> </p>
-                                                        <p th:text="'Year publish: '+${newbook.book.publishYear}"> <p/>
-                                                        <button class="btn btn-info" data-toggle="modal" data-target="#addModal" th:isbn="${newbook.isbn}">Read more</button>
-                                                        <button data-toggle="modal" data-target="#addModal" id="mytest" style="display: none;"></button>
-                                                        <button class="btn btn-success btn-borrow" th:if="${newbook.totalBook>newbook.numberBooksBorrowed}" th:isbn="${newbook.isbn}">BORROW</button>
-                                                        <button class="btn btn-success" th:if="${newbook.totalBook<=newbook.numberBooksBorrowed}" disabled>BORROW</button>
-                                                    </div>
-                                                    <div class="stars2">
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                        <div class="glyphicon glyphicon-star"></div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Add -->
 		<div class="modal fade" id="addModal" role="dialog">
 			<div class="modal-dialog">
@@ -173,19 +127,19 @@
 								<br>
 								<div class="titleShowBook">
 									<div class="form-group">
-										<label>ISBN:</label> <p id="book-isbn">code in here</p>
+										<label>ISBN</label> <p id="book-isbn">code in here</p>
 									</div>
 	                                <div class="form-group">
-										<label>Title Of The Book:</label> <p id="book-title">Nhật Ký Trong Tù</p>
+										<label>Title Of The Book: </label> <p id="book-title">Nhật Ký Trong Tù</p>
 									</div>
 	                                <div class="form-group">
-										<label>Author:</label> <p id="book-author">Ho Chi Minh</p>
+										<label>Author: </label> <p id="book-author">Ho Chi Minh</p>
 									</div>
 	                                <div class="form-group">
-										<label>Publish Year:</label> <p id="book-publish-year">2008</p>
+										<label>Publish Year: </label> <p id="book-publish-year">2008</p>
 									</div>
 	                                <div class="form-group">
-										<label>Short Description:</label> <p id="book-description">Somethings in here</p>
+										<label>Short Description</label> <p id="book-description">Somethings in here</p>
 									</div>
 								</div>
 							</form>
@@ -198,10 +152,10 @@
 				</div>
 			</div>
 		</div>
-<!-- ________________________LIST BOOKS _______________________-->
+<!-- ________________________SEARCH RESULTS _______________________-->
 	<div class="allcontain">
 		<div class="latestcars">
-	        <h1 class="text-center">LIST BOOKS</h1>
+	        <h1 class="text-center">&bullet; SEARCH RESULTS &bullet;</h1>
 	    </div>
 	    <div class="galary" th:num="${numofpage}">
 	
@@ -218,7 +172,7 @@
 		<div class="newslettercontent">
 				<div class="leftside">
 					<img id="image_border" src="../resources/images/border.png" alt="border">
-						<div class="contact-form lastestcars">
+						<div class="contact-form">
 							<h1>Contact Us</h1>
 								<div class="form-group group-coustume">
 									<p class="form-control name-form"><strong>Library:</strong> DXC Library</p>
