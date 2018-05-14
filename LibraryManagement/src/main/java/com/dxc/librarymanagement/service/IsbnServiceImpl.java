@@ -149,7 +149,8 @@ public class IsbnServiceImpl {
 		LibIsbn libIsbn = this.isbndao.findByIsbn(bookDTO.getIsbn());
 		if(libIsbn==null) return "ISBN Code Is Not Correct!";
 		LibBook libBook = libIsbn.getBook();
-		if(bookDTO.getTotalBook()<libIsbn.getNumberBooksBorrowed()) return "Total Can Not Less Than Number Of Borrowed Book!";
+		if(bookDTO.getTotalBook()<libIsbn.getNumberBooksBorrowed())
+			return "Total Can Not Less Than Number Of Borrowed Book!";
 		if(!libBook.getTitleOfBook().equals(bookDTO.getTitleOfBook()) || 
 				!libBook.getAuthor().equals(bookDTO.getAuthor()) || 
 				libBook.getPublishYear()!=bookDTO.getPublishYear()

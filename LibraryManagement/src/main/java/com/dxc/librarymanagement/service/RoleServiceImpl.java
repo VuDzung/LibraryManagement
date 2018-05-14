@@ -23,4 +23,8 @@ public class RoleServiceImpl {
     public LibRole findByIdRole(int idRole) {
         return this.libRoleDAO.findByIdRole(idRole);
     }
+    
+    public LibRole findByNameRole(String role) {
+    	return this.libRoleDAO.findByNameRole(role);
+    }
 }

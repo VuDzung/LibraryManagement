@@ -59,6 +59,27 @@ $(function () {
     		});
         });
         
+        // ADD USER----------------------------------------------------
+//        $("body").off("click", "#add-user").on("click", "#add-user", function(){
+//        	libuser = {iduser:  $("#ticket-id").val(),
+//        			   username:  $("#ticket-mail").val(),
+//        			   fullname: $("#ticket-name").val(),
+//        			   role: $("#ticket-role").val(),
+//        			   limit: $("#ticket-limit").val(),
+//        			   borrowed: $("#ticket-borrowed").val()
+//        			  };
+//        	$.ajax({
+//    			type : "POST",
+//    			contentType : 'application/json; charset=utf-8',
+//    			dataType : 'json',
+//    			url : "/admin/edit/ticket",
+//    			data : JSON.stringify(libuser),
+//    			success : function(data) {
+//    				alert(data);
+//    			}
+//    		});
+//        });
+        
         //PASRE BOROWED BOOK OF TICKET INTO BORROWED POPUP----------------------------------------------------------------------
         $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
         	ajaxBorrowedBook($(this).attr("user"));         

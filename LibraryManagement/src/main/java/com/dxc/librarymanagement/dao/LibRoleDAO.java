@@ -8,4 +8,5 @@ import com.dxc.librarymanagement.entities.LibRole;
 @Repository
 public interface LibRoleDAO extends JpaRepository<LibRole, Integer> {
     LibRole findByIdRole(int idRole);
+    LibRole findByNameRole(String role);
 }
