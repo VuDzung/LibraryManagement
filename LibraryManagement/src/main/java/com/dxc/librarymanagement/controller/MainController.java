@@ -31,23 +31,21 @@ public class MainController {
 
     @RequestMapping(value = { "/ticketmanagement" }, method = RequestMethod.GET)
     public String welcometicketmanagement(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
+        model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
         return "ticketmanagement";
     }
 
     @RequestMapping(value = { "/bookmanagement" }, method = RequestMethod.GET)
     public String welcomebookmanagement(Model model) {
-        model.addAttribute("title", "Welcome");
-        model.addAttribute("message", "This is welcome page!");
+        model.addAttribute("numofpagebook", this.isbnservice.getPaginatePageNum());
         return "bookmanagement";
     }
 
-    @RequestMapping(value = { "/reportsTicket" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/reportsticket" }, method = RequestMethod.GET)
     public String welcomereportsTicket(Model model) {
         model.addAttribute("title", "Welcome");
         model.addAttribute("message", "This is welcome page!");
-        return "reportsTicket";
+        return "reportsticket";
     }
     
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

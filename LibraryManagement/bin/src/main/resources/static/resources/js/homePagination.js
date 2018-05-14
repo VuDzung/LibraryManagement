@@ -53,9 +53,7 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    			  var titleOfBook = $.trim(item.book.titleOfBook);
-    			  var author = $.trim(item.book.author);
-    		      return { value: titleOfBook + ' ( Author: ' + author + ' ) ', data: item.isbn };
+    		      return { value: item.book.titleOfBook + '( Author: ' + item.book.author + ' ) ', data: item.isbn };
     		   })
     		            
     		 };
@@ -69,16 +67,7 @@ $(function () {
     			type : "GET",
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
-    					//alert(data);
-    					if(data=='Borrow Successful!'){
-    						swal("Borrow done!", "Please return the book early!", "success");
-    					}if(data=='Number Of Borowed Books Reached The Limit!'){
-    						swal("Error!", "Number Of Borowed Books Reached The Limit!", "error");
-    					}if(data=='ISBN Code Is Not Correct!'){
-    						swal("Error!", "ISBN Code Is Not Correct!", "error");
-    					}if(data=='Book Is Not Available!'){
-    						swal("Error!", "Book Is Not Available!", "error");
-    					}
+    					alert(data)
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);

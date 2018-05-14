@@ -54,7 +54,11 @@ $(function () {
     			url : "/admin/edit/ticket",
     			data : JSON.stringify(libuser),
     			success : function(data) {
-    				alert(data);
+    				if(data.indexOf('Successful')!=-1){
+						swal("Successful!", "You changed the user " + fullname + " information successfully!", "success");
+					}else{
+						swal("Error!", data, "error");
+					}
     			}
     		});
         });
@@ -96,9 +100,9 @@ $(function () {
 	    				var user = $("#title-and-name").attr("user");		
 	    				$(".btn-borrowed[user='" + user +"']").text( $("#title-and-name").attr("numborrowed")-1);
 	    				ajaxBorrowedBook(user);
-	    				alert(data);
+						swal("Successful!", data, "success");
     				}
-    				else alert(data);
+    				else swal("Error!", data, "error");
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);
@@ -120,7 +124,9 @@ $(function () {
     		    	
     		return {      	
     		  suggestions: $.map($.parseJSON(response), function(item) {
-    		      return { value: item.fullName + '( Account: ' + item.userName + ' ) ', data: item.idUser };
+    			  var fullName = $.trim(item.fullName);
+    			  var userName = $.trim(item.userName);
+    		      return { value: fullName + '( Account: ' + userName + ' ) ', data: item.idUser };
     		   })
     		            
     		 };

@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Ticket Management</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="../resources/js/ticketmanagement.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="/resources/js/ticketmanagement.js"></script>
 </head>
 <body>
+<th:block th:include="_adminheader"></th:block>
 	<div class="container">
 		<h2>Tickets Management</h2>
 		<div class="topnav">
@@ -14,13 +17,10 @@
 				<form action="#">
 					<input type="text" id="w-input-searchuser" placeholder="Search.."
 						name="search">
-					<button type="submit">
-						<i class="fa fa-search"></i>
-					</button>
 				</form>
 			</div>
 		</div>
-		<div style="overflow-x: auto;">
+		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
 					<tr class="trMenu">
@@ -156,9 +156,7 @@
 				</div>
 			</div>
 		</div>
-
-
-
 	</div>
+	<th:block th:include="_adminfooter"></th:block>
 </body>
 </html>
