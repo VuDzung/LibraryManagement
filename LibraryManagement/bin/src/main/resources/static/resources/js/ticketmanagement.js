@@ -1,4 +1,5 @@
 $(function () {
+		//PAGINATION TICKET------------------------------------------------------------------------------------------------------
         var total = $("#ticket").attr("num");
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
@@ -19,7 +20,9 @@ $(function () {
                 });
             }
         });
-        $("body").on("click", ".btn-ticket-edit", function() {
+        
+        //PARSE TICKET INFO INTO POPUP EDIT-------------------------------------------------------------------------------------
+        $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {
             var info_url = "./admin/ticket/"+$(this).attr("user");
             $.ajax({
                 url : info_url,
@@ -34,32 +37,55 @@ $(function () {
                 }
             });
         });
-        $("body").on("click", ".btn-borrowed", function() {
-            var info_url = "./admin/borrowed/"+$(this).attr("user");
-            $.ajax({
-                url : info_url,
-                success : function(data) {
-                    $("#ticket-borrowed-book").empty();
-                    $("#title-and-name").text("Borroweds Books Of: "+data[0].user.fullName)
-                    $.each(data, function(key, val){
-                        $("#ticket-borrowed-book").append('<tr>\
-                                                                <td class="textPosition">'+val.isbnBean.isbn+'</td>\
-                                                                <td class="textPosition">'+val.isbnBean.book.titleOfBook+'</td>\
-                                                                <td class="textPosition">'+val.isbnBean.book.author+'</td>\
-                                                                <td class="textPosition">'+val.isbnBean.book.publishYear+'</td>\
-                                                                <td class="textPosition">'+val.dateBorrow+'</td>\
-                                                                <td class="textPosition">\
-                                                                    <button type="button" class="btn btn-custom btn-sm" data-toggle="modal" data-target="#editModal" user="'+val.user.idUser+'" isbn="'+val.isbnBean.isbn+'">\
-                                                                        <span class="glyphicon glyphicon-erase"></span> Returned\
-                                                                    </button>\
-                                                                </td>\
-                                                            </tr>');
-                    })
-                }
-            });
+        
+        //EDIT TICKET       
+        $("body").off("click", "#edit-ticket").on("click", "#edit-ticket", function(){
+        	libuser = {iduser:  $("#ticket-id").val(),
+        			   username:  $("#ticket-mail").val(),
+        			   fullname: $("#ticket-name").val(),
+        			   role: $("#ticket-role").val(),
+        			   limit: $("#ticket-limit").val(),
+        			   borrowed: $("#ticket-borrowed").val()
+        			  };
+        	$.ajax({
+    			type : "POST",
+    			contentType : 'application/json; charset=utf-8',
+    			dataType : 'json',
+    			url : "/admin/edit/ticket",
+    			data : JSON.stringify(libuser),
+    			success : function(data) {
+    				alert(data);
+    			}
+    		});
         });
         
+        //PASRE BOROWED BOOK OF TICKET INTO BORROWED POPUP----------------------------------------------------------------------
+        $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
+        	ajaxBorrowedBook($(this).attr("user"));         
+        });
         
+        //RETURN BOOK-----------------------------------------------------------------------------------------------------------
+        $("body").off("click", ".btn-return").on("click", ".btn-return", function() {
+        	var url = "/admin/return/"+$(this).attr("idborrow");
+        	$.ajax({
+    			type : "GET",
+    			url : url ,
+    			success : function(data) {
+    				if(data.indexOf('Successful')!=-1){
+	    				var user = $("#title-and-name").attr("user");		
+	    				$(".btn-borrowed[user='" + user +"']").text( $("#title-and-name").attr("numborrowed")-1);
+	    				ajaxBorrowedBook(user);
+	    				alert(data);
+    				}
+    				else alert(data);
+    			},
+    			error : function(e) {
+    				console.log("ERROR : ", e);
+    			}
+    		});
+        });
+        
+        //SEARCH TICKET---------------------------------------------------------------------------------------------------------
         $('#w-input-searchuser').autocomplete({
     		autoSelectFirst: true,
     		serviceUrl: '/search/user',
@@ -79,6 +105,8 @@ $(function () {
     		 };
             }
     	 });
+        
+        //GET TICKET INFO FUNCTION----------------------------------------------------------------------------------------------
     	function getinforuser(iduser) {
     		$.ajax({
     			type : "GET",
@@ -99,27 +127,55 @@ $(function () {
     		});
     	}
     	
+    	//SET DATA POPUP EDIT TICKET FUNCTION-----------------------------------------------------------------------------------
     	function setdatapopup(val){
     		var status="";
             	if(val.borrowedNumber>0) status="";
             	else status="disabled";
                 $("#tickets-management").append('<tr>\
-                                                    <td class="textPosition">'+val.idUser+'</td>\
+                                                    <td class="textPosition" style="width:6%;">'+val.idUser+'</td>\
                                                     <td class="textPosition">'+val.userName+'</td>\
                                                     <td class="textPosition">'+val.fullName+'</td>\
                                                     <td class="textPosition">'+val.role.nameRole+'</td>\
-                                                    <td class="textPosition">'+val.limitNumber+'</td>\
-                                                    <td class="textPosition">\
+                                                    <td class="textPosition" style="width:10%;">'+val.limitNumber+'</td>\
+                                                    <td class="textPosition" style="width:13%;">\
                                                         <button type="button" class="btn btn-custom btn-sm btn-borrowed"\
                                                             data-toggle="modal" data-target="#modalview" user="'+val.idUser+'" '+status+'>'+val.borrowedNumber+'\
                                                         </button>\
                                                     </td>\
-                                                    <td>\
+                                                    <td class="textPosition">\
                                                         <button type="button" class="btn btn-custom btn-sm btn-ticket-edit"\
                                                             data-toggle="modal" data-target="#add" user="'+val.idUser+'">\
                                                             <span class="glyphicon glyphicon-edit"></span> edit\
                                                         </button>\
                                                     </td>\
                                                 </tr>');                                                                      
+    	}
+    	
+    	//GET BORROWED BOOK FUNCTION---------------------------------------------------------------------------------------------
+    	function ajaxBorrowedBook(iduser){
+    		$.ajax({
+                url : "./admin/borrowed/"+iduser,
+                success : function(data) {
+                    $("#ticket-borrowed-book").empty();
+                    $("#title-and-name").text("Borroweds Books Of: "+data[0].user.fullName)
+                    $("#title-and-name").attr("user",iduser);
+                    $("#title-and-name").attr("numborrowed",data.length);
+                    $.each(data, function(key, val){
+                        $("#ticket-borrowed-book").append('<tr>\
+                                                                <td class="textPosition">'+val.isbnBean.isbn+'</td>\
+                                                                <td class="textPosition">'+val.isbnBean.book.titleOfBook+'</td>\
+                                                                <td class="textPosition">'+val.isbnBean.book.author+'</td>\
+                                                                <td class="textPosition">'+val.isbnBean.book.publishYear+'</td>\
+                                                                <td class="textPosition">'+val.dateBorrow+'</td>\
+                                                                <td class="textPosition">\
+                                                                    <button type="button" class="btn btn-custom btn-sm btn-return" data-toggle="modal" data-target="#editModal" idborrow="'+val.idBorrow+'">\
+                                                                        <span class="glyphicon glyphicon-erase"></span> Returned\
+                                                                    </button>\
+                                                                </td>\
+                                                            </tr>');
+                    })
+                }
+            });
     	}
     });
