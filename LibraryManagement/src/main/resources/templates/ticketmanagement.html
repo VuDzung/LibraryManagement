@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script src="/resources/js/ticketmanagement.js"></script>
+<script src="/resources/js/stiketValid.js"></script>
 </head>
 <body>
 	<th:block th:include="_adminheader"></th:block>
@@ -175,66 +178,71 @@
 					<div class="modal-body">
 						<div class="wrapper">
 							<div class="table-responsive">
-								<table class="table1">
-									<tr>
-										<td class="tdColum3">User Name</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input type="text" class="form-control" id="">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Full Name</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input type="text" class="form-control" id="">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Password</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="text" class="form-control" id="">
-											</div>
-										</td>
-									</tr>
+								<form id="addModalForm" novalidate>
+									<table class="table1">
+										<tr>
+											<td class="tdColum3">User Name</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="email" class="form-control" name="newUsername"
+														id="new-username">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Full Name</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="text" class="form-control" name="newFullName"
+														id="new-fullname">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Password</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="password" class="form-control"
+														name="newPassword" id="new-password">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Confirm Password</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="password" class="form-control"
+														name="confirmNewPass" id="confirm-password">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Role</td>
+											<td class="tdColum2">
+												<div class="form-group" style="padding-top: 3%;">
+													<select id="new-role">
+														<option>ROLE_ADMIN</option>
+														<option>ROLE_USER</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Limit Number</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="text" class="form-control" id="new-limitnum">
+												</div>
+											</td>
+										</tr>
 
-									<tr>
-										<td class="tdColum3">Role</td>
-										<td class="tdColum2">
-											<div class="form-group" style="padding-top:3%;">
-												<select >
-													<option>ROLE_ADMIN</option>
-													<option>ROLE_USER</option>
-												</select>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Limit Number</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input type="text" class="form-control" id="">
-											</div>
-										</td>
-									<tr>
-										<td class="tdColum3">Borrowed Number</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input type="text" class="form-control" id="">
-											</div>
-										</td>
-									</tr>
-
-								</table>
+									</table>
+								</form>
 							</div>
-
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="add-ticket" type="button" class="btn btn-custom">Submit</button>
+						<button id="add-user" type="button" class="btn btn-custom">Submit</button>
 						<button id="add-close" type="button" class="btn btn-custom"
 							data-dismiss="modal">Close</button>
 					</div>

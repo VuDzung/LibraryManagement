@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibUserDAO;
@@ -22,6 +23,9 @@ public class UserServiceImpl {
 	private LibUserDAO libUserDAO;
 	@Autowired
 	private RoleServiceImpl roleServices;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@Value("${LimitRecords}")
 	private int LimitRecords;
 
@@ -53,14 +57,15 @@ public class UserServiceImpl {
 		Pageable pageable = PageRequest.of(number - 1, this.LimitRecords);
 		return libUserDAO.findAll(pageable).getContent();
 	}
-	
-	//edit user
+
+	// edit user
 	public String editTicket(UserDTO userDTO) {
 		LibUser libuser = this.libUserDAO.findByIdUser(userDTO.getIduser());
-		if(libuser==null) return "User Not Exist!";
-		if(!libuser.getUserName().equals(userDTO.getUsername()) || 
-				!libuser.getRole().getNameRole().equals(userDTO.getRole()) ||
-				libuser.getBorrowedNumber()!=userDTO.getBorrowed()) {
+		if (libuser == null)
+			return "User Not Exist!";
+		if (!libuser.getUserName().equals(userDTO.getUsername())
+				|| !libuser.getRole().getNameRole().equals(userDTO.getRole())
+				|| libuser.getBorrowedNumber() != userDTO.getBorrowed()) {
 			return "Can Not Change Usename, User's Role, User' Borrowed Number!";
 		}
 		libuser.setFullName(userDTO.getFullname());
@@ -70,18 +75,26 @@ public class UserServiceImpl {
 	}
 
 	public String addUser(UserDTO userDTO) {
-		LibUser libuser = new LibUser();
-		libuser.setUserName(userDTO.getUsername());
-		if(findByUserName(libuser.getUserName()) != null ) {
-			return "Username Already Exist!";
+		if (userDTO.getUsername().trim() != "" && userDTO.getUsername() != null && userDTO.getPassword().trim() != ""
+				&& userDTO.getPassword() != null && userDTO.getFullname() != null
+				&& userDTO.getFullname().trim() != "") {
+			if (findByUserName(userDTO.getUsername()) != null) {
+				return "Username Already Exist!";
+			} else {
+				LibUser libuser = new LibUser();
+				libuser.setUserName(userDTO.getUsername());
+				libuser.setFullName(userDTO.getFullname());
+				libuser.setPassword(passwordEncoder.encode(userDTO.getPassword()));
+				libuser.setRole(this.roleServices.findByNameRole(userDTO.getRole()));
+				libuser.setLimitNumber(userDTO.getLimit());
+				libuser.setBorrowedNumber(0);
+				this.libUserDAO.save(libuser);
+				return "Add User Successful!";
+			}
+
+		} else {
+			return "Please fill all information!";
 		}
-		libuser.setFullName(userDTO.getFullname());
-		libuser.setRole(this.roleServices.findByNameRole(userDTO.getRole()));
-		libuser.setLimitNumber(userDTO.getLimit());
-		libuser.setBorrowedNumber(0);
-		this.libUserDAO.save(libuser);
-		return "Add User Successful!";
 	}
 
-	
 }
