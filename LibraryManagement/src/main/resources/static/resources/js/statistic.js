@@ -232,12 +232,14 @@ function loadMonth(){
 		},
 		axisY: {
 			title: "Borrowed Books (Units)",
-			titleFontSize: 24
-			
+			titleFontSize: 24,
+			interval: 5
 		},
 		axisX: {
 			interval: 1,
 			intervalType: "month",
+			minimum: 0,
+			maximum: 13,
 			labelFormatter: function(e){
 				switch(e.value){
 				case 1:
@@ -284,6 +286,7 @@ function loadMonth(){
 			},
 			valueFormatString: "#"
 		},
+		dataPointMaxWidth: 40,
 		data: [{
 			type: "column",
 			indexLabel: "{y}",		
@@ -303,13 +306,25 @@ function loadMonth(){
 	    			y: data[i].borrowed
 	    		});
 	    	}
+	    	if(data != ''){
+	    		if(data[data.length-1]._month!=12){
+		    		dataPoints.push({
+		    			x: 12
+		    		});
+		    	}
+		    	if(data[data.length-1]._month!=1){
+		    		dataPoints.push({
+		    			x: 1
+		    		});
+		    	}
+	    	}
 	    	chart.render();
 	    	console.log('ok');
 	    }
 	 });
 	
 	
-
+	
 	var dataPoints2 = [];
 	var chart2 = new CanvasJS.Chart("chartContainer2", {
 		animationEnabled: true,
@@ -425,6 +440,8 @@ function loadWeek(){
 			titleFontSize: 24
 		},
 		axisX:{	  
+			minimum: 0,
+			maximum: 8,
 			labelFormatter: function(e){
 				switch(e.value){
 				case 1:

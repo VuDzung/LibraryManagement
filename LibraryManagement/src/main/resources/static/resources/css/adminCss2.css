@@ -188,7 +188,7 @@ table, td, th {
 }
 
 .tdScroll {
-	width: 515px;
+	width: 460px;
 	height: 60px;
 	overflow: auto;
 }
