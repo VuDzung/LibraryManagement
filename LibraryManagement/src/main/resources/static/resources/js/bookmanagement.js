@@ -127,7 +127,7 @@ $( document ).ready(function() {
     			"shortDescription" : $('#inputShortDescription').val(),
     			"titleOfBook" : $('#inputTitle').val()
     		}
-    		isbn = $('#book-isbn').val().trim();
+    		isbn = $('#inputISBN').val().trim();
     		$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
@@ -137,7 +137,16 @@ $( document ).ready(function() {
     				$("#books").attr('num',data[0]);
                 	$("#books").trigger('click');
                 	if(data[1].indexOf('Successful')!=-1){
-						swal("Successful!", data[1], "success");
+                		element = $('a.page-link:contains("'+data[2]+'")');
+                		element.parent().removeClass('active');
+    					element.trigger('click');
+						swal("Successful!", data[1], "success");						
+						$('.swal2-container').off('click').on('click',function(){
+							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.3)");
+							$('html, body').animate({
+						        scrollTop: $(".btn-edit[isbn='" + isbn +"']").offset().top
+						    }, 100);
+						});
 					}else{
 						swal("Error!", data[1], "error");
 					}
@@ -195,7 +204,7 @@ $( document ).ready(function() {
 					$('html, body').animate({
 				        scrollTop: screenTop
 				    }, 100);
-					$(document).click(function(){
+					$('.swal2-container').click(function(){
 						$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.3)");
 						
 					});
@@ -287,10 +296,12 @@ function setdataaline(val){
         $("#book-management").append('<tr>\
 										<td class="textPosition">'+val.isbn+'</td>\
 										<td class="bookmanagement-img"><img src="'+val.book.image+'"></td>\
-										<td class="textPosition">'+val.book.titleOfBook+'</td>\										<td class="textPosition">'+val.book.author+'</td>\
+										<td class="textPosition">'+val.book.titleOfBook+'</td>\
+										<td class="textPosition">'+val.book.author+'</td>\
 										<td class="textPosition">'+val.book.publishYear+'</td>\
 										<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
 										<td class="textPosition">'+val.totalBook+'</td>\
+										<td class="textPosition">'+(parseInt(val.totalBook)-parseInt(val.numberBooksBorrowed))+'</td>\
 										<td class="textPosition" style="width:11%;">\
 											<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
 												<span class="glyphicon glyphicon-edit"></span> Edit\
