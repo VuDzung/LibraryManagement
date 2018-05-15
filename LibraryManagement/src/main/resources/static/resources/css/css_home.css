@@ -2652,7 +2652,7 @@ th {
 	padding: 8px;
 	line-height: 1.42857143;
 	vertical-align: top;
-	border-top: 1px solid #ddd;
+	border: 1px solid #ddd;
 }
 
 .table>thead>tr>th {
@@ -6935,6 +6935,7 @@ button.close {
 }
 
 .modal-footer {
+	background-color: #f5f5dc;
 	padding: 15px;
 	text-align: right;
 	border-top: 1px solid #e5e5e5;
@@ -14999,3 +15000,28 @@ div.wrapper {
 #modalview>button{
 
 }
+
+.badge-new{
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 0;
+	/* left: 0; */
+	right: 0;
+	background: url(../images/new-badge@2x.png);
+	background-size: contain;
+	padding: 0;
+	line-height: 30px;
+	font-weight: 300;
+	font-style: italic;
+	z-index: 1;
+	font-size: 10px;
+	text-align: center;
+	color: #fff;
+}
+
+
+
+
+
+
