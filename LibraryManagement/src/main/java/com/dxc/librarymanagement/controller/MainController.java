@@ -90,8 +90,8 @@ public class MainController {
 		return "home";
 	}
 
-	@RequestMapping(value = "/home//{txtSearch}")
-	public @ResponseBody String searchBook(Model model, Principal principal, @PathVariable(value="txtSearch") String txtSearch) {
+	@RequestMapping(value = "/home", params = {"txtSearch"}, method = RequestMethod.GET)
+	public String searchBook(Model model, Principal principal, @RequestParam(value="txtSearch") String txtSearch) {
 
 		// Sau khi user login thanh cong se co principal
 		String userName = principal.getName();
@@ -102,6 +102,7 @@ public class MainController {
 		model.addAttribute("userInfo", userInfo);
 		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(txtSearch);
 		model.addAttribute("listBook", listBook);
+		model.addAttribute("txtSearch", txtSearch);
 		return "homeSearchBook";
 	}
 

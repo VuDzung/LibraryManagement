@@ -56,6 +56,9 @@ $(function () {
     			success : function(data) {
     				if(data.indexOf('Successful')!=-1){
 						swal("Successful!", data, "success");
+						 $.each(data, function(key, val){
+	                        	setdatapopup(val);                                                                     
+	                        });
 					}else{
 						swal("Error!", data, "error");
 					}
@@ -72,17 +75,26 @@ $(function () {
         	libuser = {
         			   username:  $("#new-username").val(),
         			   fullname: $("#new-fullname").val(),
+        			   password: $('#new-password').val(),
         			   role: $("#new-role").val(),
         			   limit: $("#new-limitnum").val(),
         			  };
         	$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
-    			url : "/admin/add-ticket",
+    			url : "/admin/add-user",
     			data : JSON.stringify(libuser),
     			success : function(data) {
-    				alert(data);
-    			}
+    				if(data.indexOf('Successful')!=-1 && $('#addModalForm').valid()){
+						swal("Successful!", data, "success");
+					}else{
+						swal("Error!", data, "error");
+					}
+    			},
+    			error : function(e) {
+    				swal("Error!", "System error! Please try again.", "error");
+    				console.log("ERROR : ", e);
+    			} 	
     		});
         });
         
@@ -180,6 +192,7 @@ $(function () {
                                                     </td>\
                                                 </tr>');                                                                      
     	}
+    	
     	
     	//GET BORROWED BOOK FUNCTION---------------------------------------------------------------------------------------------
     	function ajaxBorrowedBook(iduser){

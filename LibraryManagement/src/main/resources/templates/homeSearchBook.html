@@ -1,113 +1,150 @@
 <!doctype html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>MY LIBRARY </title>
-	<meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
-	<meta name="author" content="Web Domus Italia">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- Backup CSS -->
-	<link rel="stylesheet" type="text/css" href="/resources/css/css_home.css">
+<meta charset="UTF-8">
+<title>MY LIBRARY</title>
+<meta name="description"
+	content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+<meta name="author" content="Web Domus Italia">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Backup CSS -->
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/css_home.css">
 </head>
 <body>
-<div class="allcontain">
-	<div class="header">
-			<ul class="socialicon">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-				<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-			</ul>
+	<div class="allcontain">
+		<div class="header">
 			<ul class="givusacall">
 				<li></li>
 			</ul>
 			<ul class="logreg">
-				<li><a th:utext="${#request.userPrincipal.name}"></a> </li>
+				<li th:text="'Hello: ' +${userInfo[0]}+' &nbsp'"></li>
+				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
 				<li><a th:href="@{/logout}"><span class="register">Logout</span></a></li>
 			</ul>
-	</div>
-	<!-- Navbar Up -->
-	<nav class="topnavbar navbar-default topnav">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed toggle-costume" data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
-					<span class="sr-only"> Toggle navigaion</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand logo" href="#"><img src="../resources/images/logo1.png" alt="logo"></a>
-			</div>	 
 		</div>
-		<div class="collapse navbar-collapse" id="upmenu">
-			<ul class="nav navbar-nav" id="navbarontop">
-				<li class="active"><a href="../views/home.html">HOME</a> </li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"	data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ABOUT US <span class="caret"></span></a>
-					<ul class="dropdown-menu dropdowncostume">
-						<li><a href="../views/history.html">History</a></li>
-						<li><a href="../views/policy.html">Policy</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#">SERVICE SCHEDULE</a> 
-				</li>
-				<li>
-					<a href="contact.html">CONTACT</a>
-				</li>
-			</ul>
-		</div>
-	</nav>
-</div>
-<!--_______________________________________ Carousel__________________________________ -->
-<div class="allcontain">
-	<div id="carousel-up" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner " role="listbox">
-			<div class="item active">
-				<img src="../resources/images/sach1.jpg" alt="sach1">
-				<div class="carousel-caption">
-					
+		<!-- Navbar Up -->
+		<nav class="topnavbar navbar-default topnav">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button"
+						class="navbar-toggle collapsed toggle-costume"
+						data-toggle="collapse" data-target="#upmenu" aria-expanded="false">
+						<span class="sr-only"> Toggle navigaion</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand logo" href="#"><img
+						src="../resources/images/logo1.png" alt="logo"></a>
 				</div>
 			</div>
-			<div class="item">
-				<img src="../resources/images/sach2.jpg" alt="sach2">
-				<div class="carousel-caption">
-					
-				</div>
-			</div>
-			<div class="item">
-				<img src="../resources/images/sach3.jpg" alt="sach3">
-				<div class="carousel-caption">
-				</div>
-			</div>
-		</div>
-		<nav class="navbar navbar-default midle-nav">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed textcostume" data-toggle="collapse" data-target="#navbarmidle" aria-expanded="false">
-						<h1>SEARCH TEXT</h1>
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse" id="navbarmidle">
-				<br><br>
-				<form class="navbar-form navbar-left searchformmargin" role="search">
-					<div class="form-group">
-                        <input type="text" id="w-input-search" class="searchText" name="txtSearch" placeholder="Enter Keyword">
-					</div>
-				</form>
-                <a href="../views/listBooks.html">
-                    <ul class="nav navbar-nav navbarborder">
-					   <li class="li-search"> <button class="searchbutton"><span class="glyphicon glyphicon-search "></span></button></li>
-				    </ul>
-                </a>
+			<div class="collapse navbar-collapse" id="upmenu">
+				<ul class="nav navbar-nav" id="navbarontop">
+					<li class="active"><a th:href="@{/home}">HOME</a></li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">ABOUT US <span class="caret"></span></a>
+						<ul class="dropdown-menu dropdowncostume">
+							<li><a href="../views/history.html">History</a></li>
+							<li><a href="../views/policy.html">Policy</a></li>
+						</ul></li>
+					<li><a href="#">SERVICE SCHEDULE</a></li>
+					<li><a id="menu-contact">CONTACT</a></li>
+					<li><a id="menu-borrowed" data-toggle="modal" data-target="#modalview">BORROWED BOOKS</a></li>
+				</ul>
 			</div>
 		</nav>
+		<!--Borrowed Books  -->
+		<!-- Modal View-->
+		<div class="modal fade" id="modalview" role="dialog">
+			<div class="modal-dialog modal-lg">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title" id="title-and-name">Borrowed Books</h4>
+					</div>
+					<div class="modal-body">
+						<div class="wrapper">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>ISBN</th>
+										<th>Title</th>
+										<th>Author</th>
+										<th>Publish</th>
+										<th>Borrow Date</th>
+										<!-- <th>Total</th> -->
+									</tr>
+								</thead>
+								<tbody id="ticket-borrowed-book">
+									
+
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-custom btn-success" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
 	</div>
-</div>
+	<!--_______________________________________ Carousel__________________________________ -->
+	<div class="allcontain">
+		<div id="carousel-up" class="carousel slide" data-ride="carousel">
+			<div class="carousel-inner " role="listbox">
+				<div class="item active">
+					<img src="../resources/images/sach1.jpg" alt="sach1">
+					<div class="carousel-caption"></div>
+				</div>
+				<div class="item">
+					<img src="../resources/images/sach2.jpg" alt="sach2">
+					<div class="carousel-caption"></div>
+				</div>
+				<div class="item">
+					<img src="../resources/images/sach3.jpg" alt="sach3">
+					<div class="carousel-caption"></div>
+				</div>
+			</div>
+			<nav class="navbar navbar-default midle-nav">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed textcostume"
+						data-toggle="collapse" data-target="#navbarmidle"
+						aria-expanded="false">
+						<h1>SEARCH TEXT</h1>
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+				</div>
+				<div class="collapse navbar-collapse" id="navbarmidle">
+					<br>
+					<br>
+					<form class="navbar-form navbar-left searchformmargin"
+						role="search" >
+						<div class="form-group">
+							<input type="text" id="w-input-search" class="searchText"
+								name="txtSearch" placeholder="Enter Keyword">
+						</div>
+					</form>
+					<ul class="nav navbar-nav navbarborder">
+						<li class="li-search">
+							<button id="searchbutton" class="searchbutton">
+								<span class="glyphicon glyphicon-search "></span>
+							</button>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</div>
+	</div>
     <!-- Modal Add -->
 		<div class="modal fade" id="addModal" role="dialog">
 			<div class="modal-dialog">
@@ -157,7 +194,7 @@
 		<div class="latestcars">
 	        <h1 class="text-center">&bullet; SEARCH RESULTS &bullet;</h1>
 	    </div>
-	    <div class="galary" th:num="${numofpage}">
+	    <div class="galary" th:textsearch="${txtSearch}">
 	    
 	    </div>
 	    <nav aria-label="Page navigation">
@@ -266,18 +303,11 @@ function initialize()
 <script src="/resources/js/showBook.main.js"></script>
 	<!-- Pagination -->
 <script src="/resources/js/jquery.twbsPagination.min.js"></script>
-<script src="/resources/js/homePagination.js"></script>
-
-
-
+<script src="/resources/js/homesearchbook.js"></script>
+<script
+	src="https://unpkg.com/sweetalert2@7.17.0/dist/sweetalert2.all.js"></script>
 <script src="/resources/core/jquery.autocomplete.min.js" /></script>
 <link href="/resources/core/main.css" rel="stylesheet">
-
-<script type="text/javascript">
-$(document).ready(function() {
-	loadbeforeloadpage();
-});
-</script>
 
 </body>
 </html>

@@ -7,7 +7,14 @@ public class UserDTO {
 	private String role;
 	private int limit;
 	private int borrowed;
+	private String password;
 	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getIduser() {
 		return iduser;
 	}
