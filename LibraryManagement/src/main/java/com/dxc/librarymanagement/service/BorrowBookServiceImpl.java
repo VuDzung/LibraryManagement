@@ -48,12 +48,10 @@ public class BorrowBookServiceImpl {
 		if(user.getBorrowedNumber() >= user.getLimitNumber()) {
 			return "Number Of Borowed Books Reached The Limit!";
 		}		
-		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()+1);
-		user.setBorrowedNumber(user.getBorrowedNumber()+1);
 		LibBorrowBook libborrow = new LibBorrowBook();
 		libborrow.setDateBorrow(new Date());
-		libborrow.setIsbnBean(this.isbnservice.saveIsbn(libisbn));
-		libborrow.setUser(this.userservice.saveUser(user));
+		libborrow.setIsbnBean(libisbn);
+		libborrow.setUser(user);
 		this.borrowbookdao.save(libborrow);
 		return "Borrow Successful!";
 	}
