@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibUserDAO;
 import com.dxc.librarymanagement.dto.UserDTO;
-import com.dxc.librarymanagement.entities.LibRole;
 import com.dxc.librarymanagement.entities.LibUser;
 
 @Service

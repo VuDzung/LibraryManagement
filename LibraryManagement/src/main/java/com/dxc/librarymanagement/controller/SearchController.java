@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dxc.librarymanagement.entities.LibIsbn;
 import com.dxc.librarymanagement.entities.LibUser;
-import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
 
@@ -24,16 +23,13 @@ public class SearchController {
 	private IsbnServiceImpl isbnServiceImpl;
 
 	@Autowired
-	private BookServiceImpl bookServiceImpl;
-
-	@Autowired
 	private UserServiceImpl userServiceImpl;
 
 	@RequestMapping(value = "/book", method = RequestMethod.GET)
 	public List<LibIsbn> getBook(@RequestParam String titlebook) {
 		return isbnServiceImpl.findByBookIds(titlebook);
 	}
-	
+
 	@RequestMapping(value = "/resultlistbook/{titlebook}", method = RequestMethod.POST)
 	public List<LibIsbn> returnSearchBook(@PathVariable("titlebook") String titlebook) {
 		return isbnServiceImpl.findByBookIds(titlebook);
@@ -44,8 +40,9 @@ public class SearchController {
 		List<LibUser> listUser = this.userServiceImpl.findByUserNameContaining(username);
 		return listUser;
 	}
+
 	@RequestMapping(value = "/resultlistuser/{username}", method = RequestMethod.POST)
-	public List<LibUser>  returnSearchUser(@PathVariable("username") String username) {
+	public List<LibUser> returnSearchUser(@PathVariable("username") String username) {
 		List<LibUser> listUser = this.userServiceImpl.findByUserNameContaining(username);
 		return listUser;
 	}
