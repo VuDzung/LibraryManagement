@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
 import com.dxc.librarymanagement.utils.WebUtils;
@@ -33,7 +32,7 @@ public class MainController {
 		return "login";
 	}
 
-	@RequestMapping(value = { "/ticketmanagement" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/ticketmanagement" }, method = RequestMethod.GET)
 	public String welcometicketmanagement(Model model, Principal principal) {
 		String userName = principal.getName();
 		System.out.println("User Name: " + userName);
@@ -44,7 +43,7 @@ public class MainController {
 		model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
 		return "ticketmanagement";
 	}
-	@RequestMapping(value = "/ticketmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/ticketmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
 	public String welcometicketmanagementAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch, Principal principal) {
 		String userName = principal.getName();
 		System.out.println("User Name: " + userName);
@@ -56,7 +55,7 @@ public class MainController {
 		return "ticketmanagement";
 	}
 
-	@RequestMapping(value = { "/bookmanagement" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/bookmanagement" }, method = RequestMethod.GET)
 	public String welcomebookmanagement(Model model, Principal principal) {
 		String userName = principal.getName();
 		System.out.println("User Name: " + userName);
@@ -67,7 +66,7 @@ public class MainController {
 		model.addAttribute("numofpagebook", this.isbnservice.getPaginatePageNum());
 		return "bookmanagement";
 	}
-	@RequestMapping(value = "/bookmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/bookmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
 	public String searchBookAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch, Principal principal) {
 		String userName = principal.getName();
 		System.out.println("User Name: " + userName);
@@ -79,7 +78,7 @@ public class MainController {
 		return "bookmanagement";
 	}
 
-	@RequestMapping(value = { "/reportsticket" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/reportsticket" }, method = RequestMethod.GET)
 	public String welcomereportsTicket(Model model, Principal principal) {
 		String userName = principal.getName();
 		System.out.println("User Name: " + userName);
