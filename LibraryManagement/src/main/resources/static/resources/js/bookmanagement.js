@@ -1,4 +1,77 @@
 $(document).ready(function() {
+	//VALIDATE ADDBOOK FORM-----------------------------------------------------------------------------------------------------
+	$('#addBookForm').validate({
+		rules : {
+			inputISBN : {
+				required : true,
+				maxlength : 13
+			},
+			inputTotal : {
+				required : true,
+				digits : true,
+				min: 1,			
+			}
+		},
+		messages : {
+			inputISBN : {
+				required : 'ISBN is required',
+				maxlength : 'ISBN must be less than 12 characters'
+			},
+			inputTotal : {
+				required : 'Total is required',
+				digits : 'Total must be number',
+				min: 'Total must be greater than 0',		
+			}
+		}
+	});
+	
+	//VALIDATE EDIT BOOK------------------------------------------------------------------------------------------------
+	$('#editBookForm').validate({
+		rules: {
+			isbn: {
+				required: true
+			},
+			title: {
+				required: true
+			},
+			author: {
+				required: true
+			},
+			publishYear: {
+				required: true
+			},
+			total: {
+				required: true,
+				digits: true,
+				min: 1
+			},
+			description: {
+				required: true
+			}
+		},
+		messages: {
+			isbn: {
+				required: "ISBN is required!"
+			},
+			title: {
+				required: "Title is required!"
+			},
+			author: {
+				required: "Author is required!"
+			},
+			publishYear: {
+				required: "PublishYear is required!"
+			},
+			total: {
+				required: "Total is required!",
+				digits: "Total must be number",
+				min: "Total must be greater than 0"
+			},
+			description: {
+				required: "Description is required!"
+			}
+		}
+	});
 	
 	//CHECK URL IS bookmanagement OR bookmanagement?txtSearch=...-----------------------------------------------------------------------------------------------------
 
@@ -20,34 +93,6 @@ $(document).ready(function() {
 			}
 		});
 	}
-	
-	//VALIDATE ADDBOOK FORM-----------------------------------------------------------------------------------------------------
-	$('#addBookForm').validate({
-		rules : {
-			inputISBN : {
-				required : true,
-				maxlength : 13
-			},
-			inputTotal : {
-				required : true,
-				digits : true,
-				minlength: 1,
-				maxlength: 3
-			}
-		},
-		messages : {
-			inputISBN : {
-				required : 'ISBN is required',
-				maxlength : 'ISBN must be less than 12 characters'
-			},
-			inputTotal : {
-				required : 'Total is required',
-				digits : 'Total must be number',
-				minlength: 'Total must be greater than 1',
-				maxlength: 'Total must be less than 999'
-			}
-		}
-	});
 	
 	//CLOSE ADD BOOK POP UP-----------------------------------------------------------------------------------------------------
 	$('#add-close').click(function(){
@@ -154,6 +199,10 @@ $(document).ready(function() {
     			"titleOfBook" : $('#inputTitle').val()
     		}
     		isbn = $('#inputISBN').val().trim();
+		isbn = $('#inputISBN').val().trim();
+    	if($('#addBookForm').valid() == false){
+    		swal("Error!", "Invalid Information!.", "error");
+    	}else {
     		$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
@@ -180,6 +229,7 @@ $(document).ready(function() {
     				console.log("ERROR : ", e);
     			}
     		});
+    	}
     });
     //SHOW EDIT POPUP-----------------------------------------------------------------------------------------------------------
     $("body").off('click', '.btn-edit').on('click', '.btn-edit', function(){
@@ -214,6 +264,9 @@ $(document).ready(function() {
      	}
         isbn = $('#book-isbn').val().trim();
         screenTop = $('html').scrollTop();
+        if($('#editBookForm').valid() == false){
+    		swal("Error!", "Invalid Information!.", "error");
+    	}else {
      	$.ajax({
      		type : "POST",
      		contentType : 'application/json; charset=utf-8',
@@ -241,6 +294,7 @@ $(document).ready(function() {
 				console.log("ERROR : ", e);
 			}
 	     });
+    	}
      });
     
     //DELETE BOOK---------------------------------------------------------------------------------------------------------------

@@ -4,12 +4,14 @@
 <title>Ticket Management</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/general.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script src="/resources/js/ticketmanagement.js"></script>
-<script src="/resources/js/stiketValid.js"></script>
+
 </head>
 <body>
 	<th:block th:include="_adminheader"></th:block>
@@ -17,9 +19,9 @@
 		<h2>Tickets Management</h2>
 		<div class="topnav">
 			<div class="search-container">
-				<form>
+				<form action="#">
 					<input type="text" id="w-input-searchuser" placeholder="Search.."
-						name="txtSearch">
+						name="search">
 				</form>
 			</div>
 		</div>
@@ -43,7 +45,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody id="tickets-management" th:textsearch="${txtSearch}"></tbody>
+				<tbody id="tickets-management"></tbody>
 			</table>
 		</div>
 
@@ -62,7 +64,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Update Limit Number</h4>
+						<h4 class="modal-title">Update User</h4>
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
@@ -173,7 +175,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add New Ticket</h4>
+						<h4 class="modal-title">Add New User</h4>
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
@@ -231,21 +233,22 @@
 											<td class="tdColum3">Limit Number</td>
 											<td class="tdColum2">
 												<div class="form-group">
-													<input type="text" class="form-control" id="new-limitnum">
+													<input type="number" class="form-control" id="new-limitnum"  name="limitNum">
 												</div>
 											</td>
 										</tr>
 
 									</table>
+											<div class="modal-footer">
+												<button id="add-user" type="button" class="btn btn-custom">Submit</button>
+												<button id="add-close" type="button" class="btn btn-custom"
+													data-dismiss="modal">Close</button>
+									</div>
 								</form>
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button id="add-user" type="button" class="btn btn-custom">Submit</button>
-						<button id="add-close" type="button" class="btn btn-custom"
-							data-dismiss="modal">Close</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>

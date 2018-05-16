@@ -3,6 +3,8 @@
 <head>
 <title>Books Management</title>
 <meta charset="utf-8">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/general.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
 <script src="/resources/js/bookmanagement.js"></script>
@@ -71,94 +73,101 @@
 						<div class="wrapper">
 							<!-- button add show -->
 							<div class="table-responsive">
-								<table class="table1">
-									<tr>
-										<td class="tdColum3">ISBN</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="text" class="form-control" id="inputISBN"
-													placeholder="Insert ISBN" maxlength="13" name="inputISBN">
-											</div>
-										</td>
-										<td class="tdColum3">Thumbnail</td>
+								<form id="addBookForm" novalidate>
+									<table class="table1">
+										<tr>
+											<td class="tdColum3">ISBN</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="text" class="form-control" id="inputISBN"
+														placeholder="Insert ISBN" maxlength="13" name="inputISBN">
+												</div>
+											</td>
+											<td class="tdColum3">Thumbnail</td>
 
-									</tr>
-									<tr>
-										<td class="tdColum3">Title</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="text" class="form-control" id="inputTitle"
-													placeholder="Title of the book" disabled>
-											</div>
-										</td>
-										<td class="tdColum3" rowspan="4"><div id="divchooseFile">
-												<img id="inputImage" src="">
-											</div></td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Author</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="text" class="form-control" id="inputAuthor"
-													placeholder="Author" disabled>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Publish</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="text" class="form-control"
-													id="inputPublishYear" placeholder="Publish Year" disabled>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Total</td>
-										<td class="tdColum2">
-											<div class="form-group customForm-Group">
-												<input type="number" min="1" class="form-control"
-													id="inputTotal" placeholder="Insert Total"
-													name="inputTotal">
-											</div>
-										</td>
-									<tr>
-										<td class="tdColum3">Short Description</td>
-										<td class="tdColum2" colspan="3">
-											<div class="form-group customForm-Group">
-												<textarea class="form-control" id="inputShortDescription"
-													rows="3" disabled>
+										</tr>
+										<tr>
+											<td class="tdColum3">Title</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="text" class="form-control" id="inputTitle"
+														placeholder="Title of the book" disabled>
+												</div>
+											</td>
+											<td class="tdColum3" rowspan="4"><div id="divchooseFile">
+													<img id="inputImage" src="">
+												</div></td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Author</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="text" class="form-control" id="inputAuthor"
+														placeholder="Author" disabled>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Publish</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="text" class="form-control"
+														id="inputPublishYear" placeholder="Publish Year" disabled>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Total</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="number" min="1" class="form-control"
+														id="inputTotal" placeholder="Insert Total"
+														name="inputTotal">
+												</div>
+											</td>
+										<tr>
+											<td class="tdColum3">Short Description</td>
+											<td class="tdColum2" colspan="3">
+												<div class="form-group customForm-Group">
+													<textarea class="form-control" id="inputShortDescription"
+														rows="3" disabled>
 												</textarea>
-											</div>
-										</td>
-									</tr>
+												</div>
+											</td>
+										</tr>
 
-								</table>
+									</table>
+									<div class="modal-footer">
+										<button id="spin-icon" hidden>
+											<i class="fa fa-refresh fa-spin"></i>
+										</button>
+										<button id="close-icon" hidden>
+											<i class="fa fa-close"></i>
+										</button>
+										<button id="check-icon" hidden>
+											<i class="fa fa-check"></i>
+										</button>
+										<button id="addBook" type="button" class="btn btn-custom">Submit</button>
+										<button type="button" id="add-close" class="btn btn-custom"
+											data-dismiss="modal">Close</button>
+									</div>
+								</form>
 							</div>
-
-
 						</div>
 					</div>
-					<div class="modal-footer">
-						<button id="spin-icon" hidden><i class="fa fa-refresh fa-spin"></i></button>
-						<button id="close-icon" hidden><i class="fa fa-close"></i></button>
-						<button id="check-icon" hidden><i class="fa fa-check"></i></button>
-						<button id="addBook" type="button" class="btn btn-custom" disabled>Submit</button>
-						<button type="button" id="add-close" class="btn btn-custom"
-							data-dismiss="modal">Close</button>
-					</div>
+
 				</div>
 			</div>
 		</div>
 		<!-- END button add show -->
-		
+
 		<!-- Modal Edit -->
 		<div class="modal fade" id="editModal" role="dialog">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button class="close" type="button" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Edit</h4>
+						<h4 class="modal-title">Edit Book</h4>
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
@@ -232,7 +241,8 @@
 					<!--END EDIT BUTTON EDIT-->
 					<div class="modal-footer">
 						<button type="button" class="btn btn-custom btn-edit-book">Submit</button>
-						<button type="button" id="edit-close" class="btn btn-custom" data-dismiss="modal">Close</button>
+						<button type="button" id="edit-close" class="btn btn-custom"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>

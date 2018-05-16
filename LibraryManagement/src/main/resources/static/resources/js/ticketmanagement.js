@@ -1,10 +1,65 @@
 $(document).ready(function() {
+	// VALIDATE ADD
+	// USER------------------------------------------------------------------------------------------------
+	$('#addModalForm').validate({
+		rules:{
+			newUsername:{
+				required: true,
+				email: true,
+				maxlength: 50
+			},
+			newFullName:{
+				required: true,
+				maxlength: 30
+			},
+			newPassword:{
+				required: true,
+				maxlength: 16
+			},
+			confirmNewPass:{
+				required: true,
+				equalTo: '#new-password'
+			},
+			limitNum:{
+				required: true,
+				digits: true,
+				min: 1
+			}
+		},
+		messages:{
+			newUsername:{
+				required: "Username is required",
+				email: "UserName must be email",
+				maxlength: "Username must be less than 16 characters"
+			},
+			newFullName:{
+				required: "Name is required",
+				maxlength: "Name must be less than 30 characters"
+			},
+			newPassword:{
+				required: "Password is required",
+				maxlength: "Password must be less than 16 characters"
+			},
+			confirmNewPass:{
+				required: "Confirm password is required",
+				equalTo: "Confirm password did not match"
+			},
+			limitNum:{
+				required: "Limit Number is required",
+				digits: "Limit Number must be digit number",
+				min: "Limit Number must be greater than 0"
+			}
+		}		
+	})
+
 	
-	//CHECK URL IS ticketmanagement OR ticketmanagement?txtSearch=...-----------------------------------------------------------------------------------------------------
+	// CHECK URL IS ticketmanagement OR
+	// ticketmanagement?txtSearch=...-----------------------------------------------------------------------------------------------------
 
 	var textsearch = $('#tickets-management').attr("textsearch");
 	if(textsearch==null || textsearch.trim()==''){
-		//PAGINATION TICKET------------------------------------------------------------------------------------------------------
+		// PAGINATION
+		// TICKET------------------------------------------------------------------------------------------------------
 		var total = $("#ticket").attr("num");
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
@@ -43,7 +98,8 @@ $(document).ready(function() {
 	
 	
         
-        //PARSE TICKET INFO INTO POPUP EDIT-------------------------------------------------------------------------------------
+        // PARSE TICKET INFO INTO POPUP
+		// EDIT-------------------------------------------------------------------------------------
         $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {
             var info_url = "/admin/ticket/"+$(this).attr("user");
             $.ajax({
@@ -60,7 +116,7 @@ $(document).ready(function() {
             });
         });
         
-        //EDIT TICKET       
+        // EDIT TICKET
         $("body").off("click", "#edit-ticket").on("click", "#edit-ticket", function(){
         	libuser = {iduser:  $("#ticket-id").val(),
         			   username:  $("#ticket-mail").val(),
@@ -94,6 +150,7 @@ $(document).ready(function() {
         
         // ADD USER----------------------------------------------------
         $("body").off("click", "#add-user").on("click", "#add-user", function(){
+        	var url =  "/admin/add-user";
         	libuser = {
         			   username:  $("#new-username").val(),
         			   fullname: $("#new-fullname").val(),
@@ -101,31 +158,49 @@ $(document).ready(function() {
         			   role: $("#new-role").val(),
         			   limit: $("#new-limitnum").val(),
         			  };
-        	$.ajax({
-    			type : "POST",
-    			contentType : 'application/json; charset=utf-8',
-    			url : "/admin/add-user",
-    			data : JSON.stringify(libuser),
-    			success : function(data) {
-    				if(data.indexOf('Successful')!=-1 && $('#addModalForm').valid()){
-						swal("Successful!", data, "success");
-					}else{
-						swal("Error!", data, "error");
-					}
-    			},
-    			error : function(e) {
-    				swal("Error!", "System error! Please try again.", "error");
-    				console.log("ERROR : ", e);
-    			} 	
-    		});
+        	if ($('#addModalForm').valid()==false) {
+        		swal("Error!", "Invalid information", "error");
+			} else{
+		        	$.ajax({
+		    			type : "POST",
+		    			contentType : 'application/json; charset=utf-8',
+		    			url :url,
+		    			data : JSON.stringify(libuser),
+		    			success : function(data) {
+		    				if(data.indexOf('Successful')!=-1 && $('#addModalForm').valid()){
+								swal("Successful!", data, "success");
+							}else{
+								swal("Error!", data, "error");
+							}
+		    				  	$("#new-username").val('');
+		        			    $("#new-fullname").val('');
+		        			    $('#new-password').val('');
+		        			    $('#confirm-password').val('');
+		        			    $("#new-limitnum").val('');
+		    			},
+		    			error : function(e) {
+		    				swal("Error!", "System error! Please try again.", "error");
+		    				console.log("ERROR : ", e);
+		    			} 	
+		        	});
+			}
         });
-        
-        //PASRE BOROWED BOOK OF TICKET INTO BORROWED POPUP----------------------------------------------------------------------
+        // CLICK CLOSE EVENT----------------------------------------------
+        $('#add-close').click(function() {
+        						$("#new-username").val('');
+		        			    $("#new-fullname").val('');
+		        			    $('#new-password').val('');
+		        			    $('#confirm-password').val('');
+		        			    $("#new-limitnum").val('');
+        })
+        // PASRE BOROWED BOOK OF TICKET INTO BORROWED
+		// POPUP----------------------------------------------------------------------
         $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {
         	ajaxBorrowedBook($(this).attr("user"));         
         });
         
-        //RETURN BOOK-----------------------------------------------------------------------------------------------------------
+        // RETURN
+		// BOOK-----------------------------------------------------------------------------------------------------------
         $("body").off("click", ".btn-return").on("click", ".btn-return", function() {
         	var url = "/admin/return/"+$(this).attr("idborrow");
         	$.ajax({
@@ -146,7 +221,8 @@ $(document).ready(function() {
     		});
         });
         
-        //SEARCH TICKET---------------------------------------------------------------------------------------------------------
+        // SEARCH
+		// TICKET---------------------------------------------------------------------------------------------------------
         $('#w-input-searchuser').autocomplete({
     		autoSelectFirst: true,
     		serviceUrl: '/search/user',
@@ -169,7 +245,8 @@ $(document).ready(function() {
             }
     	 });
         
-        //GET TICKET INFO FUNCTION----------------------------------------------------------------------------------------------
+        // GET TICKET INFO
+		// FUNCTION----------------------------------------------------------------------------------------------
     	function getinforuser(iduser) {
     		$.ajax({
     			type : "GET",
@@ -182,7 +259,7 @@ $(document).ready(function() {
     					setdatapopup(data);
     				}
     				
-    				 //window.location.href = "home";
+    				 // window.location.href = "home";
     			},
     			error : function(e) {
     				console.log("ERROR : ", e);
@@ -190,7 +267,8 @@ $(document).ready(function() {
     		});
     	}
     	
-    	//SET DATA POPUP EDIT TICKET FUNCTION-----------------------------------------------------------------------------------
+    	// SET DATA POPUP EDIT TICKET
+		// FUNCTION-----------------------------------------------------------------------------------
     	function setdatapopup(val){
     		var status="";
             	if(val.borrowedNumber>0) status="";
@@ -216,7 +294,8 @@ $(document).ready(function() {
     	}
     	
     	
-    	//GET BORROWED BOOK FUNCTION---------------------------------------------------------------------------------------------
+    	// GET BORROWED BOOK
+		// FUNCTION---------------------------------------------------------------------------------------------
     	function ajaxBorrowedBook(iduser){
     		$.ajax({
                 url : "/admin/borrowed/"+iduser,
