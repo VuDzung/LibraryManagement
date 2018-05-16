@@ -8,3 +8,7 @@
 *.json
 *.json
 *.json
+*.fdt
+*.frq
+*.prx
+*.tis

@@ -1,5 +1,4 @@
 $(document).ready(function(){
-	$("#selectrole").val('2');
 	$('#registerForm').validate({
 		
 		rules:{

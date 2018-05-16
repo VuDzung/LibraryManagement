@@ -90,9 +90,8 @@
 								<!--role-->
 								<div id="role">
 									<span class="label-input100">Role</span> <select id="selectrole"
-										class="form-control" th:field="*{role}" name="ignore" disabled>
-										<option th:each="role : ${listRole}" th:value="${role.idRole}"
-											th:text="${role.nameRole}"></option>
+										class="form-control" th:field="*{role}" name="ignore">
+										<option value="2" selected>ROLE_USER</option>
 									</select>
 								</div>
 
