@@ -13088,7 +13088,7 @@ border-color
 @media screen and (max-width: 767px) {
 	#navbarmidle {
 		padding-left: 20px;
-		background: rgb(248, 199, 45);
+		background: rgb(96, 173, 149);
 	}
 	.navbarborder>li:last-child {
 		margin-left: 0px;
@@ -13123,7 +13123,7 @@ border-color
 	.midle-nav {
 		position: relative;
 		top: 0px;
-		background: rgba(248, 199, 45, .9)
+		background: rgb(96, 173, 149);
 	}
 	.navbarborder {
 		margin-left: 0px;
