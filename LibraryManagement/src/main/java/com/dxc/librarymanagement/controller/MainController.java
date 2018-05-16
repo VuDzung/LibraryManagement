@@ -34,44 +34,60 @@ public class MainController {
 	}
 
 	@RequestMapping(value = { "/ticketmanagement" }, method = RequestMethod.GET)
-	public String welcometicketmanagement(Model model) {
+	public String welcometicketmanagement(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
 		return "ticketmanagement";
 	}
 	@RequestMapping(value = "/ticketmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
-	public String welcometicketmanagementAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch) {
+	public String welcometicketmanagementAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("txtSearch", txtSearch);
 		return "ticketmanagement";
 	}
 
 	@RequestMapping(value = { "/bookmanagement" }, method = RequestMethod.GET)
-	public String welcomebookmanagement(Model model) {
+	public String welcomebookmanagement(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("numofpagebook", this.isbnservice.getPaginatePageNum());
 		return "bookmanagement";
 	}
 	@RequestMapping(value = "/bookmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
-	public String searchBookAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch) {
+	public String searchBookAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("txtSearch", txtSearch);
 		return "bookmanagement";
 	}
 
 	@RequestMapping(value = { "/reportsticket" }, method = RequestMethod.GET)
-	public String welcomereportsTicket(Model model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("message", "This is welcome page!");
-		return "reportsticket";
-	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(Model model, Principal principal) {
-
-		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-
-		String userInfo = WebUtils.toString(loginedUser);
+	public String welcomereportsTicket(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
 		model.addAttribute("userInfo", userInfo);
-		model.addAttribute("numofpage", this.isbnservice.getPaginatePageNum());
-		model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
-		return "admin";
+		return "reportsticket";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -98,12 +114,9 @@ public class MainController {
 	@RequestMapping(value = "/home", params = {"txtSearch"}, method = RequestMethod.GET)
 	public String searchBook(Model model, Principal principal, @RequestParam(value="txtSearch") String txtSearch) {
 
-		// Sau khi user login thanh cong se co principal
-		String userName = principal.getName();
-
-		System.out.println("User Name: " + userName);
-		User loginedUser = (User) ((Authentication) principal).getPrincipal();
-		String userInfo = WebUtils.toString(loginedUser);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
 		model.addAttribute("userInfo", userInfo);
 		model.addAttribute("txtSearch", txtSearch);
 		return "home";

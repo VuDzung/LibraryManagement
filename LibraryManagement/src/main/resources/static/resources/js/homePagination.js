@@ -1,9 +1,13 @@
 $(document).ready(function() {
-	a = $(".price").each(function(){
-		if($(this).text().indexOf("Unavailable")!=-1) $(this).css("background-color","rgba(255,0,0,0.5)");
-		else $(this).css("background-color","rgba(0,255,0,0.5)");
-	});
-        
+	function valid(){
+		a = $(".price").each(function(){
+			if($(this).text().indexOf("Unavailable")!=-1) $(this).css("background-color","rgba(255,0,0,0.5)");
+			else $(this).css("background-color","rgba(0,255,0,0.5)");
+		});
+	}
+	
+    valid();   
+	
 	//CHECK URL IS home OR home?txtSearch=...-----------------------------------------------------------------------------------------------------
 
 	var textsearch = $('.galary').attr("textsearch");
@@ -23,11 +27,12 @@ $(document).ready(function() {
                         $.each(data, function(key, val){
                         	setdatawhensearchbook(val);               
                         });
+                        valid();
                     }
                 });
                 if(paginate_time==1)
 	                $("html, body").animate({
-	    	            scrollTop: $('.galary').offset().top 
+	    	            scrollTop: $('.lineDown').offset().top 
 	    	        });
                 else paginate_time=1;
             }
@@ -43,6 +48,7 @@ $(document).ready(function() {
 				$.each(data, function(key, val){
 	            	setdatawhensearchbook(val);               
 	            });
+				valid();
 			},
 			error : function(e) {
 				console.log("ERROR : ", e);
