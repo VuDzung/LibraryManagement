@@ -14,8 +14,8 @@
 		<!-- input search -->
 		<div class="topnav">
 			<div class="search-container">
-				<form action="#">
-					<input type="text" placeholder="Search.." name="search"
+				<form>
+					<input type="text" placeholder="Search.." name="txtSearch"
 						id="w-input-searchbook" />
 				</form>
 			</div>
@@ -43,7 +43,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody id="book-management">
+				<tbody id="book-management" th:textsearch="${txtSearch}">
 
 				</tbody>
 			</table>
