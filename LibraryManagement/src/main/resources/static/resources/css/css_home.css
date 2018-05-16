@@ -12444,7 +12444,7 @@ body .ui-tooltip {
 
 .header {
 	height: 40px;
-	background-color: #191919;
+	background-color: #468c76;
 }
 
 .header .container {
@@ -13028,7 +13028,7 @@ border-color
 @media only screen and (min-width: 768px) and (max-width: 1365px) {
 	.midle-nav {
 		position: relative;
-		background: rgb(248, 199, 45);
+		background: rgb(96, 173, 149);
 		top: 0px;
 	}
 	.searchtxt>h1 {
@@ -13510,13 +13510,18 @@ border-color
 }
 */
 .latestcars {
-	background-color: rgb(248, 199, 45);
+	background-color: rgb(183, 226, 219);
+    margin-left: 8%;
+    margin-right: 8%;
+    border-radius: 25px;
 }
 
 .latestcars>h1 {
-	font-family: "OpenSans-Light";
-	letter-spacing: 10px;
-	color: #020243;
+	font-family: "Lobster";
+    letter-spacing: 9px;
+    color: #020243;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 /*
 .sortby{
@@ -14226,7 +14231,7 @@ padding-left: 0px;
 }
 
 .footer {
-	background-color: #191919;
+	background-color: #468c76;
 	color: #fff;
 	font-family: "Roboto Light";
 	font-size: 12px;
@@ -14964,9 +14969,15 @@ padding-left: 0px;
 	margin-right: 5%;
 	margin-top: 2%;
 }
+.divParagrap>p{
+	text-align: justify;
+}
+.divParagrap>ul{
+	text-align: left;
+}
 
 #historyImg {
-	margin-left: 28%;
+	/* margin-left: 28%; */
 }
 
 /*css Schedule*/
@@ -15021,6 +15032,10 @@ div.wrapper {
 }
 .badge-new:hover{
 	 transform: scale(1.1);
+}
+
+.lineDown{
+	margin-top: 100px;
 }
 
 
