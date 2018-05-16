@@ -110,7 +110,8 @@ label {
 
 .login100-form-title-1 {
   font-family: Poppins-Bold;
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: bold;
   color: #fff;
   text-transform: uppercase;
   line-height: 1.2;
@@ -162,15 +163,14 @@ label {
 .label-input100 {
   font-family: Poppins-Regular;
   font-size: 15px;
-  color: #808080;
+  color: #80811E;
   line-height: 1.2;
   text-align: right;
-
   position: absolute;
   top: 14px;
   left: -105px;
   width: 80px;
-
+  font-weight:bold;
 }
 
 /*---------------------------------------------*/
@@ -327,7 +327,7 @@ input.input100 {
 .cssbottomctrlSubmit, .cssbottomctrlSubmit1{
 	font-family: Poppins-Regular;
     font-size: 15px;
-    color: #808080;
+    color: #80811E;
     padding-bottom: 3%;
 }
 .btnS{
@@ -339,4 +339,5 @@ input.input100 {
     float: right;
     padding-right: 3%;
     padding-bottom: 0%;
+    color:#80811E;
 }

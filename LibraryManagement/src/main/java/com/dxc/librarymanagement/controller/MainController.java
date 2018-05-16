@@ -9,13 +9,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.dxc.librarymanagement.entities.LibBook;
 import com.dxc.librarymanagement.service.BookServiceImpl;
 import com.dxc.librarymanagement.service.IsbnServiceImpl;
 import com.dxc.librarymanagement.service.UserServiceImpl;
@@ -28,8 +25,6 @@ public class MainController {
 	private UserServiceImpl userservice;
 	@Autowired
 	private IsbnServiceImpl isbnservice;
-	@Autowired
-	private BookServiceImpl bookServiceImpl;
 
 	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
 	public String welcomePage(Model model) {
@@ -43,10 +38,20 @@ public class MainController {
 		model.addAttribute("numofpageuser", this.userservice.getPaginatePageNum());
 		return "ticketmanagement";
 	}
+	@RequestMapping(value = "/ticketmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
+	public String welcometicketmanagementAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch) {
+		model.addAttribute("txtSearch", txtSearch);
+		return "ticketmanagement";
+	}
 
 	@RequestMapping(value = { "/bookmanagement" }, method = RequestMethod.GET)
 	public String welcomebookmanagement(Model model) {
 		model.addAttribute("numofpagebook", this.isbnservice.getPaginatePageNum());
+		return "bookmanagement";
+	}
+	@RequestMapping(value = "/bookmanagement", params = {"txtSearch"}, method = RequestMethod.GET)
+	public String searchBookAdmin(Model model, @RequestParam(value="txtSearch") String txtSearch) {
+		model.addAttribute("txtSearch", txtSearch);
 		return "bookmanagement";
 	}
 
@@ -100,10 +105,8 @@ public class MainController {
 		User loginedUser = (User) ((Authentication) principal).getPrincipal();
 		String userInfo = WebUtils.toString(loginedUser);
 		model.addAttribute("userInfo", userInfo);
-		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(txtSearch);
-		model.addAttribute("listBook", listBook);
 		model.addAttribute("txtSearch", txtSearch);
-		return "homeSearchBook";
+		return "home";
 	}
 
 	@RequestMapping(value = "/403", method = RequestMethod.GET)

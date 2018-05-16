@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.dxc.librarymanagement.entities.LibBook;
 import com.dxc.librarymanagement.entities.LibIsbn;
 import com.dxc.librarymanagement.entities.LibUser;
 import com.dxc.librarymanagement.service.BookServiceImpl;
@@ -32,21 +31,23 @@ public class SearchController {
 
 	@RequestMapping(value = "/book", method = RequestMethod.GET)
 	public List<LibIsbn> getBook(@RequestParam String titlebook) {
-		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(titlebook);
-		return isbnServiceImpl.findByBookIds(listBook);
+		return isbnServiceImpl.findByBookIds(titlebook);
 	}
 	
 	@RequestMapping(value = "/resultlistbook/{titlebook}", method = RequestMethod.POST)
 	public List<LibIsbn> returnSearchBook(@PathVariable("titlebook") String titlebook) {
-		List<LibBook> listBook = this.bookServiceImpl.findFirst10ByTitleOfBookContaining(titlebook);
-		return isbnServiceImpl.findByBookIds(listBook);
+		return isbnServiceImpl.findByBookIds(titlebook);
 	}
 
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public List<LibUser> getUser(@RequestParam String username) {
 		List<LibUser> listUser = this.userServiceImpl.findByUserNameContaining(username);
 		return listUser;
-
+	}
+	@RequestMapping(value = "/resultlistuser/{username}", method = RequestMethod.POST)
+	public List<LibUser>  returnSearchUser(@PathVariable("username") String username) {
+		List<LibUser> listUser = this.userServiceImpl.findByUserNameContaining(username);
+		return listUser;
 	}
 
 	@RequestMapping(value = "/user/{iduser}", method = RequestMethod.GET)
