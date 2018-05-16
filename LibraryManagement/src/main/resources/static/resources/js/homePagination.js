@@ -20,7 +20,7 @@ $(document).ready(function() {
             visiblePages: 10,
             onPageClick: function (evt, page) {
                 $(".galary").empty();
-                var url = "./home/page/"+page;
+                var url = "/home/page/"+page;
                 $.ajax({
                     url : url,
                     success : function(data) {
