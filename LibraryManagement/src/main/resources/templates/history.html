@@ -1,30 +1,32 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>MY LIBRARY </title>
-	<meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
-	<meta name="author" content="Web Domus Italia">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--    Backup CSS-->
-	<script type="text/javascript"
-		src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.isotope.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.myscript.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.bootstrap.js"></script>
-	<!-- Google Fonts  Phần khung show book-->
-	<script src="https://code.jquery.com/jquery.min.js"></script>
-	<script src="/resources/js/nothome.js"></script>
+<meta charset="UTF-8">
+<title>MY LIBRARY</title>
+<meta name="description"
+	content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+<meta name="author" content="Web Domus Italia">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    Backup CSS-->
+<script type="text/javascript"
+	src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.isotope.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.myscript.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.bootstrap.js"></script>
+<!-- Google Fonts  Phần khung show book-->
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="/resources/js/nothome.js"></script>
 
 
 
-	<script src="/resources/core/jquery.autocomplete.min.js" /></script>
-	<link href="/resources/core/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css"	href="/resources/css/css_home.css">
+<script src="/resources/core/jquery.autocomplete.min.js" /></script>
+<link href="/resources/core/main.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="/resources/css/css_home.css">
 </head>
 <body>
 	<div class="allcontain">
@@ -34,7 +36,8 @@
 			</ul>
 			<ul class="logreg">
 				<li th:text="'Hello: ' +${userInfo[0]}+' &nbsp'"></li>
-				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
+				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a
+					th:href="@{/bookmanagement}"><span class="register">Manage</span></a></li>
 				<li><a th:href="@{/logout}"><span class="register">Logout</span></a></li>
 			</ul>
 		</div>
@@ -63,8 +66,10 @@
 							<li><a th:href="@{/home/history}">History</a></li>
 							<li><a th:href="@{/home/policy}">Policy</a></li>
 						</ul></li>
-					<li><a th:href="@{/home/service-schedule}">SERVICE SCHEDULE</a></li>
-					<li><a id="menu-borrowed" data-toggle="modal" data-target="#modalview">BORROWED BOOKS</a></li>
+					<li><a th:href="@{/home/service-schedule}">SERVICE
+							SCHEDULE</a></li>
+					<li><a id="menu-borrowed" data-toggle="modal"
+						data-target="#modalview">BORROWED BOOKS</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -93,7 +98,7 @@
 									</tr>
 								</thead>
 								<tbody id="ticket-borrowed-book">
-									
+
 
 								</tbody>
 							</table>
@@ -101,13 +106,14 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-custom btn-success" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom btn-success"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
+
+
 	</div>
 	<!--_______________________________________ Carousel__________________________________ -->
 	<div class="allcontain">
@@ -129,34 +135,71 @@
 		</div>
 	</div>
 
-	
-<!-- ________________________HISTORY _______________________-->
-<div class="allcontain">
-    <div class="latestcars">
-	   <h1 class="text-center"> &#x261E; History of Library &#x261C;</h1>
-    </div>
-    <div id="historyImg">
-        <img src="../resources/images/history.png">
-    </div>
-    <div class="divParagrap">
-        <p> &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Over the course of six centuries the University Library’s collection have grown from a few dozen volumes on a handful of subjects into an extraordinary accumulation of several million books, maps, manuscripts and journals, augmented by an ever-increasing range of electronic resources. They cover every conceivable aspect of human endeavour, across three thousand years and in over two thousand languages. From its beginnings as an asset for a tiny community of theologians and canon lawyers in the medieval university, the Library’s mission has expanded to serve the international scholarly community and now, through its digitisation projects, to reach new audiences across the world.</p>
-        <p>The Library keeps evolving. In recent years we have been given the magnificent Montaigne Library of Gilbert de Botton, the literary archive of Dame Margaret Drabble, and the Chadwyck-Healey Liberation Collection, the definitive collection of French books published following the German retreat from French soil on 25 August 1944, donated by Sir Charles Chadwyck-Healey. Our major purchases have included the archive of the war poet Siegfried Sassoon and the important manuscript of St Luke’s Gospel known as the ‘Codex Zacynthius’, both supported with grants from the National Heritage Memorial Fund and the Friends of the National Libraries. A ground-breaking collaboration with the Bodleian Libraries also saw the Library jointly acquire the Lewis-Gibson Collection of Hebrew and Arabic manuscripts from the Cairo Genizah, collected by the twin Scottish sisters Agnes Lewis and Margaret Gibson.</p>
-        <p>So while we conserve this unique cultural heritage for the future, we are simultaneously finding new ways to share it with the present generation by building a digital library. Anyone with an internet connection and a desire for knowledge can view letters written by Moses Maimonides, Newton’s autograph propositions on elliptic motion, or sketchbooks from Darwin’s voyage of the beagle. Through the digital library, communities of readers around the globe can help create a richer understanding of the material held in our care.</p>
-        <p>Great collections are brought to life by great people – students and scholars, and visitors to the Library past, present and future.</p>
-        <p>In this section you will find information about the governance of the Library.  Further information is available on ways of supporting the Library. You will also find links to the scholarships and prizes associated with the Library.</p>
-    </div>
-    <div>
-    	<p>Content of history copy at: <a href="http://www.lib.cam.ac.uk">http://www.lib.cam.ac.uk</a>.</p>
-    </div>
-</div>  
-    
-<div class="allcontain">
+
+	<!-- ________________________HISTORY _______________________-->
+	<div class="allcontain">
+		<div class="latestcars">
+			<h1 class="text-center">&#x261E; History of Library &#x261C;</h1>
+		</div>
+		<div id="historyImg">
+			<img src="../resources/images/history.png">
+		</div>
+		<div class="divParagrap">
+			<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; Over the course of six
+				centuries the University Library’s collection have grown from a few
+				dozen volumes on a handful of subjects into an extraordinary
+				accumulation of several million books, maps, manuscripts and
+				journals, augmented by an ever-increasing range of electronic
+				resources. They cover every conceivable aspect of human endeavour,
+				across three thousand years and in over two thousand languages. From
+				its beginnings as an asset for a tiny community of theologians and
+				canon lawyers in the medieval university, the Library’s mission has
+				expanded to serve the international scholarly community and now,
+				through its digitisation projects, to reach new audiences across the
+				world.</p>
+			<p>The Library keeps evolving. In recent years we have been given
+				the magnificent Montaigne Library of Gilbert de Botton, the literary
+				archive of Dame Margaret Drabble, and the Chadwyck-Healey Liberation
+				Collection, the definitive collection of French books published
+				following the German retreat from French soil on 25 August 1944,
+				donated by Sir Charles Chadwyck-Healey. Our major purchases have
+				included the archive of the war poet Siegfried Sassoon and the
+				important manuscript of St Luke’s Gospel known as the ‘Codex
+				Zacynthius’, both supported with grants from the National Heritage
+				Memorial Fund and the Friends of the National Libraries. A
+				ground-breaking collaboration with the Bodleian Libraries also saw
+				the Library jointly acquire the Lewis-Gibson Collection of Hebrew
+				and Arabic manuscripts from the Cairo Genizah, collected by the twin
+				Scottish sisters Agnes Lewis and Margaret Gibson.</p>
+			<p>So while we conserve this unique cultural heritage for the
+				future, we are simultaneously finding new ways to share it with the
+				present generation by building a digital library. Anyone with an
+				internet connection and a desire for knowledge can view letters
+				written by Moses Maimonides, Newton’s autograph propositions on
+				elliptic motion, or sketchbooks from Darwin’s voyage of the beagle.
+				Through the digital library, communities of readers around the globe
+				can help create a richer understanding of the material held in our
+				care.</p>
+			<p>Great collections are brought to life by great people –
+				students and scholars, and visitors to the Library past, present and
+				future.</p>
+			<p>In this section you will find information about the governance
+				of the Library. Further information is available on ways of
+				supporting the Library. You will also find links to the scholarships
+				and prizes associated with the Library.</p>
+		</div>
+		<div>
+			<p>
+				Content of history copy at: <a href="http://www.lib.cam.ac.uk">http://www.lib.cam.ac.uk</a>.
+			</p>
+		</div>
+	</div>
+
+	<div class="allcontain">
 		<!-- ______________________________________________________Bottom Menu ______________________________-->
 		<div class="bottommenu">
 			<div class="bottomlogo">
-				<span class="dotlogo">&bullet;</span><img
-					src="../resources/images/footerLogo.png" alt="logo1"><span
-					class="dotlogo">&bullet;;</span>
+				<img src="../resources/images/footerLogo.png" alt="logo1">
 			</div>
 			<p>
 				"To laugh with others is one of life’s great pleasures. To be
@@ -164,17 +207,17 @@
 			</p>
 			<img src="../resources/images/line.png" alt="line"> <br>
 			<div class="bottomsocial">
-				<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-					class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-google-plus"></i></a> <a href="#"><i
-					class="fa fa-pinterest"></i></a>
+				<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> 
+				<a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a> 
+				<a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a> 
+				<a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a>
 			</div>
 			<div class="footer">
 				<div class="copyright">
 					&copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
 				</div>
 				<div class="atisda">
-					Designed by <a href="http://www.webdomus.net/">Group 2 -
+					Designed by <a href="http://www.dxc.technology/">Group 2 -
 						Fresher Java DXC.technology 04/2018</a>
 				</div>
 			</div>

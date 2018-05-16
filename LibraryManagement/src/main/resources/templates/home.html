@@ -24,7 +24,8 @@
 			</ul>
 			<ul class="logreg">
 				<li th:text="'Hello: ' +${userInfo[0]}+' &nbsp'"></li>
-				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
+				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a
+					th:href="@{/bookmanagement}"><span class="register">Manage</span></a></li>
 				<li><a th:href="@{/logout}"><span class="register">Logout</span></a></li>
 			</ul>
 		</div>
@@ -53,9 +54,11 @@
 							<li><a th:href="@{/home/history}">History</a></li>
 							<li><a th:href="@{/home/policy}">Policy</a></li>
 						</ul></li>
-					<li><a th:href="@{/home/service-schedule}">SERVICE SCHEDULE</a></li>
+					<li><a th:href="@{/home/service-schedule}">SERVICE
+							SCHEDULE</a></li>
 					<li><a id="menu-contact">CONTACT</a></li>
-					<li><a id="menu-borrowed" data-toggle="modal" data-target="#modalview">BORROWED BOOKS</a></li>
+					<li><a id="menu-borrowed" data-toggle="modal"
+						data-target="#modalview">BORROWED BOOKS</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -84,7 +87,7 @@
 									</tr>
 								</thead>
 								<tbody id="ticket-borrowed-book">
-									
+
 
 								</tbody>
 							</table>
@@ -92,13 +95,14 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-custom btn-success" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom btn-success"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
+
+
 	</div>
 	<!--_______________________________________ Carousel__________________________________ -->
 	<div class="allcontain">
@@ -129,10 +133,9 @@
 					</button>
 				</div>
 				<div class="collapse navbar-collapse" id="navbarmidle">
-					<br>
-					<br>
+					<br> <br>
 					<form class="navbar-form navbar-left searchformmargin"
-						role="search" >
+						role="search">
 						<div class="form-group">
 							<input type="text" id="w-input-search" class="searchText"
 								name="txtSearch" placeholder="Enter Keyword">
@@ -163,7 +166,7 @@
 								<div class="badge-new">new</div>
 								<div class="product-f-image">
 									<div class="txthover">
-										
+
 										<img class="setImgListBook" th:src="${newbook.book.image}">
 										<div class="txtcontent">
 											<div class="stars">
@@ -312,9 +315,7 @@
 		<!-- ______________________________________________________Bottom Menu ______________________________-->
 		<div class="bottommenu">
 			<div class="bottomlogo">
-				<span class="dotlogo">&bullet;</span><img
-					src="../resources/images/footerLogo.png" alt="logo1"><span
-					class="dotlogo">&bullet;;</span>
+				<img src="../resources/images/footerLogo.png" alt="logo1">
 			</div>
 			<p>
 				"To laugh with others is one of life’s great pleasures. To be
@@ -322,17 +323,17 @@
 			</p>
 			<img src="../resources/images/line.png" alt="line"> <br>
 			<div class="bottomsocial">
-				<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-					class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-google-plus"></i></a> <a href="#"><i
-					class="fa fa-pinterest"></i></a>
+				<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> 
+				<a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a> 
+				<a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a> 
+				<a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a>
 			</div>
 			<div class="footer">
 				<div class="copyright">
 					&copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
 				</div>
 				<div class="atisda">
-					Designed by <a href="http://www.webdomus.net/">Group 2 -
+					Designed by <a href="http://www.dxc.technology/">Group 2 -
 						Fresher Java DXC.technology 04/2018</a>
 				</div>
 			</div>

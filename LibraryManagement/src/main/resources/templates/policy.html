@@ -1,34 +1,37 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<title>MY LIBRARY </title>
-	<meta name="description" content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
-	<meta name="author" content="Web Domus Italia">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<!--    Backup CSS-->
-	<script type="text/javascript"
-		src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.isotope.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.myscript.js"></script>
-	<script type="text/javascript"
-		src="/resources/js/headerFooter.bootstrap.js"></script>
-	<script src="/resources/js/nothome.js"></script>
-	<link href="/resources/core/main.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../resources/css/css_home.css">
+<meta charset="UTF-8">
+<title>MY LIBRARY</title>
+<meta name="description"
+	content="Scarica gratis il nostro Template HTML/CSS GARAGE. Se avete bisogno di un design per il vostro sito web GARAGE può fare per voi. Web Domus Italia">
+<meta name="author" content="Web Domus Italia">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--    Backup CSS-->
+<script type="text/javascript"
+	src="/resources/source/bootstrap-3.3.6-dist/js/headerFooter.jquery.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.isotope.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.myscript.js"></script>
+<script type="text/javascript"
+	src="/resources/js/headerFooter.bootstrap.js"></script>
+<script src="/resources/js/nothome.js"></script>
+<link href="/resources/core/main.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css"
+	href="../resources/css/css_home.css">
 </head>
 <body>
-<div class="allcontain">
+	<div class="allcontain">
 		<div class="header">
 			<ul class="givusacall">
 				<li></li>
 			</ul>
 			<ul class="logreg">
 				<li th:text="'Hello: ' +${userInfo[0]}+' &nbsp'"></li>
-				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a th:href="@{/bookmanagement}"><span class="register" >Manage</span></a></li>
+				<li th:if="${userInfo[1]=='ROLE_ADMIN'}"><a
+					th:href="@{/bookmanagement}"><span class="register">Manage</span></a></li>
 				<li><a th:href="@{/logout}"><span class="register">Logout</span></a></li>
 			</ul>
 		</div>
@@ -57,8 +60,10 @@
 							<li><a th:href="@{/home/history}">History</a></li>
 							<li><a th:href="@{/home/policy}">Policy</a></li>
 						</ul></li>
-					<li><a th:href="@{/home/service-schedule}">SERVICE SCHEDULE</a></li>
-					<li><a id="menu-borrowed" data-toggle="modal" data-target="#modalview">BORROWED BOOKS</a></li>
+					<li><a th:href="@{/home/service-schedule}">SERVICE
+							SCHEDULE</a></li>
+					<li><a id="menu-borrowed" data-toggle="modal"
+						data-target="#modalview">BORROWED BOOKS</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -87,7 +92,7 @@
 									</tr>
 								</thead>
 								<tbody id="ticket-borrowed-book">
-									
+
 
 								</tbody>
 							</table>
@@ -95,13 +100,14 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-custom btn-success" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom btn-success"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
 		</div>
-		
-		
+
+
 	</div>
 	<!--_______________________________________ Carousel__________________________________ -->
 	<div class="allcontain">
@@ -123,55 +129,88 @@
 		</div>
 	</div>
 
-	
-<!-- ________________________POLICY _______________________-->
-<div class="allcontain">
-    <div class="latestcars">
-	   <h1 class="text-center"> &#x261E; Privacy notice and web privacy policy &#x261C;</h1>
-    </div>
-    <div class="divParagrap">
-        <p><strong>Privacy notice</strong></p>
-        <p>Cambridge University Library and its affiliates use your personal information:</p>
-        <ul>
-            <li>to carry out our statutory functions supporting teaching, learning and research (e.g. providing access to or answering enquiries about our holdings)</li>
-            <li>in order to deliver our contractual obligations to you as a user of library services (e.g. responding to orders for digital images)</li>
-            <li>in accordance with the consents you have given us which you can withdraw at any time (e.g. in connection with extended borrowing rights)</li>
-            <li>to fulfil legal obligations (e.g. protecting copyright)</li>
-            <li>to improve on and keep in touch about our services (e.g. the availability of a book you requested)</li>
-            <li>in pursuit of our legitimate interests (e.g. managing the Friends of Cambridge University Library).</li>
-        </ul>    
-        <p>In connection with your registration and use of the library as a reader, we may share your data with the Colleges.</p>
-        <p>
-            The full range of services is set out on our website 
-            <a href="#">https://www.lib.cam.ac.uk</a> and our library rules are at <a href="#">http://www.lib.cam.ac.uk/using</a>
-        </p>
-        <p>
-            For more information about how we handle your personal information, and your rights under data protection legislation, please see <a href="#">https://www.information-compliance.admin.cam.ac.uk/data-protection/general-data.</a>
-        </p>
-        <p>&nbsp;</p>
-        <p><strong>Website privacy policy</strong></p>
-        <p>
-            &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;This page also explains what personal information we gather when you visit the specific website within the University of Cambridge domain called Cambridge University Library.
-        </p>
-        <p>The information published here applies to the use of your personal information by the University of Cambridge through the viewing or use of its site.</p>
-        <p>When you visit any of the websites within the University of Cambridge domain we hold certain information about you for service and security reasons. For more information on this, please see <a href="#">http://www.cam.ac.uk/about-this-site/privacy-policy</a>.</p>
-        <p>In connection with certain library services this site asks you to provide information about yourself via forms. We gather this information so that we can process reader registrations, inter-library loans, enquiries and feedback, reprography requests, philanthropic donations and membership, newsletter distribution and attendance at events and training, and to protect copyright. We use this personal data in accordance with the legal bases set out in the privacy notice above.</p>
-        <p>This page was last updated in March 2018.</p>
-    </div>
-    <div>
-    	<p>Content of policy copy at: <a href="http://www.lib.cam.ac.uk/privacy-policy">http://www.lib.cam.ac.uk/privacy-policy</a>.</p>
-    </div>
-</div>  
-    
-    
-<div class="allcontain">
-		
+
+	<!-- ________________________POLICY _______________________-->
+	<div class="allcontain">
+		<div class="latestcars">
+			<h1 class="text-center">&#x261E; Privacy notice and web privacy
+				policy &#x261C;</h1>
+		</div>
+		<div class="divParagrap">
+			<p>
+				<strong>Privacy notice</strong>
+			</p>
+			<p>Cambridge University Library and its affiliates use your
+				personal information:</p>
+			<ul>
+				<li>to carry out our statutory functions supporting teaching,
+					learning and research (e.g. providing access to or answering
+					enquiries about our holdings)</li>
+				<li>in order to deliver our contractual obligations to you as a
+					user of library services (e.g. responding to orders for digital
+					images)</li>
+				<li>in accordance with the consents you have given us which you
+					can withdraw at any time (e.g. in connection with extended
+					borrowing rights)</li>
+				<li>to fulfil legal obligations (e.g. protecting copyright)</li>
+				<li>to improve on and keep in touch about our services (e.g.
+					the availability of a book you requested)</li>
+				<li>in pursuit of our legitimate interests (e.g. managing the
+					Friends of Cambridge University Library).</li>
+			</ul>
+			<p>In connection with your registration and use of the library as
+				a reader, we may share your data with the Colleges.</p>
+			<p>
+				The full range of services is set out on our website <a href="#">https://www.lib.cam.ac.uk</a>
+				and our library rules are at <a href="#">http://www.lib.cam.ac.uk/using</a>
+			</p>
+			<p>
+				For more information about how we handle your personal information,
+				and your rights under data protection legislation, please see <a
+					href="#">https://www.information-compliance.admin.cam.ac.uk/data-protection/general-data.</a>
+			</p>
+			<p>&nbsp;</p>
+			<p>
+				<strong>Website privacy policy</strong>
+			</p>
+			<p>&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;This page also explains what
+				personal information we gather when you visit the specific website
+				within the University of Cambridge domain called Cambridge
+				University Library.</p>
+			<p>The information published here applies to the use of your
+				personal information by the University of Cambridge through the
+				viewing or use of its site.</p>
+			<p>
+				When you visit any of the websites within the University of
+				Cambridge domain we hold certain information about you for service
+				and security reasons. For more information on this, please see <a
+					href="#">http://www.cam.ac.uk/about-this-site/privacy-policy</a>.
+			</p>
+			<p>In connection with certain library services this site asks you
+				to provide information about yourself via forms. We gather this
+				information so that we can process reader registrations,
+				inter-library loans, enquiries and feedback, reprography requests,
+				philanthropic donations and membership, newsletter distribution and
+				attendance at events and training, and to protect copyright. We use
+				this personal data in accordance with the legal bases set out in the
+				privacy notice above.</p>
+			<p>This page was last updated in March 2018.</p>
+		</div>
+		<div>
+			<p>
+				Content of policy copy at: <a
+					href="http://www.lib.cam.ac.uk/privacy-policy">http://www.lib.cam.ac.uk/privacy-policy</a>.
+			</p>
+		</div>
+	</div>
+
+
+	<div class="allcontain">
+
 		<!-- ______________________________________________________Bottom Menu ______________________________-->
 		<div class="bottommenu">
 			<div class="bottomlogo">
-				<span class="dotlogo">&bullet;</span><img
-					src="../resources/images/footerLogo.png" alt="logo1"><span
-					class="dotlogo">&bullet;;</span>
+				<img src="../resources/images/footerLogo.png" alt="logo1">
 			</div>
 			<p>
 				"To laugh with others is one of life’s great pleasures. To be
@@ -179,17 +218,17 @@
 			</p>
 			<img src="../resources/images/line.png" alt="line"> <br>
 			<div class="bottomsocial">
-				<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-					class="fa fa-twitter"></i></a> <a href="#"><i
-					class="fa fa-google-plus"></i></a> <a href="#"><i
-					class="fa fa-pinterest"></i></a>
+				<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> 
+				<a href="http://www.twitter.com/"><i class="fa fa-twitter"></i></a> 
+				<a href="https://plus.google.com/"><i class="fa fa-google-plus"></i></a> 
+				<a href="https://www.pinterest.com/"><i class="fa fa-pinterest"></i></a>
 			</div>
 			<div class="footer">
 				<div class="copyright">
 					&copy; Copy right 2016 | <a href="#">Privacy </a>| <a href="#">Policy</a>
 				</div>
 				<div class="atisda">
-					Designed by <a href="http://www.webdomus.net/">Group 2 -
+					Designed by <a href="http://www.dxc.technology/">Group 2 -
 						Fresher Java DXC.technology 04/2018</a>
 				</div>
 			</div>
