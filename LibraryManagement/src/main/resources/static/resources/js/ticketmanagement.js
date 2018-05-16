@@ -45,7 +45,7 @@ $(document).ready(function() {
         
         //PARSE TICKET INFO INTO POPUP EDIT-------------------------------------------------------------------------------------
         $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {
-            var info_url = "admin/ticket/"+$(this).attr("user");
+            var info_url = "/admin/ticket/"+$(this).attr("user");
             $.ajax({
                 url : info_url,
                 success : function(data) {
@@ -219,7 +219,7 @@ $(document).ready(function() {
     	//GET BORROWED BOOK FUNCTION---------------------------------------------------------------------------------------------
     	function ajaxBorrowedBook(iduser){
     		$.ajax({
-                url : "admin/borrowed/"+iduser,
+                url : "/admin/borrowed/"+iduser,
                 success : function(data) {
                     $("#ticket-borrowed-book").empty();
                     $("#title-and-name").text("Borroweds Books Of: "+data[0].user.fullName)
