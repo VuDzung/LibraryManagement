@@ -1,6 +1,11 @@
-$(function () {
+$(document).ready(function() {
+	
+	//CHECK URL IS ticketmanagement OR ticketmanagement?txtSearch=...-----------------------------------------------------------------------------------------------------
+
+	var textsearch = $('#tickets-management').attr("textsearch");
+	if(textsearch==null || textsearch.trim()==''){
 		//PAGINATION TICKET------------------------------------------------------------------------------------------------------
-        var total = $("#ticket").attr("num");
+		var total = $("#ticket").attr("num");
         window.pagObj = $('#pagination').twbsPagination({
             totalPages: total,
             visiblePages: 10,
@@ -20,6 +25,23 @@ $(function () {
                 });
             }
         });
+	}else{
+		$.ajax({
+			type : "POST",
+			url : '/search/resultlistuser/' + textsearch,
+			success : function(data) {
+				$("#tickets-management").empty();
+				$.each(data, function(key, val){
+					setdatapopup(val);               
+	            });
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}    
+	
+	
         
         //PARSE TICKET INFO INTO POPUP EDIT-------------------------------------------------------------------------------------
         $("body").off("click", ".btn-ticket-edit").on("click", ".btn-ticket-edit", function() {

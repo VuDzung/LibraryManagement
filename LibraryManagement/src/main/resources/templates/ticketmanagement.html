@@ -17,9 +17,9 @@
 		<h2>Tickets Management</h2>
 		<div class="topnav">
 			<div class="search-container">
-				<form action="#">
+				<form>
 					<input type="text" id="w-input-searchuser" placeholder="Search.."
-						name="search">
+						name="txtSearch">
 				</form>
 			</div>
 		</div>
@@ -43,7 +43,7 @@
 						</th>
 					</tr>
 				</thead>
-				<tbody id="tickets-management"></tbody>
+				<tbody id="tickets-management" th:textsearch="${txtSearch}"></tbody>
 			</table>
 		</div>
 

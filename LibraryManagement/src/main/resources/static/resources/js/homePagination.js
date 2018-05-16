@@ -1,10 +1,14 @@
-$(function () {	
+$(document).ready(function() {
 	a = $(".price").each(function(){
 		if($(this).text().indexOf("Unavailable")!=-1) $(this).css("background-color","rgba(255,0,0,0.5)");
 		else $(this).css("background-color","rgba(0,255,0,0.5)");
 	});
         
-        //PAGINATE--------------------------------------------------------------------------------------------------------------
+	//CHECK URL IS home OR home?txtSearch=...-----------------------------------------------------------------------------------------------------
+
+	var textsearch = $('.galary').attr("textsearch");
+	if(textsearch==null || textsearch.trim()==''){
+		//PAGINATE--------------------------------------------------------------------------------------------------------------
 		var paginate_time = 0;
 		var total = $(".galary").attr("num");    
 		window.pagObj = $('#pagination').twbsPagination({
@@ -28,6 +32,25 @@ $(function () {
                 else paginate_time=1;
             }
         });
+	}else{
+		$.ajax({
+			type : "POST",
+			url : '/search/resultlistbook/' + textsearch,
+			success : function(data) {
+				$(".galary").empty();
+				$(".latestcars").empty();
+                $(".maincontent-area").empty();
+				$.each(data, function(key, val){
+	            	setdatawhensearchbook(val);               
+	            });
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+	
+        
         
         //SHOW BOOK'S INFO IN POP UP--------------------------------------------------------------------------------------------
         $("body").on("click", ".btn-info", function() {

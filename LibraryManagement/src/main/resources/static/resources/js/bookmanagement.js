@@ -1,4 +1,26 @@
-$( document ).ready(function() {
+$(document).ready(function() {
+	
+	//CHECK URL IS bookmanagement OR bookmanagement?txtSearch=...-----------------------------------------------------------------------------------------------------
+
+	var textsearch = $('#book-management').attr("textsearch");
+	if(textsearch==null || textsearch.trim()==''){
+		paginate(1,$("#books").attr("num"));
+	}else{
+		$.ajax({
+			type : "POST",
+			url : '/search/resultlistbook/' + textsearch,
+			success : function(data) {
+				$("#book-management").empty();
+				$.each(data, function(key, val){
+					setdataaline(val);               
+	            });
+			},
+			error : function(e) {
+				console.log("ERROR : ", e);
+			}
+		});
+	}
+	
 	//VALIDATE ADDBOOK FORM-----------------------------------------------------------------------------------------------------
 	$('#addBookForm').validate({
 		rules : {
@@ -95,7 +117,9 @@ $( document ).ready(function() {
 							$('#check-icon').attr('hidden',true);
 						}
 	});
-	paginate(1,$("#books").attr("num"));
+	
+	
+	
 	//PAGINATE------------------------------------------------------------------------------------------------------------------
 	function paginate(start, total){	
 		window.pagObj = $('#pagination').twbsPagination({
