@@ -87,6 +87,17 @@ public class IsbnServiceImpl {
 	public List<String> addIsbn(BookDTO bookDTO) {
 		List<String> status = new ArrayList<>();
 		LibIsbn libIsbn = isbndao.findByIsbn(bookDTO.getIsbn());
+		if ((bookDTO.getIsbn().length()<13 && bookDTO.getIsbn().length()>13) || (bookDTO.getIsbn().length()<10 && bookDTO.getIsbn().length()>10)) {
+			System.out.println(bookDTO.getIsbn().length());
+			status.add("");
+			status.add("ISBN Code Is Not Valid!");
+			return status;
+		}
+		if (bookDTO.getIsbn()==null || bookDTO.getTitleOfBook()==null || bookDTO.getAuthor()==null || bookDTO.getPublishYear()==0 || bookDTO.getImage()==null) {
+			status.add("");
+			status.add("Please Fill All Information!");
+			return status;
+		}
 		if (libIsbn != null) {
 			libIsbn.setTotalBook(libIsbn.getTotalBook() + bookDTO.getTotalBook());
 			isbndao.save(libIsbn);

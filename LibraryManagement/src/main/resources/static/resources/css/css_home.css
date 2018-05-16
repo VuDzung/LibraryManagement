@@ -13989,6 +13989,9 @@ padding-left: 0px;
 .bottomlogo {
 	text-align: center;
 }
+.bottomlogo>img{
+	width: 50%;
+}
 
 .dotlogo {
 	font-size: 12px;

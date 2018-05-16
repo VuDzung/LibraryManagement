@@ -142,7 +142,7 @@ $(document).ready(function() {
 												$('#inputShortDescription').val(data.items[0].volumeInfo.description);
 												$('#inputPublishYear').val(data.items[0].volumeInfo.publishedDate.substr(0,4));
 												if(data.items[0].volumeInfo.imageLinks==null){
-													thumbnail = "./resources/images/default.png";
+													thumbnail = "/resources/images/default.png";
 												}else thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
 												$('#inputImage').attr("src",thumbnail);
 												$('#spin-icon').attr('hidden',true);
@@ -219,9 +219,7 @@ $(document).ready(function() {
     					$("a.page-link:contains('"+data[2]+"')").parent().addClass("active");		
 
 						$('.swal2-container').off('click').on('click',function(){
-							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");
-//							$(".btn-edit[isbn='" + isbn +"']").focus();
-							
+							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");					
 						});
 						$('#inputISBN').val('');
 						$('#inputTitle').val('');
