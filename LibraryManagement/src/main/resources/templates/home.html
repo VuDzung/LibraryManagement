@@ -182,8 +182,7 @@
 												<p th:text="'Year publish: '+${newbook.book.publishYear}">
 												<p />
 												<button class="btn btn-info" data-toggle="modal"
-													data-target="#addModal" th:isbn="${newbook.isbn}">Read
-													more</button>
+													data-target="#addModal" th:isbn="${newbook.isbn}">READ MORE</button>
 												<button data-toggle="modal" data-target="#addModal"
 													id="mytest" style="display: none;"></button>
 												<button class="btn btn-success btn-borrow"
@@ -365,7 +364,6 @@
 	<script>
 		$(window).resize(function() {
 			var new_height = $("#image_border").height();
-			console.log(new_height);
 			$("#googleMap").height(new_height);
 		});
 
