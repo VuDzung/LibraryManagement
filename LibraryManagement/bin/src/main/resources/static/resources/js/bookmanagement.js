@@ -28,7 +28,7 @@ $( document ).ready(function() {
 	});
 	
 	//CLOSE ADD BOOK POP UP-----------------------------------------------------------------------------------------------------
-	$('#add-close').click(function() {
+	$('#add-close').click(function(){
 		$('#inputISBN').val('');
 		$('#inputTitle').val('');
 		$('#inputAuthor').val('');
@@ -38,7 +38,7 @@ $( document ).ready(function() {
 		$('#inputTotal').val('');
 		$('#spin-icon').attr('hidden',true);
 		$('#close-icon').attr('hidden',true);	
-		$('#check-icon').attr('hidden',true);	
+		$('#check-icon').attr('hidden',true);
 	});
 	
 	//AUTO GENDER BOOK INFO BY TYPE ISBN----------------------------------------------------------------------------------------
@@ -95,26 +95,28 @@ $( document ).ready(function() {
 							$('#check-icon').attr('hidden',true);
 						}
 	});
-
+	paginate(1,$("#books").attr("num"));
 	//PAGINATE------------------------------------------------------------------------------------------------------------------
-	total = $("#books").attr("num");
-    window.pagObj = $('#pagination').twbsPagination({
-        totalPages: total,
-        visiblePages: 10,
-        onPageClick: function (evt, page) {
-            $("#book-management").empty();
-            var url = "./home/page/"+page;
-            $.ajax({
-                url : url,
-                success : function(data) {
-                    $.each(data, function(key, val){
-                    	setdataaline(val);                       
-                                                
-                    });
-                }
-            });
-        }
-    });
+	function paginate(start, total){	
+		window.pagObj = $('#pagination').twbsPagination({
+			startPage: start,
+	        totalPages: total,
+	        visiblePages: 10,
+	        onPageClick: function (evt, page) {
+	            $("#book-management").empty();
+	            var url = "./home/page/"+page;
+	            $.ajax({
+	                url : url,
+	                success : function(data) {
+	                    $.each(data, function(key, val){
+	                    	setdataaline(val);                       
+	                                                
+	                    });
+	                }
+	            });
+	        }
+	    });
+	}
     //ADD BOOK
     $("body").off("click", "#addBook").on("click", "#addBook", function() {
     	url = '/bookmanagement/savebook';
@@ -127,17 +129,24 @@ $( document ).ready(function() {
     			"shortDescription" : $('#inputShortDescription').val(),
     			"titleOfBook" : $('#inputTitle').val()
     		}
-    		isbn = $('#book-isbn').val().trim();
+    		isbn = $('#inputISBN').val().trim();
     		$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
     			url : url,
     			data : JSON.stringify(libIsbn), // Note it is important
     			success : function(data) {
-    				$("#books").attr('num',data[0]);
-                	$("#books").trigger('click');
                 	if(data[1].indexOf('Successful')!=-1){
-						swal("Successful!", data[1], "success");
+    					swal("Successful!", data[1], "success");
+    					$('#pagination').twbsPagination('destroy');
+    					paginate(data[2], data[0]);
+    					$("a.page-link:contains('"+data[2]+"')").parent().addClass("active");
+						swal("Successful!", data[1], "success");		
+						
+						$('.swal2-container').off('click').on('click',function(){
+							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");
+//							$(".btn-edit[isbn='" + isbn +"']").focus();
+						});
 					}else{
 						swal("Error!", data[1], "error");
 					}
@@ -192,12 +201,11 @@ $( document ).ready(function() {
 					element = $(".active");
 					element.removeClass('active');
 					element.children().trigger('click');
-					$('html, body').animate({
-				        scrollTop: screenTop
-				    }, 100);
-					$(document).click(function(){
-						$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.3)");
-						
+					$('.swal2-container').click(function(){
+						$('html, body').animate({
+					        scrollTop: screenTop
+					    }, 100);
+						$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");
 					});
 					
 				}else{
@@ -212,20 +220,21 @@ $( document ).ready(function() {
      });
     
     //DELETE BOOK---------------------------------------------------------------------------------------------------------------
-    $("body").off("click", ".btn-delete-book").on("click", ".btn-delete-book", function(ev) {
+    $("body").off("click", ".btn-delete-book").on("click", ".btn-delete-book", function() {
     	isbn = $(this).attr("isbn");
     	screenTop = $('html').scrollTop();
     	$.ajax({
             url : "/bookmanagement/delete/"+isbn,
             type : "GET",
-            success : function(data) {
+            success : function(data) {            	
             	if(data[1].indexOf('Successful')!=-1){
+            		page = $("ul.pagination li.active").children().text();
 					swal("Successful!", data[1], "success");
-    				$("#books").attr('num',data);
-                	$("#books").trigger('click');
-                	element = $(".active");
-					element.removeClass('active');
-					element.children().trigger('click');
+					$("#books").attr("num",data[0])
+					$('#pagination').twbsPagination('destroy');
+					if(page>data[0]) page = data[0];
+					paginate(page, data[0]);
+					$("a.page-link:contains('"+page+"')").parent().addClass("active");
 					$('html, body').animate({
 				        scrollTop: screenTop
 				    }, 100);
@@ -287,10 +296,12 @@ function setdataaline(val){
         $("#book-management").append('<tr>\
 										<td class="textPosition">'+val.isbn+'</td>\
 										<td class="bookmanagement-img"><img src="'+val.book.image+'"></td>\
-										<td class="textPosition">'+val.book.titleOfBook+'</td>\										<td class="textPosition">'+val.book.author+'</td>\
+										<td class="textPosition">'+val.book.titleOfBook+'</td>\
+										<td class="textPosition">'+val.book.author+'</td>\
 										<td class="textPosition">'+val.book.publishYear+'</td>\
 										<td><div class="tdScroll">'+val.book.shortDescription+'</div></td>\
 										<td class="textPosition">'+val.totalBook+'</td>\
+										<td class="textPosition">'+(parseInt(val.totalBook)-parseInt(val.numberBooksBorrowed))+'</td>\
 										<td class="textPosition" style="width:11%;">\
 											<button type="button" class="btn btn-custom btn-sm btn-edit" data-toggle="modal" data-target="#editModal" isbn='+val.isbn+'>\
 												<span class="glyphicon glyphicon-edit"></span> Edit\

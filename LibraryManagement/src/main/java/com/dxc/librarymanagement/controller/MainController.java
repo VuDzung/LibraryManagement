@@ -124,4 +124,36 @@ public class MainController {
 
 		return "403Page";
 	}
+	@RequestMapping(value = "/home/history")
+	public String history(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
+		return "history";
+	}
+	
+	@RequestMapping(value = "/home/policy")
+	public String policy(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
+		return "policy";
+	}
+	
+	@RequestMapping(value= "/home/service-schedule")
+	public String service(Model model, Principal principal) {
+		String userName = principal.getName();
+		System.out.println("User Name: " + userName);
+		List<String> userInfo = new ArrayList<>();
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getFullName());
+		userInfo.add(this.userservice.findByUserName(principal.getName()).getRole().getNameRole());
+		model.addAttribute("userInfo", userInfo);
+		return "service";
+	}
 }

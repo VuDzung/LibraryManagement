@@ -6,7 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
 <script src="/resources/js/ticketmanagement.js"></script>
+<script src="/resources/js/stiketValid.js"></script>
 </head>
 <body>
 	<th:block th:include="_adminheader"></th:block>
@@ -78,14 +81,14 @@
 									<tr>
 										<td class="textPosition" style="width: 8%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-id" disabled
-													value="1">
+												<input type="text" class="form-control" id="ticket-id"
+													disabled value="1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 30%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-mail" disabled
-													value="aaaa1">
+												<input type="text" class="form-control" id="ticket-mail"
+													disabled value="aaaa1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 22%">
@@ -96,8 +99,8 @@
 										</td>
 										<td class="textPosition" style="width: 18%">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-role" disabled
-													value="1">
+												<input type="text" class="form-control" id="ticket-role"
+													disabled value="1">
 											</div>
 										</td>
 										<td class="textPosition" style="width: 1%">
@@ -108,8 +111,8 @@
 										</td>
 										<td class="textPosition">
 											<div class="form-group">
-												<input type="text" class="form-control" id="ticket-borrowed" disabled
-													value="2">
+												<input type="text" class="form-control" id="ticket-borrowed"
+													disabled value="2">
 											</div>
 										</td>
 									</tr>
@@ -119,7 +122,8 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-custom" id="edit-ticket">Submit</button>
-						<button type="button" class="btn btn-custom" id="edit-close" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-custom" id="edit-close"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
@@ -139,7 +143,7 @@
 						<div class="wrapper">
 							<table class="table table-striped">
 								<thead>
-									<tr>
+									<tr class="trMenu">
 										<th>ISBN</th>
 										<th>Title</th>
 										<th>Author</th>
@@ -164,59 +168,83 @@
 
 		<!-- Modal Add new-->
 		<div class="modal fade" id="addModal" role="dialog">
-			<div class="modal-dialog modal-lg">
+			<div class="modal-dialog">
 				<!-- Modal content-->
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 class="modal-title">Add New Book</h4>
+						<h4 class="modal-title">Add New Ticket</h4>
 					</div>
 					<div class="modal-body">
 						<div class="wrapper">
-							<table class="table table-striped">
-								<thead>
-									<tr class="trMenu">
-										<th>User Name</th>
-										<th>Full Name</th>
-										<th>Role</th>
-										<th>Limit Number</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="textPosition" style="width: 30%">
-											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-username">
-											</div>
-										</td>
-										<td class="textPosition" style="width: 22%">
-											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-fullname">
-											</div>
-										</td>
-										<td class="textPosition" style="width: 18%">
-											<div class="form-group">
-												<select id="new-role">
-													<option> ROLE_ADMIN</option>
-													<option> ROLE_USER</option>
-												</select>
-											</div>
-										</td>
-										<td class="textPosition" style="width: 1%">
-											<div class="form-group">
-												<input type="text" class="form-control" value="" id="new-limitnum">
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<div class="table-responsive">
+								<form id="addModalForm" novalidate>
+									<table class="table1">
+										<tr>
+											<td class="tdColum3">User Name</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="email" class="form-control" name="newUsername"
+														id="new-username">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Full Name</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="text" class="form-control" name="newFullName"
+														id="new-fullname">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Password</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="password" class="form-control"
+														name="newPassword" id="new-password">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Confirm Password</td>
+											<td class="tdColum2">
+												<div class="form-group customForm-Group">
+													<input type="password" class="form-control"
+														name="confirmNewPass" id="confirm-password">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Role</td>
+											<td class="tdColum2">
+												<div class="form-group" style="padding-top: 3%;">
+													<select id="new-role">
+														<option>ROLE_ADMIN</option>
+														<option>ROLE_USER</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Limit Number</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input type="text" class="form-control" id="new-limitnum">
+												</div>
+											</td>
+										</tr>
 
-
+									</table>
+								</form>
+							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button id="add-ticket" type="button" class="btn btn-custom">Submit</button>
-						<button id="add-close" type="button" class="btn btn-custom"	data-dismiss="modal">Close</button>
+						<button id="add-user" type="button" class="btn btn-custom">Submit</button>
+						<button id="add-close" type="button" class="btn btn-custom"
+							data-dismiss="modal">Close</button>
 					</div>
 				</div>
 			</div>
