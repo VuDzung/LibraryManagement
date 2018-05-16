@@ -154,36 +154,37 @@ $(function () {
         		status = "Available";
         		notvailable = "";
         	}
-            $(".galary").append("<div class='well well-sm itemBook'>\
-                                    <div class='allcontain'>\
-                                        <div class='product-f-image'>\
-                                            <div class='txthover'>\
-                                                <img class='setImgListBook' src='"+val.book.image+"' alt='car2'>\
-                                                    <div class='txtcontent'>\
-                                                        <div class='stars'>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                        </div>\
-                                                        <div class='simpletxt'>\
-                                                            <p class='name'>Title: "+val.book.titleOfBook+"</p>\
-                                                            <p>ISBN: "+val.isbn+" </p>\
-                                                            <p>Author: "+val.book.author+"</p>\
-                                                            <p class='price'>Status: "+status+" </p>\
-                                                            <p>Year publish: "+val.book.publishYear+" </p>\
-                                                            <button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"'> Read more </button>\
-                                                            <button class='btn btn-success btn-borrow' isbn='"+val.isbn+"' "+notvailable+">BORROW</button>\
-                                                        </div>\
-                                                        <div class='stars2'>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                            <div class='glyphicon glyphicon-star'></div>\
-                                                        </div>\
-                                                    </div>\
-                                            </div>\
-                                        </div>\
-                                    </div>\
-                                </div> ");  
+            $(".galary").append("<div class='product-carousel well well-sm itemBook'>\
+									<div class='single-product'>\
+										<div class='product-f-image'>\
+											<div class='txthover'>\
+												<img class='setImgListBook' src='"+val.book.image+"'>\
+												<div class='txtcontent'>\
+													<div class='stars'>\
+														<div class='glyphicon glyphicon-star'></div>\
+														<div class='glyphicon glyphicon-star'></div>\
+														<div class='glyphicon glyphicon-star'></div>\
+													</div>\
+													<div class='simpletxt'>\
+														<p class='name'>Title: "+val.book.titleOfBook+"</p>\
+														<p>ISBN: "+val.isbn+"</p>\
+														<p>Author: "+val.book.author+"</p>\
+														<p class='price'>Status: "+status+"</p>\
+														<p>Year publish: "+val.book.publishYear+"<p/>\
+														<button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"' >READ MORE</button>\
+														<button data-toggle='modal' data-target='#addModal' id='mytest' style='display: none;'></button>\
+														<button class='btn btn-success btn-borrow' isbn='"+val.isbn+"' "+notvailable+">BORROW</button>\
+													</div>\
+													<div class='stars2'>\
+														<div class='glyphicon glyphicon-star'></div>\
+														<div class='glyphicon glyphicon-star'></div>\
+														<div class='glyphicon glyphicon-star'></div>\
+													</div>\
+												</div>\
+											</div>\
+										</div>\
+									</div>\
+								</div>");  
     	}
     	
     	
