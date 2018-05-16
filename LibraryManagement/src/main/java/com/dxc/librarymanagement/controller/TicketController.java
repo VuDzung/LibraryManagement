@@ -1,5 +1,7 @@
 package com.dxc.librarymanagement.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +23,7 @@ public class TicketController {
 	}
 	
 	@RequestMapping(value = "/admin/add-user", method = RequestMethod.POST)
-	public ResponseEntity<String> addUser(@RequestBody UserDTO userDTO) {
+	public ResponseEntity<List<String>> addUser(@RequestBody UserDTO userDTO) {
 		return new ResponseEntity<>(this.userservice.addUser(userDTO), HttpStatus.OK);
 	}
 }
