@@ -1,6 +1,7 @@
 package com.dxc.librarymanagement.service;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,37 +37,40 @@ public class BorrowBookServiceImpl {
 	}
 	
 	//BORROW BOOK FUNCTON
-	public String saveBorrowBook(String isbn, Principal principal) {
+	public List<String> saveBorrowBook(String isbn, Principal principal) {
+		List<String> status = new ArrayList();
 		LibIsbn libisbn = this.isbnservice.findByIsbn(isbn);
 		LibUser user = this.userservice.findByUserName(principal.getName());
 		if(libisbn == null) {
-			return "ISBN Code Is Not Correct!";
+			status.add("");
+			status.add("ISBN Code Is Not Correct!");
+			return status;
 		}
 		if(libisbn.getNumberBooksBorrowed() >= libisbn.getTotalBook()) {
-			return "Book Is Not Available!";
+			status.add("");
+			status.add("Book Is Not Available!");
+			return status;
 		}
 		if(user.getBorrowedNumber() >= user.getLimitNumber()) {
-			return "Number Of Borowed Books Reached The Limit!";
+			status.add("");
+			status.add("Number Of Borowed Books Reached The Limit!");
+			return status;
 		}		
 		LibBorrowBook libborrow = new LibBorrowBook();
 		libborrow.setDateBorrow(new Date());
 		libborrow.setIsbnBean(libisbn);
 		libborrow.setUser(user);
+		status.add(libisbn.getNumberBooksBorrowed()>=libisbn.getTotalBook()-1? "0":"1");
 		this.borrowbookdao.save(libborrow);
-		return "Borrow Successful!";
+		status.add("Borrow Successful!");
+		return status;
 	}
 	
 	//RETURN BOOK FUNCTION
 	public String returnBorrowBook(int idborrow) {
 		LibBorrowBook libborrow = this.borrowbookdao.findByIdBorrow(idborrow);
-		if(libborrow==null) return "Borrow Not Exist!";
-		LibIsbn libisbn = libborrow.getIsbnBean();
-		libisbn.setNumberBooksBorrowed(libisbn.getNumberBooksBorrowed()-1);
-		LibUser user = libborrow.getUser();
-		user.setBorrowedNumber(user.getBorrowedNumber()-1);		
+		if(libborrow==null) return "Borrow Not Exist!";	
 		libborrow.setDateReturn(new Date());
-		libborrow.setIsbnBean(this.isbnservice.saveIsbn(libisbn));
-		libborrow.setUser(this.userservice.saveUser(user));
 		this.borrowbookdao.save(libborrow);
 		return "Return Successful!";
 	}

@@ -176,7 +176,7 @@
 													th:text="'Title: '+${newbook.book.titleOfBook}"></p>
 												<p th:text="'ISBN code: '+${newbook.isbn}"></p>
 												<p th:text="'Author: '+${newbook.book.author}"></p>
-												<p class="price"
+												<p class="price" th:isbn="${newbook.isbn}"
 													th:text="${newbook.totalBook>newbook.numberBooksBorrowed} ? 'Status: Available':'Status: Unavailable'">
 												</p>
 												<p th:text="'Year publish: '+${newbook.book.publishYear}">

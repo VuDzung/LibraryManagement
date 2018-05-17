@@ -173,67 +173,69 @@
 						<div class="wrapper">
 							<!--EDIT BUTTON EDIT-->
 							<div class="table-responsive">
-								<table class="table1">
-									<tr>
-										<td class="tdColum3">ISBN</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input id="book-isbn" type="text" class="form-control"
-													value="1" disabled>
-											</div>
-										</td>
-										<td class="tdColum3">Image</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Title</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input id="book-title" type="text" class="form-control"
-													value="1" disabled>
-											</div>
-										</td>
-										<!--  ----image-------- -->
-										<td class="tdColum3" rowspan="4"><div id="divchooseFile">
-												<img id="inputImage2" src="">
-											</div></td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Author</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input id="book-author" type="text" class="form-control"
-													value="1" disabled>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Publish</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input id="book-publish-year" type="text"
-													class="form-control" value="1" disabled>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td class="tdColum3">Total</td>
-										<td class="tdColum2">
-											<div class="form-group">
-												<input id="book-total" type="text" class="form-control"
-													value="1">
-											</div>
-										</td>
-									<tr>
-										<td class="tdColum3">Short Description</td>
-										<td class="tdColum2" colspan="3">
-											<div class="form-group">
-												<textarea class="form-control" id="book-description"
-													rows="4"></textarea>
-											</div>
-										</td>
-									</tr>
-
-								</table>
+								<form id="editBookForm" novalidate>
+									<table class="table1">
+										<tr>
+											<td class="tdColum3">ISBN</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input id="book-isbn" type="text" class="form-control"
+														value="1" disabled>
+												</div>
+											</td>
+											<td class="tdColum3">Image</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Title</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input id="book-title" type="text" class="form-control"
+														value="1" disabled>
+												</div>
+											</td>
+											<!--  ----image-------- -->
+											<td class="tdColum3" rowspan="4"><div id="divchooseFile">
+													<img id="inputImage2" src="">
+												</div></td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Author</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input id="book-author" type="text" class="form-control"
+														value="1" disabled>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Publish</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input id="book-publish-year" type="text"
+														class="form-control" value="1" disabled>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td class="tdColum3">Total</td>
+											<td class="tdColum2">
+												<div class="form-group">
+													<input id="book-total" type="text" class="form-control"
+														value="1">
+												</div>
+											</td>
+										<tr>
+											<td class="tdColum3">Short Description</td>
+											<td class="tdColum2" colspan="3">
+												<div class="form-group">
+													<textarea class="form-control" id="book-description"
+														rows="4"></textarea>
+												</div>
+											</td>
+										</tr>
+	
+									</table>
+								</form>
 							</div>
 
 						</div>

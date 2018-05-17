@@ -98,15 +98,16 @@ $(document).ready(function() {
     			type : "GET",
     			url : '/home/borrow/' + isbn,
     			success : function(data) {
-    					//alert(data);
-    					if(data=='Borrow Successful!'){
-    						swal("Borrow done!", "Please return the book early!", "success");
-    					}if(data=='Number Of Borowed Books Reached The Limit!'){
-    						swal("Error!", "Number Of Borowed Books Reached The Limit!", "error");
-    					}if(data=='ISBN Code Is Not Correct!'){
-    						swal("Error!", "ISBN Code Is Not Correct!", "error");
-    					}if(data=='Book Is Not Available!'){
-    						swal("Error!", "Book Is Not Available!", "error");
+    					if(data[1].indexOf("Successful")!=-1){
+    						swal("Successful!", data[1], "success");
+    						if(data[0]=="0"){
+    							$(".price[isbn='" + isbn +"']").text("Status: Unavailable");
+    							$(".price[isbn='" + isbn +"']").css("background-color","rgba(255,0,0,0.5)");
+    							$(".btn-borrow[isbn='"+ isbn +"']").attr("disabled", true);
+    						}
+    					}
+    					else{
+    						swal("Error!", data[1], "error");
     					}
     			},
     			error : function(e) {
@@ -198,7 +199,7 @@ $(document).ready(function() {
 														<p class='name'>Title: "+val.book.titleOfBook+"</p>\
 														<p>ISBN: "+val.isbn+"</p>\
 														<p>Author: "+val.book.author+"</p>\
-														<p class='price'>Status: "+status+"</p>\
+														<p class='price' isbn='"+val.isbn+"'>Status: "+status+"</p>\
 														<p>Year publish: "+val.book.publishYear+"<p/>\
 														<button class='btn btn-info' data-toggle='modal' data-target='#addModal' isbn='"+val.isbn+"' >READ MORE</button>\
 														<button data-toggle='modal' data-target='#addModal' id='mytest' style='display: none;'></button>\

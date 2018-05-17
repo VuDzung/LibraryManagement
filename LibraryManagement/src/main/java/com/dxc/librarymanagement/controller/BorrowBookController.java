@@ -1,6 +1,7 @@
 package com.dxc.librarymanagement.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class BorrowBookController {
 	
 	//BORROW BOOK FEATURE
 	@RequestMapping(value = "/home/borrow/{isbn}", method = RequestMethod.GET)
-	public ResponseEntity<String> borrowBook(@PathVariable String isbn, Principal principal) {
+	public ResponseEntity<List<String>> borrowBook(@PathVariable String isbn, Principal principal) {
 		return new ResponseEntity<>(this.borrowbookservice.saveBorrowBook(isbn, principal), HttpStatus.OK);
 	}
 	
