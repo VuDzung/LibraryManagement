@@ -1,8 +1,6 @@
 package com.dxc.librarymanagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,10 +15,6 @@ import com.dxc.librarymanagement.service.UserServiceImpl;
 public class RegisterController {
 	@Autowired
 	private UserServiceImpl userServiceImpl;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	@Value("${LimitNumberDefault}")
-	private int LimitNumberDefault;
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerPage(Model model) {
@@ -30,16 +24,7 @@ public class RegisterController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView registerForm(@ModelAttribute(value = "libuser") LibUser libUser) {
-		if (libUser.getUserName() != "" && libUser.getPassword() != ""
-				&& userServiceImpl.findByUserName(libUser.getUserName()) == null && libUser.getRole()!=null) {
-			libUser.setPassword(passwordEncoder.encode(libUser.getPassword()));
-			libUser.setLimitNumber(LimitNumberDefault);
-			this.userServiceImpl.saveUser(libUser);
-			// return "login";
-			return new ModelAndView("redirect:register?error=false");
-		} else {
-			return new ModelAndView("redirect:register?error=true");
-		}
+		return new ModelAndView(this.userServiceImpl.saveUser(libUser));
 
 	}
 }
