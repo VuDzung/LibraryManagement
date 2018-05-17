@@ -141,7 +141,10 @@ $(document).ready(function() {
 												$('#inputAuthor').val(data.items[0].volumeInfo.authors);
 												$('#inputShortDescription').val(data.items[0].volumeInfo.description);
 												$('#inputPublishYear').val(data.items[0].volumeInfo.publishedDate.substr(0,4));
-												$('#inputImage').attr("src",data.items[0].volumeInfo.imageLinks.thumbnail);
+												if(data.items[0].volumeInfo.imageLinks==null){
+													thumbnail = "/resources/images/default.png";
+												}else thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
+												$('#inputImage').attr("src",thumbnail);
 												$('#spin-icon').attr('hidden',true);
 												$('#close-icon').attr('hidden',true);
 												$('#check-icon').attr('hidden',false);												
@@ -213,13 +216,21 @@ $(document).ready(function() {
     					swal("Successful!", data[1], "success");
     					$('#pagination').twbsPagination('destroy');
     					paginate(data[2], data[0]);
-    					$("a.page-link:contains('"+data[2]+"')").parent().addClass("active");
-						swal("Successful!", data[1], "success");		
-						
+    					$("a.page-link:contains('"+data[2]+"')").parent().addClass("active");		
+
 						$('.swal2-container').off('click').on('click',function(){
-							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");
-//							$(".btn-edit[isbn='" + isbn +"']").focus();
+							$(".btn-edit[isbn='" + isbn +"']").parent().parent().css("background-color","rgba(0,255,0,0.2)");					
 						});
+						$('#inputISBN').val('');
+						$('#inputTitle').val('');
+						$('#inputAuthor').val('');
+						$('#inputShortDescription').val('');
+						$('#inputPublishYear').val('');
+						$('#inputImage').attr("src", "");
+						$('#inputTotal').val('');
+						$('#spin-icon').attr('hidden',true);
+						$('#close-icon').attr('hidden',true);	
+						$('#check-icon').attr('hidden',true);
 					}else{
 						swal("Error!", data[1], "error");
 					}

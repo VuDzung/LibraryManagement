@@ -60,26 +60,8 @@ $(document).ready(function() {
 	if(textsearch==null || textsearch.trim()==''){
 		// PAGINATION
 		// TICKET------------------------------------------------------------------------------------------------------
-		var total = $("#ticket").attr("num");
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: total,
-            visiblePages: 10,
-            onPageClick: function (evt, page) {
-                $("#tickets-management").empty();
-                var url = "/admin/tickets/"+page;
-                $.ajax({
-                    url : url,
-                    success : function(data) {
-                        $.each(data, function(key, val){
-                        	setdatapopup(val);                                                                     
-                        });
-                    }
-                });
-                $("html, body").animate({
-                    scrollTop: $('#tickets-management').offset().top 
-                });
-            }
-        });
+		paginate(1,$("#ticket").attr("num"));
+       
 	}else{
 		$.ajax({
 			type : "POST",
@@ -96,6 +78,29 @@ $(document).ready(function() {
 		});
 	}    
 	
+	//paginate function
+	function paginate(start, total){
+		 window.pagObj = $('#pagination').twbsPagination({
+			 	startPage: start,
+	            totalPages: total,
+	            visiblePages: 10,
+	            onPageClick: function (evt, page) {
+	                $("#tickets-management").empty();
+	                var url = "/admin/tickets/"+page;
+	                $.ajax({
+	                    url : url,
+	                    success : function(data) {
+	                        $.each(data, function(key, val){
+	                        	setdatapopup(val);                                                                     
+	                        });
+	                    }
+	                });
+	                $("html, body").animate({
+	                    scrollTop: $('#tickets-management').offset().top 
+	                });
+	            }
+	        });
+	}
 	
         
         // PARSE TICKET INFO INTO POPUP
@@ -125,6 +130,7 @@ $(document).ready(function() {
         			   limit: $("#ticket-limit").val(),
         			   borrowed: $("#ticket-borrowed").val()
         			  };
+        	mail = $("#ticket-mail").val().trim();
         	$.ajax({
     			type : "POST",
     			contentType : 'application/json; charset=utf-8',
@@ -134,9 +140,15 @@ $(document).ready(function() {
     			success : function(data) {
     				if(data.indexOf('Successful')!=-1){
 						swal("Successful!", data, "success");
-						 $.each(data, function(key, val){
-	                        	setdatapopup(val);                                                                     
-	                        });
+						element = $(".active");
+						element.removeClass('active');
+						element.children().trigger('click');
+						$('.swal2-container').click(function(){
+							$('html, body').animate({
+						        scrollTop: screenTop
+						    }, 100);
+							$("td.textPosition:contains('" + mail +"')").parent().css("background-color","rgba(0,255,0,0.2)");
+						});
 					}else{
 						swal("Error!", data, "error");
 					}
@@ -158,6 +170,7 @@ $(document).ready(function() {
         			   role: $("#new-role").val(),
         			   limit: $("#new-limitnum").val(),
         			  };
+        	mail = $("#new-username").val().trim();
         	if ($('#addModalForm').valid()==false) {
         		swal("Error!", "Invalid information", "error");
 			} else{
@@ -167,16 +180,22 @@ $(document).ready(function() {
 		    			url :url,
 		    			data : JSON.stringify(libuser),
 		    			success : function(data) {
-		    				if(data.indexOf('Successful')!=-1 && $('#addModalForm').valid()){
-								swal("Successful!", data, "success");
+		    				if(data[1].indexOf('Successful')!=-1 && $('#addModalForm').valid()){
+								swal("Successful!", data[1], "success");
+								$('#pagination').twbsPagination('destroy');
+		    					paginate(data[0], data[0]);
+		    					$("a.page-link:contains('"+data[0]+"')").parent().addClass("active");	
+								$('.swal2-container').off('click').on('click',function(){			
+									$("td.textPosition:contains('" + mail +"')").parent().css("background-color","rgba(0,255,0,0.2)");
+									$("#new-username").val('');
+			        			    $("#new-fullname").val('');
+			        			    $('#new-password').val('');
+			        			    $('#confirm-password').val('');
+			        			    $("#new-limitnum").val('');
+								});
 							}else{
-								swal("Error!", data, "error");
+								swal("Error!", data[1], "error");
 							}
-		    				  	$("#new-username").val('');
-		        			    $("#new-fullname").val('');
-		        			    $('#new-password').val('');
-		        			    $('#confirm-password').val('');
-		        			    $("#new-limitnum").val('');
 		    			},
 		    			error : function(e) {
 		    				swal("Error!", "System error! Please try again.", "error");
@@ -192,7 +211,7 @@ $(document).ready(function() {
 		        			    $('#new-password').val('');
 		        			    $('#confirm-password').val('');
 		        			    $("#new-limitnum").val('');
-        })
+        });
         // PASRE BOROWED BOOK OF TICKET INTO BORROWED
 		// POPUP----------------------------------------------------------------------
         $("body").off("click", ".btn-borrowed").on("click", ".btn-borrowed", function() {

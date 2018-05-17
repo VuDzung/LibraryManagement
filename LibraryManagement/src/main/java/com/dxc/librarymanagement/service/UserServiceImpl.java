@@ -1,5 +1,6 @@
 package com.dxc.librarymanagement.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -72,13 +73,16 @@ public class UserServiceImpl {
 		this.libUserDAO.save(libuser);
 		return "Edit Successful!";
 	}
-
-	public String addUser(UserDTO userDTO) {
+	//add user
+	public List<String> addUser(UserDTO userDTO) {
+		List<String> status = new ArrayList<>();
 		if (userDTO.getUsername().trim() != "" && userDTO.getUsername() != null && userDTO.getPassword().trim() != ""
 				&& userDTO.getPassword() != null && userDTO.getFullname() != null
 				&& userDTO.getFullname().trim() != "") {
 			if (findByUserName(userDTO.getUsername()) != null) {
-				return "Username Already Exist!";
+				status.add("");
+				status.add("Username Already Exist!");
+				return status;
 			} else {
 				LibUser libuser = new LibUser();
 				libuser.setUserName(userDTO.getUsername());
@@ -88,11 +92,15 @@ public class UserServiceImpl {
 				libuser.setLimitNumber(userDTO.getLimit());
 				libuser.setBorrowedNumber(0);
 				this.libUserDAO.save(libuser);
-				return "Add User Successful!";
+				status.add(String.valueOf(this.getPaginatePageNum()));
+				status.add("Add User Successful!");
+				return status;
 			}
 
 		} else {
-			return "Please fill all information!";
+			status.add("");
+			status.add("Please Fill All Information!");
+			return status;
 		}
 	}
 
