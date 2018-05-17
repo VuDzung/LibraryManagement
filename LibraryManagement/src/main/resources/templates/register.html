@@ -87,15 +87,6 @@
 								</div>
 
 
-								<!--role-->
-								<div id="role">
-									<span class="label-input100">Role</span> <select id="selectrole"
-										class="form-control" th:field="*{role}" name="ignore" disabled>
-										<option th:each="role : ${listRole}" th:value="${role.idRole}"
-											th:text="${role.nameRole}"></option>
-									</select>
-								</div>
-
 								<div class="container-login100-form-btn">
 									<button class="login100-form-btn" type="submit">Submit</button>
 								</div>

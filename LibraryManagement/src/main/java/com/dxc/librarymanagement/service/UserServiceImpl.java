@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import com.dxc.librarymanagement.dao.LibUserDAO;
 import com.dxc.librarymanagement.dto.UserDTO;
+import com.dxc.librarymanagement.entities.LibRole;
 import com.dxc.librarymanagement.entities.LibUser;
 
 @Service
@@ -25,12 +26,24 @@ public class UserServiceImpl {
 	private RoleServiceImpl roleServices;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	@Value("${LimitNumberDefault}")
+	private int LimitNumberDefault;
 	@Value("${LimitRecords}")
 	private int LimitRecords;
 
-	public LibUser saveUser(LibUser libUser) {
-		return libUserDAO.save(libUser);
+	public String saveUser(LibUser libUser) {
+		if (libUser.getUserName() != "" && libUser.getPassword() != ""
+				&& findByUserName(libUser.getUserName()) == null) {
+			libUser.setPassword(passwordEncoder.encode(libUser.getPassword()));
+			libUser.setLimitNumber(LimitNumberDefault);
+			LibRole roleRegister = new LibRole();
+			roleRegister.setIdRole(2);
+			libUser.setRole(roleRegister);
+			libUserDAO.save(libUser);
+			return "redirect:register?error=false";
+		} else {
+			return "redirect:register?error=true";
+		}
 	}
 
 	public List<LibUser> findByUserNameContaining(String username) {
@@ -73,7 +86,8 @@ public class UserServiceImpl {
 		this.libUserDAO.save(libuser);
 		return "Edit Successful!";
 	}
-	//add user
+
+	// add user
 	public List<String> addUser(UserDTO userDTO) {
 		List<String> status = new ArrayList<>();
 		if (userDTO.getUsername().trim() != "" && userDTO.getUsername() != null && userDTO.getPassword().trim() != ""
