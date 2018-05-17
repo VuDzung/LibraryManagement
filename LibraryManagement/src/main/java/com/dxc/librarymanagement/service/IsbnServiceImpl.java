@@ -87,86 +87,89 @@ public class IsbnServiceImpl {
 	public List<String> addIsbn(BookDTO bookDTO) {
 		List<String> status = new ArrayList<>();
 		LibIsbn libIsbn = isbndao.findByIsbn(bookDTO.getIsbn());
-		if ((bookDTO.getIsbn().length()<13 && bookDTO.getIsbn().length()>13) || (bookDTO.getIsbn().length()<10 && bookDTO.getIsbn().length()>10)) {
-			System.out.println(bookDTO.getIsbn().length());
-			status.add("");
-			status.add("ISBN Code Is Not Valid!");
-			return status;
+		if (bookDTO.getIsbn().length()==13 || bookDTO.getIsbn().length()==10) {
+			if (bookDTO.getTitleOfBook()==null || bookDTO.getAuthor()==null || bookDTO.getPublishYear()==0 || bookDTO.getImage()==null) {
+				status.add("");
+				status.add("Please Fill All Information!");
+				return status;
+			}
+			if (libIsbn != null) {
+				libIsbn.setTotalBook(libIsbn.getTotalBook() + bookDTO.getTotalBook());
+				isbndao.save(libIsbn);
+				status.add(String.valueOf(this.getPaginatePageNum()));
+				status.add("Add Successful!");
+				status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
+				return status;
+			}
+			// else libIsbn==null
+			LibBook libBook = bookService.findByTitleOfBookAndAuthor(bookDTO.getTitleOfBook(), bookDTO.getAuthor());
+			if (libBook != null) {
+				libIsbn = new LibIsbn();
+				libIsbn.setIsbn(bookDTO.getIsbn());
+				libIsbn.setBook(libBook);
+				libIsbn.setTotalBook(bookDTO.getTotalBook());
+				libIsbn.setStatus(StatusAvailable);
+				libIsbn.setNumberBooksBorrowed(0);
+				isbndao.save(libIsbn);
+				status.add(String.valueOf(this.getPaginatePageNum()));
+				status.add("Add Successful!");
+				status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
+				return status;
+				}
+				// else libBook==null
+				libBook = new LibBook();
+				libBook.setAuthor(bookDTO.getAuthor());
+				libBook.setImage(bookDTO.getImage());
+				libBook.setPublishYear(bookDTO.getPublishYear());
+				libBook.setShortDescription(bookDTO.getShortDescription());
+				libBook.setTitleOfBook(bookDTO.getTitleOfBook());
+		
+				libIsbn = new LibIsbn();
+				libIsbn.setIsbn(bookDTO.getIsbn());
+				libIsbn.setTotalBook(bookDTO.getTotalBook());
+				libIsbn.setStatus(StatusAvailable);
+				libIsbn.setNumberBooksBorrowed(0);
+				libIsbn.setBook(this.bookService.save(libBook));
+				isbndao.save(libIsbn);
+				status.add(String.valueOf(this.getPaginatePageNum()));
+				status.add("Add Successful!");
+				status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
+				return status;
+			}
+			else {
+				System.out.println(bookDTO.getIsbn().length());
+				status.add("");
+				status.add("ISBN Code Is Not Valid!");
+				return status;
+			}
 		}
-		if (bookDTO.getIsbn()==null || bookDTO.getTitleOfBook()==null || bookDTO.getAuthor()==null || bookDTO.getPublishYear()==0 || bookDTO.getImage()==null) {
-			status.add("");
-			status.add("Please Fill All Information!");
-			return status;
+	
+		// GET PAGE NUM OF A LIBISBN
+		public int getISBNpage(String isbn) {
+			return (int) Math.ceil((float) this.isbndao.getLibISBNRecordNum(isbn) / (float) LimitRecords);
 		}
-		if (libIsbn != null) {
-			libIsbn.setTotalBook(libIsbn.getTotalBook() + bookDTO.getTotalBook());
-			isbndao.save(libIsbn);
+	
+		// DELTETE ISBN
+		public List<String> deleteIsbn(String isbn) {
+			List<String> status = new ArrayList<>();
+			LibIsbn libisbn = this.isbndao.findByIsbn(isbn);
+			if (libisbn == null) {
+				status.add("");
+				status.add("ISBN Code Is Not Correct!");
+				return status;
+			}
+			if (libisbn.getNumberBooksBorrowed() > 0) {
+				status.add("");
+				status.add("Books Are Being Borrowed!");
+				return status;
+			}
+			libisbn.setTotalBook(0);
+			libisbn.setStatus(StatusUnavailable);
+			this.isbndao.save(libisbn);
 			status.add(String.valueOf(this.getPaginatePageNum()));
-			status.add("Add Successful!");
-			status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
+			status.add("Delete Successful!");
 			return status;
-		}
-		// else libIsbn==null
-		LibBook libBook = bookService.findByTitleOfBookAndAuthor(bookDTO.getTitleOfBook(), bookDTO.getAuthor());
-		if (libBook != null) {
-			libIsbn = new LibIsbn();
-			libIsbn.setIsbn(bookDTO.getIsbn());
-			libIsbn.setBook(libBook);
-			libIsbn.setTotalBook(bookDTO.getTotalBook());
-			libIsbn.setStatus(StatusAvailable);
-			libIsbn.setNumberBooksBorrowed(0);
-			isbndao.save(libIsbn);
-			status.add(String.valueOf(this.getPaginatePageNum()));
-			status.add("Add Successful!");
-			status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
-			return status;
-		}
-		// else libBook==null
-		libBook = new LibBook();
-		libBook.setAuthor(bookDTO.getAuthor());
-		libBook.setImage(bookDTO.getImage());
-		libBook.setPublishYear(bookDTO.getPublishYear());
-		libBook.setShortDescription(bookDTO.getShortDescription());
-		libBook.setTitleOfBook(bookDTO.getTitleOfBook());
-
-		libIsbn = new LibIsbn();
-		libIsbn.setIsbn(bookDTO.getIsbn());
-		libIsbn.setTotalBook(bookDTO.getTotalBook());
-		libIsbn.setStatus(StatusAvailable);
-		libIsbn.setNumberBooksBorrowed(0);
-		libIsbn.setBook(this.bookService.save(libBook));
-		isbndao.save(libIsbn);
-		status.add(String.valueOf(this.getPaginatePageNum()));
-		status.add("Add Successful!");
-		status.add(String.valueOf(this.getISBNpage(bookDTO.getIsbn())));
-		return status;
-	}
-
-	// GET PAGE NUM OF A LIBISBN
-	public int getISBNpage(String isbn) {
-		return (int) Math.ceil((float) this.isbndao.getLibISBNRecordNum(isbn) / (float) LimitRecords);
-	}
-
-	// DELTETE ISBN
-	public List<String> deleteIsbn(String isbn) {
-		List<String> status = new ArrayList<>();
-		LibIsbn libisbn = this.isbndao.findByIsbn(isbn);
-		if (libisbn == null) {
-			status.add("");
-			status.add("ISBN Code Is Not Correct!");
-			return status;
-		}
-		if (libisbn.getNumberBooksBorrowed() > 0) {
-			status.add("");
-			status.add("Books Are Being Borrowed!");
-			return status;
-		}
-		libisbn.setTotalBook(0);
-		libisbn.setStatus(StatusUnavailable);
-		this.isbndao.save(libisbn);
-		status.add(String.valueOf(this.getPaginatePageNum()));
-		status.add("Delete Successful!");
-		return status;
+			
 	}
 
 	// EDIT ISBN

@@ -88,7 +88,7 @@ public class UserServiceImpl {
 	}
 
 	// add user
-	public List<String> addUser(UserDTO userDTO) {
+	public List<String> addUserTicket(UserDTO userDTO) {
 		List<String> status = new ArrayList<>();
 		if (userDTO.getUsername().trim() != "" && userDTO.getUsername() != null && userDTO.getPassword().trim() != ""
 				&& userDTO.getPassword() != null && userDTO.getFullname() != null
